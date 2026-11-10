@@ -1,0 +1,4 @@
+interface:
+  display_name: design-squad · Español
+  short_description: Diseño UX/UI y sistemas de diseño
+  default_prompt: Usa $design-squad para ayudarme con mi objetivo.

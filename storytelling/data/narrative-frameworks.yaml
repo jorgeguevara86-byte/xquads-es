@@ -1,0 +1,293 @@
+# Narrative Frameworks Catalog
+# Comprehensive reference for all storytelling methodologies
+# Version: 1.0.0
+
+catalog:
+  version: "1.0.0"
+  last_updated: "2026-03-05"
+
+frameworks:
+  heros_journey:
+    name: "El viaje del héroe (Monomio)" 
+    creator: "Joseph Campbell" 
+    agent: joseph-campbell
+    source: "El héroe con una mil caras (1949)" 
+    best_for: "Transformaciones épicas, escala mítica, narrativas arquetípicas" 
+    stages:
+      - order: 1
+        name: "Mundo Ordinario" 
+        description: "La vida normal del héroe antes de que comience la aventura" 
+        purpose: "Establecer la base de referencia para que la transformación sea visible" 
+      - order: 2
+        name: "Llama a la Aventura" 
+        description: "Algo perturba el mundo ordinario" 
+        purpose: "Crear tensión inicial y deseo" 
+      - order: 3
+        name: "Refusal of the Call" 
+        description: "El héroe duda o rechaza el desafío" 
+        purpose: "Mostrar la apuesta y el miedo — hace que la aceptación sea significativa" 
+      - order: 4
+        name: "Encuentro con el Mentor" 
+        description: "Una guía aparece con sabiduría, herramientas o estímulo" 
+        purpose: "Proporcione al héroe lo que necesitan para cruzar el umbral" 
+      - order: 5
+        name: "Cruzando el Umbral" 
+        description: "El héroe comete y entra en el mundo desconocido" 
+        purpose: "Punto de no retorno — la aventura comienza verdaderamente" 
+      - order: 6
+        name: "Tests, aliados y enemigos" 
+        description: "El héroe enfrenta desafíos, hace amigos, descubre enemigos" 
+        purpose: "Construir el mundo y desarrollar el carácter a través de los ensayos" 
+      - order: 7
+        name: "Enfoque a la cueva más cercana" 
+        description: "El héroe se prepara para el mayor desafío" 
+        purpose: "Construir anticipación y aumentar las apuestas" 
+      - order: 8
+        name: "El Ordeal" 
+        description: "El héroe enfrenta el mayor desafío: la muerte y el renacimiento" 
+        purpose: "Crisis central que transforma al héroe" 
+      - order: 9
+        name: "Recompensa (Configuración de la espada)" 
+        description: "El héroe gana lo que buscaban" 
+        purpose: "Paga por el ordeal, pero el viaje no se ha terminado" 
+      - order: 10
+        name: "La vuelta de la carretera" 
+        description: "El héroe comienza el regreso, a menudo con nuevos desafíos" 
+        purpose: "Mostrar el viaje tiene consecuencias" 
+      - order: 11
+        name: "Resurrection"
+        description: "La prueba final - el héroe se transforma y purifica" 
+        purpose: "Prueba final de transformación" 
+      - order: 12
+        name: "Regresa con el Elixir" 
+        description: "El héroe vuelve a casa cambiado, trayendo un regalo" 
+        purpose: "La transformación beneficia a la comunidad, completando el círculo" 
+    archetypes:
+      - Hero
+      - Mentor
+      - "Threshold Guardian" 
+      - Herald
+      - Shapeshifter
+      - Shadow
+      - Trickster
+      - Ally
+
+  beat_sheet:
+    name: "¡Salven al gato!" 
+    creator: "Blake Snyder" 
+    agent: blake-snyder
+    source: "¡Salven al gato! (2005)" 
+    best_for: "Guiones de pantalla comerciales, trama apretada, audience-friendly estructura" 
+    beats:
+      - order: 1
+        name: "Imagen de apertura" 
+        page: "1"
+        description: "Una imagen que representa el mundo y el tono antes del viaje" 
+        purpose: "Tesis visual - establecer \"antes\" estado" 
+      - order: 2
+        name: "Theme Stated" 
+        page: "5"
+        description: "Alguien dice el tema, a menudo al héroe que no entiende todavía" 
+        purpose: "Plantar la semilla temática" 
+      - order: 3
+        name: "Configuración-Up" 
+        page: "1-10"
+        description: "Presentar al héroe, su mundo, sus fallas, y lo que necesita arreglar" 
+        purpose: "Construir empatía y establecer apuestas" 
+      - order: 4
+        name: "Catalyst"
+        page: "12"
+        description: "El evento que interrumpe el status quo" 
+        purpose: "Incitar a un incidente - la vida nunca será la misma" 
+      - order: 5
+        name: "Debate"
+        page: "12-25"
+        description: "El héroe lucha con la decisión de actuar" 
+        purpose: "Construir suspenso y mostrar renuencia" 
+      - order: 6
+        name: "Rompe dos" 
+        page: "25"
+        description: "El héroe hace una elección proactiva y entra en el nuevo mundo" 
+        purpose: "Romper la ley: compromiso con el viaje" 
+      - order: 7
+        name: "B Story" 
+        page: "30"
+        description: "Una historia secundaria (a menudo amor) que lleva el tema" 
+        purpose: "Tema explorado a través de la relación" 
+      - order: 8
+        name: "Diversión y juegos" 
+        page: "30-55"
+        description: "La promesa de la premisa — lo que el público vino a ver" 
+        purpose: "Entregar el concepto: este es el material de remolque" 
+      - order: 9
+        name: "Midpoint"
+        page: "55"
+        description: "Una victoria falsa o una derrota falsa que eleva las estacas" 
+        purpose: "Punto de pivote: las apuestas se convierten life-and-death" 
+      - order: 10
+        name: "Los malos chicos cierran" 
+        page: "55-75"
+        description: "Montajes de presión externa, fallas internas empeoran" 
+        purpose: "Escala de complicaciones" 
+      - order: 11
+        name: "Todo está perdido" 
+        page: "75"
+        description: "El punto más bajo — el látigo de la muerte (literal o metafórica)" 
+        purpose: "Máxima desesperación antes de la transformación" 
+      - order: 12
+        name: "Noche oscura del alma" 
+        page: "75-85"
+        description: "El héroe procesa la pérdida y encuentra la fuerza para continuar" 
+        purpose: "Fondo de roca emocional — catarsis antes de la claridad" 
+      - order: 13
+        name: "Rompe en tres" 
+        page: "85"
+        description: "El héroe descubre la solución, combinando historias A y B" 
+        purpose: "Fusión de la trama y el tema — la respuesta" 
+      - order: 14
+        name: "Finale"
+        page: "85-110"
+        description: "El héroe ejecuta el plan, derrota a los malos, transforma" 
+        purpose: "Climax y resolución - todos los hilos resueltos" 
+      - order: 15
+        name: "Imagen final" 
+        page: "110"
+        description: "Opposite of the opening Image — proof of change" 
+        purpose: "Antítesis visual — el estado \"después\"" 
+    genres:
+      - "Monstruo en la casa" 
+      - "Golden Fleece" 
+      - "Fuera de la botella" 
+      - "Amigo con un problema" 
+      - "Ritos de paso" 
+      - "Buddy Love" 
+      - "Whydunit"
+      - "El Triumphant tonto" 
+      - "Institutionalized"
+      - "Superhero"
+
+  story_circle:
+    name: "Story Circle" 
+    creator: "Dan Harmon" 
+    agent: dan-harmon
+    source: "Canal 101 / Sala de escritores comunitarios" 
+    best_for: "episodios de televisión, character-driven arcos, viajes relatables" 
+    steps:
+      - order: 1
+        name: "YOU"
+        description: "Un personaje está en una zona de confort" 
+        purpose: "Establece el protagonista y su mundo" 
+      - order: 2
+        name: "NEED"
+        description: "Pero quieren algo" 
+        purpose: "Crear deseo y motivación" 
+      - order: 3
+        name: "GO"
+        description: "Entran en una situación desconocida" 
+        purpose: "Deja la zona de confort: comienza la aventura" 
+      - order: 4
+        name: "SEARCH"
+        description: "Se adaptan a la nueva situación" 
+        purpose: "Lucha y crecimiento mediante retos" 
+      - order: 5
+        name: "FIND"
+        description: "Tienen lo que querían." 
+        purpose: "Lograr el objetivo - pero a un costo" 
+      - order: 6
+        name: "TAKE"
+        description: "Pagan un precio pesado por ello" 
+        purpose: "Consecuencias — nada es gratis" 
+      - order: 7
+        name: "RETURN"
+        description: "Ellos regresan a la situación familiar" 
+        purpose: "Vuelve a casa, pero todo es diferente ahora" 
+      - order: 8
+        name: "CHANGE"
+        description: "Habiendo cambiado" 
+        purpose: "La transformación es completa — no son quienes fueron" 
+    principle: "El círculo representa la bajada y el regreso — entrando en el inconsciente y volviendo a transformarse" 
+
+  sparkline:
+    name: "Sparkline (Estructura de la Presentación)" 
+    creator: "Nancy Duarte" 
+    agent: nancy-duarte
+    source: "Resonate (2010)"
+    best_for: "Presentaciones, notas, narración de datos, charlas TED" 
+    structure:
+      what_is: "La realidad actual — el mundo tal como existe hoy" 
+      what_could_be: "El futuro posible - el mundo transformado" 
+      alternation: "Luchar entre el dolor (lo que es) y la promesa (lo que podría ser)" 
+      star_moment: "Un momento inolvidable: el pico emocional" 
+      new_bliss: "El futuro transformado después de que el público actúe" 
+      call_to_action: "El paso específico que debe dar el público" 
+    principle: "Grandes presentaciones crean una brecha entre lo que es y lo que podría ser, luego construyen el deseo de cruzarlo" 
+
+  public_narrative:
+    name: "Historia del Ser, Nosotros, Ahora" 
+    creator: "Marshall Ganz" 
+    agent: marshall-ganz
+    source: "Harvard Kennedy School / Community Organizing" 
+    best_for: "Movimientos, activismo, acción colectiva, cambio organizativo" 
+    stories:
+      story_of_self:
+        purpose: "Por qué me importa — origen personal y valores" 
+        elements: ["Experiencia de origen" , "Punto de elección" , "Valores expresados" , "Honesta emocional" ]
+      story_of_us:
+        purpose: "Por qué nos importamos — identidad y valores compartidos" 
+        elements: ["Experiencias compartidas" , "Valores colectivos" , "Problemas comunes" , "Sentido de cantar" ]
+      story_of_now:
+        purpose: "Lo que debemos hacer AHORA — acción urgente" 
+        elements: ["Desafío urgente" , "La elección que enfrentamos" , "Hope vs fear" , "Llamamiento específico a la acción" ]
+    principle: "Narrative es la forma en que traducimos valores en acción, conectando personal a colectivo a urgente" 
+
+  abt:
+    name: "Y-Pero-por lo tanto (ABT)" 
+    creator: "Randy Olson / Park Howell" 
+    agent: park-howell
+    source: "Houston, tenemos un narrativo (2015)" 
+    best_for: "narrativa de marca, narrativas de negocios, marketing de contenidos, lanzamientos de ascensor" 
+    structure:
+      and: "Establecer el contexto: el status quo (acuerdo)" 
+      but: "Introducir el conflicto — el problema o la tensión (contradicción)" 
+      therefore: "Presentar la resolución — la acción o solución (consegencia)" 
+    example: "Queremos crecer nuestro negocio Y tenemos un gran producto, pero los clientes no pueden encontrarnos, THEREFORE necesitamos una nueva estrategia de marketing." 
+    anti_patterns:
+      aaa: "Y-Y-Y-Y- aburrido, sin conflicto (muerte por acuerdo)" 
+      dht: "A pesar de esto — académica, no hay energía narrativa" 
+    principle: "Todas las historias convincentes siguen la estructura ABT. Conflicto (BUT) es lo que hace una historia una historia." 
+
+  story_grid:
+    name: "Historia Grid" 
+    creator: "Shawn Coyne" 
+    agent: shawn-coyne
+    source: "La historia Grid (2015)" 
+    best_for: "Edición de historia, análisis de género, diagnóstico estructural" 
+    content_genres:
+      - name: "Action"
+        core_value: "Vida / Muerte" 
+        core_emotion: "Excitement"
+      - name: "Horror"
+        core_value: "Vida / Demonios" 
+        core_emotion: "Terror"
+      - name: "Love"
+        core_value: "Amor / Odio" 
+        core_emotion: "Intimacy"
+      - name: "Performance"
+        core_value: "Respeto / vergüenza" 
+        core_emotion: "Admiration"
+      - name: "Society"
+        core_value: "Poder / Impotencia" 
+        core_emotion: "Satisfacción social" 
+      - name: "Status"
+        core_value: "Éxito / fracaso" 
+        core_emotion: "Admiration"
+      - name: "Worldview"
+        core_value: "Significado / Desinteresante" 
+        core_emotion: "Transcendence"
+    five_commandments:
+      - "Incitar a incidentes (causal o coincidente)" 
+      - "Complicación progresiva (punto de giro)" 
+      - "Crisis (mejor mala elección o bienes irreconciliables)" 
+      - "Climax (la decisión tomada)" 
+      - "Resolución (las consecuencias)" 
+    principle: "Cada escena debe tener un cambio de valor. Una escena sin cambio no es una escena." 

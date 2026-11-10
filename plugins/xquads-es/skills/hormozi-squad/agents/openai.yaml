@@ -1,0 +1,4 @@
+interface:
+  display_name: hormozi-squad · Español
+  short_description: Ofertas, precios, captación y ventas
+  default_prompt: Usa $hormozi-squad para ayudarme con mi objetivo.

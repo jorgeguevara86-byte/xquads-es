@@ -1,0 +1,4 @@
+interface:
+  display_name: storytelling · Español
+  short_description: Narrativas, presentaciones y discursos
+  default_prompt: Usa $storytelling para ayudarme con mi objetivo.

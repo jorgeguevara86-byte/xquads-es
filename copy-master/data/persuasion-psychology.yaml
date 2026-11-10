@@ -1,0 +1,472 @@
+# Persuasion Psychology Reference: Copy Master Squad
+# Deep reference on persuasion science for all agents
+# Sources: Cialdini, Warren, Sugarman, Voss, Klaff, behavioral economics
+
+cialdini_7_principles:
+  source: "Influencia (1984) + Pre-Suasión (2016) — Robert Cialdini" 
+
+  reciprocity:
+    definition: "La gente se siente obligada a devolver favores, regalos y concesiones. El deseo de pagar es duramente arduo y a menudo desproporcionado" 
+    mechanism: "Cuando usted da algo de valor primero —incluso no solicitado— el receptor se siente indeudado psicológicamente" 
+    copy_applications:
+      - "imanes de plomo: dar un recurso libre realmente valioso antes de pedir cualquier cosa" 
+      - "Marketing de contenidos gratis — blogs, videos, herramientas que resuelven problemas reales" 
+      - "Pruebas y muestras gratuitas — que experimenten el valor antes de pagar" 
+      - "Bonos inesperados — añadir bonos sorpresa después de la compra para generar referencias" 
+      - "Técnica de concesión: comienza con una petición más grande, luego 'concede' a tu pregunta real" 
+    examples:
+      - "Hare Krishnas dando flores antes de pedir donaciones aumentan las donaciones 300%" 
+      - "Guías PDF gratuitas que generan un correo electrónico de 40%+ opt-in Tasas" 
+      - "Programas de remisión impulsados por la reciprocidad (Dropbox: dar almacenamiento, obtener almacenamiento)" 
+
+  commitment_consistency:
+    definition: "Una vez que la gente se compromete a algo (especialmente públicamente), siente presión interna para comportarse de forma coherente con ese compromiso" 
+    mechanism: "Los pequeños compromisos iniciales crean un self-image que conduce acciones consistentes más grandes - el efecto \"pie en la puerta\"" 
+    copy_applications:
+      - "Micro-commitmentos — cuestionarios, encuestas, 'sí escaleras' antes de la gran pregunta" 
+      - "Ofertas de envío gratis - pagar incluso $1 crea identidad comprador" 
+      - "Declaraciones públicas — 'Comparta tu objetivo en los comentarios' los bloquea en" 
+      - "Revelación progresiva — pequeña opt-in → serie de correo electrónico → pequeña compra →" 
+      - "Copia basada en la identidad — 'Usted es el tipo de persona que...' aprovecha la consistencia" 
+    examples:
+      - "Soldados del POW en Corea — pequeñas declaraciones escritas llevaron a cambios ideológicos completos" 
+      - "Mecanillas Quiz que hacen 5-7 preguntas antes de revelar el producto lograr la conversión 3x" 
+      - "'Estoy en' botones vs 'Enviar' botones - el compromiso de identidad aumenta la conversión" 
+
+  social_proof:
+    definition: "La gente mira a otros para determinar el comportamiento correcto, especialmente en situaciones ambiguas. Lo que otros hacen sirve como un atajo mental" 
+    mechanism: "Cuando no estamos seguros, nos predefinimos al comportamiento de otros similares — cuanto más parecido y numeroso, más fuerte será el efecto" 
+    copy_applications:
+      - "Testimonios — especialmente de personas que coinciden con el avatar objetivo exactamente" 
+      - "Números — '50.000+ clientes' crea seguridad de la manada" 
+      - "Pruebas en tiempo real — 'John de Austin acaba de comprar hace 3 minutos'" 
+      - "Estudios de casos - detallados before/after historias con métricas específicas" 
+      - "Contenido generado por el usuario — clientes reales compartiendo resultados reales" 
+      - "Listas de espera — 'Únase 2,347 personas esperando acceso'" 
+    examples:
+      - "La risa enlatada aumenta las calificaciones de humor en un 15-20% incluso cuando la gente sabe que es falso" 
+      - "Las toallitas de hotel reutilizan señales citando el '75% de los huéspedes en esta habitación' supervisó llamamientos genéricos en un 33%" 
+      - "Amazon 'Los clientes que compraron esto también compraron' unidades 35% de ingresos" 
+
+  authority:
+    definition: "Las personas se remiten a expertos y a las cifras de autoridad: títulos, uniformes, credenciales y trappings de conocimientos especializados activan el cumplimiento automático" 
+    mechanism: "La autoridad sirve como un atajo cognitivo —si un experto lo dice, debe ser verdad. Seguimos la autoridad incluso contra nuestro propio juicio" 
+    copy_applications:
+      - "Credenciales — 'Como se ve en Forbes, Inc, WSJ'" 
+      - "Refrendamientos de expertos — médicos, doctores, líderes de la industria" 
+      - "Datos e investigaciones citadas — estudios específicos, estadísticas, peer-reviewed Conclusiones" 
+      - "Autorización publicada — libros, artículos, patentes" 
+      - "Asociación - logos de prestigiosos clientes, universidades, medios de comunicación" 
+      - "Especificación como autoridad — conocimientos técnicos detallados indica experiencia" 
+    examples:
+      - "Experimento de Milgram — 65% entregado máximo 'shock' cuando se instruye por la figura de autoridad" 
+      - "Agregar 'Dr.' a un testimonio aumenta la believabilidad en un 40%+" 
+      - "'Funcionado en' logos medios de comunicación aumenta la conversión de landing page 20-30%" 
+
+  liking:
+    definition: "La gente prefiere decir sí a las personas que les gusta — similitud, cumplidos, familiaridad y atractivo físico aumenta el cumplimiento" 
+    mechanism: "El gusto es impulsado por: atractivo físico, similitud, elogios, contact/cooperation, y asociación con cosas positivas" 
+    copy_applications:
+      - "Historias personales que crean relatabilidad — 'Yo era como tú'" 
+      - "Humor - hace que el writer/brand agradable y memorable" 
+      - "Complimentos — 'Usted es claramente alguien que toma X en serio'" 
+      - "Valores compartidos e identidad — \"Creemos...\" declaraciones" 
+      - "Tono conversacional — escribe como un amigo, no una corporación" 
+      - "Diseño atractivo — estética visual crear asociación positiva" 
+    examples:
+      - "Fiestas de tupperware — comprar de amigos genera 5x más ingresos que minoristas" 
+      - "Los patrones de lenguaje espejo aumentan el rapport y el cumplimiento en un 25%" 
+      - "Los políticos que sonríen más obtienen 10% más votos en promedio" 
+
+  scarcity:
+    definition: "Las personas quieren más de lo que pueden tener menos — aumentos limitados de disponibilidad percibidos valor y urgencia para actuar" 
+    mechanism: "La pérdida de la aversión (perder algo siente 2 veces peor que ganarla) combinada con la reacción (que queremos lo que no podemos tener) crea una urgencia poderosa" 
+    copy_applications:
+      - "Tiempo limitado — 'El amor expira el viernes a la medianoche'" 
+      - "Cantidad limitada: \"Sólo quedan 47 puntos\"" 
+      - "Desapareciendo los bonos — 'Orden en las próximas 24 horas para conseguir...'" 
+      - "Acceso exclusivo — 'Sólo por invitación' o 'Aplicación requerida'" 
+      - "Aumentos de precios — 'El precio sube el lunes'" 
+      - "La escasez de información — 'Esta página está bajando pronto'" 
+    examples:
+      - "Worchel cookie experimento — cookies de un tarro casi vacío califican 40% más deseable que las cookies idénticas de un tarro completo" 
+      - "Booking.com — \"Sólo quedan 2 habitaciones a este precio\" aumenta la conversión 20%+" 
+      - "Black Friday scarcity drives $9B+ en ventas online en un solo día" 
+
+  unity:
+    definition: "Las personas están más influenciadas por aquellos que ven como 'uno de nosotros' — identidad compartida, tribu y pertenencia crean profunda influencia que trasciende los otros seis principios" 
+    mechanism: "La identidad compartida ('nos') crea la voluntad de sacrificar por el grupo. Va más allá del gusto — se trata de ser el mismo tipo" 
+    copy_applications:
+      - "Lenguaje tribal — \"Somos el tipo de personas que... \"" 
+      - "enemigo compartido: une contra un adversario común (la industria, el viejo camino)" 
+      - "Idioma interno — jerga y terminología que indica la membresía" 
+      - "Historia de origen — \"Yo vine del mismo lugar que ahora\"" 
+      - "Construcción de movimientos — crear una identidad que las personas quieren unirse" 
+      - "Nosotros vs. Los que están enmarcando - colocan a su público en contra de un 'ellos' claramente definido" 
+    examples:
+      - "El 'Think Different' de Apple creó una identidad de tribu, no sólo una base de clientes" 
+      - "La identidad comunitaria de CrossFit impulsa la retención de 90%+ a través de la pertenencia tribal" 
+      - "Movimientos políticos: la identidad compartida es más poderosa que las posiciones políticas" 
+
+blair_warren_5_triggers:
+  source: "Curso de Persuasión de una Sentencia (Sr. Blair Warren)" 
+  core_principle: "La gente hará cualquier cosa por aquellos que animan sus sueños, justifican sus fracasos, allay sus temores, confirman sus sospechas, y lanzan piedras a sus enemigos" 
+
+  encourage_dreams:
+    definition: "Validar y amplificar las aspiraciones de la otra persona — no desestime, disminuya o redirija sus sueños" 
+    mechanism: "La mayoría de la gente ha tenido sus sueños despedidos por la familia, amigos y la sociedad. Cuando alguien cree en su sueño, el vínculo es inmediato y profundo" 
+    copy_applications:
+      - "Abrir con su aspiración — 'Quieres construir un negocio de 7 cifras mientras trabajas 20 horas a la semana. Eso no es una locura — eso es exactamente lo que ayudamos a la gente a hacer'" 
+      - "El futuro ritmo del sueño — 'Imagine despertar 6 meses a partir de ahora...'" 
+      - "Validar la ambición — 'La mayoría de la gente te dirá que es imposible. Están equivocados'" 
+      - "Uso en aperturas VSL para crear un acercamiento instantáneo y confianza" 
+    examples:
+      - "Los vigilantes de peso cambian de 'diet' a 'vivir tu mejor vida' — alentando el sueño, sin arreglar el problema" 
+      - "Tesla — alentando el sueño del lujo sostenible, no vendiendo coches eléctricos" 
+
+  justify_failures:
+    definition: "Quitar la culpa por sus fracasos pasados — no fue su culpa, fue el método, la información, o el sistema que les falló" 
+    mechanism: "La gente lleva culpa y vergüenza por los fracasos pasados. La eliminación de esa carga crea profunda gratitud y lealtad" 
+    copy_applications:
+      - "'No es tu culpa que todavía estés luchando con X - los métodos que te enseñaron fueron fundamentalmente imperfectos'" 
+      - "No fallaste, el sistema te falló." 
+      - "'La razón por la que tu último intento no funcionó no tiene nada que ver con tu esfuerzo...'" 
+      - "Usar después de identificarse con su lucha para crear el cambio de creencia" 
+    examples:
+      - "Cada producto de dieta siempre: 'No se trata de fuerza de voluntad - es sobre biología'" 
+      - "SaaS: \"Las hojas de cálculo no fueron diseñadas para esto." 
+
+  allay_fears:
+    definition: "Nombra sus temores específicos y proporciona evidencia o lógica que los disuelve" 
+    mechanism: "Los miedos sin nombre son más poderosos que los miedos nombrados. Cuando usted nombra el miedo, lo encoge. Cuando usted proporciona un contador, usted lo elimina" 
+    copy_applications:
+      - "\"Quizás estés pensando que esto suena demasiado bueno para ser verdad, por eso no es... \"" 
+      - "Sé que te preocupa X." 
+      - "Auditorías de la acusación — listar todo temor antes de que lo planteen" 
+      - "Garantías y reversión de riesgos — 'Si no ves resultados en 60 días, no pagas nada'" 
+    examples:
+      - "Zappos política de retorno de 365 días – allaying the fear of buying shoes online" 
+      - "Domino '30 minutos o es gratis' — allaying the fear of cold pizza delivery" 
+
+  confirm_suspicions:
+    definition: "Validar lo que han creído en secreto pero no pudieron probar — 'Tenías razón todo el tiempo'" 
+    mechanism: "Todos tienen creencias invalidadas sobre por qué las cosas no funcionan. Confirmar estas crea confianza instantánea porque lo consigues cuando nadie más lo hace" 
+    copy_applications:
+      - "Siempre sospechas que [la práctica común] no funciona realmente." 
+      - "¿Esa sensación que tienes que algo está apagado?" 
+      - "Los expertos te han mentido sobre X. Aquí está la prueba." 
+      - "Uso en conspiracy-style y posicionamiento contrario" 
+    examples:
+      - "Dollar Shave Club confirma la sospecha de que los precios de la máquina de afeitar son una estafa" 
+      - "Comercialización de alimentos orgánicos que confirman sospechas sobre pesticidas y grandes agriculturas" 
+
+  throw_rocks_at_enemies:
+    definition: "Identificar un enemigo común y atacarlo públicamente — unir a tu audiencia contra un adversario compartido" 
+    mechanism: "Los enemigos compartidos crean vínculos más fuertes que los intereses compartidos. Cuanto más específico y vivo sea el enemigo, más fuerte será la conexión tribal" 
+    copy_applications:
+      - "'La industria de dietas de 60 mil millones de dólares no quiere que sepas esto'" 
+      - "Mientras Wall Street se hace rico, los estadounidenses habituales se quedan atrás" 
+      - "'La vieja manera de hacer el marketing - la forma en que los gurus te enseñaron - está muerta'" 
+      - "Los enemigos pueden ser: industrias, ideologías, prácticas, empresas específicas o 'la antigua manera'" 
+    examples:
+      - "Apple 'Mac vs. PC' — Microsoft era el enemigo" 
+      - "CrossFit vs. 'globo gimnasios' — creó una feroz lealtad a través de la identificación enemiga" 
+      - "Cada marca de desafío de siempre — Pepsi vs. Coke, Avis vs. Hertz, Dollar Shave vs. Gillette" 
+
+sugarman_30_triggers:
+  source: "Triggers (1999) / El manual de redacción de Adweek (2006) — Joe Sugarman" 
+
+  triggers:
+    - trigger: "Consistency"
+      description: "Una vez que una persona toma una posición, se sienten obligados a mantenerse coherentes con ella" 
+      copy_use: "Obtenga un pequeño compromiso temprano (consulte, prueba gratuita, correo electrónico opt-in) - Se mantendrán consistentes con la identidad del comprador" 
+
+    - trigger: "Product Nature" 
+      description: "Cada producto tiene una naturaleza inherente, una personalidad y un carácter únicos que deben ser entendidos antes de escribir" 
+      copy_use: "Estudie el producto profundamente antes de escribir. La copia debe emerger de la verdadera naturaleza del producto, no impuesta desde fuera" 
+
+    - trigger: "Prospect Nature" 
+      description: "Comprender quién es el comprador a nivel emocional y psicológico determina cada decisión de copia" 
+      copy_use: "Investigar los miedos, deseos, lenguaje y creencias del comprador. Escribe a la persona, no a la demográfica" 
+
+    - trigger: "Fad/Trend"
+      description: "La gente quiere ser parte de lo que está presente: las tendencias crean urgencia a través del impulso cultural" 
+      copy_use: "Posición de su producto como parte de un movimiento o tendencia más grande. 'La revolución X' o 'Únete al movimiento'" 
+
+    - trigger: "Timing"
+      description: "El mismo mensaje en diferentes momentos produce resultados radicalmente diferentes" 
+      copy_use: "Lanzamiento cuando el mercado tiene hambre. Tie ofrece a momentos culturales, estaciones, eventos de noticias, o tiempo personal (regreso a la escuela, año nuevo)" 
+
+    - trigger: "Linking"
+      description: "Conecta tu producto a algo que la perspectiva ya sabe, le gusta o valor" 
+      copy_use: "Analogías y metáforas — 'Es como Netflix para aprender' o 'El iPhone de los rastreadores de fitness'" 
+
+    - trigger: "Storytelling"
+      description: "Historias desvían la facultad crítica y atraen la emoción — la herramienta de ventas más poderosa jamás descubierta" 
+      copy_use: "Cada producto tiene una historia. La historia de origen, la historia del cliente, la historia del descubrimiento — encontrar y contarla" 
+
+    - trigger: "Authority"
+      description: "Las personas respetan y siguen a expertos e instituciones reconocidos" 
+      copy_use: "Citar credenciales, publicar investigación, asociarse con nombres reconocidos, demostrar profunda experiencia en la copia en sí" 
+
+    - trigger: "Deseo de ser largo" 
+      description: "Los seres humanos tienen la necesidad primordial de pertenecer a un grupo — para ser aceptados e incluidos" 
+      copy_use: "Crear comunidad alrededor de su producto. 'Únete a 50.000 vendedores inteligentes' o 'Bienvenidos a la tribu'" 
+
+    - trigger: "Deseo de recoger" 
+      description: "A la gente le encanta la recolección — sets, series, ediciones, niveles crean compromiso continuo" 
+      copy_use: "Crear ecosistemas de productos, series, niveles o ediciones. 'Volumen 1 de 12' o 'Level 2 Certification'" 
+
+    - trigger: "Curiosity"
+      description: "Un bucle abierto en la mente exige el cierre — la curiosidad es uno de los impulsos humanos más poderosos" 
+      copy_use: "Bolas de fascinación, bucles abiertos, acantilados, 'pero eso no es todo' transiciones, líneas de asunto que crean vacíos" 
+
+    - trigger: "Sentido de Urgency" 
+      description: "Sin una razón para actuar ahora, la gente se niega a 'más' lo que significa 'nunca'" 
+      copy_use: "Los plazos, cantidades limitadas, aumentos de precios, primas desapareciendo — les dan una razón por la que ahora importa" 
+
+    - trigger: "Fear"
+      description: "El miedo a la pérdida es más motivador que la esperanza de ganancia, por un factor de 2x según Kahneman" 
+      copy_use: "Pinta el costo de la inacción. '¿Cómo será tu vida en 5 años si nada cambia?' o 'No te pierdas'" 
+
+    - trigger: "Gratificación instantánea" 
+      description: "La gente quiere resultados ahora, no más tarde — el deseo de recompensa inmediata es duro" 
+      copy_use: "Poner énfasis en la velocidad de entrega y resultados. 'Acceso constante' — 'Ver resultados en 48 horas' — 'Descargar ahora'" 
+
+    - trigger: "Exclusivity"
+      description: "La gente quiere lo que otros no pueden tener: la exclusividad crea valor percibido y estado" 
+      copy_use: "'Sólo por invitación' — 'Limited to 100 members' — 'Application required' — 'No para todos'" 
+
+    - trigger: "Simplicity"
+      description: "La gente se inclina hacia soluciones simples: la complejidad crea dudas y parálisis" 
+      copy_use: "Haz que el mecanismo sea simple. '3 pasos' — 'Un simple truco' — 'Sólo juego de prensa' — Quita la complejidad percibida" 
+
+    - trigger: "Relationships"
+      description: "Relaciones fuertes entre comprador y vendedor crean lealtad que trasciende la lógica" 
+      copy_use: "Correos personales, behind-the-scenes contenido, vulnerabilidad, capacidad de respuesta — actuar como una persona, no como una empresa" 
+
+    - trigger: "Guilt"
+      description: "La gente actúa para aliviar la culpa — dando desencadena la culpabilidad de reciprocidad, no los desencadenantes de acción self-guilt" 
+      copy_use: "El valor libre crea la culpa de la reciprocidad. \"Te di todo gratis — lo menos que puedes hacer es revisar mi oferta\"" 
+
+    - trigger: "Specificity"
+      description: "Las afirmaciones específicas son más creíbles que las afirmaciones generales — el 97,3% de los golpes \"casi todos\"" 
+      copy_use: "Use números exactos, nombres, fechas y detalles. \"Incremento de ingresos por 47.233 dólares en 63 días\" no \"rendimiento dramáticamente aumentado\"" 
+
+    - trigger: "Familiarity"
+      description: "La gente confía en lo que reconocen, el mero efecto de exposición significa que el contacto repetido aumenta el gusto" 
+      copy_use: "La exposición constante de marca, retargeting, frecuencia de correo electrónico, presencia de redes sociales — estar en su mundo repetidamente" 
+
+    - trigger: "Hope"
+      description: "La esperanza es el último motivador humano: la gente comprará cualquier cosa que les dé esperanza para un futuro mejor" 
+      copy_use: "Pintar la posibilidad. 'Imaginar si...' — '¿Cómo sería tu vida si...' — 'Por primera vez, es realmente posible'" 
+
+    - trigger: "Greed"
+      description: "El deseo de obtener más de lo esperado — ofertas, negociaciones y valor desproporcionado desencadenan la codicia" 
+      copy_use: "Valor de apilación, ofertas de bonos, 'valor total: $4,997 — el tuyo hoy por $297', descuentos en granel, BOGO" 
+
+    - trigger: "Credibility"
+      description: "Todo en la copia debe ser creíble: una única afirmación increíble destruye la confianza en todo lo demás" 
+      copy_use: "Admisiones de daños, limitaciones específicas, comparaciones honestas, secciones \"Quienes NO son para\"" 
+
+    - trigger: "Satisfacción Condena" 
+      description: "El comprador debe creer que estarán satisfechos, esto va más allá de las características de seguridad emocional" 
+      copy_use: "Garantías, periodos de prueba, money-back políticas, 'mantener todo incluso si cancelas' — eliminar la ansiedad de compra" 
+
+    - trigger: "Participación mental" 
+      description: "La mente que está comprometida es la mente que compra – lectores pasivos no convierten" 
+      copy_use: "Preguntas, fill-in-the-blank, preguntas, calculadoras, 'imaginate a ti mismo' — fuerza de participación mental" 
+
+    - trigger: "Honesty"
+      description: "La transparencia y la honestidad son persuasivas porque son raras — admitir defectos construye confianza" 
+      copy_use: "Admisiones, limitaciones, '¿Para quién es este NO', comparaciones honestas, enfoque Avis 'Probamos más duro'" 
+
+    - trigger: "Prueba de valor" 
+      description: "El valor de demostración es más persuasivo que el valor reclamado — mostrar, no decir" 
+      copy_use: "Muestras gratuitas, videos demo, estudios de casos con capturas de pantalla, demostraciones en vivo, métricas públicas" 
+
+    - trigger: "Emotion"
+      description: "La gente compra emoción y justifica con lógica — el caso emocional debe hacerse antes de la lógica" 
+      copy_use: "Sigue con lógica (datos, comparación, ROI). Cerca de emoción (pacificación de futuro)" 
+
+    - trigger: "Involvement"
+      description: "La participación física y mental en el proceso de compra aumenta el compromiso de compra" 
+      copy_use: "Quizzes, configuradores, 'elegir tu plan', elementos interactivos, 'pick your color', opciones de personalización" 
+
+    - trigger: "Rhyme"
+      description: "Las frases de ritmo se perciben como más veraz — la 'heurística de los besos' (belleza = verdad)" 
+      copy_use: "'Si no encaja, debes absolver' — etiquetas de rima, consignas memorables, frases alimenticias" 
+
+voss_negotiation_tools:
+  source: "Nunca divida la diferencia (2016) — Chris Voss" 
+
+  tactical_empathy:
+    definition: "Comprender los sentimientos y la mentalidad de otro en el momento, y escuchar lo que está detrás de esos sentimientos — luego usar ese entendimiento para influir" 
+    copy_application: "Copia abierta demostrando que comprende su estado emocional exacto — \"Sé lo que se siente al mirar su cuenta bancaria a las 3am y sentir ese nudo en su estómago\"" 
+    technique: "Nombra su realidad antes de ofrecer su solución. Cuanto más exactamente describa sus sentimientos, más confianza confían en usted" 
+
+  labeling:
+    definition: "Identificar y verbalizar la emoción de la otra persona — 'Parece...', 'Suena como...', 'Parece...'" 
+    copy_application: "Usar etiquetas en las líneas de correo electrónico y los cables de copia — 'Suena como si hubieras intentado todo para crecer tu negocio y nada está funcionando.' obliga al lector a pensar 'eso es correcto'" 
+    technique: "Comience etiquetas con 'Parece' o 'Suena como' — nunca 'Creo' (lo hace a su alrededor). El objetivo es una respuesta 'es correcto'" 
+
+  mirroring:
+    definition: "Repitiendo las últimas palabras críticas que la otra persona dijo: desencadena la elaboración y crea el rapport" 
+    copy_application: "En scripts de ventas y secuencias de chatbot, refleja el lenguaje exacto de la perspectiva. En copia, utilice voice-of-customer datos para reflejar sus palabras de nuevo a ellos" 
+    technique: "En copia escrita: use sus frases exactas de opiniones, encuestas y tickets de soporte. En llamadas: repita sus últimas 3 palabras como pregunta" 
+
+  accusation_audit:
+    definition: "Proactivamente enumerar cada cosa negativa que el otro partido podría pensar en usted o su oferta - antes de que lo digan" 
+    copy_application: "En las páginas de ventas: 'Probablemente estás pensando que este es sólo otro curso que no funcionará. Estás pensando que voy a cobrar miles. Estás pensando que esto suena demasiado bueno para ser verdad. Lo entiendo. Por eso esto es diferente...'" 
+    technique: "Lista 3-5 específica objections/fears. Ser más negativo de lo que serían. Esto desarma la resistencia y crea confianza a través de la transparencia" 
+
+  calibrated_questions:
+    definition: "'How' y 'What' preguntas que dan la ilusión del control mientras que en realidad guían la conversación" 
+    copy_application: "En CTAs y transiciones: \"¿Qué valdría para ti resolver este problema para siempre?\" — \"¿Cómo cambiaría tu vida si nunca te preocuparas por X de nuevo?\"" 
+    technique: "Nunca pregunte 'Por qué' (triggers defensividad). Use 'How' y 'What' para crear propiedad y compromiso" 
+
+  thats_right:
+    definition: "El momento en que la otra persona dice 'Eso es correcto' — indicando que has resumido con precisión su situación y se sienten verdaderamente comprendidas" 
+    copy_application: "En copia, el momento 'es correcto' ocurre cuando el lector se asienta en reconocimiento. Achieve por describir su situación tan exactamente se sienten conocidos" 
+    technique: "Resumir su problema, sus sentimientos, sus intentos fallidos y su deseo — cuando piensan que 'es exactamente correcto', son suyos" 
+
+  loss_aversion_framing:
+    definition: "Enmarcando la conversación alrededor de lo que están para perder, no sólo lo que podrían ganar" 
+    copy_application: "\"Cada día que esperas, estás perdiendo $X en ingresos potenciales\" es más poderoso que 'podrías ganar $X más'" 
+    technique: "Cuantifique el costo de la inacción. Haga que el status quo se sienta más caro que la compra" 
+
+klaff_frame_types:
+  source: "Pitch Cualquier cosa (2011) / Flip el script (2019) — Oren Klaff" 
+
+  power_frame:
+    definition: "El marco de autoridad y estatus - la persona con el estatus más alto controla la interacción" 
+    how_to_set: "Establezca su autoridad temprano sin presumir. Demostrar la competencia a través de especificidad. Usar señales de estado (creenciales, clientes pasados, aceptación selectiva)" 
+    copy_application: "Copia de la agencia: \"Rechazamos $2M en proyectos el año pasado porque no eran el ajuste adecuado\" — voltea la dinámica de potencia. El vendedor se convierte en el selector" 
+    collision_strategy: "Cuando una perspectiva intenta afirmar el poder (haciendo que esperes, name-dropping), utilizar un pequeño desafío o humor para romper su marco - luego restablecer su propio" 
+
+  time_frame:
+    definition: "Quien controle el reloj controla el acuerdo — la urgencia crea foco y evita la parálisis de análisis" 
+    how_to_set: "Establece límites de tiempo claros. 'Tengo 15 minutos para esta llamada.' 'Esta oferta cierra el viernes.' 'Sólo a bordo de 3 clientes por mes'" 
+    copy_application: "Páginas de aterrizaje con temporizadores de cuenta atrás, \"cerrar puertas\", \"Aceptamos aplicaciones hasta la fecha X\" — decisiones de presión de tiempo" 
+    collision_strategy: "Si alguien intenta frenarte ('Déjenme pensar en ello'), reconoce y comprime — 'Totalmente entender. La mayoría de las personas que piensan en ello durante más de 48 horas encuentran el momento ha pasado'" 
+
+  analyst_frame:
+    definition: "El marco de la lógica y los datos fríos, utilizados por tipos analíticos para retrasar las decisiones y mantener el control a través de preguntas" 
+    how_to_set: "Cuando alguien intenta meterte en un marco analista (aspirando para hojas de cálculo ROI, análisis competitivo), romper el marco con intriga — \"Puedo mostrarte todos los datos, pero primero déjame mostrarte algo que nunca has visto antes\"." 
+    copy_application: "En copia dirigida a compradores analíticos: proporcionar datos suficientes para satisfacer el cerebro lógico, pero siempre volver a la emoción. Los datos abre la puerta; la emoción cierra el acuerdo" 
+    collision_strategy: "Usar una 'cognición caliente' —una historia o demostración emocionalmente convincente— para romper el marco analítico frío" 
+
+  prize_frame:
+    definition: "Póngase en posición de ganar el premio, no el vendedor que persigue al comprador — voltee la dinámica enteramente" 
+    how_to_set: "'Somos selectivos con quién trabajamos.' 'No todo el mundo califica.' 'Entrevisamos a clientes potenciales para asegurar el ajuste mutuo.' Venta basada en aplicaciones" 
+    copy_application: "Ofertas de alta velocidad: 'Aplicar un lugar' vs 'Comprar ahora.' 'Estamos buscando 5 serio [tipo de persona]' vs 'Cualquier persona puede unirse.' Hace el persecución del comprador" 
+    collision_strategy: "Si alguien actúa como si te estuvieran haciendo un favor considerando tu oferta, la retirada crea el deseo — \"Suena como si este no fuera el momento adecuado para ti\" desencadena la pérdida de aversión" 
+
+  moral_authority_frame:
+    definition: "El marco de ser correcto - tener el fundamento moral en una discusión o un lanzamiento" 
+    how_to_set: "Posicionar su oferta como alineada con un principio superior: equidad, transparencia, acceso, verdad. \"Creemos que todos merecen acceso a X\"" 
+    copy_application: "Copia impulsada por la Misión: 'Lo construimos porque estábamos cansados de ver la industria X aprovechar a las personas.' Crea una obligación ética de apoyarte" 
+    collision_strategy: "Cuando alguien cuestiona sus motivos o precios, responda con su misión: 'Nuestra misión es X. Este precio asegura que podemos seguir sirviendo'" 
+
+cognitive_biases:
+  source: "Kahneman, Tversky, Ariely, y investigación de la economía conductual" 
+
+  anchoring:
+    definition: "El primer número o pieza de información encontrados influye desproporcionadamente en todos los juicios posteriores" 
+    copy_application: "Mostrar el precio alto primero. 'El valor total es $12,497. Su inversión hoy: $997.' El ancla hace que el precio real se sienta como un robo" 
+    strength: "Afecta incluso a expertos que lo saben, uno de los sesgos cognitivos más robustos" 
+
+  loss_aversion:
+    definition: "Perder algo siente aproximadamente 2x peor que ganar lo equivalente se siente bien" 
+    copy_application: "Frame as loss prevention: 'You're losing $X every day you wait' es 2x más motivante que 'You could gain $X.' También: 'No te pierdas' √≥ 'Get in now'" 
+    strength: "Universal y profundamente arraigado — impulsa compras de seguros, evitación de riesgos y FOMO" 
+
+  social_proof_bias:
+    definition: "En situaciones ambiguas, la gente asume las acciones de otros reflejan el comportamiento correcto" 
+    copy_application: "Testimonios, cuenta el usuario, real-time notificaciones de compra, listas de espera, etiquetas 'Más populares', avalados de celebridades" 
+    strength: "Aumenta con similitud la fuente de prueba al lector, y con incertidumbre" 
+
+  scarcity_bias:
+    definition: "La gente asigna más valor a oportunidades que están menos disponibles — quiere más de lo que podemos tener menos" 
+    copy_application: "Tiempo limitado, cantidad limitada, acceso exclusivo, bonificaciones desapareciendo, 'Sólo X restante', camareros" 
+    strength: "Más poderoso cuando la escasez es nueva (recientemente se hizo escasa) y cuando hay competencia para el recurso escaso" 
+
+  bandwagon_effect:
+    definition: "La tendencia a adoptar creencias y comportamientos en proporción al número de otros que lo han hecho" 
+    copy_application: "'Únase a 100.000+ marketers que ya...' — los números crean impulso. Mostrar la ola e invitarlos a montarla" 
+    strength: "Aumentos con tamaño de grupo y semejanza percibida a los adoptantes" 
+
+  framing_effect:
+    definition: "La misma información presentada de manera diferente produce diferentes decisiones — 90% fat-free vs. 10% de grasa" 
+    copy_application: "Enmarca todo en la luz más favorable. '$3.27/day\"Vs. 1, 1.197/year.'90% de la tasa de éxito' vs '10% de la tasa de fracaso.' 'Inversión' vs 'cost'" 
+    strength: "Afecta las decisiones incluso cuando se muestra a la gente ambos marcos — el orden y la materia de énfasis" 
+
+  endowment_effect:
+    definition: "La gente sobrevalora las cosas que ya poseen, una vez que lo poseen (incluso mentalmente), no querrán renunciar a ellas." 
+    copy_application: "Pruebas gratuitas, propiedad virtual ('Tu cuenta está lista'), futuros pactos ('Imagínate que ya tienes esto'), keep-it garantías" 
+    strength: "Aumentos con duración de la propiedad y el apego emocional al artículo" 
+
+  decoy_effect:
+    definition: "Al elegir entre dos opciones, una tercera opción (inferior) puede hacer que una de las opciones originales se vea dramáticamente mejor" 
+    copy_application: "Precio de tres niveles: Basic $29, Pro $99, Enterprise $97 (declaración hace que Pro parezca la opción obvia). El famoso paquete de impresión digital del economista" 
+    strength: "Funciona incluso cuando la gente es consciente de la manipulación — la comparación es automática" 
+
+  zero_risk_bias:
+    definition: "Las personas prefieren eliminar completamente el riesgo de reducirlo, incluso cuando la reducción tiene un valor esperado superior" 
+    copy_application: "Garantías incondicionales superan el rendimiento condicional. 'Reembolso completo, no se hacen preguntas' √≥0% de reembolso si completa los módulos.' El riesgo cero supera el riesgo bajo" 
+    strength: "Los impulsos garantizan el diseño, el más simple y absoluto la garantía, el más poderoso" 
+
+  hyperbolic_discounting:
+    definition: "La gente prefiere recompensas inmediatas sobre recompensas futuras, incluso cuando la recompensa futura es objetivamente mayor" 
+    copy_application: "Poner de relieve beneficios inmediatos: 'Acceso constante' — 'Ver resultados hoy' — 'Descargar ahora.' Descargue la entrega de valor." 
+    strength: "Universal — explica por qué los planes de pago funcionan (pequeño dolor ahora vs. dolor grande más tarde)" 
+
+  status_quo_bias:
+    definition: "La gente prefiere el estado actual de los asuntos — la opción predeterminada gana a menos que haya una razón convincente para cambiar" 
+    copy_application: "Haga el costo de NO cambiar vívida y dolorosa. Mostrar que el status quo es activamente dañino, no neutral. 'Cada día usted se queda con su sistema actual, usted está perdiendo ...'" 
+    strength: "Muy fuerte — la mayoría de la comercialización falla porque no supera el status quo bias" 
+
+  confirmation_bias:
+    definition: "La gente busca e interpreta información que confirma sus creencias existentes e ignora pruebas contradictorias" 
+    copy_application: "Comience por confirmar lo que ya creen (Blair Warren 'confirma sus sospechas'). Entonces redireccione. Nunca conducir con información que contradice su visión del mundo" 
+    strength: "Más fuerte con creencias profundamente sostenidas: decisiones políticas, de salud y financieras" 
+
+  halo_effect:
+    definition: "Una impresión positiva en una zona crea impresiones positivas en todas las demás áreas y viceversa" 
+    copy_application: "Si su diseño es hermoso, crea un halo para la calidad del producto. Si usted tiene un cliente famoso, mencione primero" 
+    strength: "Las primeras impresiones crean halos que son extremadamente difíciles de revertir" 
+
+  ikea_effect:
+    definition: "Las personas asignan un valor desproporcionadamente alto a las cosas que ayudaron a crear, incluso si la creación era mínima" 
+    copy_application: "Personalización, personalización, cuestionarios que \"configuran tu plan\", configuradores, 'Elige tu propia aventura' experiencias" 
+    strength: "Funciona incluso con una contribución trivial — los resultados del cuestionario se sienten más valiosos porque el usuario 'participado'" 
+
+  recency_bias:
+    definition: "Los acontecimientos recientes se ponderan más pesadamente que los eventos más antiguos en el juicio y decision-making" 
+    copy_application: "Utilizar testimonios actuales, resultados recientes, datos más recientes. 'Este mes, 47 clientes...' supera 'Durante los últimos 10 años...'" 
+    strength: "Especialmente fuerte en los mercados volátiles (financieros, salud) donde las cosas cambian rápidamente" 
+
+  peak_end_rule:
+    definition: "La gente juzga experiencias basadas en el momento pico y el momento final, no en el promedio general" 
+    copy_application: "Diseñar la experiencia de compra con un pico claro (el revelado, el momento de avance) y un final fuerte (a bordo, bienvenida, primera victoria)." 
+    strength: "Explica por qué un perfecto cierre y a bordo puede superar un mediocre mediocre" 
+
+  dunning_kruger_effect:
+    definition: "Las personas con baja competencia sobreestiman su capacidad, mientras que las personas con alta competencia subestiman la suya" 
+    copy_application: "Para principiantes: no les digas que están equivocados, validar su esfuerzo mientras redireccionan a su método. Para expertos: desafélos — 'Probablemente piensas que conoces X, pero...'" 
+    strength: "Determina cómo posicionar el contenido educativo — los principiantes necesitan aliento, los expertos necesitan desafío" 
+
+  sunk_cost_fallacy:
+    definition: "La gente continúa invirtiendo en algo debido a la inversión pasada, incluso cuando ya no tiene sentido racional" 
+    copy_application: "En la copia de retención: 'Ya has invertido 6 meses y $X - no pierdas ese progreso al dejar ahora.' En ventas: 'Ya has gastado $X en Y que no funcionó - esto protege esa inversión'" 
+    strength: "Aumentos con tamaño de inversión previa (tiempo, dinero, emoción)" 
+
+  availability_heuristic:
+    definition: "La gente juzga la probabilidad basándose en lo fácil que los ejemplos vienen a la mente — ejemplos vivos, recientes o emocionales sienten más probable" 
+    copy_application: "Usa historias vívidas y específicas en lugar de estadísticas. 'Sarah perdió 47 libras' es más persuasiva que el '94% de los usuarios pierde peso' porque las historias están disponibles en memoria" 
+    strength: "Historias superan las estadísticas casi cada vez porque las historias son más fáciles de recordar" 
+
+  paradox_of_choice:
+    definition: "Muchas opciones crean parálisis de decisiones: menos opciones conducen a más compras y mayor satisfacción" 
+    copy_application: "Limitar a 3 opciones máximo (good/better/best). Eliminar opciones innecesarias. Un CTA por página. Simplificar la decisión" 
+    strength: "Especialmente fuerte en entornos digitales donde opciones infinitas están a un clic de distancia" 

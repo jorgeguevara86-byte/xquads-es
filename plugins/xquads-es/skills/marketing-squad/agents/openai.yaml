@@ -1,0 +1,4 @@
+interface:
+  display_name: marketing-squad · Español
+  short_description: Campañas integradas de marketing
+  default_prompt: Usa $marketing-squad para ayudarme con mi objetivo.

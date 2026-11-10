@@ -1,0 +1,118 @@
+workflow:
+  id: wf-full-campaign
+  name: "Campanha de Marketing Completa" 
+  version: "1.0.0"
+  description: "Flujo de trabajo de campaña de marketing a gran escala de fin a fin — la línea\njefe de marketing (Mira) hace la clasificación, luego secuencia\nlas cuatro disciplinas en el orden correcto: primero el MENSAJE (Donald Miller /\nStoryBrand, luego COPY (Eugene Schwartz), luego CREATIVE (Visual)\nGenerador) y finalmente el TRAFFIC (Peter Sobral). Cada entrega tiene una puerta de entrada\ncalidad — pobre entrada aguas arriba desperdicios de dinero aguas abajo."
+  trigger: "*campaign"
+  entry_agent: marketing-chief
+  estimated_duration: "60-120 minutes"
+  type: sequential
+  sequence:
+    - agent: marketing-chief
+      action: diagnose
+      creates: campaign_brief
+    - agent: donald-miller
+      action: build-message
+      creates: brandscript
+    - agent: eugene-schwartz
+      action: write-copy
+      creates: campaign_copy
+    - agent: visual-generator
+      action: create-creatives
+      creates: creative_assets
+    - agent: pedro-sobral
+      action: build-traffic
+      creates: media_plan
+    - agent: marketing-chief
+      action: review
+      creates: final_campaign
+
+phases:
+  - id: phase_0
+    name: "Breve Diagnóstico" 
+    agent: marketing-chief
+    task: diagnose.md
+    description: "Mira recibe el objetivo, identifica la oferta, el público objetivo, el nivel de conciencia (Schwartz) y la métrica primaria de la campaña. Confirma que es una campaña completa (no una sola demanda disciplinaria)." 
+    outputs:
+      - campaign_brief: "markdown"
+      - awareness_level: "string"
+      - primary_metric: "string"
+    checkpoint:
+      gate: "Objetivo, oferta, público, nivel de conciencia y métrica primaria definida" 
+      veto: "La Comisión también ha decidido iniciar el procedimiento para la adopción de la nueva Directiva." 
+
+  - id: phase_1
+    name: "Mensaje &quot; Posición &quot;" 
+    agent: donald-miller
+    task: build-message.md
+    depends_on: [phase_0]
+    description: "Donald Miller construye la columna vertebral de la campaña con StoryBrand SB7: la one-liner, BrandScript, la claridad de la oferta y el esqueleto del embudo. Todo lo que viene después se basa en este mensaje." 
+    outputs:
+      - brandscript: "markdown"
+      - one_liner: "string"
+      - funnel_skeleton: "markdown"
+    checkpoint:
+      gate: "Una línea pasa la prueba de 5 segundos (prueba gruta); oferta y herói/guia clara" 
+      veto: "Mensaje malinterpretado — 'si confundes, pierdes'; redo antes de escribir copia" 
+
+  - id: phase_2
+    name: "Copy"
+    agent: eugene-schwartz
+    task: write-copy.md
+    depends_on: [phase_1]
+    description: "Eugene Schwartz diagnostica el nivel de conciencia y el estadio de la sofisticación del mercado y escribe la copia: titular, plomo, mecanismo, balas y cuerpo (página de ventas / VSL / anuncios / e-mails), anclado en el mensaje de la fase 1." 
+    outputs:
+      - campaign_copy: "markdown"
+      - headline: "string"
+      - big_idea: "string"
+    checkpoint:
+      gate: "El titular se casa con el nivel de conciencia; ofrecer y limpiar CTA; el cuerpo se compone de la primera a la última línea" 
+      veto: "El titular se desvincula con la conciencia del mercado, o sin oferta definida" 
+
+  - id: phase_3
+    name: "Visual Creative" 
+    agent: visual-generator
+    task: create-creatives.md
+    depends_on: [phase_2]
+    description: "Generador visual transforma la idea grande de Copy en activos visuales: anuncio creativo, miniaturas, impulsos de identidad y AI (información)Midjourney/DALL-E/Flux), optimizado por plataforma. El visual sirve copia — nunca se decora." 
+    outputs:
+      - creative_assets: "markdown"
+      - image_prompts: "list"
+    checkpoint:
+      gate: "Visual sirve Big Idea, para desplazarse y está en el formato de plataforma adecuado" 
+      veto: "Creativo decorativo/desconectado copia, o fuera de formato de plataforma" 
+
+  - id: phase_4
+    name: "Tráfico y distribución" 
+    agent: pedro-sobral
+    task: build-traffic.md
+    depends_on: [phase_3]
+    description: "Pedro Sobral establece el plan de medios: estructura de campaña por objetivo (audiência/leads/vendas), temperatura pública, presupuesto (CBO/ABO), plan de prueba creativo y —si es aplicable— la estrategia de lanzamiento. Recibe copia + oferta creativa +." 
+    outputs:
+      - media_plan: "markdown"
+      - campaign_structure: "markdown"
+      - test_plan: "markdown"
+    checkpoint:
+      gate: "Campaña estructurada con objetivos con la temperatura y el plan de prueba público correctos" 
+      veto: "Estructura sin un objetivo claro o público mal dirigido" 
+
+  - id: phase_5
+    name: "Revisão Final do Chief" 
+    agent: marketing-chief
+    task: review.md
+    depends_on: [phase_4]
+    description: "Mira revisa toda la campaña contra los ocho criterios de calidad del quad, asegurando COERENCE — mensaje, copia, creatividad y segmentación contando Una historia consistente, optimizada para la métrica primaria." 
+    outputs:
+      - final_campaign: "markdown"
+      - quality_verdict: "PASS" 
+    checkpoint:
+      gate: "Todos los 8 criterios cumplidos; las cuatro disciplinas consistentes entre sí" 
+      veto: "Incoherencia entre disciplinas - regresa a la fase responsable con breve específico" 
+
+completion_criteria:
+  - "Un-liner y BrandScript definidos (mensaje)" 
+  - "Copia completa alineada al nivel de conciencia (copia)" 
+  - "Activos visuales que sirven a la Idea Grande (creativo)" 
+  - "Plan de medios estructurados por objetivos (trata)" 
+  - "Coherencia validada entre las 4 disciplinas" 
+  - "Una métrica primaria definida para la campaña" 

@@ -1,0 +1,196 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Squad: Claude Code Mastery
+# Domain: Claude Code — Full Spectrum Expertise
+# Created: 2026-03-01
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════════════════
+
+squad:
+  name: claude-code-mastery
+  display_name: "Claude Code Mastery Squad" 
+  version: "1.0.0"
+  domain: "Código Claude — Pleno de la especialización del espectro" 
+  description: "Experta en todas las dimensiones del Código Claude: ganchos, habilidades,\nsubagents, MCP, plugins, equipos de agente, personalización, integración de proyectos,\nseguimiento de mapas de carreteras, y la conciencia de arquitectura AIOS-core."
+  philosophy: "\"Master la herramienta para dominar el arte.\"\nCada agente se basa en la élite mental real con marcos documentados\nen el ecosistema del Código Claude. Cubiertas de automatización con ganchos\nincluso orquestación multi-agente y ingeniería contextual."
+  keywords:
+    - claude-code
+    - hooks
+    - skills
+    - subagents
+    - mcp
+    - plugins
+    - agent-teams
+    - customization
+    - integration
+    - context-engineering
+    - roadmap
+    - aios
+
+  entry_agent: claude-mastery-chief
+  created_by: "squad-creator-pro"
+  created_at: "2026-03-01"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TIER ARCHITECTURE
+# ─────────────────────────────────────────────────────────────────────────────
+
+tiers:
+  tier_0:
+    name: "Diagnóstico &quot; Rutante &quot;" 
+    agents:
+      - claude-mastery-chief
+    purpose: "Solicitudes de Triage, ruta a especialista, mantener coherencia de los escuadrones" 
+
+  tier_1:
+    name: "Mastery" 
+    agents:
+      - hooks-architect
+      - mcp-integrator
+      - swarm-orchestrator
+      - config-engineer
+    purpose: "Los dominios de conocimientos profundos del Código de Claude cuentan con" 
+
+  tier_2:
+    name: "Strategic &quot; Context" 
+    agents:
+      - skill-craftsman
+      - project-integrator
+      - roadmap-sentinel
+    purpose: "Experiencia intersectorial: habilidades, integración de proyectos, sensibilización en la hoja de ruta" 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AGENT REGISTRY
+# ─────────────────────────────────────────────────────────────────────────────
+
+agents:
+  claude-mastery-chief:
+    file: agents/claude-mastery-chief.md
+    tier: 0
+    based_on: "Original (Orquestr)" 
+    icon: "🧠"
+    focus: "Triage, roving, AIOS-core awareness" 
+
+  hooks-architect:
+    file: agents/hooks-architect.md
+    tier: 1
+    based_on: "disler (Hooks Mastery)" 
+    icon: "🪝"
+    focus: "17 eventos de ganchos, tuberías de automatización, meta-agent patrones" 
+
+  mcp-integrator:
+    file: agents/mcp-integrator.md
+    tier: 1
+    based_on: "Peter Steinberger (@steipete)" 
+    icon: "🔌"
+    focus: "servidores MCP, descubrimiento de herramientas, agent-as- PCM, patrones de integración" 
+
+  swarm-orchestrator:
+    file: agents/swarm-orchestrator.md
+    tier: 1
+    based_on: "Kieran Klaassen + Reuven Cohen" 
+    icon: "🐝"
+    focus: "Agente Teams, subagentes, multi-session coordinación, árboles de trabajo" 
+
+  config-engineer:
+    file: agents/config-engineer.md
+    tier: 1
+    based_on: "SuperClaude-Org" 
+    icon: "⚙️"
+    focus: "Ajustes, permisos, CLAUDE.md, reglas, políticas administradas, personas" 
+
+  skill-craftsman:
+    file: agents/skill-craftsman.md
+    tier: 2
+    based_on: "BMAD-CODE-ORG + comunidad" 
+    icon: "🛠️"
+    focus: "Habilidades, comandos, plugins, ingeniería contextual, spec-driven dev" 
+
+  project-integrator:
+    file: agents/project-integrator.md
+    tier: 2
+    based_on: "Daniel Miessler (PAI)" 
+    icon: "📦"
+    focus: "Integración de proyectos, configuración de repositorios, conciencia de AIOS-core, filosofía Unix" 
+
+  roadmap-sentinel:
+    file: agents/roadmap-sentinel.md
+    tier: 2
+    based_on: "Boris Cherny (filosofía) + Fuentes oficiales" 
+    icon: "🔭"
+    focus: "Seguimiento de mapas, seguimiento de los cambios, adopción de características, plan-first" 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HANDOFF MATRIX
+# ─────────────────────────────────────────────────────────────────────────────
+
+handoffs:
+  claude-mastery-chief:
+    routes_to: [hooks-architect, mcp-integrator, swarm-orchestrator, config-engineer, skill-craftsman, project-integrator, roadmap-sentinel]
+
+  hooks-architect:
+    collaborates_with: [config-engineer, skill-craftsman]
+    escalates_to: [claude-mastery-chief]
+
+  mcp-integrator:
+    collaborates_with: [hooks-architect, project-integrator]
+    escalates_to: [claude-mastery-chief]
+
+  swarm-orchestrator:
+    collaborates_with: [hooks-architect, config-engineer]
+    escalates_to: [claude-mastery-chief]
+
+  config-engineer:
+    collaborates_with: [hooks-architect, skill-craftsman, project-integrator]
+    escalates_to: [claude-mastery-chief]
+
+  skill-craftsman:
+    collaborates_with: [hooks-architect, config-engineer]
+    escalates_to: [claude-mastery-chief]
+
+  project-integrator:
+    collaborates_with: [config-engineer, mcp-integrator, roadmap-sentinel]
+    escalates_to: [claude-mastery-chief]
+
+  roadmap-sentinel:
+    collaborates_with: [project-integrator, claude-mastery-chief]
+    escalates_to: [claude-mastery-chief]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CROSS-CUTTING CONCERNS
+# ─────────────────────────────────────────────────────────────────────────────
+
+cross_cutting:
+  aios_awareness:
+    description: "Todos los agentes entienden arquitectura AIOS-core" 
+    context_files:
+      - ".claude/CLAUDE.md"
+      - ".aios-core/core-config.yaml"
+      - ".aios-core/data/entity-registry.yaml"
+
+  update_knowledge:
+    description: "Comando para refrescar el cambio de código de Claude y la hoja de ruta" 
+    command: "*update-knowledge"
+    sources:
+      - "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+      - "https://code.claude.com/docs/en/overview"
+      - "https://github.com/anthropics/claude-code/releases"
+
+  quality_standards:
+    min_score: 7.0
+    smoke_tests: 3
+    voice_dna_required: true
+    thinking_dna_required: true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SETTINGS
+# ─────────────────────────────────────────────────────────────────────────────
+
+settings:
+  greeting:
+    level: archetypal
+    show_project_status: true
+    show_aios_context: true
+
+  activation:
+    prefix: "claude-code-mastery"
+    example: "@claude-code-mastery:hooks-architect"

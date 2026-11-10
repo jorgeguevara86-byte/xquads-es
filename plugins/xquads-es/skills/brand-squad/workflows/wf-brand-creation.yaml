@@ -1,0 +1,116 @@
+workflow:
+  id: wf-brand-creation
+  name: "Criación de Marca" 
+  version: "1.0.0"
+  description: "Flujo de trabajo completo de creación de marca de ponta a ponta. Da pesquisa de\nmercado ao posicionamento, naming, design de identidade e desenvolvimento\nLa historia de la marca. Produz um sistema de marca completo pronto para lanzamiento."
+  trigger: "*brand-creation"
+  entry_agent: brand-chief
+  estimated_duration: "60-120 minutes"
+  type: sequential
+  sequence:
+    - agent: archetype-consultant
+      action: map-archetype
+      creates: archetype_profile
+    - agent: al-ries
+      action: create-positioning
+      creates: positioning_strategy
+    - agent: naming-strategist
+      action: generate-names
+      creates: naming_candidates
+    - agent: alina-wheeler
+      action: build-identity
+      creates: identity_system
+    - agent: donald-miller
+      action: create-brand-story
+      creates: brandscript
+    - agent: brand-chief
+      action: review
+      creates: brand_package
+
+phases:
+  - id: phase_0
+    name: "Investigación y Arquetipo" 
+    agent: archetype-consultant
+    task: map-archetype.md
+    description: "Evalúe los 12 arquetipos frente a los valores, la audiencia y el panorama competitivo de la marca. Seleccione arquetipos primarios y secundarios para guiar todas las decisiones de marca posteriores." 
+    outputs:
+      - archetype_profile: "markdown"
+      - brand_expression_guide: "object"
+    checkpoint:
+      gate: "Arquetipo primario seleccionado con guía de expresión" 
+      veto: "El arquetipo entra en conflicto con los valores declarados de la marca o las aspiraciones de la audiencia." 
+
+  - id: phase_1
+    name: "Positioning"
+    agent: al-ries
+    task: create-positioning.md
+    depends_on: [phase_0]
+    description: "Definir la posición de la marca en el mercado. Analice la categoría, identifique espacios en blanco y cree la declaración de posicionamiento, el eslogan y los puntos de prueba." 
+    outputs:
+      - positioning_strategy: "markdown"
+      - positioning_statement: "string"
+      - tagline: "string"
+    checkpoint:
+      gate: "El posicionamiento es relevante, diferenciado y creíble" 
+      veto: "Posición que ya pertenece a un competidor dominante" 
+
+  - id: phase_2
+    name: "Naming"
+    agent: naming-strategist
+    task: generate-names.md
+    depends_on: [phase_1]
+    description: "Generar y evaluar candidatos de naming en base a la estrategia de posicionamiento. Produzca más de 30 candidatos, califique según 7 criterios y recomiende a los 5 mejores finalistas." 
+    outputs:
+      - naming_candidates: "markdown"
+      - top_finalists: "list"
+    checkpoint:
+      gate: "Mínimo 3 finalistas viables con puntajes y justificación" 
+      veto: "Todos los finalistas tienen conflictos de marcas o dominios" 
+
+  - id: phase_3
+    name: "Identidad visual y verbal" 
+    agent: alina-wheeler
+    task: build-identity.md
+    depends_on: [phase_0, phase_1, phase_2]
+    description: "Diseñe el sistema de identidad completo: visual (colores, tipografía, dirección del logotipo, fotografía) y verbal (voz, mensajes clave, base de la historia de la marca)." 
+    outputs:
+      - identity_system: "markdown"
+      - brand_guidelines: "markdown"
+    checkpoint:
+      gate: "Sistema de identidad completo con elementos visuales, verbales y de gobernanza." 
+      veto: "La identidad contradice el posicionamiento o arquetipo" 
+
+  - id: phase_4
+    name: "Historia de la marca" 
+    agent: donald-miller
+    task: create-brand-story.md
+    depends_on: [phase_1, phase_3]
+    description: "Construya la narrativa de la marca utilizando StoryBrand SB7. Cree BrandScript, one-liner, copia de estructura alámbrica del sitio web y aplicaciones de punto de contacto." 
+    outputs:
+      - brandscript: "markdown"
+      - one_liner: "string"
+      - website_copy: "markdown"
+    checkpoint:
+      gate: "BrandScript completo con los 7 elementos y aplicado a puntos de contacto" 
+      veto: "Marca posicionada como héroe en lugar de guía" 
+
+  - id: phase_5
+    name: "Paquete de lanzamiento de marca" 
+    agent: brand-chief
+    task: review.md
+    depends_on: [phase_3, phase_4]
+    description: "Brand Chief recopila todos los entregables en el paquete final de lanzamiento de marca. Revisa la coherencia entre arquetipos, posicionamiento, identidad e historia. Proporciona una hoja de ruta de implementación." 
+    outputs:
+      - brand_package: "markdown"
+      - implementation_roadmap: "object"
+    checkpoint:
+      gate: "Todos los elementos de la marca consistentes y launch-ready" 
+      veto: "Inconsistencias entre posicionamiento, identidad e historia" 
+
+completion_criteria:
+  - "Arquetipo de marca definido con guía de expresión" 
+  - "Estrategia de posicionamiento completa con lema" 
+  - "Marca seleccionada entre los candidatos evaluados" 
+  - "Sistema de identidad diseñado (visual + verbal)" 
+  - "Historia de marca escrita con StoryBrand SB7" 
+  - "Paquete de lanzamiento compilado con hoja de ruta de implementación" 

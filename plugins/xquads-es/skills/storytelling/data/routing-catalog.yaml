@@ -1,0 +1,77 @@
+# ═══════════════════════════════════════════════════════════════════
+# Routing Catalog: Storytelling Squad
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+domains:
+  hero_journey:
+    keywords: ["viaje de héroe" , monomyth, "estructura mítica" , archetypes, mythology, "colectivo inconsciente" , "llamada a la aventura" ]
+    primary_agent: joseph-campbell
+    secondary_agent: dan-harmon
+    description: "Patrones mitónicos universales, estructura monomética, arquetipos y cross-cultural patrones narrativos" 
+
+  story_structure:
+    keywords: ["#" , "estructura de historia" , screenplay, "parcela puntos" , "tres actos" , "salvar al gato" , "arquitectura de la parcela" ]
+    primary_agent: blake-snyder
+    secondary_agent: shawn-coyne
+    description: "Arquitectura de trama, hojas de latón, estructura de actos, puntos de giro y formato de guión" 
+
+  story_editing:
+    keywords: ["historia" , editing, genre, "escenas obligatorias" , "cambio de valor" , "análisis de escena" , conventions]
+    primary_agent: shawn-coyne
+    secondary_agent: blake-snyder
+    description: "Historia Metodología de la mezcla, convenciones de género, scene-level análisis, diagnóstico editorial" 
+
+  tv_episodic:
+    keywords: ["Escrito por TV" , "estructura de episodios" , "historia círculo" , series, sitcom, pilot, "sala de escritores" , episodic]
+    primary_agent: dan-harmon
+    secondary_agent: blake-snyder
+    description: "Televisión y escritura episódica, Círculo de Historia, estructura de series, y dinámicas de la sala de escritores" 
+
+  presentations:
+    keywords: [presentation, slides, keynote, "cubierta de lanzamiento" , "data storytelling" , "TED talk" , sparkline, "narrativa visual" ]
+    primary_agent: nancy-duarte
+    secondary_agent: park-howell
+    description: "Diseño de presentación, narración de datos, narrativa visual, creación de notas" 
+
+  brand_storytelling:
+    keywords: ["historia de marca" , "narrativa de negocios" , ABT, "historia de marketing" , "marketing" , "identidad de marca" , "y, por consiguiente," ]
+    primary_agent: park-howell
+    secondary_agent: kindra-hall
+    description: "Estrategia narrativa de marca, marco ABT, narración de negocios, marketing de contenidos" 
+
+  personal_stories:
+    keywords: ["narrativa personal" , memoir, vulnerability, Moth, "historias verdaderas" , "5o momento" , "tarea para la vida" ]
+    primary_agent: matthew-dicks
+    secondary_agent: kindra-hall
+    description: "Historia personal, narrativa verdadera de la experiencia vivida, vulnerabilidad, momentos de transformación" 
+
+  sales_stories:
+    keywords: ["historia de ventas" , "historia del cliente" , "historia de fundador" , "valor" , "historias que se pegan" , "persuasión narrativa" ]
+    primary_agent: kindra-hall
+    secondary_agent: oren-klaff
+    description: "Ventas e historias de negocios, las cuatro historias esenciales, narrativas de clientes y fundadores" 
+
+  improvisation:
+    keywords: [improv, spontaneity, status, "Sí y" , Theatresports, "bloques creativos" , unblocking, "Asociación libre" ]
+    primary_agent: keith-johnstone
+    secondary_agent: matthew-dicks
+    description: "Técnicas de improvisación, espontaneidad, dinámica de estatus, desbloqueo creativo" 
+
+  pitching:
+    keywords: [pitch, "control de marco" , "investor pitch" , deal, neurofinance, persuasion, "STRONG method" , "cerebro cocodrilo" ]
+    primary_agent: oren-klaff
+    secondary_agent: nancy-duarte
+    description: "Metodología de puntadas, control de marcos, presentaciones de inversores, neurofinance-based persuasión" 
+
+  social_movements:
+    keywords: ["narrativa pública" , organizing, movement, "Historia del Ser" , activism, "acción colectiva" , "Historia de nosotros" , "Historia de Ahora" ]
+    primary_agent: marshall-ganz
+    secondary_agent: joseph-campbell
+    description: "Publicación para el cambio social, organización comunitaria, construcción de movimientos" 
+
+  general_storytelling:
+    keywords: [storytelling, narrative, story, "cómo contar una historia" , "artesana" , writing]
+    primary_agent: story-chief
+    secondary_agent: joseph-campbell
+    description: "Guía general de narración, cross-domain cuestiones descriptivas, selección de marcos" 

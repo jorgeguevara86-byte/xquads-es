@@ -1,0 +1,120 @@
+workflow:
+  id: wf-vsl-production
+  name: "Producción completa de VSL" 
+  version: "2.0.0"
+  description: "Flujo de trabajo especializado para la producción de Cartas de Ventas de Video. Combina RMBC de\nStefan Georgi en la forma de Jon Benson, la capa de cretino de Evaldo Albuquerque,\ny examen final del Jefe de la Copia con auditoría de la psicología persuasiva.\nProduce un guión VSL completo, production-ready, con notas visuales y de audio."
+  trigger: "*vsl-production"
+  entry_agent: copy-master-chief
+  estimated_duration: "45-90 minutes"
+  type: sequential
+  sequence:
+    - agent: copy-master-chief
+      action: diagnose-vsl
+      creates: vsl_brief
+    - agent: stefan-georgi
+      action: write-rmbc-draft
+      creates: rmbc_draft
+    - agent: jon-benson
+      action: format-vsl
+      creates: formatted_vsl
+    - agent: evaldo-albuquerque
+      action: add-belief-layer
+      creates: belief_enhanced_vsl
+    - agent: copy-master-chief
+      action: psychology-checkpoint
+      creates: psychology_audit
+    - agent: copy-master-chief
+      action: final-review
+      creates: final_vsl
+
+phases:
+  - id: phase_0
+    name: "VSL Brief and Strategy" 
+    agent: copy-master-chief
+    task: diagnose.md
+    description: "Copia Jefe Maestro recibe el informe VSL, identifica el producto, el público, el nivel de conciencia, el mecanismo único y elementos de prueba. Define la estrategia RMBC y la duración de los objetivos." 
+    outputs:
+      - vsl_brief: "markdown"
+      - target_duration: "string"
+      - mechanism_name: "string"
+      - persuasion_goals: "markdown"
+    checkpoint:
+      gate: "Breve completa con el mecanismo identificado y el plazo fijado" 
+      veto: "No se define ningún mecanismo único — no puede proceder sin diferenciación" 
+
+  - id: phase_1
+    name: "Proyecto de RMBC (Stefan Georgi)" 
+    agent: stefan-georgi
+    task: write-vsl-script.md
+    depends_on: [phase_0]
+    description: "Stefan Georgi escribe el núcleo de VSL utilizando el marco de RMBC (Relate-Mechanism-Benefits-Close) . Esta es la columna vertebral estructural de la VSL. Incluye mapeo de capas psicológicas con principios Cialdini por sección RMBC." 
+    outputs:
+      - rmbc_draft: "markdown"
+      - hook_variants: "list"
+    checkpoint:
+      gate: "Todas las secciones de RMBC completan con gancho, bloques de prueba y secuencia cercana" 
+      veto: "Sección de Relate Desaparecida o Mecanismo no nombrado" 
+
+  - id: phase_2
+    name: "Optimización de formato VSL (Jon Benson)" 
+    agent: jon-benson
+    task: write-vsl-script.md
+    depends_on: [phase_1]
+    description: "Jon Benson optimiza el script para el text-on-screen Formato VSL. Aplica su micro-commitment estilo: frases cortas, interrumpe el patrón, scroll-stopping diapositivas de texto y el pacto de conversación. Asegura que el script funciona como text-on-screen con narración de audio." 
+    outputs:
+      - formatted_vsl: "markdown"
+      - slide_count: "number"
+      - pacing_notes: "markdown"
+    checkpoint:
+      gate: "Script formateado para text-on-screen con cues y tobogán optimizados" 
+      veto: "Las oraciones demasiado largas para diapositivas de texto (máximo 15 palabras por diapositiva de texto)" 
+
+  - id: phase_3
+    name: "Belief Layer (Evaldo Albuquerque)" 
+    agent: evaldo-albuquerque
+    task: write-vsl-script.md
+    depends_on: [phase_2]
+    description: "Evaldo Albuquerque añade el belief-shifting capa. Identifica la creencia única que debe cambiar para la perspectiva de comprar, y las olas belief-breaking elementos en todo el VSL. Fortalece el cambio de paradigma de la vieja solución al nuevo mecanismo. Aplica las palancas de Blair Warren para un impacto emocional más profundo." 
+    outputs:
+      - belief_enhanced_vsl: "markdown"
+      - one_belief: "string"
+      - belief_breaking_points: "list"
+    checkpoint:
+      gate: "Una creencia identificada y identificada belief-breaking elementos tejidos en todas las secciones RMBC" 
+      veto: "Sin un cambio de creencia claro - VSL no se convertirá sin cambio de paradigma" 
+
+  - id: phase_4
+    name: "Punto de control de Psicología" 
+    agent: copy-master-chief
+    task: review.md
+    depends_on: [phase_3]
+    description: "Copia Jefe Maestro verifica la arquitectura de persuasión completa: estructura RMBC + Jon Benson formatear + capa de creencia Evaldo + Principios Cialdini + palanca Warren. Asegura que todas las capas trabajen juntos armoniosamente sin contradicción." 
+    outputs:
+      - psychology_audit: "markdown"
+      - layer_harmony: "boolean"
+    checkpoint:
+      gate: "Todas las 3 capas especializadas armonizadas Y min 5 Principios Cialdini activos Y min 3 Warren palancas comprometidas" 
+      veto: "Las capas se contradicen entre sí la capa de creencias de OR socava la estructura de RMBC" 
+
+  - id: phase_5
+    name: "Revisión final y entrega" 
+    agent: copy-master-chief
+    task: critique-copy.md
+    depends_on: [phase_4]
+    description: "Copia Jefe Maestro realiza la última auditoría de crítica de 8 puntos más persuasión. production-ready Paquete VSL con script, cuestiones de diapositivas, notas de tiempo, A/B recomendaciones de pruebas y documentación de arquitectura de persuasión." 
+    outputs:
+      - final_vsl: "markdown"
+      - critique_report: "markdown"
+      - production_package: "markdown"
+      - persuasion_architecture: "markdown"
+    checkpoint:
+      gate: "Puntuación compuesta √≥ 70% (VSLs requieren barra superior) Y todas las comprobaciones de psicología aprobadas" 
+      veto: "Resultado: 50% - volver a la fase 1 para la reescritura fundamental" 
+
+completion_criteria:
+  - "Marco RMBC ejecutado por Stefan Georgi" 
+  - "Texto-on-screen formato optimizado por Jon Benson" 
+  - "capa de la creencia agregada por Evaldo Albuquerque" 
+  - "Trastero de Psicología aprobado (Cialdini + Warren + arquitectura de creencias)" 
+  - "Crítica final aprobada con el veredicto Strong o Elite (con = 70%)" 
+  - "Paquete listo para la producción entregado con todas las notas y arquitectura de persuasión" 

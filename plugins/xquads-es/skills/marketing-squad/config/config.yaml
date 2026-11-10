@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Marketing Squad
+# Domain: Marketing de ponta a ponta (mensagem, copy, criativo, tráfego)
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: marketing-squad
+  display_name: "Squad de comercialización" 
+  version: "1.0.0"
+  domain: "Elite marketing — el mejor agente de cada disciplina, orquestado en una línea de montaje: mensaje → copy → creativo → distribución" 
+  description: "5 Agente Escuadrón: 1 Orquestador (Jefe de Marcación) + 4 Mejor\nexpertos de cada uno squad-fonte Xquads (marca, copia, diseño, tráfico)."
+  keywords: [marketing, branding, storybrand, copywriting, criativo, visual, "tráfico pagado" , "meta ads" , campanha, "lanzamiento" , funil]
+  entry_agent: marketing-chief
+  created_at: "2026-07-08"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [marketing-chief]
+    purpose: "Diagnósticos demanda, rutas para la disciplina correcta, secuencia de campaña y revisa la calidad entre los handoffs" 
+  tier_1_experts:
+    name: "Mejor...of-breed Especialistas" 
+    agents: [donald-miller, eugene-schwartz, visual-generator, pedro-sobral]
+    purpose: "El mejor agente de cada disciplina de marketing" 
+
+agents:
+  marketing-chief:  { file: marketing-chief.md,  tier: 0, icon: "🎯", focus: "Orquesta, enrutamiento, secuenciación de campañas, QA"  }
+  donald-miller:    { file: donald-miller.md,     tier: 1, icon: "📖", focus: "Mensagem/posicionamento StoryBrand SB7, one-liner, funil"  }
+  eugene-schwartz:  { file: eugene-schwartz.md,   tier: 1, icon: "🧠", focus: "Copia — 5 niveles de conciencia, titular, mecanismo, VSL"  }
+  visual-generator: { file: visual-generator.md,  tier: 1, icon: "🎨", focus: "Criativo/visual — Incitaciones, anuncios, identidad, activos"  }
+  pedro-sobral:     { file: pedro-sobral.md,      tier: 1, icon: "🚦", focus: "Tráfico de pagos — Meta Ads, publico, presupuesto, lanzamiento (es)"  }
+
+# Roteamento e handoffs (a linha de montagem)
+handoffs:
+  donald-miller:
+    routes_to: [eugene-schwartz]
+    escalates_to: [marketing-chief]
+  eugene-schwartz:
+    routes_to: [visual-generator]
+    escalates_to: [marketing-chief]
+  visual-generator:
+    routes_to: [pedro-sobral]
+    escalates_to: [marketing-chief]
+  pedro-sobral:
+    routes_to: [marketing-chief]
+    escalates_to: [marketing-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+    reviewer: marketing-chief
+  assembly_line: [donald-miller, eugene-schwartz, visual-generator, pedro-sobral]
+
+settings:
+  activation:
+    prefix: "@marketing-squad"
+    example: "@marketing-squad:marketing-chief"

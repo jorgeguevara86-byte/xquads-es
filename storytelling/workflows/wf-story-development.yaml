@@ -1,0 +1,115 @@
+# Story Development Workflow
+# From concept to polished narrative
+
+workflow:
+  id: wf-story-development
+  name: "Desarrollo de la historia" 
+  trigger: "*story-development"
+  entry_agent: story-chief
+  estimated_duration: "1-3 hours"
+  description: "Desarrollo completo de la historia, desde el concepto crudo hasta la selección de marco,\ndiseño estructural, borrador, análisis y pulido. Dirige a través de agentes\nexpertos basados en el género y la idoneidad del marco."
+  type: sequential
+  sequence:
+    - agent: story-chief
+      action: diagnose
+      creates: framework_selection
+    - agent: "{specialist}"
+      action: build-narrative
+      creates: draft
+    - agent: shawn-coyne
+      action: analyze-story
+      creates: analysis
+    - agent: "{specialist}"
+      action: build-narrative
+      creates: final_story
+
+phases:
+  - id: phase_1_concept
+    name: "Concepto &quot; Selección Marco &quot;" 
+    agent: story-chief
+    task: build-narrative.md
+    depends_on: []
+    description: "Analizar el concepto, determinar el género, seleccionar el mejor marco narrativo" 
+    checkpoint:
+      gate: "Marco seleccionado con razonamiento confirmado por el usuario" 
+      veto: "HALT si el concepto es demasiado vago — haga preguntas aclaratorias primero" 
+    outputs:
+      - framework_selection
+      - genre_identification
+      - initial_concept_analysis
+
+  - id: phase_2_structure
+    name: "Construir estructura narrativa" 
+    agent: "{ructuó en el marco: joseph-campbell | blake-snyder | dan-harmon}" 
+    task: build-narrative.md
+    depends_on: [phase_1_concept]
+    description: "Construir el marco estructural completo con todos los golpes definidos" 
+    checkpoint:
+      gate: "Todos los golpes estructurales poblados con puntos de giro y estados emocionales" 
+      veto: "HALT si faltan los golpes obligatorios para el marco seleccionado" 
+    outputs:
+      - narrative_structure
+      - beat_sheet
+      - emotional_arc
+
+  - id: phase_3_draft
+    name: "Flesh Out &quot; Draft" 
+    agent: "{Same especialista de la Fase 2}" 
+    task: build-narrative.md
+    depends_on: [phase_2_structure]
+    support_agents: [matthew-dicks, kindra-hall]
+    description: "Ampliar los ritmos en su totalidad scenes/sections con diálogo, detalle y emoción" 
+    checkpoint:
+      gate: "Borrador completo con todos los golpes hechos en contenido narrativo" 
+      veto: "HALT si cualquier ritmo sigue siendo de nivel de contorno - todo debe ser ampliado" 
+    outputs:
+      - story_draft
+      - scene_details
+
+  - id: phase_4_analysis
+    name: "Historia Grid Analysis" 
+    agent: shawn-coyne
+    task: analyze-story.md
+    depends_on: [phase_3_draft]
+    description: "Analice el borrador usando Story Grid — cumplimiento de género, cambios de valor, puntos de giro" 
+    checkpoint:
+      gate: "Todas las cuestiones críticas identificadas con recetas específicas" 
+      veto: "HALT si faltan escenas obligatorias de género — debe ser abordado" 
+    outputs:
+      - story_analysis
+      - diagnosis
+      - prescriptions
+
+  - id: phase_5_revise
+    name: "Revisión &quot; Polaco &quot;" 
+    agent: "{original framework specialist}" 
+    task: build-narrative.md
+    depends_on: [phase_4_analysis]
+    description: "Aplicar recetas de análisis, revisar la estructura y el contenido" 
+    checkpoint:
+      gate: "Todas las cuestiones críticas y principales del análisis resuelto" 
+      veto: "HALT si las cuestiones críticas siguen sin abordarse" 
+    outputs:
+      - revised_draft
+      - revision_notes
+
+  - id: phase_6_final
+    name: "Examen final" 
+    agent: story-chief
+    task: build-narrative.md
+    depends_on: [phase_5_revise]
+    description: "Verificación de calidad final — coherencia, impacto emocional, audiencia adecuado" 
+    checkpoint:
+      gate: "La historia es completa, coherente y lista para su uso previsto" 
+      veto: "HALT si el arco emocional está roto o la transformación es desenterrada" 
+    outputs:
+      - final_narrative
+      - quality_assessment
+
+completion_criteria:
+  - "Marco seleccionado y confirmado con el usuario" 
+  - "Todos los latidos estructurales definidos y poblados" 
+  - "Proyecto ampliado con escenas completas y detalles emocionales" 
+  - "Análisis de la historia Grid completado con recetas" 
+  - "Cuestiones críticas y principales resueltas en revisión" 
+  - "La narrativa final entrega sobre la promesa de género y el arco emocional" 

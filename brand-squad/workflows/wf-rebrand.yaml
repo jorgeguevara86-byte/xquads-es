@@ -1,0 +1,83 @@
+workflow:
+  id: wf-rebrand
+  name: "Rebranding"
+  version: "1.0.0"
+  description: "Flujo de trabajo de cambio de marca para marcas existentes. Começa com uma auditoria\nabragente, revisa a validade do posicionamento, atualiza elementos de\nidentidade e renova o mensajería. Preserva o que funciona y corrige o que no funciona."
+  trigger: "*rebrand"
+  entry_agent: brand-chief
+  estimated_duration: "45-90 minutes"
+  type: sequential
+  sequence:
+    - agent: david-aaker
+      action: audit-brand
+      creates: audit_report
+    - agent: al-ries
+      action: create-positioning
+      creates: positioning_review
+    - agent: alina-wheeler
+      action: build-identity
+      creates: updated_identity
+    - agent: donald-miller
+      action: create-brand-story
+      creates: updated_messaging
+
+phases:
+  - id: phase_0
+    name: "Auditoría de marca" 
+    agent: david-aaker
+    task: audit-brand.md
+    description: "Auditoría integral de salud de marca utilizando el modelo de equidad de Aaker y el prisma de identidad de Kapferer. Identifica qué preservar, qué arreglar y qué reconstruir." 
+    outputs:
+      - audit_report: "markdown"
+      - health_score: "number"
+      - preserve_list: "list"
+      - fix_list: "list"
+    checkpoint:
+      gate: "Auditoría completa con clasificación clara preserve/fix/rebuild" 
+      veto: "La auditoría revela que la marca es saludable; el cambio de marca no está justificado" 
+
+  - id: phase_1
+    name: "Revisión de posicionamiento" 
+    agent: al-ries
+    task: create-positioning.md
+    depends_on: [phase_0]
+    description: "Reevaluar el posicionamiento de la marca frente al panorama competitivo actual. Determine si la posición necesita cambiar o si la misma posición necesita una ejecución más fuerte." 
+    outputs:
+      - positioning_review: "markdown"
+      - new_positioning: "string"
+      - change_magnitude: "string"
+    checkpoint:
+      gate: "Decisión de posicionamiento tomada: mantener, refinar o pivotar" 
+      veto: "Pivote de posicionamiento propuesto sin suficiente análisis competitivo" 
+
+  - id: phase_2
+    name: "Actualización de identidad" 
+    agent: alina-wheeler
+    task: build-identity.md
+    depends_on: [phase_0, phase_1]
+    description: "Actualizar la identidad visual y verbal con base en los hallazgos de la auditoría y la revisión del posicionamiento. Preservar los elementos marcados como fuertes, rediseñar los elementos marcados para reparación." 
+    outputs:
+      - updated_identity: "markdown"
+      - change_summary: "list"
+    checkpoint:
+      gate: "Las actualizaciones de identidad se alinean con el nuevo posicionamiento y preservan las fortalezas" 
+      veto: "Los cambios destruyen el valor de marca existente sin justificación" 
+
+  - id: phase_3
+    name: "Actualización de mensajes" 
+    agent: donald-miller
+    task: create-brand-story.md
+    depends_on: [phase_1, phase_2]
+    description: "Actualice la historia de la marca y los mensajes usando StoryBrand SB7. Actualice BrandScript, one-linery la copia del punto de contacto para alinearlos con el posicionamiento y la identidad actualizados." 
+    outputs:
+      - updated_brandscript: "markdown"
+      - updated_messaging: "markdown"
+    checkpoint:
+      gate: "Mensajería consistente con posicionamiento e identidad actualizados" 
+      veto: "Historia desconectada de las capacidades reales de la marca" 
+
+completion_criteria:
+  - "Marca auditada con clasificación preserve/fix/rebuild" 
+  - "Posicionamiento revisado y decisión tomada (mantener, refinar o girar)" 
+  - "Identidad actualizada preservando fortalezas y solucionando debilidades" 
+  - "Mensajería actualizada con alineación de StoryBrand" 

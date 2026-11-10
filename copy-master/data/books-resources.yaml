@@ -1,0 +1,419 @@
+# Books & Resources Database: Copy Master Squad
+# 35+ essential copywriting, persuasion, and direct response books
+# Reference for all agents — maps books to domains and frameworks
+
+books:
+
+  - title: "Publicidad de gran alcance" 
+    author: "Eugene Schwartz" 
+    year: 1966
+    core_teaching: "Los niveles de sofisticación y conciencia del mercado determinan su enfoque de copia, no sus características del producto. Los 5 niveles de conciencia (sin darse cuenta, problem-aware, solution-aware, product-aware, most-aware) dicta el tipo de plomo, la dirección de la promesa, y toda la estructura de copia" 
+    key_frameworks:
+      - "5 Niveles de Conciencia" 
+      - "5 niveles de Sofisticación del Mercado" 
+      - "38 Formas de fortalecer los titulares" 
+      - "Intensificación vs. Identificación" 
+      - "Desire de masas" 
+    essential_for: [eugene-schwartz, copy-chief, todd-brown, stefan-georgi]
+
+  - title: "Cartas de Borón" 
+    author: "Gary Halbert" 
+    year: 2013
+    core_teaching: "Cartas escritas de prisión a su hijo Bond, enseñando los fundamentos de la respuesta directa — investigación, selección de listas, ofertas convincentes, y el arte de escribir copia conversacional que vende" 
+    key_frameworks:
+      - "Correo de la pila vs. B-pile" 
+      - "Star-Story-Solution" 
+      - "El índice Halbert" 
+      - "Prioridad de lista-offer-Copy" 
+      - "Agarra...by-the- Tercera apertura" 
+    essential_for: [gary-halbert, john-carlton, copy-chief]
+
+  - title: "Scientific Advertising" 
+    author: "Claude Hopkins" 
+    year: 1923
+    core_teaching: "La publicidad es venta en impresión — cada anuncio debe ser medido, probado y optimizado basado en la respuesta. Cupones, muestras y seguimiento son esenciales. Las opiniones son inútiles; sólo los resultados importan" 
+    key_frameworks:
+      - "Razón-Por qué publicidad" 
+      - "Prueba todo Principio" 
+      - "Estrategia de Reclamación Preventiva" 
+      - "Seguimiento de respuesta de cupones" 
+      - "Servicio de publicidad" 
+    essential_for: [claude-hopkins, john-caples, rosser-reeves, joanna-wiebe]
+
+  - title: "Métodos de publicidad comprobados" 
+    author: "John Caples" 
+    year: 1932
+    core_teaching: "Metodología de pruebas en línea de referencia: cómo escribir, probar y medir los titulares científicamente. El primer libro que trae pruebas rigurosas para copiar con documentos before/after resultados" 
+    key_frameworks:
+      - "29 Fórmulas de titulares" 
+      - "Pruebas de doble impacto" 
+      - "Primeras 50 palabras Reglas" 
+      - "Plantillas de encabezado probadas" 
+      - "Direct vs. Indirect Headlines" 
+    essential_for: [john-caples, claude-hopkins, copy-chief]
+
+  - title: "Realidad en Publicidad" 
+    author: "Rosser Reeves" 
+    year: 1961
+    core_teaching: "La Proposición de Vendedor Único (USP) — cada anuncio debe hacer una propuesta específica al consumidor, uno que la competencia no puede o no ofrece. La repetición de una sola idea penetra la conciencia pública" 
+    key_frameworks:
+      - "USP (Proposición Única de Venta)" 
+      - "Penetration vs. Usage Pull" 
+      - "Cretividad del vampiro (creatividad que chupa la atención del mensaje)" 
+      - "Regla de la Proposición Única" 
+    essential_for: [rosser-reeves, david-ogilvy, copy-chief]
+
+  - title: "Influencia: La Psicología de la Persuasión" 
+    author: "Robert Cialdini" 
+    year: 1984
+    core_teaching: "Seis (más tarde siete) principios universales de persuasión que rigen el cumplimiento humano — reciprocidad, commitment/consistency, prueba social, autoridad, agrado, escasez y unidad" 
+    key_frameworks:
+      - "6 Principios de influencia (original)" 
+      - "7 Principios (con unidad)" 
+      - "Patrones de respuesta de Click-Whirr" 
+      - "Armas de influencia" 
+    essential_for: [robert-cialdini, blair-warren, joe-sugarman, copy-chief]
+
+  - title: "Pre-Susion" 
+    author: "Robert Cialdini" 
+    year: 2016
+    core_teaching: "Lo que haces antes de entregar tu mensaje importa tanto como el propio mensaje: priming, framing y la canalización de la atención determinan la receptividad" 
+    key_frameworks:
+      - "Pre-Susion Windows" 
+      - "Momentos privilegiados" 
+      - "Principio de unidad" 
+      - "Atención Canalización" 
+      - "Association Triggers" 
+    essential_for: [robert-cialdini, eugene-schwartz, oren-klaff]
+
+  - title: "Ofertas de $100M" 
+    author: "Alex Hormozi" 
+    year: 2021
+    core_teaching: "Cómo diseñar 'Grand Slam Offers' tan bueno que la gente se siente estúpida diciendo no - usando la Ecuación de Valor para maximizar el resultado de sueño y la probabilidad al minimizar el retraso del tiempo y el esfuerzo" 
+    key_frameworks:
+      - "Ecuación del valor" 
+      - "Oferta Grand Slam" 
+      - "Trim &amp; Stack Method" 
+      - "Scarcity/Urgency/Bonuses/Guarantee Framework"
+      - "Sueño de la cosecha de resultados" 
+    essential_for: [alex-hormozi, dan-kennedy, russell-brunson]
+
+  - title: "$100M Leads" 
+    author: "Alex Hormozi" 
+    year: 2023
+    core_teaching: "Las cuatro formas básicas de conseguir clientes —entrenamiento cálido, divulgación fría, contenido, anuncios— y cómo construir sistemas de generación de plomo que se componen con el tiempo" 
+    key_frameworks:
+      - "Generación de cuatro principales" 
+      - "Marco de Magneto de plomo" 
+      - "Cadena de valor de plomo a Customer" 
+      - "Normas de escala de publicidad" 
+      - "100 Marco de oferta primaria" 
+    essential_for: [alex-hormozi, sabri-suby, frank-kern]
+
+  - title: "Vender como loco" 
+    author: "Sabri Suby" 
+    year: 2019
+    core_teaching: "A step-by-step sistema para convertir el tráfico en frío en clientes usando una 'Oferta de padrino' HVCO (Oferta de contenido de alto valor), y un sistema de venta estructurado" 
+    key_frameworks:
+      - "Estrategia de Oferta de Padrino" 
+      - "HVCO (Oferta de contenido de alto valor)" 
+      - "Dream Buyer Persona" 
+      - "Técnica de Linterna Mágica" 
+      - "8-Phase Selling System" 
+    essential_for: [sabri-suby, frank-kern, russell-brunson]
+
+  - title: "Nunca divida la diferencia" 
+    author: "Chris Voss" 
+    year: 2016
+    core_teaching: "técnicas de negociación de rehenes del FBI aplicadas a negocios: empatía táctica, preguntas calibradas, etiquetado, espejo, y la auditoría de acusaciones como herramientas de influencia" 
+    key_frameworks:
+      - "Empatía táctica" 
+      - "Emociones de etiquetado" 
+      - "Espejo de la técnica" 
+      - "Auditoría de la acusación" 
+      - "Preguntas calibradas (How/What)" 
+      - "Eso es justo Momento" 
+      - "Teoría de Cisne Negro" 
+    essential_for: [chris-voss, blair-warren, oren-klaff]
+
+  - title: "Pitch" 
+    author: "Oren Klaff" 
+    year: 2011
+    core_teaching: "El control de marco determina el resultado de cada lanzamiento — quien posee el marco gana. Usar principios de neurofinanza y el método STRONG para lanzar ideas, levantar capital y cerrar acuerdos" 
+    key_frameworks:
+      - "STRONG Method" 
+      - "Teoría de control de marco" 
+      - "Teoría del cerebro de cocodrilo" 
+      - "Frame del Premio" 
+      - "Frame del tiempo" 
+      - "Concepto de punto de vista" 
+    essential_for: [oren-klaff, russell-brunson, alex-hormozi]
+
+  - title: "La carta de ventas de 16 votos" 
+    author: "Evaldo Albuquerque" 
+    year: 2019
+    core_teaching: "Cada gran carta de ventas se construye sobre cambiar UNA creencia falsa. El marco de 16 palabras: el resultado deseado NO es sobre la creencia falsa — ES sobre el nuevo mecanismo" 
+    key_frameworks:
+      - "Marco de 16 votos" 
+      - "False Belief Identificación" 
+      - "Creenciales Shift Architecture" 
+      - "6 Tipos de Grandes Plomos" 
+      - "Mecanismo de Naming" 
+    essential_for: [evaldo-albuquerque, todd-brown, stefan-georgi, parris-lampropoulos]
+
+  - title: "Grandes plomos" 
+    author: "Michael Masterson &amp; John Forde" 
+    year: 2011
+    core_teaching: "Seis tipos de pistas para las cartas de ventas - cada una coincide con un nivel específico de conciencia. El plomo es la parte más importante de cualquier pieza de ventas, determinando todo lo que sigue" 
+    key_frameworks:
+      - "6 Tipos de plomo: Oferta, Promesa, Problema-Solución, Gran Secreto, Proclamación, Historia" 
+      - "Matriz de unión de conciencia de plomo" 
+      - "Directrices de la longitud del plomo" 
+      - "Técnicas de transición" 
+    essential_for: [evaldo-albuquerque, stefan-georgi, gary-halbert, copy-chief]
+
+  - title: "La carta de ventas definitiva" 
+    author: "Dan Kennedy" 
+    year: 1990
+    core_teaching: "Paso...by-step Plan de redacción para escribir cartas de venta directa de respuesta, desde la investigación hasta la redacción a través del refinamiento." 
+    key_frameworks:
+      - "28-Step Sales Letter Formula" 
+      - "PAS (Problema-Agitate-Solve)" 
+      - "Técnica de Admisión de Daños" 
+      - "Intimidar la Especificación" 
+      - "Pile-On Proof" 
+    essential_for: [dan-kennedy, gary-halbert, john-carlton]
+
+  - title: "Secretos de DotCom" 
+    author: "Russell Brunson" 
+    year: 2015
+    core_teaching: "La ciencia del edificio de embudos — escaleras de valor, temperatura de tráfico y tipos de embudo específicos se ajustan a los modelos de negocio. Cada negocio necesita un embudo, y cada embudo necesita una copia específica" 
+    key_frameworks:
+      - "Escalera de valor" 
+      - "Hook-Story-Offer" 
+      - "Temperatura de tráfico (hot/warm/cold)" 
+      - "Caracter atractivo" 
+      - "7 tipos de embudo" 
+    essential_for: [russell-brunson, frank-kern, sabri-suby]
+
+  - title: "Expert Secrets" 
+    author: "Russell Brunson" 
+    year: 2017
+    core_teaching: "Cómo crear un movimiento de masas, convertirse en un líder carismático, y utilizar el Puente Epifanía para cambiar creencias. El marco para vender a través de historias y construir una tribu" 
+    key_frameworks:
+      - "Puente de Epifanía" 
+      - "3 Marco de Secretos" 
+      - "Webinar perfecto" 
+      - "Stack Slide" 
+      - "Falsos patrones de creencia" 
+      - "Movimiento de masas" 
+    essential_for: [russell-brunson, todd-brown, evaldo-albuquerque]
+
+  - title: "Cashvertising"
+    author: "Drew Eric Whitman" 
+    year: 2008
+    core_teaching: "Técnicas de publicidad basadas en la psicología: los 8 deseos de forzamiento de vida y 9 deseos secundarios que impulsan todo comportamiento humano y decisiones de compra" 
+    key_frameworks:
+      - "8 Deseos de vida-fuerza (LF8)" 
+      - "9 Deseos secundarios" 
+      - "41 Técnicas de publicidad" 
+      - "Ego Morphing" 
+      - "Cadena de medio ambiente" 
+    essential_for: [joe-sugarman, robert-cialdini, copy-chief]
+
+  - title: "Cómo escribir un buen anuncio" 
+    author: "Victor Schwab" 
+    year: 1962
+    core_teaching: "100 titulares más grandes analizados, con técnicas sistemáticas para escribir attention-getting, interest-holding, desire-building, action-producing Copia" 
+    key_frameworks:
+      - "100 titulares más grandes (anotados)" 
+      - "AIDA Application" 
+      - "Fórmula de 5 pasos de Schwab" 
+      - "44 maneras de comenzar titulares" 
+    essential_for: [john-caples, eugene-schwartz, copy-chief]
+
+  - title: "El libro de cartas Robert Collier" 
+    author: "Robert Collier" 
+    year: 1931
+    core_teaching: "Entra en la conversación que ya está sucediendo en la mente del lector — coincide con sus pensamientos, deseos y emociones existentes antes de intentar redirigirlos" 
+    key_frameworks:
+      - "Entra en la conversación" 
+      - "6 Esenciales de cada carta" 
+      - "Hierarquía de apelación emocional" 
+      - "Técnica de foto-alambrada" 
+    essential_for: [robert-collier, gary-halbert, eugene-schwartz]
+
+  - title: "El manual de redacción de Adweek" 
+    author: "Joe Sugarman" 
+    year: 2006
+    core_teaching: "El concepto de deslizamiento deslizante — cada elemento de copia tiene un propósito: para obtener la siguiente línea leída. Además 30 desencadenantes psicológicos que obligan a la gente a comprar" 
+    key_frameworks:
+      - "Deslizamiento deslizante" 
+      - "30 Psicólogos" 
+      - "Semillas de curiosidad" 
+      - "Proceso de incubación" 
+      - "Vender el concepto" 
+    essential_for: [joe-sugarman, gary-bencivenga, copy-chief]
+
+  - title: "Ogilvy on Advertising" 
+    author: "David Ogilvy" 
+    year: 1983
+    core_teaching: "Los principios de brand-building publicidad — investigación, hechos sobre adjetivos, historia sobre venta, copia larga que educa, y la artesanía de la publicidad como disciplina empresarial" 
+    key_frameworks:
+      - "Enfoque de la titulación" 
+      - "Teoría de imagen de marca" 
+      - "Largo copia Doctrina" 
+      - "Investigación-Based Creative" 
+      - "Big Idea Concept" 
+    essential_for: [david-ogilvy, david-deutsch, copy-chief]
+
+  - title: "Hecho a pegar" 
+    author: "Chip Heath &amp; Dan Heath" 
+    year: 2007
+    core_teaching: "Por qué algunas ideas sobreviven y otros mueren — el marco SUCCESs para hacer que los mensajes sean memorables: Simple, Inesperado, Concreto, Credible, Emocional, Historias" 
+    key_frameworks:
+      - "Modelo de la SUCCESs" 
+      - "Cursación del conocimiento" 
+      - "Intención del comandante" 
+      - "Credibilidad Spectrum" 
+      - "Llamamientos emocionales contra los recursos analíticos" 
+    essential_for: [copy-chief, david-ogilvy, blair-warren]
+
+  - title: "El Editor de Copias" 
+    author: "David Garfinkel" 
+    year: 2017
+    core_teaching: "Cómo aplicar los niveles de conciencia y sofisticación de Schwartz en la práctica, una interpretación práctica de la publicidad de gran alcance con ejemplos modernos" 
+    key_frameworks:
+      - "Aplicación de conciencia práctica" 
+      - "Mercado Sofisticación Mapping" 
+      - "Proceso de selección de plomo" 
+      - "Copia Cubo (Copia)multi-dimensional análisis de copia)" 
+    essential_for: [eugene-schwartz, stefan-georgi, copy-chief]
+
+  - title: "Kick-Ass Copywriting Secrets of a Marketing Rebel" 
+    author: "John Carlton" 
+    year: 2002
+    core_teaching: "Escribe como hablas — casual, irreverente, street-level copia que se conecta con personas reales. El SWS (Simple Escritura de sistema) para long-form Cartas de venta" 
+    key_frameworks:
+      - "Sistema de escritura simple (SWS)" 
+      - "Salesman in Print" 
+      - "Método de detectives de ventas" 
+      - "Chute de Greased (Carlton's Slippery Slide)" 
+    essential_for: [john-carlton, gary-halbert, ben-settle]
+
+  - title: "Autopatrocinador de locura" 
+    author: "Andre Chaperon" 
+    year: 2009
+    core_teaching: "El correo electrónico es sobre la construcción de relaciones a través de narrativa serial — la secuencia de la Opera de Soap crea un compromiso que hace vender sin esfuerzo" 
+    key_frameworks:
+      - "Salto Opera Secuencia" 
+      - "Secuencias por satélite" 
+      - "Arquitectura de Open Loop" 
+      - "Marco de correo electrónico basado en la historia" 
+      - "Engagement Arc" 
+    essential_for: [andre-chaperon, ry-schwartz, ben-settle]
+
+  - title: "Cómo escribir copia que vende" 
+    author: "Ray Edwards" 
+    year: 2016
+    core_teaching: "Marco PASTOR para la redacción sistemática de copias de ventas — más plantillas prácticas para titulares, balas, ofertas y garantías" 
+    key_frameworks:
+      - "Marco de la Autoridad Palestina" 
+      - "Plantillas de línea de referencia" 
+      - "Sistema de escritura de balas" 
+      - "Oferta irresistible Fórmula" 
+      - "Plantillas de garantía" 
+    essential_for: [copy-chief, russell-brunson, dan-kennedy]
+
+  - title: "Flip el script" 
+    author: "Oren Klaff" 
+    year: 2019
+    core_teaching: "Control de marco avanzado — cómo cambiar el buyer-seller dinámica por lo que el comprador te está persiguiendo, no por el otro lado. inception-style persuasión" 
+    key_frameworks:
+      - "Ajuste del estatuto" 
+      - "Inception (planting ideas)" 
+      - "Flash Roll" 
+      - "Ideas pre-testadas" 
+      - "La fórmula del comprador" 
+    essential_for: [oren-klaff, chris-voss, alex-hormozi]
+
+  - title: "El Curso de Persuasión de una Sentencia" 
+    author: "Blair Warren" 
+    year: 2013
+    core_teaching: "La gente hará cualquier cosa por aquellos que animan sus sueños, justifican sus fracasos, allay sus temores, confirman sus sospechas, y lanzan piedras a sus enemigos" 
+    key_frameworks:
+      - "5 Triggers of Persuasion" 
+      - "Un marco de condena" 
+      - "Identificación enemiga" 
+      - "Dream encouragesment" 
+    essential_for: [blair-warren, robert-cialdini, russell-brunson]
+
+  - title: "Email Players Newsletter Archives" 
+    author: "Ben Settle" 
+    year: 2011
+    core_teaching: "El email diario que vende como un negocio de estilo de vida — anti-guru posicionamiento, formato infotainment, personality-driven copiar que filtra a tu audiencia y atrae a verdaderos fans" 
+    key_frameworks:
+      - "Infotainment Email Formula" 
+      - "Posición de antihéroes" 
+      - "Disciplina de correo electrónico diario" 
+      - "Audience Filtration" 
+      - "Villanos y enemigos" 
+    essential_for: [ben-settle, dan-koe, andre-chaperon]
+
+  - title: "El método RMBC" 
+    author: "Stefan Georgi" 
+    year: 2018
+    core_teaching: "Un proceso sistemático de 4 pasos para escribir VSLs y long-form letras de venta — Investigación, Mecanismo, Breve, Copia. Elimina el bloque del escritor a través de la preparación exhaustiva" 
+    key_frameworks:
+      - "Proceso de 4-proceso de RMBC" 
+      - "Avatar Deep Dive" 
+      - "Mecanismo Único en el que se inscribe" 
+      - "VSL Plantilla breve" 
+      - "Fascination Research Method" 
+    essential_for: [stefan-georgi, jon-benson, parris-lampropoulos]
+
+  - title: "El método E5" 
+    author: "Todd Brown" 
+    year: 2018
+    core_teaching: "Arquitectura de embudos de marketing construido alrededor de un gran Idea y un mecanismo único — cinco fases (Ingage, Educate, Excite, Exchange, Execute) que mueven perspectivas de atención a la acción" 
+    key_frameworks:
+      - "E5 Method" 
+      - "Gran Extracción de Idea" 
+      - "Posiciones de mecanismo único" 
+      - "Arquitectura de embudos de marketing" 
+      - "Campaign Tema Development" 
+    essential_for: [todd-brown, eugene-schwartz, stefan-georgi]
+
+  - title: "Triggers"
+    author: "Joe Sugarman" 
+    year: 1999
+    core_teaching: "30 desencadenantes psicológicos que obligan a la gente a comprar, desde la narración y la curiosidad a la autoridad y la exclusividad. Cada disparador es una herramienta para ser implementada estratégicamente" 
+    key_frameworks:
+      - "30 Intrusos de Venta" 
+      - "Storytelling Trigger" 
+      - "Curiosidad Trigger" 
+      - "Consistency Trigger" 
+      - "Linking Trigger" 
+    essential_for: [joe-sugarman, robert-cialdini, gary-bencivenga]
+
+  - title: "Confesiones de un hombre publicitario" 
+    author: "David Ogilvy" 
+    year: 1963
+    core_teaching: "El negocio y la artesanía de la publicidad desde dentro — cómo ejecutar una agencia, ganar clientes, escribir copia efectiva, y construir marcas que duran" 
+    key_frameworks:
+      - "Edificio de Personalidad de Marca" 
+      - "Creatividad de la semilla de investigación" 
+      - "Principios de respuesta directa para marca" 
+      - "Gestión de relaciones cliente" 
+    essential_for: [david-ogilvy, david-deutsch, copy-chief]
+
+  - title: "Mi vida en publicidad" 
+    author: "Claude Hopkins" 
+    year: 1927
+    core_teaching: "Autobiografía de Hopkins detallando las campañas que construyeron la respuesta directa moderna: desde la cerveza Schlitz hasta el pasta de dientes Pepsodent. Cada capítulo es un estudio de caso en métodos probados" 
+    key_frameworks:
+      - "Preemptive Claim (Schlitz)" 
+      - "Estrategia de muestreo" 
+      - "Testing de cupón" 
+      - "Razón-por qué copiar" 
+    essential_for: [claude-hopkins, john-caples, rosser-reeves]

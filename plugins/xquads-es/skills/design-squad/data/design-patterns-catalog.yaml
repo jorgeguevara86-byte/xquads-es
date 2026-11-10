@@ -1,0 +1,276 @@
+# Design Patterns Catalog
+# Reference for atomic design, tokens, accessibility, and component patterns
+# Version: 1.0.0
+
+catalog:
+  version: "1.0.0"
+  last_updated: "2026-03-05"
+
+atomic_design:
+  description: "Metodología de Brad Frost para sistemas de diseño de edificios de menor a mayor" 
+  source: "Diseño atómico (2016) — bradfrost.com" 
+  levels:
+    atoms:
+      description: "Los elementos de interfaz de usuario más pequeños e indivisibles" 
+      examples:
+        - "Button"
+        - "Input field" 
+        - "Label"
+        - "Icon"
+        - "Badge"
+        - "Avatar"
+        - "Checkbox"
+        - "Botón de radio" 
+        - "Interruptor de conmutación" 
+        - "Link"
+        - "Tag/chip"
+        - "Divider"
+        - "Spinner/loader"
+        - "Tooltip"
+      characteristics:
+        - "No se puede descomponer más sin perder sentido" 
+        - "Reutilizable en todos los contextos" 
+        - "Estilo con fichas de diseño" 
+        - "Accesible por defecto" 
+
+    molecules:
+      description: "Grupos simples de átomos que funcionan como unidad" 
+      examples:
+        - "Barra de búsqueda (intro + botón + icono)" 
+        - "Campo de formulario (etiqueta + entrada + texto de ayuda + error)" 
+        - "Punto de navegación (icon + etiqueta + placa)" 
+        - "Objeto de medios (imagen + bloque de texto)" 
+        - "Cabecera de la tarjeta (avatar + nombre + subtítulo)" 
+        - "Grupo de botones (botones múltiples)" 
+        - "Breadcrumb (links + separadores)" 
+        - "Paginación (botones + indicadores de página)" 
+        - "Alerta (icon + mensaje + acción)" 
+        - "Tarjeta de estata (marca + valor + tendencia)" 
+      characteristics:
+        - "Compuesto de 2-3 átomos" 
+        - "Un propósito único y claro" 
+        - "Reutilizable en múltiples contextos" 
+        - "Función autocontenida" 
+
+    organisms:
+      description: "Grupos complejos de moléculas y átomos que forman secciones distintas" 
+      examples:
+        - "Barra de navegación (logo + nav items + búsqueda + menú de usuario)" 
+        - "Sección de formularios (cabeza + descripción + campos de formulario + acciones)" 
+        - "Tabla de datos (cabeza + filas + paginación + filtros)" 
+        - "Tarjeta (cabeza + medios + contenido + pie)" 
+        - "Modal (sobrecapa + cabecera + cuerpo + pie)" 
+        - "Barra lateral (logo + navegación + usuario + pie)" 
+        - "Sección de héroes (cabeza + descripción + CTA + medios)" 
+        - "Comentario hilo (comments + respuesta formulario + acciones)" 
+        - "Listado de productos (filtros + rejilla + paginación)" 
+        - "widget de panel (título + gráfico + leyenda + acciones)" 
+      characteristics:
+        - "Múltiples moléculas trabajando juntas" 
+        - "Representa una sección distinta de la interfaz" 
+        - "Puede contener lógica empresarial" 
+        - "Repetidas páginas con variaciones" 
+
+    templates:
+      description: "Estructuras de nivel de página que definen el diseño y la colocación de componentes" 
+      examples:
+        - "Diseño de tablero de instrumentos (bar lateral + cabecera + rejilla de contenido principal)" 
+        - "Disposición de artículo (cabeza + cuerpo + barra lateral + pie)" 
+        - "Diseño de configuración (tabs + secciones de formulario)" 
+        - "List/detail diseño (lista panel + panel de detalle)" 
+        - "Diseño de autenticación (tarjeta centrada + fondo)" 
+        - "Diseño de página de marketing (hero + características + testimonios + CTA)" 
+      characteristics:
+        - "Definir la estructura general de la página" 
+        - "Uso de contenido de marcadores de posición" 
+        - "Enfóquese en el diseño, no en el contenido" 
+        - "Definiciones de la rejilla responsable" 
+
+    pages:
+      description: "Casos específicos de plantillas con contenido real" 
+      examples:
+        - "Homepage con copia real de héroe y artículos destacados" 
+        - "Perfil de usuario con datos reales" 
+        - "Detalles del producto con producto real" 
+      characteristics:
+        - "Plantillas llenas de contenido real" 
+        - "Casos de borde de revelancia (nombres largos, imágenes perdidas)" 
+        - "Se utiliza para la revisión y prueba final" 
+
+design_tokens:
+  description: "Decisiones de diseño expresadas como datos: el puente entre diseño y código" 
+  architecture:
+    global_tokens:
+      description: "Valores brutos sin sentido semántico" 
+      examples:
+        - "blue-500#3B82F6" 
+        - "spacing-4: 16px"
+        - "font-size-lg: 18px"
+        - "radius-md: 8px"
+        - "shadow-md: 0 4px 6px rgba(0,0,0,0.1)" 
+      naming: "{category}-{property}-{variant}"
+
+    alias_tokens:
+      description: "Nombres semánticos que referencian fichas globales" 
+      examples:
+        - "color-primary: {blue-500}"
+        - "color-text-primary: {gray-900}"
+        - "color-bg-surface: {white}"
+        - "color-border-default: {gray-200}"
+        - "color-feedback-success: {green-500}"
+        - "color-feedback-error: {red-500}"
+      naming: "{category}-{semantic-name}"
+      theming: "Las fichas de Alias cambian entre temas (light/dark)" 
+
+    component_tokens:
+      description: "Tokens específicas de componentes que se refieren a fichas" 
+      examples:
+        - "button-primary-bg: {color-primary}"
+        - "button-primary-text: {color-text-inverse}"
+        - "input-border: {color-border-default}"
+        - "card-shadow: {shadow-md}"
+        - "nav-bg: {color-bg-surface}"
+      naming: "{component}-{property}"
+      override: "Las fichas de componentes permiten per-component personalización" 
+
+  token_categories:
+    color:
+      subcategories: [brand, neutral, feedback, text, background, border, overlay]
+    typography:
+      subcategories: [family, size, weight, line-height, letter-spacing]
+    spacing:
+      subcategories: [inline, stack, inset, grid-gap]
+      base_unit: "4px"
+      scale: [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64]
+    border:
+      subcategories: [width, radius, style, color]
+    shadow:
+      subcategories: [elevation-1, elevation-2, elevation-3, elevation-4]
+    motion:
+      subcategories: [duration, easing, property]
+      durations: ["100ms (micro)" , "200ms (rápido)" , "300ms (normal)" , "500ms (bajo)" ]
+      easings: ["ease-in-out (default)", "ease-out (enter)", "ease-in (exit)", "linear (progress)" ]
+    breakpoint:
+      values: ["sm: 640px" , "md: 768px" , "lg: 1024px" , "xl: 1280px" , "2xl: 1536px" ]
+    z_index:
+      scale: ["base: 0", "dropdown: 1000", "sticky: 1100", "overlay: 1200", "modal: 1300", "popover: 1400", "toast: 1500"]
+
+wcag_accessibility:
+  standard: "WCAG 2.1 Nivel AA" 
+  source: "w3.org/WAI/WCAG21/"
+  requirements:
+    perceivable:
+      - category: "Alternativas de texto" 
+        rule: "Todos non-text contenido tiene alternativas de texto" 
+        implementation: "texto alt sobre imágenes, aria-label sobre iconos, leyendas en medios" 
+      - category: "Contraste de color" 
+        rule: "Texto normal: 4.5:1 mínimo. Texto grande (18px+ bold or 24px+): 3:1 mínimo" 
+        implementation: "Verificar todas las combinaciones de tokens cumplen ratios" 
+      - category: "Contraste de componentes de la interfaz de usuario" 
+        rule: "Elementos de la interfaz de usuario no texto: 3:1 mínimo contra los colores adyacentes" 
+        implementation: "Los botones, los insumos, los indicadores de enfoque deben ser diferenciables" 
+      - category: "No utilice el color solo" 
+        rule: "El color no debe ser el único medio de transmitir información" 
+        implementation: "Añadir iconos, patrones o texto junto con indicadores de color" 
+
+    operable:
+      - category: "Navegación de teclado" 
+        rule: "Todas las funcionalidades disponibles a través del teclado" 
+        implementation: "Orden de Tab, Enter/Space activación, navegación por flecha, Escapar para cerrar" 
+      - category: "Focus Visible" 
+        rule: "Indicador de enfoque claramente visible" 
+        implementation: "2 px contorno sólido con offset, alto contraste (3:1 mínimo)" 
+      - category: "Objetivo" 
+        rule: "Meta mínima de 44x44px para el móvil" 
+        implementation: "Remolachado o dimensiones mínimas sobre elementos interactivos" 
+      - category: "No hay trampas de teclado" 
+        rule: "El usuario puede navegar lejos de cualquier componente usando el teclado" 
+        implementation: "Escapar cierra modals/dropdowns, Tab se mueve a través de todos los elementos" 
+
+    understandable:
+      - category: "Identificación de errores" 
+        rule: "Los errores se identifican y describen en el texto" 
+        implementation: "Mensajes de error a continuación campos, resumen en la parte superior del formulario, aria-describedby" 
+      - category: "Labels"
+        rule: "Todas las entradas tienen etiquetas asociadas" 
+        implementation: "Etiquetas visibles + for/id parejas, o aria-label para icon-only" 
+      - category: "Navegación consistente" 
+        rule: "La navegación aparece en el mismo orden a través de páginas" 
+        implementation: "Componente fijo nav, orden consistente" 
+
+    robust:
+      - category: "ARIA Usage" 
+        rule: "Use correctamente los papeles, estados y propiedades de ARIA" 
+        implementation: "role, aria-expanded, aria-selected, aria-live, aria-describedby"
+      - category: "Nombre, Papel, Valor" 
+        rule: "Los componentes personalizados exponen nombre, papel y valor para la tecnología de asistencia" 
+        implementation: "Atributos ARIA apropiados en widgets personalizados" 
+
+component_anatomy:
+  description: "Patrones de anatomía estándar para los tipos de componentes comunes" 
+  patterns:
+    button:
+      elements: [leading_icon, label, trailing_icon]
+      variants: [primary, secondary, tertiary, danger, ghost]
+      sizes: [sm, md, lg]
+      states: [default, hover, focus, active, disabled, loading]
+      accessibility: "- ¿Qué? aria-disabled, aria-busy (carga)" 
+
+    input:
+      elements: [label, input_field, leading_icon, trailing_icon, helper_text, error_message, character_count]
+      variants: [text, number, email, password, search, textarea]
+      sizes: [sm, md, lg]
+      states: [default, hover, focus, filled, disabled, error, success, readonly]
+      accessibility: "etiqueta for/id, aria-describedby (helper/error), aria-invalid, requerido" 
+
+    card:
+      elements: [media, header, title, subtitle, body, footer, actions, badge]
+      variants: [default, elevated, outlined, interactive]
+      states: [default, "hélice (si está interactivo)" , selected, "carga (esqueleto)" ]
+      accessibility: "papel de artículo, nivel de encabezado, tarjetas interactivas necesitan papel=buttón o enlace" 
+
+    modal:
+      elements: [overlay, container, header, close_button, body, footer, actions]
+      variants: [default, full_screen, side_panel, confirmation]
+      states: [opening, open, closing, closed]
+      accessibility: "role=dialog, aria-modal=true, trampa de enfoque, Escape para cerrar, volver enfoque en cerca" 
+
+    table:
+      elements: [header, header_cell, body, row, cell, sort_indicator, pagination, empty_state]
+      variants: [default, striped, bordered, compact, sticky_header]
+      states: [loading, empty, populated, row_selected, row_expanded]
+      accessibility: "role=table, scope on headers, aria-sort, aria-selected, capción" 
+
+designops_three_lenses:
+  description: "Marco de Diseño de Dave Malouf — tres lentes interconectados" 
+  source: "DesignOps Handbook / Rosenfeld Media" 
+  lenses:
+    how_we_work_together:
+      name: "People &apos; Culture" 
+      focus: "Estructura de equipo, roles, trayectorias de carrera, contratación, colaboración, cultura" 
+      maturity_levels:
+        1_ad_hoc: "No hay roles definidos, los diseñadores trabajan en aislamiento" 
+        2_emerging: "Algunas funciones definidas y la colaboración informal" 
+        3_defined: "Funciones claras, trayectorias profesionales, revisiones regulares de diseño" 
+        4_managed: "Gestión de equipos impulsados por métricas, programas de mentoría" 
+        5_optimized: "Equipos autoorganizadores, cultura de mejora continua" 
+
+    how_we_work:
+      name: "Proceso &quot; Flujo de trabajo &quot;" 
+      focus: "Metodología, herramientas, entrega, revisiones, documentación" 
+      maturity_levels:
+        1_ad_hoc: "No hay proceso consistente, cada diseñador trabaja de forma diferente" 
+        2_emerging: "Algunas prácticas comunes, herramientas inconsistentes" 
+        3_defined: "Corriente de trabajo documentada, herramientas estandarizadas, ceremonias regulares" 
+        4_managed: "Métricas en tiempo de ciclo y calidad, refinamiento continuo de procesos" 
+        5_optimized: "Flujos de trabajo automatizados, calidad predictiva, integración de dev sin costuras" 
+
+    what_we_work_on:
+      name: "Producción artesanal" 
+      focus: "Sistema de diseño, accesibilidad, calidad visual, innovación, documentación" 
+      maturity_levels:
+        1_ad_hoc: "No hay sistema de diseño, interfaz de usuario inconsistente, accesibilidad desconocida" 
+        2_emerging: "Guía de estilo básico, algunos componentes compartidos, conciencia de accesibilidad" 
+        3_defined: "Sistema de diseño en uso, WCAG AA lenguaje visual compatible" 
+        4_managed: "Gobernanza del sistema de diseño, accesibilidad automatizada, tiempo de innovación" 
+        5_optimized: "El sistema de diseño es producto, cultura de accesibilidad, design-led innovación" 

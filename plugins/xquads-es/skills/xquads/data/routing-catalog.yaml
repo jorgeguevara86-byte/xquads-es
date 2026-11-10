@@ -1,0 +1,270 @@
+# Routing Catalog: Xquads Chief (Meta-Orquestrador)
+# Mapeia demanda em linguagem natural -> squad -> chefe do squad
+# Referenciado por: tasks/diagnose.md e tasks/route.md
+#
+# Keywords em PT-BR primeiro (idioma do usuário), EN como fallback.
+
+meta:
+  version: "1.0.0"
+  total_squads: 14
+  # ATIVAÇÃO — independente de cliente.
+  #   `squad`  é também o nome da skill e o nome da pasta. Ative lendo o SKILL.md
+  #            dela e seguindo as instruções de ativação que estão lá. Funciona em
+  #            Claude Code, Codex, Gemini CLI, Cursor, Copilot, OpenCode e afins.
+  #   `legacy_command` é o atalho antigo, válido só em instalações do Claude Code
+  #            feitas em ~/.claude/commands/. Use apenas se o cliente for o Claude
+  #            Code E o squad estiver instalado por esse caminho.
+  # Se o squad não estiver instalado, a rota fica indisponível: avise o usuário,
+  # indique `install.sh <squad>` e ofereça a alternativa mais próxima entre as
+  # instaladas — nunca finja ter ativado um squad ausente.
+  confidence_thresholds:
+    high: 80    # roteia direto, sem perguntar
+    medium: 50  # roteia declarando a premissa assumida
+    low: 0      # faz UMA pergunta de desambiguação
+
+domains:
+
+  copywriting:
+    squad: copy-squad
+    chief: copy-chief
+    legacy_command: "/copy-squad:agents:copy-chief"
+    agents: 23
+    keywords: [copy, copywriting, headline, título, chamada, "carta de ventas" , "carta de ventas" ,
+               vsl, "script de vídeo" , email, "sequência de email" , bullets, "oferta escrita" ,
+               "página de ventas" , "landing page" , texto, escrever, "persuasión" , "disparador mental" ,
+               anúncio, "texto creativo" , "Ventas itinerarias" ]
+    escalate_to: copy-master
+    escalate_when: "Proyecto grande/complexo, mercado saturado, necesidad de negociación, lanzamiento o copia SaaS" 
+    description: "Escribe cualquier texto cuyo propósito es vender o convertir." 
+
+  copywriting_advanced:
+    squad: copy-master
+    chief: copy-master-chief
+    legacy_command: "/copy-master:agents:copy-master-chief"
+    legacy_command_alias: "/Copy-Master:agentes:copy-master-chief"   # instalações legadas com pasta capitalizada
+    agents: 33
+    keywords: ["copy master" , "Copia avanzada" , "cubierta de lanzamiento" , webinar, "negociación" , "chris yos" ,
+               "oren klaff" , "saas copy" , "mercado saturado" , copy 2.0]
+    description: "El Escuadrón de Copias Turbulentos — 33 maestros, incluye persuasión, campo, comercio y SaaS." 
+
+  paid_traffic:
+    squad: traffic-masters
+    chief: traffic-chief
+    legacy_command: "/traffic-masters:agents:traffic-chief"
+    agents: 16
+    keywords: [tráfego, "tráfico pagado" , anúncio, ads, "meta ads" , "facebook ads" , "anuncios de instagram" ,
+               "google ads" , "youtube anuncios" , "campaña public" , cpa, cpl, roas, cac, escala,
+               "campaña escalar" , "medios comprando" , pixel, rastreamento, tracking, gerenciador,
+               "ad set" , verba, budget, "optimización de la campaña" , "creativo" ]
+    description: "Comprar medios, escala, optimización y seguimiento de campañas pagadas." 
+
+  branding:
+    squad: brand-squad
+    chief: brand-chief
+    legacy_command: "/brand-squad:agents:brand-chief"
+    agents: 15
+    keywords: [marca, branding, posicionamento, identidade, "identidad visual" , naming,
+               "nombre de marca" , arquétipo, "valor de marca" , "arquitectura" , tagline,
+               slogan, storybrand, "diferenciación" , reposicionamento, rebrand, "propósito de la marca" ]
+    description: "Construir, posicionar o reponer una marca." 
+
+  integrated_campaign:
+    squad: marketing-squad
+    chief: marketing-chief
+    legacy_command: "/marketing-squad:agents:marketing-chief"
+    agents: 5
+    keywords: [campanha, "campaña completa" , marketing, "plano de marketing" , mensagem,
+               "propina" , "mensaje + copia + creatividad + tráfico" , "Campaña integrada" ]
+    description: "Campaña final a fin (mensaje → copiar → creativo → tráfico) con tiempo magro." 
+    prefer_when: "El usuario quiere una campaña completa y no una entrega aislada." 
+
+  offers_and_business:
+    squad: hormozi-squad
+    chief: hormozi-chief
+    legacy_command: "/hormozi-squad:agents:hormozi-chief"
+    agents: 16
+    keywords: [oferta, "gran oferta de almejas" , "precio" , "precio" , pricing, ticket, lead,
+               "generación de plomo" , core 4, closer, vendas, "venta cerca" , "script de ventas" ,
+               "escalada de negocios" , "retención" , churn, ltv, "modelo de negocio" , "monetización" ,
+               faturamento, mrr, workshop, garantia, bônus, "ecuación de valor" ]
+    description: "Estructura de suministro, precio, adquisición, ventas y escala de negocios." 
+
+  storytelling:
+    squad: storytelling
+    chief: story-chief
+    legacy_command: "/storytelling:agentes:story-chief" 
+    agents: 12
+    keywords: [história, storytelling, narrativa, roteiro, "viaje de héroe" , pitch,
+               "presentación" , palestra, keynote, "diapositivas narrativas" , manifesto, "narrativa arc" ,
+               "Cuéntame la historia" , "encerrado creativamente" , "estructura de script" ]
+    description: "Estructura narrativa, tono, presentación o manifiesto." 
+
+  design:
+    squad: design-squad
+    chief: design-chief
+    legacy_command: "/design-squad:agents:design-chief"
+    agents: 8
+    keywords: [design, ux, ui, interface, "sistema de diseño" , componente, "diseño atómico" ,
+               tokens, wireframe, protótipo, "flujo de usuario" , usabilidade, acessibilidade,
+               handoff, figma, visual, layout, tipografia, "Identidad del producto" ]
+    description: "Diseño de interfaz, UX, sistema de diseño e handoff para dev." 
+
+  data_and_growth:
+    squad: data-squad
+    chief: data-chief
+    legacy_command: "/data-squad:agents:data-chief"
+    agents: 7
+    keywords: [dados, analytics, métricas, kpi, dashboard, growth, crescimento,
+               "retención" , churn, clv, ltv, coorte, cohort, "embudo de datos" , "estrella del norte" ,
+               experimento, teste a/b, comunidade, engajamento, "éxito del cliente" , "audiencia" ]
+    description: "Medir, analizar y crecer sobre la base de datos." 
+
+  security:
+    squad: cybersecurity
+    chief: cyber-chief
+    legacy_command: "/cybersecurity:agents:cyber-chief" 
+    agents: 15
+    keywords: ["seguridad" , "ciberseguridad" , pentest, "invasión" , vulnerabilidade, cve, owasp,
+               "equipo rojo" , "equipo azul" , appsec, incidente, vazamento, hardening, "auditoría de la seguridad" ,
+               "Exposición creíble" , rls, exploit, recon, hackearam]
+    description: "Seguridad ofensiva, seguridad defensiva, auditoría y respuesta a incidentes." 
+
+  executive_strategy:
+    squad: c-level-squad
+    chief: vision-chief
+    legacy_command: "/c-level-squad:agents:vision-chief"
+    agents: 6
+    keywords: ["estrategia" , "visión" , c-level, ceo, cto, cmo, coo, cio, go-to-market, gtm,
+               "captura" , fundraise, investidor, board, "operaciones" , "proceso interno" ,
+               "Apilación de tecnología" , "hoja de ruta estratégica" , "estructura de la empresa" , "Plan anual" ]
+    description: "Decisiones de nivel ejecutivo: visión, GTM, operaciones, tecnología, captura." 
+
+  strategic_counsel:
+    squad: advisory-board
+    chief: board-chair
+    legacy_command: "/advisory-board:agents:board-chair"
+    agents: 11
+    keywords: [conselho, conselheiro, "difícil decisión" , devo, "Vale la pena." , dilema,
+               "modelo mental" , "segunda opinión" , sócio, cultura, propósito, "qué hacer" ,
+               "Estoy en duda." , pivotar, desistir, "escala o no" , "Ray Dalio" , munger, naval]
+    description: "Asesoramiento estratégico personal para decisiones grandes y ambiguas." 
+    prefer_when: "La pregunta es: \"¿Haré X?\" Y no \"¿Cómo hago X?\"" 
+
+  movement:
+    squad: movement
+    chief: movement-chief
+    legacy_command: "/movement:agentes:movement-chief" 
+    agents: 7
+    keywords: [movimento, comunidade, tribo, manifesto, "identidad colectiva" , causa,
+               pertencimento, ritual, "impacto social" , "participación de la comunidad" , "fieles seguidores" ]
+    description: "Construir movimiento, tribu e identidad colectiva alrededor de una causa." 
+
+  claude_code_and_agents:
+    squad: claude-code-mastery
+    chief: claude-mastery-chief
+    legacy_command: "/claude-code-mastery:agents:claude-mastery-chief"
+    agents: 8
+    keywords: ["claude code" , claude.md, hook, hooks, mcp, skill, subagente, settings.json,
+               "permiso" , "comando slash" , "configure claude" , aios, "config raxos" , contexto,
+               "context rot" , worktree, "paralelización de agentes" , "Automatización de la Claud" ]
+    description: "Configurar, optimizar y automatizar el Código Claude / AIOS / RAXOS." 
+
+# ---------------------------------------------------------------------------
+# Targets externos (não são squads Xquads, mas são destinos legítimos)
+# ---------------------------------------------------------------------------
+external_targets:
+
+  software_development:
+    target: raxos
+    command: "/raxos"
+    keywords: [código, implementar, bug, feature, refatorar, deploy, api, "base de datos" ,
+               migration, supabase, next.js, react, "componente funcional" , teste, erro,
+               "no funciona" , corrigir, "crear pantalla" , "crear ruta" , "integración técnica" ]
+    description: "Desenvolvimento de software. No entrar ningún ciclo de desarrollo de historia." 
+    mandatory_flow: true
+    note: "PROGRAMA PENAL: cualquier cambio de código pasa por la SDC completa\n(@sage create → @eden validate → @kai implement → @vera QA → @holt push).\nXquads Chief NUNCA escribe código. Ruta para /raxos y salidas.\nExcepciones (no requieren historia): tipo  ⁇ 3 líneas, doc, config/.env."
+  squad_creation:
+    target: squad-architect
+    command: "/squad"
+    keywords: ["crear equipo" , "nuevo equipo" , "mente clone" , "nuevo agente" , "equipo de expertos" ,
+               "no hay equipo para" , "Quiero un oficial de policía de" ]
+    description: "Cree un nuevo Escuadrón o Agente cuando no exista Squad cubre el dominio." 
+
+# ---------------------------------------------------------------------------
+# Desambiguação — casos que parecem de um squad mas são de outro
+# ---------------------------------------------------------------------------
+tie_breakers:
+
+  - situation: "La página de aterrizaje no convierte" 
+    ask_or_infer: "¿Es el texto, la mirada o el tráfico que viene a él?" 
+    default: copy-squad
+    alternatives: [design-squad, traffic-masters]
+    rule: "Texto/argumento → copy-squad. Layout/usabilidade → design-squad. audiencia equivocada → traffic-masters." 
+
+  - situation: "Quiero vender más" 
+    ask_or_infer: "¿No hay oferta, tráfico, no conversión?" 
+    default: hormozi-squad
+    alternatives: [traffic-masters, copy-squad]
+    rule: "No hay oferta clara → hormozi. Buena oferta pero pocas personas viendo → tráfico. Mucha gente viendo y no compra → copia." 
+
+  - situation: "Necesito uno. nome/slogan" 
+    default: brand-squad
+    alternatives: [copy-squad]
+    rule: "Nome de marca/produto → brand-squad. Headline de campanha → copy-squad." 
+
+  - situation: "Necesito una presentación." 
+    default: storytelling
+    alternatives: [c-level-squad, design-squad]
+    rule: "Narrativa/pitch → narración de historias. Board/investidor → c-level. Só o visual dos diapositivas → diseño." 
+
+  - situation: "Anuncio no performante" 
+    default: traffic-masters
+    alternatives: [copy-squad]
+    rule: "Métrica/estrutura/pixel → tráfico. Criativo e ângulo → copia (traffic devolve o briefing)." 
+
+  - situation: "Quiero crear una comunidad" 
+    default: movement
+    alternatives: [data-squad]
+    rule: "Identidad, causa y rituales → movimiento. Métricas y retención comunitaria → data-squad." 
+
+  - situation: "¿Debería hacer X o Y?" 
+    default: advisory-board
+    alternatives: [c-level-squad]
+    rule: "Decisión pessoal/existencial → advisory-board. Decisión operacional de la empresa → c-level." 
+
+  - situation: "Site/app problema" 
+    ask_or_infer: "¿Es un error técnico, es experiencia o es seguridad?" 
+    default: raxos
+    alternatives: [design-squad, cybersecurity]
+    rule: "Quebrado/erro → raxos. Confuso/feio → diseño. Invadido/exposto → ciberseguridad." 
+
+# ---------------------------------------------------------------------------
+# Cadeias multi-squad — quando a demanda atravessa domínios
+# ---------------------------------------------------------------------------
+multi_squad_chains:
+
+  lancamento_completo:
+    trigger_keywords: ["lanzamiento" , "producto de lanzamiento" , "Curso de lanzamiento" , "lanzamiento completo" ]
+    sequence: [brand-squad, hormozi-squad, copy-squad, traffic-masters, data-squad]
+    handoff_notes: "Marca establece el mensaje → Estructura Hormozi la oferta → Copia escribe → Tráfico distribuye → Medidas de datos." 
+    note: "Si el alcance es pequeño, prefiera marketing-squad (ya está integrado) en lugar de toda la cadena." 
+
+  marca_nova:
+    trigger_keywords: ["crear marca desde cero" , "nueva marca" , "começar do cero" ]
+    sequence: [brand-squad, storytelling, design-squad]
+    handoff_notes: "Posición → narrativa → identidad visual." 
+
+  produto_novo:
+    trigger_keywords: ["nuevo producto" , "nueva oferta" , "nuevo infoproduct" ]
+    sequence: [hormozi-squad, copy-squad, traffic-masters]
+    handoff_notes: "Oferta → copia de venta → adquisición." 
+
+  produto_digital_do_zero:
+    trigger_keywords: ["app" , "crear plataforma" , "crear saas" ]
+    sequence: [c-level-squad, design-squad, raxos]
+    handoff_notes: "Estratégia/GTM → UX y sistema de diseño → desarrollo en SDC." 
+
+  turnaround_de_metrica:
+    trigger_keywords: ["Conversión" , "empeoraron el resultado" , "métrica ha caído" ]
+    sequence: [data-squad, traffic-masters, copy-squad]
+    handoff_notes: "Data isolates donde cayó → El tráfico arregla la adquisición → Copia arregla la conversión." 

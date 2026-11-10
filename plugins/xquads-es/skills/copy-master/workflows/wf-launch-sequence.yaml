@@ -1,0 +1,122 @@
+workflow:
+  id: wf-launch-sequence
+  name: "Secuencia de lanzamiento completo" 
+  version: "2.0.0"
+  description: "Flujo de trabajo completo de lanzamiento de productos que combina los mejores expertos:\nFrank Kern a pre-lancamento y anticipación, Ry Schwartz para correos electrónicos de\ncarrito open/close, Russell Brunson para chatear webinar, y la revisión final\nCopiar Jefe de Maestría con auditoría de psicología persuasiva.\nProduce el paquete completo de lanzamiento listo para la ejecución."
+  trigger: "*launch-sequence"
+  entry_agent: copy-master-chief
+  estimated_duration: "60-120 minutes"
+  type: sequential
+  sequence:
+    - agent: copy-master-chief
+      action: diagnose-launch
+      creates: launch_brief
+    - agent: frank-kern
+      action: write-pre-launch
+      creates: pre_launch_content
+    - agent: ry-schwartz
+      action: write-launch-emails
+      creates: launch_emails
+    - agent: russell-brunson
+      action: write-webinar
+      creates: webinar_script
+    - agent: copy-master-chief
+      action: psychology-checkpoint
+      creates: psychology_audit
+    - agent: copy-master-chief
+      action: final-review
+      creates: launch_package
+
+phases:
+  - id: phase_0
+    name: "Presentación de información y estrategia" 
+    agent: copy-master-chief
+    task: diagnose.md
+    description: "Copia Jefe Maestro recibe el informe de lanzamiento, define el producto, el público, la pila de oferta, el plazo de lanzamiento y la estrategia de tráfico. Maps el calendario de lanzamiento completo con fechas de contenido, carrito open/close, y fecha webinar. Conjuntos objetivos de arquitectura de persuasión para todo el lanzamiento." 
+    outputs:
+      - launch_brief: "markdown"
+      - launch_calendar: "markdown"
+      - offer_stack: "object"
+      - persuasion_goals: "markdown"
+    checkpoint:
+      gate: "Borrador completo de lanzamiento con calendario, pila de oferta y cronograma definido" 
+      veto: "No hay pila de oferta definida O no es un plazo de lanzamiento - no puede planear sin fechas" 
+
+  - id: phase_1
+    name: "Contenido pre-lanzamiento (Frank Kern)" 
+    agent: frank-kern
+    task: create-funnel-copy.md
+    depends_on: [phase_0]
+    description: "Frank Kern crea el pre-launch secuencia de contenido. 3-4 piezas high-value contenido que construyen anticipación, establecen autoridad y crean demanda antes de que se abra el carrito. Cada pieza termina con un bucle abierto que apunta a la siguiente. Sigue los principios de 4 días de máquina de efectivo para construir urgencia y reciprocidad." 
+    outputs:
+      - pre_launch_content: "markdown"
+      - content_calendar: "markdown"
+      - anticipation_emails: "markdown"
+    checkpoint:
+      gate: "3-4 pre-launch piezas de contenido completas con emails de anticipación y bucles abiertos" 
+      veto: "El contenido no se construye hacia la oferta O no hay bucles abiertos entre piezas" 
+
+  - id: phase_2
+    name: "Secuencia de correo electrónico de lanzamiento (Ry Schwartz)" 
+    agent: ry-schwartz
+    task: write-email-sequence.md
+    depends_on: [phase_1]
+    description: "Ry Schwartz escribe la secuencia completa de correo electrónico de lanzamiento: anuncio abierto del carrito, mid-cart belief-shifting correos electrónicos, FAQ/objection manejo, y carreta secuencia de urgencia cercana. Aplica su técnica de escalada emocional firma y belief-layer enfoque de los lanzamientos financieros de Agora." 
+    outputs:
+      - launch_emails: "markdown"
+      - email_calendar: "markdown"
+      - subject_line_bank: "list"
+    checkpoint:
+      gate: "Secuencia completa del correo electrónico de la carro abierto a través del carrito cerca con urgencia creciente" 
+      veto: "Sin carrito secuencia cercana OR no objection-handling correos electrónicos" 
+
+  - id: phase_3
+    name: "Webinar Script (Russell Brunson)" 
+    agent: russell-brunson
+    task: write-webinar-script.md
+    depends_on: [phase_0]
+    description: "Russell Brunson escribe el script webinar usando el marco Webinar perfecto. Este es el evento de conversión principal del lanzamiento. El webinar debe romper las 3 creencias centrales (vehículo, interno, externo) y presentar la oferta a través de la Stack. Incluye historias de Epiphany Bridge y arquitectura de persuasión completa." 
+    outputs:
+      - webinar_script: "markdown"
+      - webinar_slides_outline: "markdown"
+      - post_webinar_emails: "markdown"
+    checkpoint:
+      gate: "Marco Webinar perfecto completo con 3 Secretos, Stack y Close" 
+      veto: "Desapareciendo cualquiera de los 3 Secretos O ninguna secuencia de diapositivas Stack" 
+
+  - id: phase_4
+    name: "Punto de control de Psicología" 
+    agent: copy-master-chief
+    task: review.md
+    depends_on: [phase_1, phase_2, phase_3]
+    description: "Copia Jefe de Maestría revisa el paquete completo de lanzamiento para la consistencia de persuasión. Verifica que pre-launch contenido, correos electrónicos y forma webinar un arco de persuasión coherente. Chequea que los principios Cialdini construyen progresivamente y Warren se distribuyen palancas a través del tiempo de lanzamiento completo. Asegura que no hay contradicciones entre las salidas de los especialistas." 
+    outputs:
+      - psychology_audit: "markdown"
+      - consistency_check: "boolean"
+      - persuasion_arc: "markdown"
+    checkpoint:
+      gate: "Todos los 3 productos son coherentes persuasion arc AND min 6 Principios Cialdini activos en todo el lanzamiento Y menos 4 Warren palancas comprometidos" 
+      veto: "Contradicciones entre pre-launch promesa y oferta webinar O secuencia de correo electrónico desconectada del contenido webinar" 
+
+  - id: phase_5
+    name: "Final Review and Launch Package" 
+    agent: copy-master-chief
+    task: review.md
+    depends_on: [phase_4]
+    description: "Copia Jefe Maestro compila el paquete completo de lanzamiento: pre-launch contenido + anticipación de correos electrónicos + secuencia de lanzamiento de correo electrónico + script webinar + post-webinar Incluye el calendario de lanzamiento maestro, documentación de arquitectura de persuasión y lista de verificación de ejecución." 
+    outputs:
+      - launch_package: "markdown"
+      - master_calendar: "markdown"
+      - execution_checklist: "markdown"
+      - persuasion_architecture: "markdown"
+    checkpoint:
+      gate: "Paquete completo de lanzamiento con todos los productos, calendario y lista de verificación de ejecución" 
+      veto: "Cualquier importante faltante o incongruente con el lanzamiento breve" 
+
+completion_criteria:
+  - "Contenido pre-lanzamiento creado por Frank Kern (3-4 piezas + emails de anticipación)" 
+  - "Lanzamiento de la secuencia de correo electrónico escrita por Ry Schwartz (carte abierto a través de la cesta cerca)" 
+  - "script Webinar completado por Russell Brunson (Perfect Webinar framework)" 
+  - "Control de Psicología aprobado (coherente persuasión arco en todos los entregables)" 
+  - "Revisión final aprobada por el Jefe de la Maestra" 
+  - "Paquete completo de lanzamiento entregado con calendario maestro y lista de verificación de ejecución" 

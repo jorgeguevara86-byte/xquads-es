@@ -1,0 +1,94 @@
+workflow:
+  id: wf-copy-review-cycle
+  name: "Ciclo de Revisão de Copy" 
+  version: "1.0.0"
+  description: "Ciclo iterativo de revisión crítica-critica. Un experto produce copia,\nCopy Chief hace el examen, y los comentarios de los expertos basados en comentarios.\nMáximo de 3 iteraciones antes de la inscripción forzada o aprobación."
+  trigger: "*copy-review-cycle"
+  entry_agent: copy-chief
+  estimated_duration: "20-45 minutes"
+  type: iterative
+  sequence:
+    - agent: "{specialist}"
+      action: write-draft
+      creates: draft_copy
+    - agent: copy-chief
+      action: critique
+      creates: critique_report
+    - agent: "{specialist}"
+      action: revise
+      creates: revised_copy
+    - agent: copy-chief
+      action: final-review
+      creates: final_verdict
+
+config:
+  max_iterations: 3
+  pass_threshold: 60
+  elite_threshold: 80
+
+phases:
+  - id: phase_0
+    name: "Producción inicial" 
+    agent: "{specialist}"
+    task: "{matched_task}"
+    description: "El especialista escribe el proyecto inicial utilizando la tarea apropiada (write-headline.md, write-sales-letter.md, etc.). La tarea se selecciona en función del tipo de copia solicitado." 
+    outputs:
+      - draft_copy: "markdown"
+      - iteration: "number"
+    checkpoint:
+      gate: "Proyecto completo con todas las secciones necesarias" 
+      veto: "Proyecto de elementos críticos incompletos o desaparecidos" 
+
+  - id: phase_1
+    name: "Chief Critique" 
+    agent: copy-chief
+    task: critique-copy.md
+    depends_on: [phase_0]
+    description: "Copy Chief realiza 8 puntos críticos. Asigna puntajes, identifica el defecto fatal, y proporciona una lista de fijación priorizada con ejemplos de reescritura." 
+    outputs:
+      - critique_report: "markdown"
+      - composite_score: "number"
+      - verdict: "string"
+      - fix_list: "list"
+    checkpoint:
+      gate: "Puntuación √≥= 60% - aprobada para entrega" 
+      veto: "Puntuación: 40% después de la iteración 3 - escalada" 
+
+  - id: phase_2
+    name: "Specialist Revision" 
+    agent: "{specialist}"
+    task: "{matched_task}"
+    depends_on: [phase_1]
+    condition: "Veredicto!= 'Elite' Y veredicto!= 'Strong' Y iteración max_iterations" 
+    description: "El especialista revisa la copia que aborda todos los elementos de la lista de fijación priorizada. Enfócate primero en el defecto mortal, luego gana rápidamente, luego sigue siendo artículos." 
+    outputs:
+      - revised_copy: "markdown"
+      - changes_made: "list"
+    checkpoint:
+      gate: "Todas las correcciones prioritarias 1" 
+      veto: "Fallo fatal no tratado en revisión" 
+
+  - id: phase_3
+    name: "Examen final" 
+    agent: copy-chief
+    task: critique-copy.md
+    depends_on: [phase_2]
+    description: "Copy Chief realiza la crítica final. Si la puntuación mejoró y pasa el umbral, apruebe. Si no mejoró después de las iteraciones máximas, escalar con los problemas documentados." 
+    outputs:
+      - final_critique: "markdown"
+      - final_verdict: "string"
+    checkpoint:
+      gate: "Puntuación √= 60% O max iterations alcanzadas con excepciones documentadas" 
+      veto: "El porcentaje disminuyó entre las iteraciones — investigar la causa raíz" 
+
+iteration_rules:
+  on_pass: "Entregar copia final con informe crítico" 
+  on_fail_under_max: "Regresa a phase_2 con lista de fijación actualizada" 
+  on_max_reached: "Aprobar con preocupaciones documentadas O escalar al usuario" 
+  score_regression: "Si la puntuación cae entre iteraciones, deténgase y vuelva a evaluar el enfoque" 
+
+completion_criteria:
+  - "Copia consigue un veredicto fuerte o elite" 
+  - "O máximas iteraciones alcanzadas con todas las prioridades 1 correcciones abordadas" 
+  - "Informe crítico presentado con cada iteración documentada" 
+  - "Copia final marcada como aprobada o escalada" 

@@ -1,0 +1,29 @@
+Instala estos squads de agentes globalmente en mi computadora para que estén
+disponibles en cualquier chat o proyecto de mi aplicación compatible:
+https://github.com/jorgeguevara86-byte/xquads-es.git
+
+Lee la guía y el instalador del repositorio. Usa la instalación GLOBAL por
+defecto, sin --project, y no te limites a copiar archivos dentro de un proyecto.
+Verifica que los 15 squads queden en el directorio global de Agent Skills del
+usuario y que mi aplicación pueda descubrirlos. Conserva las configuraciones y
+skills de terceros existentes; no uses sudo ni una instalación de sistema.
+
+Si mi aplicación admite skills como comandos /, quiero ver los squads al
+escribir / para poder elegirlos. Comprueba cómo lo soporta realmente mi cliente:
+en Claude Code usa las skills globales; en Codex indica /skills o $nombre cuando
+corresponda. Dime si debo abrir una nueva sesión para refrescar el catálogo.
+Después verifica las rutas globales y muestra cómo invocar Xquads y otro squad
+desde un proyecto diferente. No declares completada esa verificación si solo
+comprobaste que los archivos existen.
+
+Si estoy en ChatGPT o Claude de navegador sin acceso al sistema de archivos de
+mi computadora, explica que no puedes realizar una instalación global ni añadir
+comandos / a todos los chats mediante un comando de terminal en la nube. En
+ChatGPT Work de escritorio, usa las skills globales y, si corresponde, registra
+el marketplace de este repositorio mediante la herramienta oficial disponible;
+no reemplaces configuraciones existentes. Si requiere un clic de instalación
+o reiniciar la aplicación, indica exactamente ese último paso. En ChatGPT los
+equipos se seleccionan con @; no prometas el menú / de Claude Code en ChatGPT.
+Si el entorno no admite instalación, ofrece el paquete de contexto alternativo.
+No simules una instalación que la plataforma no admite.
+Responde en español y deja instrucciones breves para usar los agentes.

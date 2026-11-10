@@ -1,0 +1,105 @@
+# Hormozi Business Frameworks Reference
+# Referenced by specialist agents for structured methodology application
+
+frameworks:
+  value_equation:
+    source: "Alex Hormozi — Ofertas de $100M" 
+    description: "La ecuación central para crear ofertas irresistibles maximizando la percepción de valor" 
+    components:
+      - name: "Resultado" 
+        description: "El resultado final ideal que el cliente quiere — lo hace vivo, específico y emocionalmente convincente. Cuanto más grande sea el resultado, más alto será el valor." 
+      - name: "Percibido de la probabilidad de logro" 
+        description: "Cuán confiado es que el comprador realmente obtendrá el resultado. Aumento por la prueba, garantías, registro de pistas y especificidad." 
+      - name: "Time Delay" 
+        description: "Cuanto tiempo hasta que el comprador obtenga su primer resultado significativo. Cuanto más corto sea el retraso, mayor será el valor. Compresa tiempo para resultar agresivamente." 
+      - name: "Effort y Sacrifice" 
+        description: "Cuánto trabajo, incomodidad o sacrificio debe soportar el comprador. Cuanto menos esfuerzo se requiere, mayor es el valor. Hazlo por ellos cuando sea posible." 
+    when_to_use: "Cada oferta de creación, decisión de precios o auditoría de ofertas. Este es el marco fundacional." 
+
+  closer_framework:
+    source: "Alex Hormozi — Ofertas de $100M, refinado en Gym Lanzamiento" 
+    description: "Marco de cierre de ventas de seis pasos para high-ticket conversaciones" 
+    components:
+      - name: "C - Clarify" 
+        description: "Haga preguntas para entender su situación actual, metas y lo que han intentado antes. Nunca tomes antes de entender." 
+      - name: "L - Label" 
+        description: "Reafirmen su problema en sus propias palabras. Cuando dicen 'exactamente', usted ha ganado el derecho a presentar." 
+      - name: "O - Sinopsis" 
+        description: "Presentar el camino de 3 pasos desde donde están hasta donde quieren estar. Mantenlo sencillo y lógico." 
+      - name: "S — Vender la Vacación" 
+        description: "Vende el resultado, no el proceso. Pinta la imagen de su vida después de la transformación." 
+      - name: "E - Explicar preocupaciones por la vía respiratoria" 
+        description: "Objeciones de mango aislándolas y reorganizando. Si resolvimos X, ¿estarías listo?" 
+      - name: "R - Refuerzo y cierre" 
+        description: "Solicitar la decisión. Usar un cierre asuntivo. Reforzar el valor y la urgencia." 
+    when_to_use: "Venta de teléfonos, Llamadas de Zoom, in-person consultas, venta de DM — cualquier conversation-based ventas" 
+
+  lead_magnets_taxonomy:
+    source: "Alex Hormozi — $100M Leads" 
+    description: "Clasificación de imanes de plomo por tipo, esfuerzo y eficacia" 
+    components:
+      - name: "Prueba gratuita / Muestra" 
+        description: "Dales un sabor del producto pagado. Conversión más alta a coste pagado pero más alto para entregar." 
+      - name: "Herramienta gratuita / Calculadora" 
+        description: "Software o hoja de cálculo que resuelve un problema específico. Valor elevado percibido, construye hábito." 
+      - name: "Capacitación gratuita / Taller" 
+        description: "Contenido educativo que demuestra experiencia. Construye autoridad y confianza." 
+      - name: "Lista de verificación / Hoja de Cheat" 
+        description: "Recurso de acción condensado. Bajo costo para crear, alto valor percibido si específico." 
+      - name: "Evaluación / Quiz" 
+        description: "Diagnóstico personalizado que genera curiosidad sobre el resultado. Alta participación." 
+      - name: "Plantilla / Archivo de cuerdas" 
+        description: "Listo.to-use recursos que pueden implementar inmediatamente. Ahorra esfuerzo." 
+      - name: "Acceso comunitario" 
+        description: "Miembro libre a un grupo. Construye pertenencia y abre el bucle de relación." 
+    when_to_use: "Diseño de generación líder, opt-in creación de páginas, planificación de estrategias de contenido" 
+
+  hundred_million_offers:
+    source: "Alex Hormozi — Ofertas de $100M" 
+    description: "La metodología completa de creación de ofertas para la construcción de ofertas Grand Slam" 
+    components:
+      - name: "Identificación de resultados de sueño" 
+        description: "Defina lo que el cliente realmente quiere en sus propias palabras, no lo que usted piensa que quieren." 
+      - name: "Problema de solución" 
+        description: "Listar todos los problemas entre el cliente y su resultado de sueño. sub-problems." 
+      - name: "Creación de vehículos de solución" 
+        description: "Transformar cada problema en un curso, herramienta, plantilla, servicio, comunidad." 
+      - name: "Nombres propriosarios" 
+        description: "Nombre cada vehículo de solución con un nombre único y marcado que implica la transformación." 
+      - name: "Value Stack Assembly" 
+        description: "Stack core oferta + bonos de velocidad + bonos de esfuerzo + bonos de prueba en un paquete irresistible." 
+      - name: "Garantía Diseño" 
+        description: "Crear una garantía tan fuerte se convierte en un punto de venta: incondicional, condicional, de rendimiento o anti-guarantee." 
+      - name: "La escasez y la frecuencia" 
+        description: "Agregue restricciones reales — límites de cantidad, ventanas de tiempo, caducidad de bonificación— para impulsar la acción inmediata." 
+    when_to_use: "Crear una nueva oferta, rediseñar una oferta de bajo rendimiento, lanzar un nuevo producto" 
+
+  hundred_million_leads:
+    source: "Alex Hormozi — $100M Leads" 
+    description: "Los cuatro métodos básicos de conseguir los plomos, organizados por el costo y la velocidad" 
+    components:
+      - name: "Alcance de calentamiento" 
+        description: "Llegando a personas que ya te conocen, clientes, contactos, amigos. Libre, rápido, pero limitado." 
+      - name: "Cold Outreach" 
+        description: "Llegar a extraños — correo electrónico, DM, teléfono. Libre a bajo costo, escalable, pero requiere volumen y habilidad." 
+      - name: "Contenido (gratuito)" 
+        description: "Crear contenido que atraiga conduce orgánicamente — redes sociales, blog, YouTube, podcast. Libre, lento para empezar, compuestos con el tiempo." 
+      - name: "Ads Paid" 
+        description: "Comprando atención a través de la publicidad — Facebook, Google, YouTube, TikTok. Rápido, escalable, requiere presupuesto y habilidad." 
+    when_to_use: "Estrategia de generación líder, selección de canales, asignación de presupuestos de marketing" 
+
+  laire:
+    source: "Alex Hormozi — $100M Leads" 
+    description: "La adquisición y retención de clientes ciclo de vida" 
+    components:
+      - name: "L - Liderazgo" 
+        description: "Atrenta la atención y genera leads a través de los 4 métodos básicos." 
+      - name: "A - Audiencia" 
+        description: "Construye un público comprometido que confía en ti antes de vender." 
+      - name: "I - Invitar" 
+        description: "Invitar al público a dar el siguiente paso: webinar, llamar, comprar. Hacer la oferta." 
+      - name: "R: Retención" 
+        description: "Mantenga a los clientes comprometidos, obteniendo resultados y permaneciendo más tiempo. La retención es más barata que la adquisición." 
+      - name: "E - Ganancia" 
+        description: "Ganar referencias y repetir compras de clientes satisfechos. La fuente de plomo más barata." 
+    when_to_use: "Diseño de modelos de negocio, mapeo de ciclo de vida de los clientes, estrategia de retención" 

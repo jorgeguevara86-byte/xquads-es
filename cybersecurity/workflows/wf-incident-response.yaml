@@ -1,0 +1,154 @@
+# Incident Response Workflow
+# NIST 800-61 based incident handling lifecycle
+
+workflow:
+  id: wf-incident-response
+  name: "Respuesta del incidente" 
+  trigger: "*incident-response"
+  entry_agent: omar-santos
+  estimated_duration: "1-8 horas (varía por gravedad)" 
+  description: "Corriente de trabajo estructurada de respuesta a incidentes después del marco NIST 800-61.\nDe la detección a la contención, la erradicación, la recuperación y las lecciones aprendidas."
+  type: sequential
+  sequence:
+    - agent: omar-santos
+      action: detect
+      creates: detection_report
+    - agent: omar-santos
+      action: contain
+      creates: containment_plan
+    - agent: omar-santos
+      action: eradicate
+      creates: eradication
+    - agent: omar-santos
+      action: recover
+      creates: recovery
+    - agent: omar-santos
+      action: lessons-learned
+      creates: post_mortem
+
+phases:
+  - id: phase_1_detect
+    name: "Detección &quot; Triage" 
+    agent: omar-santos
+    task: respond-incident.md
+    depends_on: []
+    description: "Clasifique el incidente, establezca el plazo, evalúe la gravedad" 
+    checkpoint:
+      gate: "Incident classified with gravity (P1-P4) and blast radius estimated" 
+      veto: "HALT si el incidente implica la exfiltración de datos activos - escalar a P1 inmediatamente" 
+    outputs:
+      - incident_classification
+      - severity_level
+      - initial_timeline
+      - ioc_list
+
+  - id: phase_2_contain
+    name: "Containment"
+    agent: omar-santos
+    task: respond-incident.md
+    depends_on: [phase_1_detect]
+    support_agents: [chris-sanders, command-generator]
+    description: "Sistemas afectados aislados, conservad evidencia, dejad de extender" 
+    checkpoint:
+      gate: "Acceso de los atacantes cortado y preservado de pruebas" 
+      veto: "HALT si las pruebas corren el riesgo de ser destruidas — preservar antes de cualquier otra acción" 
+    actions:
+      - "Sistemas afectados de aislamiento (sección de redes)" 
+      - "Capturar los vertederos de memoria e imágenes de disco" 
+      - "Bloque malicioso IPs/domains en el perímetro" 
+      - "Cuentas con compromisos de gastos" 
+      - "Permitir un mejor control sobre los sistemas adyacentes" 
+    outputs:
+      - containment_actions
+      - preserved_evidence
+      - network_changes
+
+  - id: phase_3_eradicate
+    name: "Eradication"
+    agent: omar-santos
+    task: respond-incident.md
+    depends_on: [phase_2_contain]
+    support_agents: [jim-manico, peter-kim]
+    description: "Eliminar la amenaza, recortar vulnerabilidades, reconstruir sistemas comprometidos" 
+    checkpoint:
+      gate: "Causa raíz identificada y todos los artefactos maliciosos eliminados" 
+      veto: "HALT si la causa raíz es desconocida — no declarar erradicado sin entender el punto de entrada" 
+    actions:
+      - "Identificación y documentación de la causa raíz" 
+      - "Quitar malware, backdoors, cuentas no autorizadas" 
+      - "Víctima vulnerabilidades explotadas" 
+      - "Reconstruir sistemas comprometidos desde bases de referencia limpias" 
+      - "Escáner para COI residual" 
+    outputs:
+      - root_cause_analysis
+      - eradication_confirmation
+      - patching_actions
+
+  - id: phase_4_recover
+    name: "Recovery"
+    agent: omar-santos
+    task: respond-incident.md
+    depends_on: [phase_3_eradicate]
+    support_agents: [chris-sanders]
+    description: "Restaurar servicios, validar la integridad, monitorear para re-compromise" 
+    checkpoint:
+      gate: "Todos los servicios restaurados y de vigilancia mejorada de 72 horas activos" 
+      veto: "HALT si la validación de la integridad falla — no restablezca sistemas no verificados a la producción" 
+    actions:
+      - "Restaurar de copias de seguridad limpias verificadas" 
+      - "Reintroducción gradual de la producción" 
+      - "Validar la integridad del sistema (consecuencias, bases de referencia)" 
+      - "Permitir un monitoreo mejorado de 72 horas" 
+      - "Actualizar las reglas de detección con nuevas COI" 
+    outputs:
+      - restored_services
+      - monitoring_status
+      - updated_detection_rules
+
+  - id: phase_5_lessons
+    name: "Enseñanzas adquiridas" 
+    agent: omar-santos
+    task: respond-incident.md
+    depends_on: [phase_4_recover]
+    support_agents: [marcus-carey]
+    description: "Examen posterior al incidente, documentación y mejora de procesos" 
+    checkpoint:
+      gate: "Informe posterior al incidente completo con mejoras de acción" 
+      veto: "Nunca se saltan las lecciones aprendidas, incluso para incidentes menores" 
+    actions:
+      - "Conducta post-incident (en 5 días hábiles)" 
+      - "Documento cronológico completo con decisiones" 
+      - "Determinación de mejoras de los procesos" 
+      - "Actualizar los libros de juego IR" 
+      - "Crear paquetes compartidos por COI (si es apropiado)" 
+    outputs:
+      - incident_report
+      - lessons_learned
+      - playbook_updates
+      - ioc_packages
+
+completion_criteria:
+  - "Incident classified and triaged within SLA" 
+  - "Contenciones verificadas - no compromiso en curso" 
+  - "Causa de la raíz identificada y documentada" 
+  - "Todos los sistemas afectados restaurados y validados" 
+  - "Mejora de la vigilancia activa durante mínimo 72 horas" 
+  - "Las experiencias adquiridas documentadas con mejoras viables" 
+
+severity_sla:
+  P1_critical:
+    triage: "15 minutes"
+    containment: "1 hour"
+    executive_notification: "immediate"
+  P2_high:
+    triage: "30 minutes"
+    containment: "4 hours"
+    executive_notification: "dentro de 2 horas" 
+  P3_medium:
+    triage: "2 hours"
+    containment: "24 hours"
+    executive_notification: "Resumen diario" 
+  P4_low:
+    triage: "24 hours"
+    containment: "1 week"
+    executive_notification: "resumen semanal" 

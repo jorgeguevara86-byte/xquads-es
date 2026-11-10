@@ -1,0 +1,254 @@
+# Metrics Frameworks — Reference Data
+# Canonical models used by all Data Squad agents
+# Version: 1.0.0
+
+see_think_do_care:
+  name: "Marco de la vista-intenta-do-carreo" 
+  author: "Avinash Kaushik" 
+  description: "Marco de atención de la audiencia que mapea la comercialización a las etapas de viaje del cliente" 
+  stages:
+    - id: see
+      name: "See"
+      audience: "Mayor audiencia calificada" 
+      intent: "No hay intención comercial" 
+      content: "Conciencia, inspiración, educación" 
+      metrics: ["impressions", "reach", "nuevos visitantes" , "marca record" ]
+      channels: ["display", "social orgánico" , "video", "PR"]
+    - id: think
+      name: "Think"
+      audience: "Audiencia con alguna intención comercial" 
+      intent: "Considerando opciones" 
+      content: "Comparación, opiniones, how-to" 
+      metrics: ["Tasa de compromiso" , "tiempo en el sitio" , "páginas por período de sesiones" , "email signups" ]
+      channels: ["search", "marketing" , "retargeting", "email"]
+    - id: do
+      name: "Do"
+      audience: "Audiencia con fuerte intención comercial" 
+      intent: "Listo para actuar" 
+      content: "Páginas de productos, precios, pruebas, demos" 
+      metrics: ["Tasa de conversión" , "costo por adquisición" , "revenue", "ROAS"]
+      channels: ["búsqueda pagada" , "remarketing", "email nurture" , "sales"]
+    - id: care
+      name: "Care"
+      audience: "Clientes existentes (2+ transacciones)" 
+      intent: "Carga, comportamiento repetido" 
+      content: "Apoyo, lealtad, upsell, la comunidad" 
+      metrics: ["NPS", "Tasa de retención" , "CLV", "Tasa de remisión de la tasa de remisión" ]
+      channels: ["email", "community", "support", "Programas de fidelidad" ]
+
+aarrr_pirate_metrics:
+  name: "Metrices piratas de AARRR" 
+  author: "Dave McClure / Sean Ellis" 
+  description: "Marco de crecimiento de la startups" 
+  stages:
+    - id: acquisition
+      name: "Acquisition"
+      question: "¿Cómo nos encuentran los usuarios?" 
+      metrics: ["tráfico por canal" , "CAC", "Tasa de inscripción" ]
+    - id: activation
+      name: "Activation"
+      question: "¿Tienen los usuarios una gran primera experiencia?" 
+      metrics: ["a bordo" , "tiempo a valor" , "tasa de activación" ]
+    - id: retention
+      name: "Retention"
+      question: "¿Regresan los usuarios?" 
+      metrics: ["DAU/MAU", "retención de cohortes" , "tasa de churn" ]
+    - id: referral
+      name: "Referral"
+      question: "¿Los usuarios le cuentan a otros?" 
+      metrics: ["coeficiente viral" , "NPS", "Tasa de remisión de la tasa de remisión" ]
+    - id: revenue
+      name: "Revenue"
+      question: "¿Los usuarios pagan?" 
+      metrics: ["ARPU", "MRR", "LTV/CAC ratio"]
+
+north_star_metric:
+  name: "Marco de medición de estrellas del norte" 
+  author: "Sean Ellis" 
+  description: "La métrica única que mejor captura el valor básico entregado a los clientes" 
+  properties:
+    - "Refleja el valor del cliente (no sólo los ingresos)" 
+    - "Es liderable (el equipo puede influir en él)" 
+    - "Es mensurable (puede hacer un seguimiento semanal)" 
+    - "Predictos long-term éxito de las empresas" 
+  input_dimensions:
+    breadth: "¿Cuántos usuarios experimentan el valor" 
+    depth: "Cuánta valor obtiene cada usuario" 
+    frequency: "¿Con qué frecuencia los usuarios obtienen valor" 
+  examples:
+    - product: "Airbnb"
+      nsm: "Noches reservadas" 
+    - product: "Spotify"
+      nsm: "Tiempo pasado escuchando" 
+    - product: "Slack"
+      nsm: "Mensajes enviados dentro de un equipo" 
+    - product: "Shopify"
+      nsm: "GMV (Gross Merchandise Volumen)" 
+
+ice_scoring:
+  name: "Marco de la CEI para la elaboración de estrategias" 
+  author: "Sean Ellis" 
+  description: "Marco de prioridades para los experimentos de crecimiento" 
+  dimensions:
+    impact:
+      range: "1-10"
+      question: "¿Cuánto va a mover esto la Metric de la Estrella del Norte?" 
+      anchors:
+        1: "Impacto negativo" 
+        5: "Impacto moderado en un subconjunto de usuarios" 
+        10: "Impacto masivo en todos los usuarios" 
+    confidence:
+      range: "1-10"
+      question: "¿Qué tan seguro estamos de que funcionará?" 
+      anchors:
+        1: "Pura suposición" 
+        5: "Algunos datos de apoyo" 
+        10: "Provenido en contextos similares" 
+    ease:
+      range: "1-10"
+      question: "¿Qué tan fácil es esto para implementar?" 
+      anchors:
+        1: "Meses de trabajo, muchas dependencias" 
+        5: "1 a 2 semanas, algunas dependencias" 
+        10: "Horas, no hay dependencias" 
+  formula: "ICE = (Impact + Confianza + Facilidad) / 3" 
+
+bg_nbd_clv_model:
+  name: "BG/NBD Modelo de valor de tiempo de vida del cliente" 
+  author: "Peter Fader &quot; Bruce Hardie" 
+  description: "Modelo probabilístico para predecir el valor de la vida del cliente en non-contractual Ajustes" 
+  principles:
+    - "Los clientes tienen tasas de transacción heterogéneas" 
+    - "Los clientes tienen tasas heterogéneas de deserción" 
+    - "Después de cualquier transacción, un cliente puede ser permanentemente inactivo" 
+    - "Las tasas de transacción y las tasas de abandono varían independientemente" 
+  inputs:
+    recency: "Tiempo desde la última transacción" 
+    frequency: "Número de transacciones repetidas" 
+    monetary: "Valor medio de transacción" 
+    tenure: "Tiempo desde la primera transacción" 
+  outputs:
+    - "P(alivia) — cliente de probabilidad todavía está activo" 
+    - "Operaciones futuras previstas" 
+    - "CLV esperada sobre horizonte" 
+  segmentation:
+    platinum: "Top 5% por CLV" 
+    gold: "Siguiente 15% por CLV" 
+    silver: "Siguiente 30% por CLV" 
+    bronze: "50% de peso por CLV" 
+
+spaces_model:
+  name: "Modelo de los recursos espaciales" 
+  author: "David Spinks" 
+  description: "Marco para definir el valor empresarial comunitario" 
+  dimensions:
+    - id: support
+      name: "Support"
+      description: "Los miembros se ayudan mutuamente, reduciendo los costos de apoyo" 
+      metrics: ["tasa de deflexión de los billetes" , "Tasa de resolución de la comunidad" , "tiempo para la resolución" ]
+    - id: product
+      name: "Product"
+      description: "Los miembros proporcionan información, mejorando el producto" 
+      metrics: ["ideas presentadas" , "testadores beta" , "adopción de datos" ]
+    - id: acquisition
+      name: "Acquisition"
+      description: "Comunidad atrae nuevos clientes" 
+      metrics: ["community-sourced leads", "Tasa de remisión de la tasa de remisión" , "SEO de UGC" ]
+    - id: contribution
+      name: "Contribution"
+      description: "Los miembros crean contenido o código" 
+      metrics: ["Volumen UGC" , "con cargo a los" , "puntuación de calidad de contenido" ]
+    - id: engagement
+      name: "Engagement"
+      description: "Los miembros se conectan, aumentando la retención" 
+      metrics: ["DAU/MAU", "Tasa de respuesta" , "tasa de visitantes" ]
+    - id: success
+      name: "Success"
+      description: "Los miembros logran resultados, reduciendo churn" 
+      metrics: ["tasa de finalización de la meta" , "PNP de miembros de la comunidad" , "churn diff vs non-members" ]
+
+ten_laws_customer_success:
+  name: "10 Leyes de éxito del cliente" 
+  author: "Nick Mehta" 
+  description: "Principios básicos para la construcción de una práctica de éxito del cliente" 
+  laws:
+    - number: 1
+      title: "Vender al cliente adecuado" 
+      principle: "CS comienza en ventas: wrong-fit clientes no pueden ser salvados" 
+    - number: 2
+      title: "La Tendencia Natural para los Clientes es para Churn" 
+      principle: "Sin compromiso proactivo, los clientes se alejan" 
+    - number: 3
+      title: "Los clientes esperan que los haga con éxito" 
+      principle: "La barra no es satisfacción — es transformación" 
+    - number: 4
+      title: "Monitor y Administrar la Salud del Cliente" 
+      principle: "Las puntuaciones de salud deben ser multi-dimensional y predictivo" 
+    - number: 5
+      title: "No puedes construir más largamente lealtad a través de relaciones personales solo" 
+      principle: "El producto y el proceso deben escalar más allá de las relaciones individuales" 
+    - number: 6
+      title: "Producto Es su único diferenciador escalable" 
+      principle: "La retención a largo plazo se ve impulsada por el valor del producto" 
+    - number: 7
+      title: "Mejorar obsesivamente el tiempo a valor" 
+      principle: "Los clientes más rápidos ven valor, la retención más alta" 
+    - number: 8
+      title: "Comprende profundamente sus métricas de cliente" 
+      principle: "Superformas de CS basadas en datos gut-driven CS" 
+    - number: 9
+      title: "Conducir el éxito del cliente a través de la medición dura" 
+      principle: "NRR, expansión y puntuación de salud — no sentimientos" 
+    - number: 10
+      title: "Es un compromiso de la empresa-Wide de la mano de obra superior" 
+      principle: "CS no es un departamento, es una estrategia de empresa" 
+
+health_score:
+  name: "Puntuación de salud del cliente" 
+  description: "Evaluación de salud multidimensional para la predicción de churn" 
+  dimensions:
+    - name: "Uso del producto" 
+      weight: 25
+      signals: ["frecuencia de inicio" , "característica de la adopción" , "tiempo en la aplicación" ]
+    - name: "Interacción de apoyo" 
+      weight: 15
+      signals: ["volumen de tickets" , "sentiment", "Tasa de aumento" ]
+    - name: "Engagement"
+      weight: 20
+      signals: ["email abre" , "asistencia a los eventos" , "actividad comunitaria" ]
+    - name: "Resultado de la actividad" 
+      weight: 20
+      signals: ["logro de objetivos" , "ROI reported" , "hitos de éxito" ]
+    - name: "Relationship"
+      weight: 10
+      signals: ["puntuación de NPS" , "participación de los patrocinadores ejecutivos" , "Asistencia QBR" ]
+    - name: "Financial"
+      weight: 10
+      signals: ["puntualidad de pago" , "tendencia del valor contractual" , "señales de expansión" ]
+  thresholds:
+    healthy: "0-25"
+    monitor: "26-50"
+    at_risk: "51-75"
+    critical: "76-100"
+
+spiky_pov_framework:
+  name: "Punto de vista brillante Marco" 
+  author: "Wes Kao" 
+  description: "Marco para desarrollar una perspectiva diferenciada que construya al público" 
+  criteria:
+    specific: "No es un treísmo amplio, una afirmación precisa y estrecha" 
+    provable: "Respaldado por datos, experiencia o resultados" 
+    interesting: "Hace que la gente deje de desplazarse" 
+    contrarian: "Desafíos de la sabiduría convencional" 
+    your_terrain: "Tienes más credibilidad aquí que la mayoría." 
+  validation_test: "¿Alguien con conocimiento discutiría con esto?" 
+  content_generation:
+    minimum_pieces: 50
+    description: "Un POV de araña válida debe generar al menos 50 piezas de contenido" 
+  platform_selection:
+    factors:
+      - "presencia de audiencia (donde ya están)" 
+      - "Formato de contenido (acopla tu estilo de creación)" 
+      - "Mecánica de distribución ( potencial de alcance orgánico)" 
+      - "Ruta de la monetización (paginas, cursos, consultoría)" 
+    rule: "Max 2 plataformas simultáneamente" 

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "xquads-es",
+  "version": "1.0.0",
+  "description": "15 equipos de especialistas de IA en español.",
+  "author": {
+    "name": "Jorge Guevara — adaptación de Xquads / Synkra"
+  },
+  "repository": "https://github.com/jorgeguevara86-byte/xquads-es",
+  "homepage": "https://github.com/jorgeguevara86-byte/xquads-es"
+}

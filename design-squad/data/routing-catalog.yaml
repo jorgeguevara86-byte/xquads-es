@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════════════════════════════════
+# Routing Catalog: Design Squad
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+domains:
+  design_systems:
+    keywords: ["sistema de diseño" , "biblioteca de patrones" , "componente de la biblioteca" , "guía de estilo" , "lenguaje de diseño" , "gobernanza del sistema" ]
+    primary_agent: brad-frost
+    secondary_agent: dan-mall
+    description: "Creación de sistemas de diseño, gobernanza, adopción y evolución" 
+
+  atomic_design:
+    keywords: ["diseño atómico" , atoms, molecules, organisms, templates, pages, "jerarquizaria componente" ]
+    primary_agent: brad-frost
+    secondary_agent: design-system-architect
+    description: "Metodología de diseño atómico, jerarquía de componentes y descomposición de patrones" 
+
+  component_architecture:
+    keywords: [component, architecture, composition, props, variants, slots, "componentes compuestos" ]
+    primary_agent: brad-frost
+    secondary_agent: design-system-architect
+    description: "Arquitectura de componentes, patrones de composición y bloques de construcción de la interfaz de usuario reutilizables" 
+
+  design_scaling:
+    keywords: ["diseño a escala" , "design organization" , multi-team, federated, "modelo de contribución" , adoption]
+    primary_agent: dan-mall
+    secondary_agent: dave-malouf
+    description: "Diseño de escala en equipos, estrategia de diseño organizativo y marcos de adopción" 
+
+  design_leadership:
+    keywords: ["diseño de liderazgo" , "estrategia de diseño" , "cultura de diseño" , "diseño madurez" , "diseño de pensamiento" ]
+    primary_agent: dan-mall
+    secondary_agent: dave-malouf
+    description: "Diseño de liderazgo, decisiones de diseño estratégico y construcción de cultura de diseño" 
+
+  design_ops:
+    keywords: [DesignOps, "operaciones de diseño" , "proceso de diseño" , "diseño de herramientas" , "métricas de diseño" , workflow]
+    primary_agent: dave-malouf
+    secondary_agent: dan-mall
+    description: "Gestión de operaciones de diseño, optimización de procesos, herramientas y métricas" 
+
+  design_process:
+    keywords: ["proceso de diseño" , "diseño sprint" , "revisión del diseño" , critique, "diseño de flujo de trabajo" , handoff]
+    primary_agent: dave-malouf
+    secondary_agent: dan-mall
+    description: "Diseño de definición de proceso, sprints, revisiones, críticas y desarrolladores" 
+
+  ux_research:
+    keywords: ["Investigación UX" , "investigación de usuarios" , usability, "Pruebas de usuario" , personas, "mapa de viaje" , "arquitectura de la información" ]
+    primary_agent: ux-designer
+    secondary_agent: dave-malouf
+    description: "Investigación de usuarios, pruebas de usabilidad, desarrollo de personajes y arquitectura de información" 
+
+  user_testing:
+    keywords: ["Pruebas de usuario" , "pruebas de usabilidad" , A/B testing, "evaluación heurística" , "progreso cognitivo" ]
+    primary_agent: ux-designer
+    secondary_agent: dan-mall
+    description: "Metodologías de pruebas de usuario, evaluación de usabilidad y planificación de pruebas" 
+
+  accessibility:
+    keywords: [accessibility, "a11y" , WCAG, "lector de pantalla" , ARIA, "diseño inclusivo" , "contraste de color" ]
+    primary_agent: ux-designer
+    secondary_agent: brad-frost
+    description: "Normas de accesibilidad, cumplimiento de WCAG, diseño inclusivo y tecnología de asistencia" 
+
+  design_tokens:
+    keywords: ["tokens de diseño" , "Variables CSS" , theme, spacing, typography, "paleta de colores" , "arquitectura de token" ]
+    primary_agent: design-system-architect
+    secondary_agent: brad-frost
+    description: "Diseño de arquitectura token, temática y gestión sistemática del valor del diseño" 
+
+  component_code:
+    keywords: ["componente" , "Componente de reacción" , "componente web" , Storybook, "componente API" , implementation]
+    primary_agent: design-system-architect
+    secondary_agent: ui-engineer
+    description: "Implementación de bibliotecas de componentes, documentación de libros de historias y API de componentes" 
+
+  visual_assets:
+    keywords: ["activos visuales" , icons, illustrations, images, graphics, mockup, "diseño visual" ]
+    primary_agent: visual-generator
+    secondary_agent: ui-engineer
+    description: "Creación de activos visuales, sistemas de iconos, ilustraciones y producción gráfica" 
+
+  ui_implementation:
+    keywords: ["Aplicación de la UI" , CSS, responsive, layout, animation, "código de frontend" , pixel-perfect]
+    primary_agent: ui-engineer
+    secondary_agent: design-system-architect
+    description: "Implementación de códigos UI, diseños receptivos, arquitectura CSS y animaciones" 
+
+  prototyping:
+    keywords: [prototype, interactive, "prototipo de Figma" , "prototipo de código" , "prueba de concepto" , clickable]
+    primary_agent: ui-engineer
+    secondary_agent: ux-designer
+    description: "Prototipado interactivo, pruebas de concepto construye y rápida experimentación de la UI" 

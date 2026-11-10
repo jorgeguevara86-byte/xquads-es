@@ -1,0 +1,121 @@
+# Board Presentation Workflow
+# Data Gathering > Narrative > Deck Creation > Rehearsal
+# Version: 1.0.0
+
+workflow:
+  id: wf-board-presentation
+  name: "Presentación al Consejo" 
+  version: "1.0.0"
+  trigger: "*board-presentation"
+  entry_agent: vision-chief
+  description: "Preparar una presentación para la junta o los inversores que recopilan datos de todos los dominios de nivel C, construyendo una narrativa cohesiva, estableciendo la cubierta y el ensayo." 
+  estimated_duration: "2-4 hours"
+  type: sequential
+  sequence:
+    - agent: coo-orchestrator
+      action: gather-data
+      creates: ops_data
+    - agent: vision-chief
+      action: craft-narrative
+      creates: narrative
+    - agent: cmo-architect
+      action: market-context
+      creates: market_data
+    - agent: vision-chief
+      action: finalize
+      creates: presentation
+
+
+inputs:
+  - name: purpose
+    required: true
+    description: "Objetivo de presentación (reformaciones de la tabla, recaudación de fondos, examen estratégico, plan anual)" 
+  - name: audience
+    required: true
+    description: "¿Quién lo verá (borto, inversores, asesoría, equipo)" 
+  - name: financials
+    required: true
+    description: "Datos financieros actuales (revenue, burn, runway, KPIs)" 
+  - name: time_period
+    required: false
+    default: "último trimestre" 
+    description: "Período que se comunica" 
+  - name: key_decisions
+    required: false
+    description: "Decisiones que necesitan board/investor Introducciones" 
+
+
+phases:
+  - id: phase_1_data_gathering
+    name: "Reunión de datos" 
+    agent: coo-orchestrator
+    task: design-operations.md
+    depends_on: []
+    description: "Recopilar datos operativos, KPI, progreso de OKR y métricas de equipo de todos los departamentos" 
+    checkpoint:
+      gate: "Todas las métricas clave recogidas con period-over-period comparación" 
+      veto: "vision-chief rechaza si faltan o no se verifican datos críticos" 
+      required_output: "Paquete de datos consolidados con métricas financieras, operacionales y de productos" 
+
+  - id: phase_2_narrative
+    name: "Narrative"
+    agent: vision-chief
+    task: set-vision.md
+    depends_on: [phase_1_data_gathering]
+    description: "Elaborar la narrativa estratégica que vincula los datos con la visión y resalta las decisiones clave" 
+    checkpoint:
+      gate: "Narrative es honesto, forward-looking, y superficies desafíos reales" 
+      veto: "Ninguno vision-chief posee la narrativa" 
+      required_output: "Esbozo narrativo con mensajes clave, victorias, retos y preguntas" 
+
+  - id: phase_3_deck_creation
+    name: "Creación de cubiertas" 
+    agent: cmo-architect
+    task: plan-go-to-market.md
+    depends_on: [phase_2_narrative]
+    description: "Construir la cubierta de presentación con imágenes claras, datos y flujo narrativo" 
+    checkpoint:
+      gate: "La cubierta sigue one-message-per-slide regla, datos visualizados no presentados" 
+      veto: "vision-chief rechaza si la cubierta no coincide con la narrativa aprobada" 
+      required_output: "Esbozo de presentación de cubiertas (15-20 diapositivas)" 
+    deck_structure:
+      - "Apertura: Donde estamos y a dónde vamos (1 diapositiva)" 
+      - "Resumen ejecutivo: Ganancias clave, desafíos, preguntas (1 diapositiva)" 
+      - "Revisión financiera: Ingresos, quemaduras, pasarelas, economía unitaria (2-3 diapositivas)" 
+      - "Actualización de productos: Hitos, progreso de la hoja de ruta, métricas clave (2-3 diapositivas)" 
+      - "Mercado y crecimiento: Adquisición, retención, dinámica del mercado (2-3 diapositivas)" 
+      - "Equipo y operaciones: Contratos, progreso de OKR, salud operacional (1-2 diapositivas)" 
+      - "Iniciativas estratégicas: Progresos en los pilares estratégicos (2-3 diapositivas)" 
+      - "Desafíos y riesgos: Evaluación honesta con planes de mitigación (1-2 diapositivas)" 
+      - "Pregunta y decisiones: Lo que necesitamos de la tabla (1 diapositiva)" 
+      - "Mira hacia adelante: Prioridades y objetivos del próximo trimestre (1 diapositiva)" 
+
+  - id: phase_4_rehearsal
+    name: "Rehearsal"
+    agent: vision-chief
+    task: null
+    depends_on: [phase_3_deck_creation]
+    description: "Ensayar la presentación, prepararse para preguntas difíciles, y finalizar" 
+    checkpoint:
+      gate: "La presentación se puede entregar en tiempo asignado con Q Pula buffer" 
+      veto: "Ninguno - fase final de pulido" 
+      required_output: "Deck final, notas de altavoces, documento de preguntas frecuentes, guía de tiempo" 
+    rehearsal_steps:
+      - "Tiempo de presentación completa (objetivo: 60% del tiempo asignado para Q C.A.)" 
+      - "Identificar 10 preguntas difíciles y preparar respuestas" 
+      - "Practica el gancho de apertura (los primeros 60 segundos son críticos)" 
+      - "Revisar cada número de precisión" 
+      - "Preparar diapositivas 'appendix' para deep-dive preguntas" 
+
+completion_criteria:
+  - "Datos recogidos de todos los departamentos y verificados" 
+  - "La narrativa estratégica elaborada con una evaluación honesta" 
+  - "Deck construido con toboganes máximo 20, un mensaje por diapositiva" 
+  - "Top 10 preguntas difíciles preparadas con respuestas" 
+  - "Presentación de tiempo y dentro de la ventana asignada" 
+  - "Notas de altavoz completadas para cada diapositiva" 
+
+error_handling:
+  missing_data: "Marcar la brecha, utilizar mejor estimación disponible con clara divulgación. Nunca presente números fabricados." 
+  narrative_conflict: "Si los datos contradicen la narrativa, cambie la narrativa (no los datos)." 
+  time_pressure: "Si el tiempo de preparación es corto, cortado a diapositivas esenciales: financieros, tracción, pregunta." 

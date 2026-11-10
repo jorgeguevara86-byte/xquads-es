@@ -1,0 +1,106 @@
+# Routing Catalog: Copy Squad
+# Maps keywords to specialist agents for fast routing
+# Referenced by: tasks/diagnose.md
+
+domains:
+  headline:
+    keywords: [headline, "subjetivo" , hook, attention, "niveles de sensibilización" , opening, pre-head]
+    primary_agent: eugene-schwartz
+    secondary_agent: gary-halbert
+    description: "Escribir en línea de referencia: los 5 niveles de conciencia de Schwartz determinan el enfoque" 
+
+  sales_letter:
+    keywords: ["carta de ventas" , long-form, "correo directo" , letter, "copia larga" , "página de ventas" , magalog]
+    primary_agent: gary-halbert
+    secondary_agent: john-carlton
+    description: "Cartas de venta y long-form copia — Halbert para narrar emocionalmente, Carlton para casual long-form" 
+
+  email_sequence:
+    keywords: ["secuencia de correo electrónico" , autoresponder, "telenovela" , nurture, drip, follow-up, "serie de correo electrónico" ]
+    primary_agent: andre-chaperon
+    secondary_agent: ben-settle
+    description: "Secuencias de correo electrónico — Chaperon para secuencias de telenovelas, Settle para el compromiso diario" 
+
+  vsl:
+    keywords: [VSL, "carta de venta de vídeo" , "script de vídeo" , "copia de vídeo" , RMBC]
+    primary_agent: stefan-georgi
+    secondary_agent: jon-benson
+    description: "Cartas de venta de vídeo — método RMBC de Georgi, Benson inventó el formato VSL" 
+
+  webinar_script:
+    keywords: [webinar, "script webinar" , "webinar perfecto" , presentation, "cubierta de lanzamiento" ]
+    primary_agent: russell-brunson
+    secondary_agent: todd-brown
+    description: "scripts Webinar — Marco Webinar perfecto de Brunson" 
+
+  offer_creation:
+    keywords: [offer, "oferta irresistible" , guarantee, bonus, stack, "riesgo de inversión" , pricing]
+    primary_agent: dan-kennedy
+    secondary_agent: joe-sugarman
+    description: "Oferta creación — Kennedy para no-BS ofrecen estructura, Sugarman para desencadenantes psicológicos" 
+
+  funnel_copy:
+    keywords: [funnel, "landing page" , opt-in, tripwire, upsell, downsell, "formulario de pedido" , checkout]
+    primary_agent: russell-brunson
+    secondary_agent: frank-kern
+    description: "Copia de embudo — Brunson para embudos marco, Kern para secuencias conductuales" 
+
+  big_idea:
+    keywords: ["gran idea" , "concepto de campaña" , "mecanismo único" , "Método E5" , angle, "concepto de gancho" ]
+    primary_agent: todd-brown
+    secondary_agent: eugene-schwartz
+    description: "Grandes conceptos de idea y campaña — Método E5 de Brown para la extracción de grandes ideas" 
+
+  bullet_points:
+    keywords: [bullets, fascinations, "puntos de bala" , teasers, curiosity, "balas de poder" ]
+    primary_agent: gary-bencivenga
+    secondary_agent: clayton-makepeace
+    description: "Puntos de bala y fascinaciones — escritores de balas maestras" 
+
+  daily_emails:
+    keywords: ["correo electrónico diario" , engagement, newsletter, "contenido diario" , "email marketing" , anti-guru]
+    primary_agent: ben-settle
+    secondary_agent: dan-koe
+    description: "Correos electrónicos y compromiso diarios — Settle for anti-guru correos electrónicos diarios, Koe para marca personal" 
+
+  classic_mail:
+    keywords: ["carta clásica" , "correo directo" , "orden de correo" , "empatía letra" , print, "Magalog opening" ]
+    primary_agent: robert-collier
+    secondary_agent: jim-rutz
+    description: "Cartas de ventas clásicas y correo directo — Collier para cartas de empatía, Rutz para aperturas de magalog" 
+
+  financial_health_copy:
+    keywords: ["copia financiera" , "copia de salud" , supplement, investment, "newsletter promo" , "salud alternativa" ]
+    primary_agent: clayton-makepeace
+    secondary_agent: parris-lampropoulos
+    description: "Respuesta directa financiera y sanitaria — los dos reyes del nicho" 
+
+  brand_copy:
+    keywords: ["copia de marca" , "copia prima" , elegant, sophisticated, institutional, "marca de voz" ]
+    primary_agent: david-ogilvy
+    secondary_agent: david-deutsch
+    description: "Marca y copia premium — Ogilvy para la elegancia de la marca, Deutsch para la persuasión sofisticada" 
+
+  ad_copy:
+    keywords: ["ad copy" , "anuncios pagados" , "Facebook ad" , "Google ad" , "Mostrar anuncio" , PPC, "copia corta" , "ad creativo" ]
+    primary_agent: dan-kennedy
+    secondary_agent: frank-kern
+    description: "Copia de anuncios para los medios pagados — Kennedy para anuncios de respuesta directa, Kern para anuncios digitales" 
+
+  launch_copy:
+    keywords: [launch, "lanzamiento de productos" , "secuencia de lanzamiento" , pre-launch, "carrito abierto" , "carrito cerrado" ]
+    primary_agent: frank-kern
+    secondary_agent: russell-brunson
+    description: "Copia de lanzamiento — respuesta dinámica conductual de Kern, secuencias de lanzamiento de Brunson" 
+
+  personal_brand_copy:
+    keywords: ["marca personal" , one-person business, "copia creador" , "líder del pensamiento" , authority]
+    primary_agent: dan-koe
+    secondary_agent: ry-schwartz
+    description: "Copia de marca personal — Koe for one-person negocios, Schwartz para awareness-based correos electrónicos" 
+
+  copy_review:
+    keywords: ["copy review" , critique, feedback, "analizar copia" , "mejorar la copia" , rewrite, audit]
+    primary_agent: copy-chief
+    secondary_agent: eugene-schwartz
+    description: "Revisión y crítica de copia — Los principales comentarios holísticamente, Schwartz valida la posición de conciencia" 

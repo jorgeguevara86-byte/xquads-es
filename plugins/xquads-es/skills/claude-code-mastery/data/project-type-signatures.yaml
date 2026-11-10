@@ -1,0 +1,335 @@
+# Project Type Signatures — Detection & Configuration Recommendations
+# Squad: claude-code-mastery
+# Last updated: 2026-03-02
+
+version: "1.0.0"
+
+# Each project type defines detection signals and recommended Claude Code configuration.
+# Used by config-engineer and project-integrator agents to bootstrap projects.
+
+project_types:
+
+  # ---------------------------------------------------------------------------
+  monorepo:
+    display_name: "Monorepo (Turborepo / Nx / Lerna)" 
+    detection_files:
+      - turbo.json
+      - nx.json
+      - lerna.json
+      - pnpm-workspace.yaml
+    detection_patterns:
+      - file: package.json
+        field: workspaces
+        description: "Tiene 'espacios de trabajo' campo en la raíz package.json" 
+      - file: package.json
+        field: "scripts.build" 
+        contains: "turbo"
+    recommended_claude_md_template: claude-md-monorepo.md
+    recommended_rules:
+      - name: monorepo-boundaries
+        description: "Ejecute los límites de paquetes, prevenga cross-package importaciones directas" 
+        path_pattern: "packages/**"
+      - name: shared-deps
+        description: "Validar versiones de dependencia compartidas en paquetes" 
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+        description: "Ejecutar eslint en archivos modificados después de ediciones" 
+      - pattern: damage-control
+        event: PreToolUse
+        description: "Bloquear comandos destructivos" 
+
+  # ---------------------------------------------------------------------------
+  fullstack-nextjs:
+    display_name: "Fullstack Next.js (App Router)" 
+    detection_files:
+      - next.config.js
+      - "siguiente.config.mjs" 
+      - "siguiente.config.ts" 
+    detection_patterns:
+      - file: package.json
+        field: "dependencias." 
+        description: "Tiene 'next' en dependencias" 
+      - file: package.json
+        field: "dependencias.reactitud" 
+        description: "Tiene 'reacto' en dependencias" 
+      - directory: app/
+        description: "Usos App Router (app/ directory)" 
+      - directory: src/app/
+        description: "Usos de la aplicación Router con src/ prefijo" 
+    recommended_claude_md_template: claude-md-fullstack.md
+    recommended_rules:
+      - name: server-client-boundary
+        description: "Ejecute 'usar cliente' / 'utilizar las directivas del servidor'" 
+        path_pattern: "src/app/**"
+      - name: api-route-patterns
+        description: "Validar firmas de manillador de ruta API" 
+        path_pattern: "src/app/api/**"
+      - name: component-patterns
+        description: "Estructura de archivo componente de fuerza y nombramiento" 
+        path_pattern: "src/components/**"
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+      - playwright
+      - supabase
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+        description: "Corre eslint + más bonito en salvo" 
+      - pattern: damage-control
+        event: PreToolUse
+        description: "Bloquear rm -rf, empuje de git --force" 
+
+  # ---------------------------------------------------------------------------
+  react-library:
+    display_name: "Biblioteca de componentes de reacción / Sistema de diseño" 
+    detection_files:
+      - rollup.config.js
+      - "rollup.config.mjs" 
+      - "tsup.config.ts" 
+      - "Vite.config.ts" 
+    detection_patterns:
+      - file: package.json
+        field: "peerDependencies.react" 
+        description: "Reaccionar como dependencia de pares (patrón de biblioteca)" 
+      - file: package.json
+        field: main
+        description: "Tiene 'mano' punto de entrada para la distribución" 
+      - file: package.json
+        field: exports
+        description: "Tiene 'exportaciones' mapa para ESM/CJS" 
+      - directory: src/components/
+        description: "Directorio de fuentes de componentes" 
+    recommended_claude_md_template: claude-md-library.md
+    recommended_rules:
+      - name: public-api-surface
+        description: "Seguimiento de las exportaciones públicas, prevención de cambios de ruptura" 
+        path_pattern: "src/index.ts"
+      - name: peer-dep-ranges
+        description: "Validar los rangos de la versión de dependencia de pares" 
+      - name: storybook-coverage
+        description: "Asegurar que cada componente exportado tenga una historia" 
+        path_pattern: "src/**/*.stories.tsx" 
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+      - pattern: api-surface-check
+        event: PostToolUse
+        description: "Advertir si se detectan cambios de API públicos" 
+
+  # ---------------------------------------------------------------------------
+  python-api:
+    display_name: "Python API (FastAPI / Django / Flask)" 
+    detection_files:
+      - "requisitos.txt" 
+      - "pyproject.toml" 
+      - setup.py
+      - Pipfile
+      - "poesía.lock" 
+    detection_patterns:
+      - file: "pyproject.toml" 
+        field: "herramienta.poetry" 
+        description: "Usos Poesía para la gestión de dependencia" 
+      - file: "requisitos.txt" 
+        contains: "fastapi"
+        description: "Unidad de FastAPI detectada" 
+      - file: "requisitos.txt" 
+        contains: "django"
+        description: "Dependencia de Django detectada" 
+      - file: "requisitos.txt" 
+        contains: "flask"
+        description: "Unidad de Flask detectada" 
+      - directory: app/
+        description: "Directorio de aplicaciones" 
+    recommended_claude_md_template: claude-md-python-api.md
+    recommended_rules:
+      - name: type-hints
+        description: "Ejecuta las indicaciones del tipo de fuerza en todas las firmas de funciones" 
+        path_pattern: "**/*.py"
+      - name: docstrings
+        description: "Consultar las claves en público functions/classes" 
+        path_pattern: "**/*.py"
+      - name: migration-safety
+        description: "Validación Alembic/Django migraciones" 
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+      - postgres
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+        description: "Corre ruff/black en archivos Python modificados" 
+      - pattern: security-gate
+        event: PreToolUse
+        description: "Exposición de bloques de .env, secretos" 
+
+  # ---------------------------------------------------------------------------
+  mobile-react-native:
+    display_name: "Móvil (Reacto de Nativo / Expo)" 
+    detection_files:
+      - app.json
+      - app.config.js
+      - "app.config.ts" 
+      - metro.config.js
+      - react-native.config.js
+    detection_patterns:
+      - file: package.json
+        field: "dependencies.react-native"
+        description: "Tienereact-native'dependencia" 
+      - file: package.json
+        field: "dependencias." 
+        description: "Tiene dependencia 'expo'" 
+      - directory: ios/
+        description: "Directorio nativo de iOS" 
+      - directory: android/
+        description: "directorio nativo de Android" 
+    recommended_claude_md_template: claude-md-mobile.md
+    recommended_rules:
+      - name: platform-imports
+        description: "Validación platform-specific importa (.ios.ts, .android.ts)" 
+        path_pattern: "src/**"
+      - name: navigation-patterns
+        description: "Forzar la reactivación de patrones de navegación" 
+        path_pattern: "src/navigation/**"
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: damage-control
+        event: PreToolUse
+        description: "Bloque operaciones de directorio nativo destructivo" 
+
+  # ---------------------------------------------------------------------------
+  rust-project:
+    display_name: "Proyecto de Rust (Cargo)" 
+    detection_files:
+      - "Posición.toml" 
+      - "Cargo.lock" 
+    detection_patterns:
+      - directory: src/
+        description: "Directorio de fuentes de Rust" 
+      - file: "Posición.toml" 
+        field: "[workspace]"
+        description: "Espacio de trabajo de carga (monorepo)" 
+    recommended_claude_md_template: claude-md-rust.md
+    recommended_rules:
+      - name: unsafe-audit
+        description: "Bandera todos los bloques inseguros para revisión" 
+        path_pattern: "src/**/*.rs"
+      - name: clippy-compliance
+        description: "Asegurar que se aborden las advertencias de clippy" 
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+        description: "Ejecute carga fmt en archivos modificados .rs" 
+      - pattern: damage-control
+        event: PreToolUse
+
+  # ---------------------------------------------------------------------------
+  go-project:
+    display_name: "Go Project" 
+    detection_files:
+      - "go.mod" 
+      - ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ." 
+    detection_patterns:
+      - file: "go.mod" 
+        field: module
+        description: "Declaración del módulo de Go" 
+      - directory: cmd/
+        description: "Go directorio patrón" 
+      - directory: internal/
+        description: "Ir paquetes internos" 
+    recommended_claude_md_template: claude-md-go.md
+    recommended_rules:
+      - name: go-conventions
+        description: "Ejecutar Go noming and package conventions" 
+        path_pattern: "**/*.go"
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+        description: "Ejecutar gofmt en archivos modificados .go" 
+
+  # ---------------------------------------------------------------------------
+  static-site:
+    display_name: "Sitio estático (Astro / Hugo / Gatsby / 11ty)" 
+    detection_files:
+      - "astro.config.mjs" 
+      - gatsby-config.js
+      - "Hugo.toml" 
+      - .eleventy.js
+      - eleventy.config.js
+    detection_patterns:
+      - file: package.json
+        field: "dependencias.astro" 
+      - directory: content/
+        description: "Directorio de contenidos para sitios estáticos" 
+      - directory: src/pages/
+        description: "Directorio de páginas" 
+    recommended_claude_md_template: claude-md-static-site.md
+    recommended_rules:
+      - name: content-frontmatter
+        description: "Validar la imagen frontal en los archivos de contenido de marcado" 
+        path_pattern: "content/**/*.md"
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+    recommended_hooks:
+      - pattern: auto-lint
+        event: PostToolUse
+
+  # ---------------------------------------------------------------------------
+  aios-project:
+    display_name: "Proyecto AIOS-Managed" 
+    detection_files:
+      - .aios-core/core-config.yaml
+      - .aios-core/constitution.md
+    detection_patterns:
+      - directory: .aios-core/
+        description: "Directorio de marcos básicos de la AIOS" 
+      - directory: .claude/commands/AIOS/
+        description: "El agente de AIOS ordena a Claude" 
+      - file: .claude/settings.json
+        contains: "AIOS"
+    recommended_claude_md_template: null
+    note: "Los proyectos de AIOS ya tienen CLAUDE.md gestionado por el marco" 
+    recommended_rules:
+      - name: framework-boundary
+        description: "Ejecute la protección de capa L1-L4" 
+      - name: agent-authority
+        description: "Matriz de la delegación de agentes de la fuerza" 
+      - name: story-lifecycle
+        description: "Ejecuta las transiciones de la historia" 
+    recommended_mcp_servers:
+      - filesystem
+      - git
+      - context7
+      - coderabbit
+      - supabase
+    recommended_hooks:
+      - pattern: damage-control
+        event: PreToolUse
+      - pattern: auto-lint
+        event: PostToolUse
+      - pattern: context-preservation
+        event: PreCompact

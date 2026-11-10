@@ -1,0 +1,127 @@
+# Design System Creation Workflow
+# From audit through methodology to launch
+
+workflow:
+  id: wf-design-system-creation
+  name: "Creación del Sistema de Diseño" 
+  trigger: "*design-system-creation"
+  entry_agent: design-chief
+  estimated_duration: "4-8 hours"
+  description: "Flujo de trabajo de creación de sistemas de diseño completo de auditoría inicial a\nmetodología, definición de fichas, construcción de componentes,\nEstablecimiento de gobernanza y lanzamiento. Sigue la metodología de diseño atópico."
+  type: sequential
+  sequence:
+    - agent: brad-frost
+      action: create-design-system
+      creates: methodology
+    - agent: design-system-architect
+      action: create-component-spec
+      creates: components
+    - agent: dan-mall
+      action: create-design-system
+      creates: governance
+    - agent: design-chief
+      action: review
+      creates: final_system
+
+phases:
+  - id: phase_1_audit
+    name: "Auditoría de la interfaz" 
+    agent: brad-frost
+    task: create-design-system.md
+    depends_on: []
+    description: "Inventario de todos los elementos de la UI existentes, identifica inconsistencias y patrones" 
+    checkpoint:
+      gate: "Completo inventario de componentes con incoherencias documentadas" 
+      veto: "HALT si no hay acceso a la interfaz existente — no puede auditar lo que no puede ver" 
+    outputs:
+      - component_inventory
+      - inconsistency_report
+      - priority_components
+
+  - id: phase_2_methodology
+    name: "Metodología &quot; Arquitectura de fichas &quot;" 
+    agent: brad-frost
+    task: create-design-system.md
+    depends_on: [phase_1_audit]
+    support_agents: [design-system-architect]
+    description: "Definir la metodología de diseño atómico, establecer la arquitectura token (global → alias → componente)" 
+    checkpoint:
+      gate: "Token naming convention defined, hierarchy established, initial tokens created" 
+      veto: "HALT si la convención de nombres de token es ambiguo o inconsistente" 
+    outputs:
+      - token_architecture
+      - naming_conventions
+      - color_tokens
+      - typography_tokens
+      - spacing_tokens
+
+  - id: phase_3_tokens
+    name: "Aplicación de las decisiones" 
+    agent: design-system-architect
+    task: create-component-spec.md
+    depends_on: [phase_2_methodology]
+    description: "Implementar todas las fichas de diseño en código con soporte temático" 
+    checkpoint:
+      gate: "Todas las fichas aplicadas con light/dark modo y contraste WCAG verificados" 
+      veto: "HALT si las relaciones de contraste fallan los requisitos de WCAG AA" 
+    outputs:
+      - token_files
+      - theme_configuration
+      - contrast_verification
+
+  - id: phase_4_components
+    name: "Componente de construcción" 
+    agent: brad-frost
+    task: create-component-spec.md
+    depends_on: [phase_3_tokens]
+    support_agents: [design-system-architect, ui-engineer]
+    description: "Construir átomos, moléculas y organismos siguiendo la lista de prioridades de la auditoría" 
+    checkpoint:
+      gate: "Componentes básicos construidos con todas las variantes, estados y requisitos de accesibilidad" 
+      veto: "HALT si los componentes usan valores codificados en lugar de fichas" 
+    outputs:
+      - atom_components
+      - molecule_components
+      - organism_components
+      - component_specs
+
+  - id: phase_5_governance
+    name: "Gobernanza y documentación" 
+    agent: dan-mall
+    task: create-design-system.md
+    depends_on: [phase_4_components]
+    support_agents: [dave-malouf]
+    description: "Establecer un modelo de gobernanza, una guía de contribución y una documentación completa" 
+    checkpoint:
+      gate: "Modelo de gobernanza definido, documentación completa, proceso de contribución claro" 
+      veto: "HALT si no existe un proceso claro de propiedad o aprobación para los cambios de componentes" 
+    outputs:
+      - governance_model
+      - contribution_guide
+      - component_documentation
+      - getting_started_guide
+
+  - id: phase_6_launch
+    name: "Lanzamiento &quot; Adopción &quot;" 
+    agent: dan-mall
+    task: create-design-system.md
+    depends_on: [phase_5_governance]
+    support_agents: [dave-malouf, design-chief]
+    description: "Plan de estrategia de adopción, equipos de capacitación, lanzamiento del sistema de diseño" 
+    checkpoint:
+      gate: "Sistema de diseño publicado, equipos capacitados, métricas de adopción establecidos" 
+      veto: "HALT si no existe un plan de adopción: un sistema de diseño que nadie utiliza no tiene valor" 
+    outputs:
+      - published_system
+      - training_materials
+      - adoption_metrics
+      - feedback_channels
+
+completion_criteria:
+  - "Auditoría de la interfaz completada con componentes prioritarios identificados" 
+  - "Arquitectura token definida con convenciones de nombres" 
+  - "Todas las fichas aplicadas con verificación de contraste y tema" 
+  - "Componentes básicos construidos con variantes, estados y accesibilidad" 
+  - "Modelo de gobernanza establecido con una clara propiedad" 
+  - "Documentación completa y accesible" 
+  - "Equipos capacitados y seguimiento de métricas de adopción" 

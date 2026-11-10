@@ -1,0 +1,111 @@
+# Analytics Setup Workflow
+# Goals > Metrics > Dashboards > Reporting > Optimization
+# Version: 1.0.0
+
+workflow:
+  id: wf-analytics-setup
+  name: "Ajustes de análisis" 
+  version: "1.0.0"
+  trigger: "*analytics-setup"
+  entry_agent: data-chief
+  description: "Configuración completa de infraestructura analítica, desde objetivos empresariales hasta paneles optimizados. Este es un flujo de trabajo único de configuración que establece la base de medición." 
+  estimated_duration: "4-8 hours"
+  type: sequential
+  sequence:
+    - agent: avinash-kaushik
+      action: define-goals
+      creates: goals_metrics
+    - agent: avinash-kaushik
+      action: build-dashboards
+      creates: dashboards
+    - agent: peter-fader
+      action: setup-clv
+      creates: clv_model
+    - agent: sean-ellis
+      action: setup-growth
+      creates: growth_metrics
+
+
+inputs:
+  - name: business
+    required: true
+    description: "Descripción y objetivos de las empresas" 
+  - name: channels
+    required: true
+    description: "Canales digitales activos para medir" 
+  - name: tools
+    required: false
+    description: "Herramientas de análisis existentes (GA4, Mixpanel, Amplitud, etc.)" 
+  - name: team
+    required: false
+    description: "¿Quién utilizará los paneles e informes" 
+
+
+phases:
+  - id: phase_1_goals
+    name: "Goals"
+    agent: avinash-kaushik
+    task: analyze-data.md
+    depends_on: []
+    description: "Define las preguntas de negocios y el mapa a See-Think-Do-Care framework" 
+    checkpoint:
+      gate: "3-5 preguntas empresariales definidas, cada una de ellas trazada a la etapa STDC" 
+      veto: "data-chief rechaza si las preguntas son vanity-driven" 
+      required_output: "Cuestiones empresariales con la asignación de STDC" 
+
+  - id: phase_2_metrics
+    name: "Metrics"
+    agent: avinash-kaushik
+    task: analyze-data.md
+    depends_on: [phase_1_goals]
+    description: "Seleccione KPI usando DMMM, definir OMTM, aplicar So Qué prueba" 
+    checkpoint:
+      gate: "Max 15 KPIs seleccionados, cada pasa el examen So" 
+      veto: "data-chief rechaza si cualquier métrica carece de una decisión que impulsa" 
+      required_output: "Marco DMMM con objetivos, metas, objetivos, objetivos" 
+
+  - id: phase_3_dashboards
+    name: "Dashboards"
+    agent: avinash-kaushik
+    task: analyze-data.md
+    depends_on: [phase_2_metrics]
+    description: "Dibujos de diseño con estructura STDC, fila de Acciones y puntos de referencia" 
+    checkpoint:
+      gate: "El panel es máx 1 página por audiencia, cada métrica anotada" 
+      veto: "data-chief rechaza los tableros sin la fila de Acciones" 
+      required_output: "Documento de diseño de panel con cableframes" 
+
+  - id: phase_4_reporting
+    name: "Reporting"
+    agent: peter-fader
+    task: optimize-retention.md
+    depends_on: [phase_3_dashboards]
+    description: "Añadir customer-centric métricas, análisis de cohortes y seguimiento de CLV" 
+    checkpoint:
+      gate: "Estructura de análisis de cohortes definida, segmentos CLV mapeados" 
+      veto: "data-chief rechaza si faltan métricas de retención" 
+      required_output: "Marco de presentación de informes con customer-centric capa" 
+
+  - id: phase_5_optimization
+    name: "Optimization"
+    agent: sean-ellis
+    task: measure-growth.md
+    depends_on: [phase_4_reporting]
+    description: "Define el marco de experimento de crecimiento que utilizará estos análisis" 
+    checkpoint:
+      gate: "Seguimiento de experimentos integrado con análisis, plantilla ICE lista" 
+      veto: "data-chief rechaza si los experimentos no pueden medirse con la configuración actual" 
+      required_output: "Marco de experimento de crecimiento conectado a la analítica" 
+
+completion_criteria:
+  - "Cuestiones empresariales definidas y trazadas a STDC" 
+  - "Max 15 KPI seleccionados con marco DMMM" 
+  - "Paneles diseñados con la fila de Acciones" 
+  - "La capa de presentación centrada en el cliente añadió" 
+  - "Marco de experimentos de crecimiento integrado" 
+  - "Plan de seguimiento documentado con fuentes de datos y eventos" 
+
+error_handling:
+  tool_gap: "Documentar herramientas faltantes y recomendar alternativas. Proceder con herramientas disponibles." 
+  data_gap: "Identificar métricas inmeasurables, priorizar gap-closing, diseño de métricas proxy." 
+  escalation: "Si los objetivos empresariales no están claros después de la primera fase, se intensifican hasta data-chief para alineación de los interesados." 

@@ -1,0 +1,140 @@
+workflow:
+  id: wf-route-to-squad
+  name: "Caída de calabaza" 
+  version: "1.0.0"
+  description: "Xquads Jefe de trabajo principal. Recibe una demanda en lenguaje natural,\ndiagnostica el dominio, monta la información de la entrega y ACTIVATE el cabezal de la equipo\ncorrecto, transfiriendo el comando de la conversación. multi-squad,\nEl Jefe de Xquads nunca realiza el trabajo, él no hace el trabajo.\nIdentifica la actividad y la entrega a la persona que realiza."
+  trigger: "*route"
+  entry_agent: xquads-chief
+  estimated_duration: "1-3 minutos (intil activación)" 
+  type: sequential-with-handoff
+
+  sequence:
+    - agent: xquads-chief
+      action: diagnose
+      creates: diagnosis
+    - agent: xquads-chief
+      action: clarify
+      creates: disambiguation
+      condition: "diagnóstico.confianza" 
+    - agent: xquads-chief
+      action: brief
+      creates: handoff_briefing
+    - agent: xquads-chief
+      action: activate
+      creates: squad_chief_activated
+    - agent: "{squad_chief}"
+      action: execute
+      creates: squad_deliverable
+    - agent: xquads-chief
+      action: review
+      creates: routing_verdict
+      condition: "squad_deliverable la cadena OR devuelta tiene el siguiente enlace" 
+
+phases:
+  - id: phase_0
+    name: "Triagem"
+    agent: xquads-chief
+    task: diagnose.md
+    description: "Extrae la demanda real, clasifica el dominio contra el routing-catalog, calcula la confianza (0-100) y detecta si es single-squad o cadena multi-squad." 
+    inputs:
+      - user_request: "lengua natural" 
+      - routing_catalog: "data/routing-catalog.yaml"
+    outputs:
+      - domain: "string"
+      - target_squad: "squad-id"
+      - target_chief: "agent-id"
+      - confidence: "number"
+      - chain: "array Silencio null" 
+    checkpoint:
+      gate: "Dominio identificado con confianza √= 50, O pregunta única emitida" 
+      veto: "Squad inventado fuera del catálogo — abortar y listar equipos reales" 
+
+  - id: phase_1
+    name: "Desambiguación" 
+    agent: xquads-chief
+    task: diagnose.md
+    depends_on: [phase_0]
+    condition: "confidence < 50"
+    description: "Cuestión de la inequívoca tie_breakers desde el catálogo, con las opciones mapeadas para equipos. Nunca más que una pregunta." 
+    outputs:
+      - disambiguation_answer: "string"
+      - confidence: "Número (recalculado)" 
+    checkpoint:
+      gate: "Confianza post-responsable √≥= 50" 
+      veto: "Segunda pregunta publicada: tome la opción más probable y establezca la premisa" 
+
+  - id: phase_2
+    name: "Reunión informativa de Handoff" 
+    agent: xquads-chief
+    task: route.md
+    depends_on: [phase_0, phase_1]
+    description: "Configurar el paquete de entrega para el jefe de la equipo: demanda, meta final, contexto conocido, premisas assumidas, fuera de alcance, tarea sugerida y el próximo enlace de cadena." 
+    outputs:
+      - handoff_briefing: "marcado (recibido= 500 fichas)" 
+    checkpoint:
+      gate: "Reunión informativa completa, dentro de 500 fichas, con hechos y locales separados [ASSUMED]" 
+      veto: "Contexto inventado como hecho, o preelegido por especialista final (decisión jefe equipo)" 
+
+  - id: phase_3
+    name: "Activación del Jefe de la Escuadrilla" 
+    agent: xquads-chief
+    task: route.md
+    depends_on: [phase_2]
+    description: "Imprimió el bloque de diagnóstico y Activa al líder del Escuadrón por el comando del catálogo (en modo de sesión) o por la lazo subagente (en modo independiente), entregando la información. Xquads Jefe transfiere el comando y deja la escena." 
+    outputs:
+      - activation_command: "string"
+      - squad_chief_activated: "boolean"
+    checkpoint:
+      gate: "Jefe de la sala activado y conversando con eficacia" 
+      veto: "Sólo recomendó el quad sin activar, o activó dos jefes en paralelo" 
+
+  - id: phase_4
+    name: "Aplicación por escuadrón" 
+    agent: "{squad_chief}"
+    task: "{squad_task}"
+    depends_on: [phase_3]
+    description: "El Jefe de Escuadrón asume: ejecuta el diagnóstico en sí mismo, elige al experto, ejecuta y aplica la puerta de calidad en sí mismo. El Jefe de Xquads NO interfiere en esta etapa." 
+    outputs:
+      - squad_deliverable: "como el equipo" 
+    checkpoint:
+      gate: "Squad entregou dentro do escopo do briefing" 
+      veto: "Jefe de Xquads opinándose sobre el jefe del equipo" 
+
+  - id: phase_5
+    name: "Sentencia de la ruta" 
+    agent: xquads-chief
+    task: review.md
+    depends_on: [phase_4]
+    condition: "cadena OR devolvible." 
+    description: "Validar si la routa ha sido correcta y si la demanda original ha sido contestada. NO Evalue la calidad técnica disponible — esto es del jefe de la equipo. Cierre o active el siguiente enlace de cadena." 
+    outputs:
+      - routing_verdict: "PARTIAL AERTO" 
+      - next_action: ", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , re-rotear" 
+    checkpoint:
+      gate: "Fallo y siguiente paso definido" 
+      veto: "Re-rutar en silencio sin registrar el aprendizaje" 
+
+# Cadeia multi-squad: repete phases 2-5 por elo, sequencialmente
+chain_protocol:
+  rule: "Un enlace a la vez. La salida de enlace N convierte el enlace N+1 en un contexto conocido." 
+  parallel: false
+  announce_upfront: true
+  interruptible: true
+  max_links: 5
+
+special_routes:
+  code:
+    condition: "demanda implica escribir o cambiar código" 
+    target: "/raxos"
+    note: "El Ciclo de Desarrollo de Historia requerido. El Jefe de Xquads no implementa nada." 
+  no_squad_match:
+    condition: "no dominio del catálogo cubre demanda" 
+    target: "/squad"
+    note: "Ofrezca la creación de nuevo equipo — no forzar un equipo inapropiado." 
+
+completion_criteria:
+  - "Demanda diagnosticada con confianza declarada y motivo explícito" 
+  - "Reunión informativa estructurada dirigida al jefe de la equipo" 
+  - "Jefe de la sala activado y encargado de la conversación" 
+  - "Xquads Chief no realizó parte alguna del trabajo" 
+  - "Cadena multi-squad, cuando hay, ejecuta un enlace a la vez" 

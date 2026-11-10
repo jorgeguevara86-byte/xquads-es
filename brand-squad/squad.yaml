@@ -1,0 +1,117 @@
+name: brand-squad
+version: "1.0.0"
+short-title: "Equipo de Marca" 
+description: "El equipo definitivo de estrategia de marca — 10 pensadores lendários de branding clonados como agentes de IA, más 4 especialistas funcionales y 1 orquestador. Cobre brand Equity, posicionamento, identidade, arquitetura e crescimento." 
+author: "Synkra AIOS" 
+license: MIT
+slashPrefix: "brand-squad"
+
+aios:
+  minVersion: "4.0.0"
+  type: squad
+
+tags:
+  - branding
+  - brand-strategy
+  - positioning
+  - identity
+  - naming
+  - archetype
+  - storybrand
+  - brand-equity
+  - brand-architecture
+  - luxury
+
+components:
+  agents:
+    # Tier 0 — Orchestrator
+    - brand-chief.md
+    # Tier 1 — Brand Strategy & Equity
+    - david-aaker.md
+    - kevin-keller.md
+    - jean-noel-kapferer.md
+    # Tier 1 — Positioning & Differentiation
+    - al-ries.md
+    - byron-sharp.md
+    - marty-neumeier.md
+    # Tier 1 — Brand Building & Communication
+    - donald-miller.md
+    - denise-yohn.md
+    - emily-heyward.md
+    # Tier 1 — Brand Identity & Expression
+    - alina-wheeler.md
+    - archetype-consultant.md
+    - naming-strategist.md
+    # Tier 2 — Specialized Support
+    - domain-scout.md
+    - miller-sticky-brand.md
+  tasks:
+    # Brand Analysis
+    - audit-brand.md
+    - diagnose.md
+    - review.md
+    # Brand Creation
+    - create-positioning.md
+    - generate-names.md
+    - build-identity.md
+    - create-brand-story.md
+    - design-architecture.md
+    - map-archetype.md
+  workflows:
+    - wf-brand-creation.yaml
+    - wf-rebrand.yaml
+  checklists:
+    - output-quality.md
+
+config:
+  extends: extend
+
+routing_matrix:
+  brand_equity:
+    primary: david-aaker
+    secondary: kevin-keller
+    triggers: ["valor de marca" , "valor de marca" , "lealtad a la marca" , "reconocimiento de marca" , "asociaciones de marca" ]
+  brand_identity:
+    primary: jean-noel-kapferer
+    secondary: alina-wheeler
+    triggers: ["identidad de marca" , "prisma de identidad" , "ADN de la marca" , "personalidad de la marca" , "cultura de marca" ]
+  positioning:
+    primary: al-ries
+    secondary: marty-neumeier
+    triggers: ["positioning", "category", "focus", "differentiation", "posee una palabra" ]
+  evidence_based:
+    primary: byron-sharp
+    secondary: kevin-keller
+    triggers: ["cómo crecen las marcas" , "disponibilidad mental" , "disponibilidad física" , "activos distintivos" ]
+  messaging:
+    primary: donald-miller
+    secondary: miller-sticky-brand
+    triggers: ["StoryBrand", "messaging", "one-liner", "guión de marca" , "copia del sitio web" ]
+  visual_identity:
+    primary: alina-wheeler
+    secondary: archetype-consultant
+    triggers: ["logo", "identidad visual" , "pautas de marca" , "sistema de diseño" , "touchpoints"]
+  brand_culture:
+    primary: denise-yohn
+    secondary: donald-miller
+    triggers: ["cultura de marca" , "marca empleadora" , "marca interna" , "fusion"]
+  startup_brand:
+    primary: emily-heyward
+    secondary: marty-neumeier
+    triggers: ["marca de inicio" , "Marca DTC" , "lanzamiento de marca" , "nueva marca" ]
+  luxury_brand:
+    primary: jean-noel-kapferer
+    secondary: david-aaker
+    triggers: ["luxury", "premium", "prestige", "estrategia de lujo" ]
+  naming:
+    primary: naming-strategist
+    secondary: domain-scout
+    triggers: ["naming", "nombre de la marca" , "rename", "generación de nombre" , "domain"]
+  archetype:
+    primary: archetype-consultant
+    secondary: jean-noel-kapferer
+    triggers: ["archetype", "personalidad de la marca" , "carácter de marca" , "Jung"]
+  brand_architecture:
+    primary: david-aaker
+    secondary: kevin-keller
+    triggers: ["arquitectura de marca" , "sub-brands", "casa de marca" , "casa de marcas" , "portfolio"]

@@ -1,0 +1,61 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Storytelling
+# Domain: Narrative & Communication
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: storytelling
+  display_name: "equipo de historias" 
+  version: "1.0.0"
+  domain: "Narrative &quot; Communication" 
+  description: "Escuadrón de élite de maestros narradores que abarcan mitología, escritura, narrativa personal,\ncuentos de negocios, improvisación, lanzamiento, presentaciones y movimientos sociales.\nEl viaje de Campbell a Harmon's Story Circle, desde la hoja de la Beata de Snyder hasta el Coyne\nHistoria Grid — cada marco narrativo creado, unificado bajo un mismo techo.\n\nCubre seis dominios narrativos: estructura mítica, arquitectura de cuentos, narrativa personal,\nnarración de negocios, persuasión y rendimiento, y narrativa de movimiento.\ntrae décadas de real-world arte destilado en marcos de acción."
+  keywords: [storytelling, narrative, screenwriting, mythology, presentations, brand-story, pitching, improv, social-movements, story-structure]
+  entry_agent: story-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [story-chief]
+    purpose: "Triage, routing, control de calidad, dominio narrativo que coincide" 
+  tier_1:
+    name: "Maestros narrativos" 
+    agents: [joseph-campbell, dan-harmon, blake-snyder, shawn-coyne, matthew-dicks, kindra-hall, nancy-duarte, park-howell, keith-johnstone, oren-klaff, marshall-ganz]
+    purpose: "Experiencia de dominio en todos los marcos narrativos, desde la estructura mítica a los movimientos sociales" 
+
+agents:
+  story-chief:      { file: agents/story-chief.md, tier: 0, icon: "📖", focus: "Triage, routing, narrativa dominio matching"  }
+  joseph-campbell:   { file: agents/joseph-campbell.md, tier: 1, icon: "🏛️", focus: "Viaje de héroe, monomítico, arquetipos"  }
+  dan-harmon:        { file: agents/dan-harmon.md, tier: 1, icon: "🔄", focus: "Círculo de historia, TV/episodic escritura"  }
+  blake-snyder:      { file: agents/blake-snyder.md, tier: 1, icon: "🎬", focus: "Hoja de la venda, estructura de guión"  }
+  shawn-coyne:       { file: agents/shawn-coyne.md, tier: 1, icon: "📊", focus: "Historia Grid, género, análisis de escena"  }
+  matthew-dicks:     { file: agents/matthew-dicks.md, tier: 1, icon: "🎤", focus: "Historia personal, Moth storytelling"  }
+  kindra-hall:       { file: agents/kindra-hall.md, tier: 1, icon: "💼", focus: "Historias de ventas, historias que se pegan"  }
+  nancy-duarte:      { file: agents/nancy-duarte.md, tier: 1, icon: "📊", focus: "Presentaciones, narración de datos"  }
+  park-howell:       { file: agents/park-howell.md, tier: 1, icon: "🏷️", focus: "Marcas narrativas, marco ABT"  }
+  keith-johnstone:   { file: agents/keith-johnstone.md, tier: 1, icon: "🎭", focus: "Improvización, espontaneidad, estado"  }
+  oren-klaff:        { file: agents/oren-klaff.md, tier: 1, icon: "🎯", focus: "Pitching, control de marco, neurofinanzas"  }
+  marshall-ganz:     { file: agents/marshall-ganz.md, tier: 1, icon: "✊", focus: "Divulgación pública, movimientos sociales"  }
+
+handoffs:
+  story-chief: { routes_to: [joseph-campbell, dan-harmon, blake-snyder, shawn-coyne, matthew-dicks, kindra-hall, nancy-duarte, park-howell, keith-johnstone, oren-klaff, marshall-ganz] }
+  joseph-campbell: { escalates_to: [story-chief] }
+  dan-harmon: { escalates_to: [story-chief] }
+  blake-snyder: { escalates_to: [story-chief] }
+  shawn-coyne: { escalates_to: [story-chief] }
+  matthew-dicks: { escalates_to: [story-chief] }
+  kindra-hall: { escalates_to: [story-chief] }
+  nancy-duarte: { escalates_to: [story-chief] }
+  park-howell: { escalates_to: [story-chief] }
+  keith-johnstone: { escalates_to: [story-chief] }
+  oren-klaff: { escalates_to: [story-chief] }
+  marshall-ganz: { escalates_to: [story-chief] }
+
+cross_cutting:
+  quality_standards: { min_score: 7.0 }
+
+settings:
+  activation:
+    prefix: "storytelling"
+    example: "@storytelling:joseph-campbell"

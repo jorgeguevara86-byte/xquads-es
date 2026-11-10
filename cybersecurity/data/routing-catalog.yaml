@@ -1,0 +1,107 @@
+# ═══════════════════════════════════════════════════════════════════
+# Routing Catalog: Cybersecurity Squad
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+domains:
+  penetration_testing:
+    keywords: [pentest, "prueba de penetración" , "equipo rojo" , "simulación de ataque" , "evaluación de la seguridad" , "################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################" ]
+    primary_agent: peter-kim
+    secondary_agent: georgia-weidman
+    description: "Pruebas de penetración de todo el cuerpo, compromisos de equipo rojo y simulación de ataque" 
+
+  mobile_security:
+    keywords: [mobile, android, ios, "Combest móvil" , "Seguridad de las aplicaciones móviles" , "Explotación móvil" ]
+    primary_agent: georgia-weidman
+    secondary_agent: peter-kim
+    description: "Pruebas de seguridad de aplicaciones móviles, desarrollo de exploits móviles y seguridad de dispositivos" 
+
+  web_app_security:
+    keywords: ["seguridad web" , OWASP, XSS, "Inyección SQL" , CSRF, "aplicación web" , "web combest" ]
+    primary_agent: jim-manico
+    secondary_agent: peter-kim
+    description: "Seguridad de la aplicación web, OWASP Top 10, prácticas de codificación seguras" 
+
+  secure_coding:
+    keywords: ["código seguro" , "code review" , "pautas de seguridad" , "validación de entradas" , authentication, authorization]
+    primary_agent: jim-manico
+    secondary_agent: omar-santos
+    description: "Prácticas de codificación seguras, revisión de código de seguridad y programación defensiva" 
+
+  network_monitoring:
+    keywords: ["Supervisión de redes" , IDS, IPS, SOC, SIEM, "red defensa" , "Análisis del tráfico" ]
+    primary_agent: chris-sanders
+    secondary_agent: omar-santos
+    description: "Vigilancia de la seguridad de la red, detección de intrusiones, operaciones SOC" 
+
+  packet_analysis:
+    keywords: ["Captura de paquetes" , pcap, wireshark, tcpdump, "red forenses" , "análisis de protocolo" ]
+    primary_agent: chris-sanders
+    secondary_agent: command-generator
+    description: "Captura y análisis de paquetes de red, disección de protocolos, red forense" 
+
+  vulnerability_management:
+    keywords: [vulnerability, CVE, "Gestión de parches" , "vulnerabilidad" , "evaluación del riesgo" , CVSS]
+    primary_agent: omar-santos
+    secondary_agent: marcus-carey
+    description: "Identificación, evaluación, priorización y rehabilitación de vulnerabilidades" 
+
+  incident_response:
+    keywords: ["respuesta a incidentes" , IR, breach, forensics, containment, eradication, recovery]
+    primary_agent: omar-santos
+    secondary_agent: chris-sanders
+    description: "Manejo de incidentes de seguridad, forenses digitales, contención y recuperación" 
+
+  security_leadership:
+    keywords: [CISO, "programa de seguridad" , "Estrategia de seguridad" , "equipo de seguridad" , "cultura de seguridad" , compliance]
+    primary_agent: marcus-carey
+    secondary_agent: omar-santos
+    description: "Gestión del programa de seguridad, creación de equipos, estrategia y seguridad organizativa" 
+
+  threat_intelligence:
+    keywords: ["amenaza intel" , IOC, TTPs, "MITRE ATT limitadaCK" , "agentes de la amenaza" , APT, "amenaza de caza" ]
+    primary_agent: marcus-carey
+    secondary_agent: chris-sanders
+    description: "Reunión de inteligencia de amenazas, análisis y caza de amenazas" 
+
+  reconnaissance:
+    keywords: [recon, scanning, nmap, footprinting, "servicio de descubrimiento" , "escaneo portuario" , "mapeo de redes" ]
+    primary_agent: cartographer
+    secondary_agent: shannon-runner
+    description: "Reconocimiento de redes, escaneo portuario, enumeración de servicios y asignación de objetivos" 
+
+  enumeration:
+    keywords: [enumerate, "directorio busting" , "brute force directories" , gobuster, dirbuster, "archivo descubrimiento" ]
+    primary_agent: dirber
+    secondary_agent: busterer
+    description: "Directorio web y enumeración de archivos, descubrimiento de recursos ocultos" 
+
+  fuzzing:
+    keywords: [fuzz, fuzzing, "Pruebas de parámetro" , "Pruebas de entrada" , "Pruebas de límites" , mutation]
+    primary_agent: fuzzer
+    secondary_agent: busterer
+    description: "Fusibles de entrada, manipulación de parámetros y pruebas de límites" 
+
+  credential_attacks:
+    keywords: [password, "Hah cracking" , "fuerza bruta" , "relleno credencial" , hashcat, "John, el corredor" ]
+    primary_agent: ripper
+    secondary_agent: rogue
+    description: "grieta de contraseña, análisis de hachís, ataques credenciales" 
+
+  exploitation:
+    keywords: [exploit, payload, shell, "shell inversa" , "escalada de privilegios" , post-exploitation, metasploit]
+    primary_agent: rogue
+    secondary_agent: peter-kim
+    description: "Desarrollo y ejecución de los gastos, post-exploitation, aumento del privilegio" 
+
+  command_generation:
+    keywords: [command, one-liner, "tramposo" , syntax, "uso de herramientas" , "herramienta de seguridad" ]
+    primary_agent: command-generator
+    secondary_agent: peter-kim
+    description: "Generación de comandos de herramientas de seguridad, referencia de sintaxis y orientación de uso" 
+
+  osint:
+    keywords: [OSINT, "información de código abierto" , "ingeniería social" , "Registros públicos" , "huella digital" , dork]
+    primary_agent: shannon-runner
+    secondary_agent: cartographer
+    description: "Reunión de inteligencia de código abierto, análisis de huella digital e investigación de ingeniería social" 

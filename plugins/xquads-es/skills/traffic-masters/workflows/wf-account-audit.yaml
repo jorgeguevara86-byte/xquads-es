@@ -1,0 +1,84 @@
+workflow:
+  id: wf-account-audit
+  name: "Auditoría y corrección de cuentas" 
+  version: "1.0.0"
+  description: "Corriente de trabajo completa de auditoría de la cuenta de anuncios. Diagnostica la salud de la cuenta,\nidentifica los gastos desperdiciados, produce un plan de corrección y establece\nMonitoreo continuo. Se utiliza para a bordo de nuevas cuentas o correcciones\ncuentas de bajo rendimiento."
+  trigger: "*account-audit"
+  entry_agent: traffic-chief
+  estimated_duration: "30-60 minutes"
+
+  type: sequential
+  sequence:
+    - agent: ads-analyst
+      action: audit-ad-account
+      creates: audit_report
+    - agent: pixel-specialist
+      action: setup-tracking
+      creates: tracking_review
+    - agent: performance-analyst
+      action: analyze-performance
+      creates: performance_report
+    - agent: fiscal
+      action: manage-budget
+      creates: budget_plan
+
+phases:
+  - id: phase_0
+    name: "Auditoría de cuentas" 
+    agent: ads-analyst
+    task: audit-ad-account.md
+    description: "Realizar una auditoría completa de salud de la cuenta de 8 dimensiones. Marcar la cuenta, clasificar las campañas por nivel de rendimiento, identificar el gasto perdido y producir la kill/scale/fix listas." 
+    outputs:
+      - audit_report: "markdown"
+      - health_score: "number"
+      - wasted_spend: "number"
+      - action_lists: "object"
+    checkpoint:
+      gate: "Auditoría completa con las 8 dimensiones anotadas y campañas atada" 
+      veto: "Datos insuficientes para una auditoría significativa — solicitar más historia" 
+
+  - id: phase_1
+    name: "Verificación de seguimiento" 
+    agent: pixel-specialist
+    task: setup-tracking.md
+    depends_on: [phase_0]
+    description: "Verifique la precisión de seguimiento antes de tomar decisiones de optimización. Si el seguimiento está roto, solucione antes de proceder. Esto evita optimizar los datos malos." 
+    outputs:
+      - tracking_status: "markdown"
+      - fixes_needed: "list"
+    checkpoint:
+      gate: "Seguimiento verificado o identificado con plan de fijación" 
+      veto: "No puede proceder con optimización si se rompe el seguimiento de conversión primaria" 
+
+  - id: phase_2
+    name: "Desempeño profundo" 
+    agent: performance-analyst
+    task: analyze-performance.md
+    depends_on: [phase_0, phase_1]
+    description: "Análisis de resultados profundos en la campaña, el conjunto de anuncios y el nivel de anuncios. 80/20 análisis, identificación de tendencias y diagnóstico de causa raíz para los infravaloradores." 
+    outputs:
+      - performance_report: "markdown"
+      - top_insights: "list"
+    checkpoint:
+      gate: "Rendimiento analizado con 80/20 desglose y percepciones factibles" 
+      veto: "Análisis basado en datos de seguimiento no verificados" 
+
+  - id: phase_3
+    name: "Plan de Fijación y Optimización de Presupuesto" 
+    agent: fiscal
+    task: manage-budget.md
+    depends_on: [phase_2]
+    description: "Crear el plan de reasignación presupuestaria basado en las conclusiones de auditoría y desempeño. Matar a los infravaloradores, reasignar a los ganadores, y establecer un marco de gestión en curso." 
+    outputs:
+      - budget_plan: "markdown"
+      - reallocation_schedule: "object"
+      - automated_rules: "list"
+    checkpoint:
+      gate: "Plan de presupuesto completo con reasignación y vigilancia graduales" 
+      veto: "Realización demasiado agresiva — fase durante mínimo 2 semanas" 
+
+completion_criteria:
+  - "Cuenta auditada con un marcador de 8 dimensiones" 
+  - "Seguimiento verificado o fijo" 
+  - "Rendimiento analizado con 80/20 desglose" 
+  - "Plan de reasignación presupuestaria creado con marco de vigilancia" 

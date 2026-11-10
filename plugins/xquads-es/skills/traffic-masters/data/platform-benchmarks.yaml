@@ -1,0 +1,178 @@
+# Platform Benchmarks Reference
+# Referenced by traffic specialists for performance context and target setting
+# Note: Benchmarks are directional averages — actual results vary by creative, offer, and audience quality
+
+benchmarks_by_platform:
+  facebook:
+    description: "Meta Ads (Facebook + Instagram) — plataforma de anuncios sociales más grande" 
+    metrics:
+      ctr:
+        average: "0.90%"
+        good: "1.5%+"
+        great: "2.5%+"
+      cpc:
+        average: "$1.72"
+        good: "< $1.00"
+        great: "< $0.50"
+      cpm:
+        average: "$14.90"
+        range: "$5-$30 dependiendo del público y el tiempo del año" 
+      cvr:
+        average: "9.2%"
+        good: "12%+"
+        great: "15%+"
+      cpa:
+        ecommerce: "$18.68"
+        lead_gen: "$19.68"
+        range: "Varia ampliamente por industria — $5 a $100+" 
+      roas:
+        average: "2.0:1"
+        good: "3.0:1"
+        great: "5.0:1+"
+      frequency:
+        prospecting_max: "2.5"
+        retargeting_max: "8.0"
+        fatigue_signal: "CTR cae cuando la frecuencia supera 3.0 en audiencias frías" 
+
+  google_search:
+    description: "Google Search Ads — la fuente de tráfico más alta intención" 
+    metrics:
+      ctr:
+        average: "3.17%"
+        good: "5%+"
+        great: "8%+"
+      cpc:
+        average: "$2.69"
+        range: "$0.50 a $50+ dependiendo de la competencia de palabras clave" 
+      cvr:
+        average: "3.75%"
+        good: "5%+"
+        great: "8%+"
+      cpa:
+        average: "$48.96"
+        range: "10 a 200 dólares más dependiendo de la industria" 
+      quality_score:
+        target: "7+"
+        excellent: "9-10"
+        poor: "A continuación 5 — reestructurar palabras clave y páginas de aterrizaje" 
+
+  google_display:
+    description: "Red de pantalla de Google - alcance amplio, menor intención" 
+    metrics:
+      ctr:
+        average: "0.46%"
+        good: "0.8%+"
+      cpc:
+        average: "$0.63"
+      cvr:
+        average: "0.77%"
+        note: "La visualización es la conciencia, no la conversión directa — la medición de conversiones asistidas" 
+      cpm:
+        average: "$3.12"
+
+  youtube:
+    description: "YouTube Ads — video-first, plataforma de alto compromiso" 
+    metrics:
+      view_rate:
+        average: "31.9%"
+        good: "40%+"
+        great: "50%+"
+      cpv:
+        average: "$0.026"
+        range: "$0.01 to $0.10"
+      ctr:
+        average: "0.65%"
+        good: "1%+"
+      cpc:
+        average: "$3.21"
+      hook_retention:
+        first_5_seconds: "Objetivo 70%+ retención" 
+        first_30_seconds: "Meta 45%+ retención" 
+        note: "Si la retención de 5 segundos es inferior al 50%, el gancho necesita trabajo" 
+
+  tiktok:
+    description: "TikTok Ads — demográficos más jóvenes, estilo de contenido nativo" 
+    metrics:
+      ctr:
+        average: "0.84%"
+        good: "1.5%+"
+        great: "3%+"
+      cpc:
+        average: "$1.00"
+        good: "< $0.50"
+      cpm:
+        average: "$10.00"
+        range: "$3-$20"
+      cvr:
+        average: "1.1%"
+        note: "CVR directo inferior pero fuerte para top-of-funnel - Medición de los efectos asistidos" 
+      hook_rate:
+        target: "30%+ ver más allá de 3 segundos" 
+        great: "50%+"
+        note: "El gancho de 2 segundos es todo en TikTok" 
+
+  linkedin:
+    description: "LinkedIn Ads — B2B, audiencias profesionales, CPMs premium" 
+    metrics:
+      ctr:
+        average: "0.44%"
+        good: "0.8%+"
+      cpc:
+        average: "$5.26"
+        range: "$2 to $15+"
+      cpm:
+        average: "$33.80"
+        note: "CPM más alta de las principales plataformas — la calidad del público justifica el costo para B2B" 
+      cvr:
+        average: "6.1%"
+        good: "10%+"
+      cpa:
+        lead_gen: "$75+"
+        note: "Alto CPAs aceptable para B2B cuando los valores de acuerdo son $5K+" 
+
+benchmarks_by_industry:
+  ecommerce:
+    avg_cpa: "$45"
+    avg_roas: "2.5:1"
+    target_roas: "4:1+"
+    note: "ROAS depende en gran medida de AOV — bajo AOV necesita un ROAS más alto para ser rentable" 
+
+  saas:
+    avg_cpa: "$75-$150"
+    avg_trial_to_paid: "15-25%"
+    target_ltv_to_cac: "3:1+"
+    note: "Medida LTV:CAC ratio, no sólo CPA" 
+
+  local_service:
+    avg_cpl: "$15-$50"
+    avg_booking_rate: "20-40%"
+    note: "Las llamadas a menudo convierten mejor que los rellenos de formulario para locales" 
+
+  education:
+    avg_cpl: "$25-$75"
+    avg_enrollment_rate: "5-15%"
+    note: "Ciclos de ventas largos — medir la calidad de plomo sobre el volumen de plomo" 
+
+  health_fitness:
+    avg_cpa: "$30-$80"
+    avg_roas: "2:1"
+    note: "Regulación hepática: examen de cumplimiento requerido antes de iniciar el lanzamiento" 
+
+benchmarks_by_funnel_stage:
+  top_of_funnel:
+    primary_metrics: [CPM, CTR, video_view_rate, hook_retention]
+    target_budget_share: "50-60%"
+    optimization_event: "Vista de la página de aterrizaje o vista de vídeo" 
+    note: "Optimize for reach and engagement, not conversions" 
+
+  middle_of_funnel:
+    primary_metrics: [CPC, CTR, engagement_rate, page_dwell_time]
+    target_budget_share: "20-30%"
+    optimization_event: "Vista de contenido o añadir a la cesta" 
+    note: "Retarget usuarios comprometidos de TOF" 
+
+  bottom_of_funnel:
+    primary_metrics: [CPA, ROAS, CVR, AOV]
+    target_budget_share: "15-25%"
+    optimization_event: "Compra o entrega de plomo" 
+    note: "audiencia más pequeña, mayor intención — frecuencia de reloj de cerca" 

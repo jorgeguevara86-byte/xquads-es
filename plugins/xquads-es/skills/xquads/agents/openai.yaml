@@ -1,0 +1,4 @@
+interface:
+  display_name: xquads · Español
+  short_description: Diagnóstico y selección del equipo apropiado
+  default_prompt: Usa $xquads para ayudarme con mi objetivo.

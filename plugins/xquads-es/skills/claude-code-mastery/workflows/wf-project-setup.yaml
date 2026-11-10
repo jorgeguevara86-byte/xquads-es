@@ -1,0 +1,178 @@
+# ============================================================================
+# Workflow: Project Setup
+# Squad: claude-code-mastery
+# Version: 1.0.0
+# Purpose: Full Claude Code project setup from zero to production-ready
+# ============================================================================
+
+workflow:
+  id: wf-project-setup
+  name: "Claude Code Project Setup" 
+  version: "1.0.0"
+  description: "Fin-to-end flujo de trabajo para establecer el Código Claude en cualquier proyecto.\nOrquestas config-engineer, hooks-architect, mcp-integrator,\ny project-integrator crear un completo, production-ready - Arreglamiento."
+  trigger: "*setup-project"
+  entry_agent: claude-mastery-chief
+  estimated_duration: "30-60 minutes"
+
+# ────────────────────────────────────────────────────────────────────────────
+# PHASES
+# ────────────────────────────────────────────────────────────────────────────
+
+phases:
+
+  # ─── PHASE 0: Discovery ───────────────────────────────────────────────────
+  - id: phase_0
+    name: "Descubrimiento &quot; Detección &quot;" 
+    agent: project-integrator
+    task: integrate-project.md
+    description: "Detectar tipo de proyecto, analizar la estructura existente, determinar qué\nLos componentes del Código de Claude son necesarios."
+    steps:
+      - "Raíz del proyecto de análisis para archivos de firma (package.json, requerimientos.txt, Cargo.toml, etc.)" 
+      - "Partido contra project-type-signatures.yaml" 
+      - "Detectar la configuración existente del Código de Claude (en parte?" 
+      - "Determinar el alcance de la configuración: greenfield vs brownfield" 
+    outputs:
+      - project_type: "cadena (monorepo TENIDO fullstack-nextjs | react-library | python-api | ...)" 
+      - existing_setup: "object (has_claude_dir, has_settings, has_claudemd, has_hooks, has_mcp)"
+      - setup_scope: "cadena (verdefield Silencioso Silencioso Silencioso actualización)" 
+    checkpoint:
+      gate: "Tipo de proyecto detectado con confianza √= 0.7" 
+      veto: "Si el tipo de proyecto es indetectable, pídale al usuario que especifique" 
+
+  # ─── PHASE 1: CLAUDE.md Engineering ──────────────────────────────────────
+  - id: phase_1
+    name: "CLAUDE.md Engineering"
+    agent: project-integrator
+    task: claude-md-engineer.md
+    depends_on: [phase_0]
+    description: "Generar un optimizado CLAUDE.md adaptado al tipo de proyecto detectado."
+    steps:
+      - "Seleccione plantillas/ basadas en project_type" 
+      - "Analizar la estructura de proyectos para convenciones (nombramiento, patrones, herramientas)" 
+      - "Generar CLAUDE.md de 200 líneas" 
+      - "Agregar secciones gestionadas para auto-update capacidad" 
+    outputs:
+      - claude_md_path: ".claude/CLAUDE.md or CLAUDE.md"
+      - line_count: "número (objetivo:  ⁇  200)" 
+    checkpoint:
+      gate: "CLAUDE.md existe,  ⁇  200 líneas, tiene secciones esenciales" 
+      veto: "CLAUDE.md √ 500 líneas sin aprobación del usuario" 
+
+  # ─── PHASE 2: Configuration ──────────────────────────────────────────────
+  - id: phase_2
+    name: "Ajustes &quot; Permisos" 
+    agent: config-engineer
+    task: configure-claude-code.md
+    depends_on: [phase_0]
+    description: "Generar .claude/settings.json con permisos apropiados,\ndenegar reglas, y configuraciones de servidores MCP."
+    steps:
+      - "Generar .claude/settings.json con deny-first enfoque" 
+      - "Configurar el modo de permiso basado en las necesidades de los proyectos" 
+      - "Agregue reglas de denegación para archivos sensibles (.env, secretos, credenciales)" 
+      - "Configurar permite reglas para operaciones seguras comunes" 
+    outputs:
+      - settings_path: ".claude/settings.json"
+      - permission_mode: "string"
+      - deny_rules_count: "number"
+    checkpoint:
+      gate: "settings.json válido, negar reglas cubren .env y secretos" 
+      veto: "No niega reglas para archivos sensibles" 
+
+  # ─── PHASE 3: Rules ─────────────────────────────────────────────────────
+  - id: phase_3
+    name: "Reglas condicionales" 
+    agent: config-engineer
+    task: create-rules.md
+    depends_on: [phase_1]
+    description: "Crear .claude/rules/ con path-based reglas condicionales\npara mantener la ventana contextual inclinada."
+    steps:
+      - "Identificar categorías de reglas (testing, API, base de datos, frontend, etc.)" 
+      - "Crear reglas con caminos: primera para carga condicional" 
+      - "Mover instrucciones detalladas desde CLAUDE.md a las normas" 
+      - "Reglas de validación cargadas correctamente" 
+    outputs:
+      - rules_dir: ".claude/rules/"
+      - rules_count: "number"
+    checkpoint:
+      gate: "Al menos 2 reglas creadas con frontmatter válido" 
+      veto: "Reglas sin caminos: frontmatter (always-loaded bloat)" 
+
+  # ─── PHASE 4: Hooks ─────────────────────────────────────────────────────
+  - id: phase_4
+    name: "Configuración de ganchos" 
+    agent: hooks-architect
+    task: hook-designer.md
+    depends_on: [phase_2]
+    description: "Configurar ganchos para el proyecto basado en sus necesidades."
+    steps:
+      - "Evaluar las necesidades de gancho del tipo de proyecto y el flujo de trabajo" 
+      - "Crear damage-control gancho (bloquear comandos peligrosos)" 
+      - "Opcionalmente añadir auto-lint, notificación o cost-tracking ganchos" 
+      - "Añadir ganchos a settings.json" 
+      - "Ejecución de ganchos de prueba" 
+    outputs:
+      - hooks_configured: "number"
+      - hook_types: "array de nombres de eventos" 
+    checkpoint:
+      gate: "Al menos damage-control gancho configurado y probado" 
+      veto: "Gancho con errores de sintaxis en settings.json" 
+
+  # ─── PHASE 5: MCP Servers ───────────────────────────────────────────────
+  - id: phase_5
+    name: "MCP Integration" 
+    agent: mcp-integrator
+    task: mcp-workflow.md
+    depends_on: [phase_2]
+    description: "Configurar servidores MCP apropiados para la pila tecnológica del proyecto."
+    steps:
+      - "El proyecto de mapa necesita para servidores MCP disponibles" 
+      - "Cálculo del impacto presupuestario en el contexto" 
+      - "Configurar los MCP esenciales (prioritar por ROI)" 
+      - "Disponibilidad de herramientas de prueba con ToolSearch" 
+    outputs:
+      - mcp_servers: "array de servidores configurados" 
+      - context_budget_used: "Número (tokens)" 
+    checkpoint:
+      gate: "Los servidores MCP configurados y respondiendo" 
+      veto: "Presupuesto de contexto √≥ 10K fichas para herramientas MCP solas" 
+
+  # ─── PHASE 6: Validation ────────────────────────────────────────────────
+  - id: phase_6
+    name: "Configuración de validación" 
+    agent: claude-mastery-chief
+    task: audit-setup.md
+    depends_on: [phase_1, phase_2, phase_3, phase_4, phase_5]
+    description: "Realizar una auditoría completa de la configuración completa para garantizar la calidad."
+    steps:
+      - "Ejecutar *audit comando" 
+      - "Verificar todos los componentes están correctamente configurados" 
+      - "Generar informe de configuración con puntuación" 
+      - "Recomendar los próximos pasos" 
+    outputs:
+      - audit_score: "number (0-100)"
+      - grade: "cadena (A-F)" 
+      - recommendations: "array"
+    checkpoint:
+      gate: "Puntuación de auditoría √= 70 (grado C o mejor)" 
+      veto: "Puntuación 0,50 - cuestiones fundamentales de configuración" 
+
+# ────────────────────────────────────────────────────────────────────────────
+# COMPLETION CRITERIA
+# ────────────────────────────────────────────────────────────────────────────
+
+completion_criteria:
+  - "CLAUDE.md existe y es  ⁇  200 líneas" 
+  - ".claude/settings.json es válido con reglas denegadas" 
+  - "Al menos 2 reglas condicionales en .claude/rules/" 
+  - "Al menos 1 gancho configurado (damage-control mínimo)" 
+  - "Servidores MCP configurados para la pila de proyecto" 
+  - "Puntuación de auditoría √≥ 70" 
+
+# ────────────────────────────────────────────────────────────────────────────
+# VETO CONDITIONS (workflow-level)
+# ────────────────────────────────────────────────────────────────────────────
+
+veto_conditions:
+  - "No .env o secretos de archivos accesibles sin negar reglas" 
+  - "No autoAprobar el modo de permiso sin el consentimiento explícito del usuario" 
+  - "No hay configuración MCP que exceda el presupuesto contextual" 

@@ -1,0 +1,179 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Hormozi Squad
+# Domain: Business Scaling & Growth (Hormozi Frameworks)
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: hormozi-squad
+  display_name: "Hormozi Squad" 
+  version: "1.0.0"
+  domain: "Escalada de negocios usando los marcos de Alex Hormozi — ofertas, leads, precios, ventas, retención y crecimiento" 
+  description: "16 agentes especializados implementando los marcos de escala de negocios de Alex Hormozi.\nCada agente domina un dominio específico de la metodología de Hormozi — ofrece, lidera,\nprecios, contenido, anuncios, ventas, retención, escalado y más.\nOfertas de $100M, Líderes de $100M, Secretos de lanzamiento de gimnasios y metodología de Acquisición.com."
+  keywords: [offers, leads, pricing, sales, scaling, retention, "modelo de negocio" , launch, content, hooks, ads, workshop, audit, "gran oferta de almejas" , "ecuación de valor" ]
+  entry_agent: hormozi-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [hormozi-chief]
+    purpose: "Trucos de negocios, ruta al especialista Hormozi adecuado, control de calidad" 
+  tier_1_core:
+    name: "Motores de negocio básicos" 
+    agents: [hormozi-offers, hormozi-leads, hormozi-pricing, hormozi-closer]
+    purpose: "Los agentes fundamentales — ofrece, dirige, se fija y vende" 
+  tier_1_growth:
+    name: "Crecimiento y adquisición" 
+    agents: [hormozi-ads, hormozi-content, hormozi-hooks, hormozi-launch]
+    purpose: "Agentes enfocados en escalar, lanzar y expandir" 
+  tier_1_optimization:
+    name: "Optimización &quot; Retención &quot;" 
+    agents: [hormozi-retention, hormozi-scale, hormozi-models, hormozi-audit]
+    purpose: "Agentes enfocados en mantener y maximizar a los clientes" 
+  tier_1_support:
+    name: "Especialistas en apoyo" 
+    agents: [hormozi-copy, hormozi-workshop, hormozi-advisor]
+    purpose: "Necesidades específicas de ejecución: redacción, talleres, asesoramiento estratégico" 
+
+agents:
+  hormozi-chief:
+    file: agents/hormozi-chief.md
+    tier: 0
+    icon: "🐝"
+    focus: "Orquesta, enrutamiento, diagnóstico de negocios" 
+  hormozi-offers:
+    file: agents/hormozi-offers.md
+    tier: 1
+    icon: "💎"
+    focus: "Gran Slam Creación de la oferta, ecuación de valor" 
+  hormozi-leads:
+    file: agents/hormozi-leads.md
+    tier: 1
+    icon: "🧲"
+    focus: "Marco de plomos de 100 M, generación de plomo" 
+  hormozi-pricing:
+    file: agents/hormozi-pricing.md
+    tier: 1
+    icon: "💲"
+    focus: "Estrategia de fijación de precios basada en el valor" 
+  hormozi-closer:
+    file: agents/hormozi-closer.md
+    tier: 1
+    icon: "🤝"
+    focus: "Marco CLOSER, cierre de ventas" 
+  hormozi-ads:
+    file: agents/hormozi-ads.md
+    tier: 1
+    icon: "📢"
+    focus: "Estrategia de publicidad pagada, estilo Hormozi" 
+  hormozi-content:
+    file: agents/hormozi-content.md
+    tier: 1
+    icon: "📱"
+    focus: "Metodología de la máquina de contenidos" 
+  hormozi-hooks:
+    file: agents/hormozi-hooks.md
+    tier: 1
+    icon: "🪝"
+    focus: "Creación de ganchos, captura de atención" 
+  hormozi-launch:
+    file: agents/hormozi-launch.md
+    tier: 1
+    icon: "🚀"
+    focus: "Product/business Estrategia de lanzamiento" 
+  hormozi-retention:
+    file: agents/hormozi-retention.md
+    tier: 1
+    icon: "🔁"
+    focus: "Reducción de la churn, maximización de la LTV" 
+  hormozi-scale:
+    file: agents/hormozi-scale.md
+    tier: 1
+    icon: "📈"
+    focus: "Escalada de $1M a $100M+" 
+  hormozi-models:
+    file: agents/hormozi-models.md
+    tier: 1
+    icon: "🏗️"
+    focus: "Selección y diseño de modelos de negocio" 
+  hormozi-audit:
+    file: agents/hormozi-audit.md
+    tier: 1
+    icon: "🔍"
+    focus: "Evaluación y mejora de las empresas" 
+  hormozi-copy:
+    file: agents/hormozi-copy.md
+    tier: 1
+    icon: "✍️"
+    focus: "Copiado de estilo Hormozi" 
+  hormozi-workshop:
+    file: agents/hormozi-workshop.md
+    tier: 1
+    icon: "🎓"
+    focus: "Diseño y entrega de talleres" 
+  hormozi-advisor:
+    file: agents/hormozi-advisor.md
+    tier: 1
+    icon: "🧭"
+    focus: "Asesoramiento empresarial estratégico, voz de Hormozi" 
+
+handoffs:
+  hormozi-chief:
+    routes_to: [hormozi-offers, hormozi-leads, hormozi-pricing, hormozi-closer, hormozi-ads, hormozi-content, hormozi-hooks, hormozi-launch, hormozi-retention, hormozi-scale, hormozi-models, hormozi-audit, hormozi-copy, hormozi-workshop, hormozi-advisor]
+  hormozi-offers:
+    collaborates_with: [hormozi-pricing, hormozi-closer]
+    escalates_to: [hormozi-chief]
+  hormozi-leads:
+    collaborates_with: [hormozi-ads, hormozi-content]
+    escalates_to: [hormozi-chief]
+  hormozi-pricing:
+    collaborates_with: [hormozi-offers, hormozi-models]
+    escalates_to: [hormozi-chief]
+  hormozi-closer:
+    collaborates_with: [hormozi-offers]
+    escalates_to: [hormozi-chief]
+  hormozi-ads:
+    collaborates_with: [hormozi-hooks, hormozi-content]
+    escalates_to: [hormozi-chief]
+  hormozi-content:
+    collaborates_with: [hormozi-hooks, hormozi-ads]
+    escalates_to: [hormozi-chief]
+  hormozi-hooks:
+    collaborates_with: [hormozi-copy, hormozi-content]
+    escalates_to: [hormozi-chief]
+  hormozi-launch:
+    collaborates_with: [hormozi-offers, hormozi-leads]
+    escalates_to: [hormozi-chief]
+  hormozi-retention:
+    collaborates_with: [hormozi-scale]
+    escalates_to: [hormozi-chief]
+  hormozi-scale:
+    collaborates_with: [hormozi-models, hormozi-audit]
+    escalates_to: [hormozi-chief]
+  hormozi-models:
+    collaborates_with: [hormozi-scale, hormozi-pricing]
+    escalates_to: [hormozi-chief]
+  hormozi-audit:
+    collaborates_with: [hormozi-models, hormozi-scale]
+    escalates_to: [hormozi-chief]
+  hormozi-copy:
+    collaborates_with: [hormozi-hooks]
+    escalates_to: [hormozi-chief]
+  hormozi-workshop:
+    collaborates_with: [hormozi-closer, hormozi-offers]
+    escalates_to: [hormozi-chief]
+  hormozi-advisor:
+    collaborates_with: [hormozi-chief]
+    escalates_to: [hormozi-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+  core_formula:
+    value_equation: "Valor = (Dream Resultado x Probablemente percibido) / (Time Delay x Effort & Sacrifice)" 
+
+settings:
+  activation:
+    prefix: "hormozi-squad"
+    example: "@hormozi-squad:hormozi-offers"

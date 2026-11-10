@@ -1,0 +1,207 @@
+# Movement Frameworks — Reference Data
+# Canonical models used by all Movement Squad agents
+# Version: 1.0.0
+
+phase_model:
+  name: "Modelo de Movimiento 5-Phase" 
+  description: "Fases secuenciales para construir un movimiento desde la perspectiva hasta el impacto" 
+  phases:
+    - id: spark
+      name: "Spark"
+      description: "Identificar la tensión compartida, la frustración o la aspiración" 
+      entry_criteria:
+        - "Público objetivo definido" 
+        - "Causa o idea articulada" 
+      exit_criteria:
+        - "Experiencia viva identificada y documentada" 
+        - "Tensión colectiva mapeada con intensidad  ⁇ = 3/5" 
+        - "Diversión narrativa compartida con el núcleo narrativo" 
+        - "Potencial de movimiento valorado √≥n= MEDIUM" 
+      primary_agent: fenomenologo
+      secondary_agent: movement-architect
+
+    - id: identity
+      name: "Identity"
+      description: "Defina quiénes somos, lo que creemos, lo que estamos en contra" 
+      entry_criteria:
+        - "Análisis de chispa validado" 
+        - "Potencial de movimiento √≥= MEDIUM" 
+      exit_criteria:
+        - "Sistema de creencias definido con convicción central" 
+        - "Marcadores tribales diseñados (idioma, visual, conductual)" 
+        - "Al menos 5 rituales creados" 
+        - "Perteneciente a 5 niveles" 
+      primary_agent: identitario
+      secondary_agent: manifestador
+
+    - id: ignition
+      name: "Ignition"
+      description: "Crear el manifiesto, semillas primeros seguidores, construir rituales" 
+      entry_criteria:
+        - "Arquitectura de identidad completa" 
+        - "Identidad validada" 
+      exit_criteria:
+        - "Manifiesto escrito con los 7 componentes" 
+        - "Lloro de batalla definido" 
+        - "Primer ritual diseñado" 
+        - "Estrategia del círculo de fundación definida" 
+      primary_agent: manifestador
+      secondary_agent: estrategista-de-ciclo
+
+    - id: growth
+      name: "Growth"
+      description: "Escala a través de ciclos — atraer, activar, sostener, multiplicar" 
+      entry_criteria:
+        - "Manifiesto completo y aprobado" 
+        - "Al menos un ritual operativo" 
+      exit_criteria:
+        - "Volante de crecimiento diseñado con las 4 fases" 
+        - "Estrategia de canal definida" 
+        - "ritual de activación probado" 
+        - "Gatillos multiplicación identificados" 
+      primary_agent: estrategista-de-ciclo
+      secondary_agent: analista-de-impacto
+
+    - id: impact
+      name: "Impact"
+      description: "Medición y amplificación real-world impacto" 
+      entry_criteria:
+        - "Estrategia de crecimiento definida" 
+        - "La comunidad existe (aunque sea pequeña)" 
+      exit_criteria:
+        - "Pirámide de impacto definida con 5 niveles" 
+        - "Matriz de medición completa" 
+        - "Criterios de índice de vitalidad establecidos" 
+        - "Lista de cadencias" 
+      primary_agent: analista-de-impacto
+      secondary_agent: movement-chief
+
+identity_stack:
+  name: "Identidad en el estadio" 
+  description: "5 capas de identidad de movimiento, desde la base hasta la expresiva" 
+  layers:
+    - level: 1
+      name: "Values"
+      description: "Valores básicos que forman la fundación (3-5 valores)" 
+      examples: ["freedom", "authenticity", "courage", "community", "justice"]
+    - level: 2
+      name: "Beliefs"
+      description: "Declaraciones de convicción que traducen valores en una visión del mundo" 
+      format: "Creemos que..." 
+      types: ["central", "supporting", "aspirational", "contrarian"]
+    - level: 3
+      name: "Behaviors"
+      description: "Acciones y hábitos que demuestran la pertenencia" 
+      examples: ["práctica diaria" , "Declaración pública" , "apoyo entre pares" ]
+    - level: 4
+      name: "Symbols"
+      description: "Marcadores visuales y verbales que identifican a los miembros" 
+      examples: ["logo", "colors", "catchphrases", "señalizaciones de mano" , "clothing"]
+    - level: 5
+      name: "Rituals"
+      description: "Prácticas repetidas que refuerzan la pertenencia" 
+      types: ["initiation", "daily", "gathering", "celebration", "storytelling"]
+
+manifesto_anatomy:
+  name: "7-Componente Manifiesto Anatomía" 
+  description: "El plano estructural para un manifiesto de movimiento" 
+  components:
+    - order: 1
+      name: "Declaración de realidad" 
+      description: "Abierto con una verdad innegable sobre el estado actual" 
+      purpose: "Crear un reconocimiento y un acuerdo instantáneos" 
+    - order: 2
+      name: "Articulación de dolor" 
+      description: "Nombra la frustración que la gente siente pero rara vez dice en voz alta" 
+      purpose: "Construir la conexión emocional a través de la vulnerabilidad compartida" 
+    - order: 3
+      name: "Declaraciones sobre la creencia" 
+      description: "3-7 \"Creemos\" declaraciones en intensidad ascendente" 
+      purpose: "Define la visión del mundo del movimiento y crea pertenencia" 
+    - order: 4
+      name: "Enemigo Naming" 
+      description: "Identificar la fuerza sistémica que el movimiento se opone" 
+      purpose: "Unitarios contra un adversario común (nunca persona)" 
+    - order: 5
+      name: "Future Vision" 
+      description: "Pintar una imagen específica y sensorial de la tierra prometida" 
+      purpose: "Inspirar la acción haciendo tangible el futuro" 
+    - order: 6
+      name: "Llamado a la acción" 
+      description: "Un paso concreto que cualquiera pueda dar hoy" 
+      purpose: "Convertir emoción en acción" 
+    - order: 7
+      name: "Batalla Cry" 
+      description: "Una frase que lo captura todo" 
+      purpose: "Dar al movimiento una llamada memorable y repetible" 
+
+growth_flywheel:
+  name: "Crecimiento Flywheel" 
+  description: "Ciclo de 4 fases para escalar un movimiento" 
+  phases:
+    - id: attract
+      name: "Attract"
+      description: "Dibuja a los miembros potenciales a través del mensaje del movimiento" 
+      tactics: ["marketing" , "Distribución manifiesta" , "prueba social" , "palabra de boca" , "events"]
+    - id: activate
+      name: "Activate"
+      description: "Convertir personas interesadas en participantes activos" 
+      tactics: ["ritual de iniciación" , "primera victoria" , "sistema de amiguitos" , "secuencia de embarque" , "pequeño compromiso" ]
+    - id: sustain
+      name: "Sustain"
+      description: "Mantener a los miembros comprometidos y profundizar el compromiso" 
+      tactics: ["rituales regulares" , "contenido cadencia" , "eventos comunitarios" , "recognition", "seguimiento de los progresos realizados" ]
+    - id: multiply
+      name: "Multiply"
+      description: "Empoderar a los miembros para que recluten y dirijan" 
+      tactics: ["programas de remisión" , "Funciones del dubsador" , "capítulos locales" , "teach-to-learn", "contenido compartido" ]
+
+impact_pyramid:
+  name: "Pirámide de impacto" 
+  description: "5 niveles de impacto de movimiento desde la conciencia a la transformación" 
+  levels:
+    - level: 1
+      name: "Awareness"
+      description: "La gente sabe que el movimiento existe" 
+      metrics: ["reach", "impressions", "mentions", "cobertura de los medios de comunicación" ]
+    - level: 2
+      name: "Engagement"
+      description: "Las personas interactúan con el movimiento" 
+      metrics: ["participantes activos" , "asistencia a los eventos" , "compromiso de contenidos" , "volumen de conversación" ]
+    - level: 3
+      name: "Commitment"
+      description: "Personas identificadas como miembros" 
+      metrics: ["self-identified members", "Participación ritual" , "Tasa de contribución" , "retention"]
+    - level: 4
+      name: "Advocacy"
+      description: "Miembros que reclutan activamente a otros" 
+      metrics: ["Tasa de remisión de la tasa de remisión" , "user-generated content", "Cont" , "crecimiento orgánico" ]
+    - level: 5
+      name: "Transformation"
+      description: "El cambio del mundo real ocurre" 
+      metrics: ["cambio de comportamiento" , "Efectos normativos" , "cambios de la industria" , "adopción cultural" ]
+
+ritual_architecture:
+  name: "Arquitectura ritual" 
+  description: "Marco para diseñar rituales de movimiento" 
+  types:
+    - type: "Initiation"
+      frequency: "Una vez (en unión)" 
+      purpose: "Marcar la transición de fuera de fuera a miembro" 
+      emotional_arc: "anticipación √≠ desafío √≥ propiedad" 
+    - type: "Daily"
+      frequency: "Diario o near-daily" 
+      purpose: "Reforzar la identidad mediante pequeñas acciones repetidas" 
+      emotional_arc: "intencion  ⁇   ⁇  acción √≥ satisfaction" 
+    - type: "Gathering"
+      frequency: "Semanal o mensual" 
+      purpose: "Fortalecer los vínculos mediante la experiencia compartida" 
+      emotional_arc: "conexión √≠ energía √≥ compromiso" 
+    - type: "Celebration"
+      frequency: "Sobre los hitos" 
+      purpose: "Reconocer los logros y reforzar los progresos" 
+      emotional_arc: "reflexión  ⁇  gratitud √≠" 
+    - type: "Storytelling"
+      frequency: "Ongoing"
+      purpose: "Compartir historias de transformación personal" 
+      emotional_arc: "vulnerabilidad  ⁇  reconocimiento  ⁇  inspiración" 

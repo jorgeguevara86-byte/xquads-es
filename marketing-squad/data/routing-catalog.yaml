@@ -1,0 +1,39 @@
+# Routing Catalog — Marketing Squad
+# Referenciado por tasks/diagnose.md. Mapeia a demanda ao especialista certo.
+
+domains:
+  message_positioning:
+    keywords: [mensagem, posicionamento, storybrand, one-liner, "Proposición de valor" , "oferta confusa" , funil, nurture]
+    primary_agent: donald-miller
+    secondary_agent: eugene-schwartz
+    description: "Defina lo que dice la marca y para quién — la columna vertebral de la campaña." 
+
+  copywriting:
+    keywords: [copy, headline, título, "carta de ventas" , "página de ventas" , vsl, e-mail, bullets, mecanismo, anúncio, "sensibilización" ]
+    primary_agent: eugene-schwartz
+    secondary_agent: donald-miller
+    description: "Las palabras que venden, calibradas en el nivel de conciencia del mercado." 
+
+  visual_creative:
+    keywords: [criativo, visual, imagem, thumbnail, banner, identidade, logo, "ilustración" , prompt, midjourney, social]
+    primary_agent: visual-generator
+    secondary_agent: eugene-schwartz
+    description: "Activos visuales — anuncio creativo, identidad, impulsos de IA." 
+
+  paid_traffic:
+    keywords: [tráfego, "meta ads" , facebook, instagram, "pagada" , público, "presupuesto" , cbo, abo, escala, gestor, "lanzamiento" ]
+    primary_agent: pedro-sobral
+    secondary_agent: visual-generator
+    description: "Distribución y escala por tráfico pagado: focal Meta Ads, es." 
+
+  full_campaign:
+    keywords: [campanha, "campaña completa" , "marketing completo" , "desde cero" , "propina" ]
+    primary_agent: marketing-chief
+    secondary_agent: null
+    description: "Campaña finaliza – dispara el flujo de trabajo *campaign (los cuatro cursos en secuencia)." 
+
+  launch:
+    keywords: ["lanzamiento" , "lanzamiento" , "Apertura de carros" , "semana de lanzamiento" , ondas]
+    primary_agent: marketing-chief
+    secondary_agent: pedro-sobral
+    description: "Lanzamiento de produto/oferta - dispara el flujo de trabajo *launch (ondas zumbidas)" 

@@ -1,0 +1,97 @@
+workflow:
+  id: wf-campaign-launch
+  name: "Campaña de lanzamiento" 
+  version: "1.0.0"
+  description: "lanzamiento completo de la campaña de medios pagados.\ndesarrollo creativo, configuración de seguimiento, lanzamiento y optimización.\nJefe de tráfico orquesta expertos en plataforma en cada etapa."
+  trigger: "*campaign-launch"
+  entry_agent: traffic-chief
+  estimated_duration: "45-90 minutes"
+
+  type: sequential
+  sequence:
+    - agent: traffic-chief
+      action: create-ad-strategy
+      creates: strategy
+    - agent: ad-midas
+      action: create-ad-creative
+      creates: creatives
+    - agent: pixel-specialist
+      action: setup-tracking
+      creates: tracking
+    - agent: performance-analyst
+      action: analyze-performance
+      creates: analysis
+
+phases:
+  - id: phase_0
+    name: "Estrategia de desarrollo" 
+    agent: traffic-chief
+    task: create-ad-strategy.md
+    description: "Define la arquitectura de audiencia, estructura de campaña, temas creativos, asignación de presupuestos y objetivos KPI para la campaña." 
+    outputs:
+      - ad_strategy: "markdown"
+      - audience_segments: "list"
+      - budget_allocation: "object"
+    checkpoint:
+      gate: "Estrategia completa con audiencias, estructura, presupuesto y KPI definidas" 
+      veto: "Falta de personal o asignación presupuestaria" 
+
+  - id: phase_1
+    name: "Desarrollo creativo" 
+    agent: ad-midas
+    task: create-ad-creative.md
+    depends_on: [phase_0]
+    description: "Desarrollar conceptos creativos ad basados en la estrategia. Crear ganchos, copia, dirección visual y calzoncillos de producción para cada etapa de embudo." 
+    outputs:
+      - creative_package: "markdown"
+      - production_briefs: "list"
+      - testing_plan: "object"
+    checkpoint:
+      gate: "Mínimo 5 conceptos creativos con production-ready breves" 
+      veto: "Los creativos no coinciden con el público de la estrategia y el escenario de embudos" 
+
+  - id: phase_2
+    name: "Configuración de seguimiento" 
+    agent: pixel-specialist
+    task: setup-tracking.md
+    depends_on: [phase_0]
+    description: "Configurar píxeles de rastreo, eventos de conversión, server-side API, estrategia UTM y modelo de atribución. QA todo seguimiento antes del lanzamiento." 
+    outputs:
+      - tracking_setup: "markdown"
+      - qa_checklist: "list"
+    checkpoint:
+      gate: "Todos los eventos de conversión verificados disparo correctamente con QA pasado" 
+      veto: "Evento de conversión primaria no rastreo — no se puede lanzar sin medida" 
+
+  - id: phase_3
+    name: "Campaña de lanzamiento" 
+    agent: traffic-chief
+    task: create-ad-strategy.md
+    depends_on: [phase_1, phase_2]
+    description: "Ejecutar el lanzamiento: construir campañas in-platform, subir creativos, fijar la selección, permitir el seguimiento y activar. Monitorear las primeras 48 horas." 
+    outputs:
+      - launch_checklist: "markdown"
+      - monitoring_plan: "object"
+    checkpoint:
+      gate: "Campañas en vivo, gastando y rastreando confirmadas" 
+      veto: "Rastreo no verificado post-launch — pausa hasta que se confirme" 
+
+  - id: phase_4
+    name: "Optimize and Scale" 
+    agent: performance-analyst
+    task: analyze-performance.md
+    depends_on: [phase_3]
+    description: "Después de 7 días de datos, analice el rendimiento, identifique a los ganadores y perdedores, y ofrezca recomendaciones de optimización. scale-optimizer si el escalado está justificado." 
+    outputs:
+      - performance_report: "markdown"
+      - optimization_actions: "list"
+    checkpoint:
+      gate: "Rendimiento analizado con recomendaciones accionables" 
+      veto: "Datos insuficientes: prolongar la fase de aprendizaje antes de optimizar la" 
+
+completion_criteria:
+  - "Estrategia definida con audiencias, estructura y presupuesto" 
+  - "Creativos desarrollados con plan de prueba" 
+  - "Seguimiento verificado con QA aprobado" 
+  - "Campañas lanzadas y gastadas" 
+  - "Primer análisis de rendimiento completado con plan de optimización" 

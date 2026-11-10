@@ -1,0 +1,4 @@
+interface:
+  display_name: cybersecurity · Español
+  short_description: Seguridad, auditorías y pruebas autorizadas
+  default_prompt: Usa $cybersecurity para ayudarme con mi objetivo.

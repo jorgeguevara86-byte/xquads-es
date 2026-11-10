@@ -1,0 +1,57 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Xquads Chief
+# Domain: Meta-Orchestration & Routing
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: xquads
+  display_name: "Jefe de Xquads" 
+  version: "1.0.0"
+  domain: "Meta-orquestración - puerto de entrada único de los 14 equipos Xquads" 
+  description: "Meta-orquestador que se sitúa en un nivel por encima de los cabezales de equipo.\nen lenguaje natural, diagnostica el dominio, monta la información de la entrega y activa\nel jefe de la equipo correcta. Nunca realiza el trabajo — identifica la actividad y\ndelegado al verdugo."
+  keywords: ["orquestación" , roteamento, triagem, "delegación" , meta-orquestrador, "puerto de entrada" , multi-squad]
+  entry_agent: xquads-chief
+  created_at: "2026-08-06"
+
+tiers:
+  tier_minus_1:
+    name: "Meta-Orquestración" 
+    agents: [xquads-chief]
+    purpose: "Demanda diagnóstica, reunión de información y activar el jefe equipo correcto" 
+
+routing:
+  catalog: data/routing-catalog.yaml
+  total_squads: 14
+  external_targets: [raxos, squad-architect]
+  confidence_thresholds:
+    high: 80
+    medium: 50
+    low: 0
+  max_disambiguation_questions: 1
+  max_chain_links: 5
+  parallel_activation: false
+
+handoff:
+  max_briefing_tokens: 500
+  required_fields:
+    - demanda
+    - dominio
+    - objetivo_final
+    - contexto_conhecido
+    - premissas_assumidas
+    - fora_de_escopo
+    - task_sugerida
+    - proximo_squad
+
+behavior:
+  language: "es" 
+  executes_work: false
+  selects_final_specialist: false
+  writes_code: false
+  announces_confidence: true
+
+quality_gate:
+  checklist: checklists/output-quality.md
+  scope: "routing (no evalúa el entregable de la equipo)" 
+  auto_fail_on: "La Comisión adoptará los actos delegados de conformidad con el artículo 21 3) del Reglamento (UE) No 1303/2013." 

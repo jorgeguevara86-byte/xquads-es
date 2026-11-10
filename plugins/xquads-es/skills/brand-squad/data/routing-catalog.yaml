@@ -1,0 +1,82 @@
+# Routing Catalog: Brand Squad
+# Maps keywords to specialist agents for fast routing
+# Referenced by: tasks/diagnose.md
+
+domains:
+  brand_equity:
+    keywords: ["valor de marca" , "valor de marca" , "lealtad a la marca" , "reconocimiento de marca" , "asociaciones de marca" , "modelo de equidad" , CBBE]
+    primary_agent: david-aaker
+    secondary_agent: kevin-keller
+    description: "Medición, construcción y gestión del valor de marca" 
+
+  brand_identity:
+    keywords: ["identidad de marca" , "prisma de identidad" , "ADN de la marca" , "personalidad de la marca" , "cultura de marca" , "esencia de marca" ]
+    primary_agent: jean-noel-kapferer
+    secondary_agent: alina-wheeler
+    description: "Sistemas de identidad de marca: prisma de identidad de Kapferer y definición del ADN de la marca" 
+
+  positioning:
+    keywords: [positioning, category, focus, differentiation, "posee una palabra" , "creación de categoría" , "posición competitiva" ]
+    primary_agent: al-ries
+    secondary_agent: marty-neumeier
+    description: "Posicionamiento de mercado y estrategia de categoría: principios de posicionamiento de Ries" 
+
+  evidence_based:
+    keywords: ["cómo crecen las marcas" , "disponibilidad mental" , "disponibilidad física" , "activos distintivos" , reach, penetration, "marketing masivo" ]
+    primary_agent: byron-sharp
+    secondary_agent: kevin-keller
+    description: "Marketing basado en evidencia: metodología How Brands Grow de Sharp" 
+
+  messaging:
+    keywords: [StoryBrand, messaging, one-liner, "guión de marca" , "copia del sitio web" , "embudo de marketing" , "aclara tu mensaje" ]
+    primary_agent: donald-miller
+    secondary_agent: miller-sticky-brand
+    description: "Marco de mensajería StoryBrand: mensajes claros que venden" 
+
+  visual_identity:
+    keywords: [logo, "identidad visual" , "pautas de marca" , "sistema de diseño" , "elementos de marca" , touchpoints, "manual de marca" ]
+    primary_agent: alina-wheeler
+    secondary_agent: archetype-consultant
+    description: "Sistemas de identidad visual, lineamientos de marca y sistemas de diseño." 
+
+  brand_culture:
+    keywords: ["cultura de marca" , "marca empleadora" , "marca interna" , fusion, "experiencia del empleado" , "alineación cultural" ]
+    primary_agent: denise-yohn
+    secondary_agent: donald-miller
+    description: "Fusión de marca y cultura: alinear la cultura interna con la promesa de marca externa" 
+
+  startup_brand:
+    keywords: ["marca de inicio" , "Marca DTC" , "lanzamiento de marca" , "marca desde el primer día" , "nueva marca" , "creación de marca" ]
+    primary_agent: emily-heyward
+    secondary_agent: marty-neumeier
+    description: "Branding de inicio y DTC: creación de marca desde el primer día" 
+
+  luxury_brand:
+    keywords: [luxury, premium, prestige, "estrategia de lujo" , anti-laws, high-end, exclusive]
+    primary_agent: jean-noel-kapferer
+    secondary_agent: david-aaker
+    description: "Estrategia de marcas premium y de lujo: el lujo de Kapferer anti-laws" 
+
+  naming:
+    keywords: [naming, "nombre de la marca" , rename, "generación de nombre" , domain, "estrategia de nombre" , nomenclature]
+    primary_agent: naming-strategist
+    secondary_agent: domain-scout
+    description: "Estrategia de naming de marca, generación de nombre y disponibilidad de dominio" 
+
+  archetype:
+    keywords: [archetype, "personalidad de la marca" , "carácter de marca" , Jung, hero, rebel, sage, magician, everyman]
+    primary_agent: archetype-consultant
+    secondary_agent: jean-noel-kapferer
+    description: "Arquetipos de marca y personalidad: marco junguiano para el carácter de marca" 
+
+  brand_architecture:
+    keywords: ["arquitectura de marca" , sub-brands, "casa de marca" , "casa de marcas" , portfolio, "jerarquía de marcas" , extensions]
+    primary_agent: david-aaker
+    secondary_agent: kevin-keller
+    description: "Arquitectura de marca y estrategia de cartera — sub-brands, extensiones, gestión de cartera" 
+
+  differentiation_debate:
+    keywords: ["diferenciación vs carácter distintivo" , "debemos diferenciar" , zag, "brecha de marca" , "diferenciación radical" ]
+    primary_agent: marty-neumeier
+    secondary_agent: byron-sharp
+    description: "Debate entre diferenciación y distintividad: Zag de Neumeier frente a la distintividad de Sharp. Enrute ambos para una vista equilibrada." 

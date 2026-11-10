@@ -1,0 +1,90 @@
+# CI/CD Integration Patterns — Claude Code in Automated Pipelines
+# Squad: claude-code-mastery
+# Last updated: 2026-03-02
+
+version: "1.0.0"
+
+# Claude Code can run in headless mode (--print / -p) for CI/CD integration.
+# These patterns provide production-ready GitHub Actions workflows.
+
+patterns:
+
+  # ---------------------------------------------------------------------------
+  # 1. PR REVIEW — Automated code review on pull requests
+  # ---------------------------------------------------------------------------
+  - name: pr-review
+    description: "Revisa automáticamente las solicitudes de tiradas usando el código Claude en modo sin cabeza.\nProvocado por PR open/update, comentarios sobre el examen de los puestos."
+    trigger: pull_request
+    security_notes:
+      - "Tienda ANTHROPIC_API_KEY en secretos GitHub" 
+      - "Use permisos: pull-requests: escribir para publicar comentarios" 
+      - "Limitar las revisiones simultáneas para evitar los límites de la tasa de API" 
+      - "Nunca exponga las claves de API en los registros (utilizar --output-format json)" 
+    environment_setup:
+      required_secrets:
+        - "ANTHROPIC_API_KEY" 
+      required_permissions:
+        - "pull-requests: write"
+        - "contenidos: leer" 
+    github_actions_yaml: "name: Claude Code PR Review\non:\n  pull_request:\n    types: [opened, synchronize, ready_for_review]\n\npermissions:\n  contents: read\n  pull-requests: write\n\njobs:\n  review:\n    if: ${{ !github.event.pull_request.draft }}\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n\n      - name: Install Claude Code\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Get PR Diff\n        run: |\n          git diff origin/${{ github.base_ref }}...HEAD > /tmp/pr-diff.txt\n\n      - name: Run Claude Review\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n        run: |\n          REVIEW=$(claude -p \\\n            --output-format text \\\n            --max-turns 3 \\\n            \"Review this pull request diff for bugs, security issues, and code quality. Be concise. Focus on actionable feedback only. Diff: $(cat /tmp/pr-diff.txt | head -c 50000)\")\n\n          echo \"$REVIEW\" > /tmp/review-output.txt\n\n      - name: Post Review Comment\n        uses: actions/github-script@v7\n        with:\n          script: |\n            const fs = require('fs');\n            const review = fs.readFileSync('/tmp/review-output.txt', 'utf8');\n\n            await github.rest.issues.createComment({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              issue_number: context.issue.number,\n              body: `## Claude Code Review\\n\\n${review}\\n\\n---\\n*Automated review by Claude Code*`\n            });\n" 
+  # ---------------------------------------------------------------------------
+  # 2. COMMIT VALIDATION — Pre-commit quality check
+  # ---------------------------------------------------------------------------
+  - name: commit-validation
+    description: "Validar comprometer mensajes y cambiar archivos antes de fusionarse.\nCorresponde a empujar main/develop ramas."
+    trigger: push
+    security_notes:
+      - "Sólo funciona en ramas protegidas" 
+      - "No bloqueo por defecto (salida 0 en el pase de revisión)" 
+      - "Set continue-on-error para el modo de asesoramiento" 
+    environment_setup:
+      required_secrets:
+        - "ANTHROPIC_API_KEY" 
+    github_actions_yaml: "name: Claude Commit Validation\non:\n  push:\n    branches: [main, develop]\n\npermissions:\n  contents: read\n\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 2\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n\n      - name: Install Claude Code\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Validate Last Commit\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n        continue-on-error: true\n        run: |\n          COMMIT_MSG=$(git log -1 --pretty=%B)\n          DIFF=$(git diff HEAD~1 --stat)\n\n          claude -p \\\n            --output-format json \\\n            --max-turns 2 \\\n            \"Validate this commit. Check: 1) Conventional commit format, 2) Message matches changes, 3) No obvious issues. Commit: '$COMMIT_MSG'. Changes: $DIFF. Reply with JSON: {\\\"valid\\\": true/false, \\\"issues\\\": [...]}\"\n" 
+  # ---------------------------------------------------------------------------
+  # 3. TEST GENERATION — Generate tests for changed files
+  # ---------------------------------------------------------------------------
+  - name: test-generation
+    description: "Generar automáticamente pruebas de unidad para archivos cambiados en un PR.\nCrea un follow-up comprometerse con los archivos de prueba."
+    trigger: pull_request
+    security_notes:
+      - "Crea compromisos, necesita contenidos: permiso de escritura" 
+      - "Usa una token de bot o GitHub App para commits" 
+      - "Limitar a patrones de archivos específicos para controlar el alcance" 
+      - "Revisión de las pruebas generadas antes de combinar" 
+    environment_setup:
+      required_secrets:
+        - "ANTHROPIC_API_KEY" 
+      required_permissions:
+        - "contenidos: escribir" 
+        - "pull-requests: write"
+    github_actions_yaml: "name: Claude Test Generation\non:\n  pull_request:\n    types: [opened, synchronize]\n    paths:\n      - 'src/**/*.ts'\n      - 'src/**/*.tsx'\n      - '!src/**/*.test.ts'\n      - '!src/**/*.spec.ts'\n\npermissions:\n  contents: write\n  pull-requests: write\n\njobs:\n  generate-tests:\n    runs-on: ubuntu-latest\n    timeout-minutes: 20\n    steps:\n      - name: Checkout PR Branch\n        uses: actions/checkout@v4\n        with:\n          ref: ${{ github.head_ref }}\n          fetch-depth: 0\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n\n      - name: Install Dependencies\n        run: |\n          npm install -g @anthropic-ai/claude-code\n          npm ci\n\n      - name: Find Changed Files Without Tests\n        id: changed\n        run: |\n          FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \\\n            | grep -E '^src/.*\\.(ts|tsx)$' \\\n            | grep -v -E '\\.(test|spec)\\.' \\\n            | head -5)\n          echo \"files=$FILES\" >> $GITHUB_OUTPUT\n\n      - name: Generate Tests\n        if: steps.changed.outputs.files != ''\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n        run: |\n          for FILE in ${{ steps.changed.outputs.files }}; do\n            TEST_FILE=\"${FILE%.ts}.test.ts\"\n            if [ ! -f \"$TEST_FILE\" ]; then\n              claude -p \\\n                --output-format text \\\n                --max-turns 5 \\\n                --dangerously-skip-permissions \\\n                \"Generate comprehensive unit tests for $FILE. Use Jest and React Testing Library if applicable. Write tests to $TEST_FILE. Follow existing test patterns in the project.\"\n            fi\n          done\n\n      - name: Check for Generated Tests\n        id: check\n        run: |\n          if git diff --name-only | grep -q '\\.test\\.'; then\n            echo \"has_tests=true\" >> $GITHUB_OUTPUT\n          else\n            echo \"has_tests=false\" >> $GITHUB_OUTPUT\n          fi\n\n      - name: Commit Generated Tests\n        if: steps.check.outputs.has_tests == 'true'\n        run: |\n          git config user.name \"claude-code[bot]\"\n          git config user.email \"claude-code[bot]@users.noreply.github.com\"\n          git add '*.test.ts' '*.test.tsx'\n          git commit -m \"test: auto-generate tests for changed files\n\n          Co-Authored-By: Claude Code <noreply@anthropic.com>\"\n          git push\n" 
+  # ---------------------------------------------------------------------------
+  # 4. CODE REVIEW — Structured review with parsed output
+  # ---------------------------------------------------------------------------
+  - name: code-review
+    description: "Revisión de código estructurada con severity-classified conclusiones.\nProductos JSON para la integración con otras herramientas."
+    trigger: workflow_dispatch
+    security_notes:
+      - "Sólo el gatillo manual, alcance controlado" 
+      - "La salida JSON permite la automatización de aguas abajo" 
+      - "Resultados de la tienda como artefactos para la pista de auditoría" 
+    environment_setup:
+      required_secrets:
+        - "ANTHROPIC_API_KEY" 
+    github_actions_yaml: "name: Claude Structured Review\non:\n  workflow_dispatch:\n    inputs:\n      base_branch:\n        description: 'Base branch for comparison'\n        required: true\n        default: 'main'\n      review_scope:\n        description: 'Scope: all, security, performance, architecture'\n        required: true\n        default: 'all'\n\npermissions:\n  contents: read\n\njobs:\n  structured-review:\n    runs-on: ubuntu-latest\n    timeout-minutes: 20\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n\n      - name: Install Claude Code\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Run Structured Review\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n        run: |\n          DIFF=$(git diff origin/${{ inputs.base_branch }}...HEAD)\n\n          claude -p \\\n            --output-format json \\\n            --max-turns 5 \\\n            \"Perform a ${{ inputs.review_scope }} code review on this diff. Output a JSON object with: {\\\"summary\\\": \\\"...\\\", \\\"findings\\\": [{\\\"severity\\\": \\\"critical|high|medium|low\\\", \\\"file\\\": \\\"...\\\", \\\"line\\\": N, \\\"title\\\": \\\"...\\\", \\\"description\\\": \\\"...\\\", \\\"suggestion\\\": \\\"...\\\"}], \\\"score\\\": 1-10, \\\"recommendation\\\": \\\"approve|request-changes|block\\\"}. Diff (truncated to 40000 chars): $(echo \"$DIFF\" | head -c 40000)\" \\\n            > /tmp/review-results.json\n\n      - name: Upload Review Results\n        uses: actions/upload-artifact@v4\n        with:\n          name: claude-review-${{ github.sha }}\n          path: /tmp/review-results.json\n          retention-days: 30\n\n      - name: Summary\n        run: |\n          echo \"## Review Complete\" >> $GITHUB_STEP_SUMMARY\n          cat /tmp/review-results.json | python3 -c \"\n          import json, sys\n          data = json.load(sys.stdin)\n          if isinstance(data, dict):\n              print(f'Score: {data.get(\\\"score\\\", \\\"N/A\\\")}/10')\n              print(f'Recommendation: {data.get(\\\"recommendation\\\", \\\"N/A\\\")}')\n              findings = data.get('findings', [])\n              print(f'Findings: {len(findings)}')\n              for f in findings[:10]:\n                  print(f'- [{f.get(\\\"severity\\\",\\\"?\\\")}] {f.get(\\\"title\\\",\\\"\\\")}')\n          \" >> $GITHUB_STEP_SUMMARY || echo \"Could not parse results\" >> $GITHUB_STEP_SUMMARY\n" 
+  # ---------------------------------------------------------------------------
+  # 5. DOCUMENTATION SYNC — Auto-update docs on merge
+  # ---------------------------------------------------------------------------
+  - name: documentation-sync
+    description: "Actualizar automáticamente la documentación cuando el código fuente cambia.\nCorre después de fusionarse a la red principal, crea un PR con actualizaciones de doc."
+    trigger: push
+    security_notes:
+      - "Utiliza una ficha de aplicación GitHub para crear PRs" 
+      - "Cambios de directorios/doctores" 
+      - "Examen humano necesario antes de la fusión" 
+    environment_setup:
+      required_secrets:
+        - "ANTHROPIC_API_KEY" 
+        - "BOT_TOKEN" 
+    github_actions_yaml: "name: Claude Documentation Sync\non:\n  push:\n    branches: [main]\n    paths:\n      - 'src/**'\n      - 'packages/**'\n      - '!docs/**'\n\npermissions:\n  contents: write\n  pull-requests: write\n\njobs:\n  sync-docs:\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 2\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n\n      - name: Install Claude Code\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Check for API Changes\n        id: changes\n        run: |\n          CHANGED=$(git diff HEAD~1 --name-only | grep -E '^(src|packages)/' | head -20)\n          echo \"files=$CHANGED\" >> $GITHUB_OUTPUT\n\n      - name: Update Documentation\n        if: steps.changes.outputs.files != ''\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n        run: |\n          claude -p \\\n            --output-format text \\\n            --max-turns 5 \\\n            --dangerously-skip-permissions \\\n            \"These source files changed: ${{ steps.changes.outputs.files }}. Check if any documentation in docs/ needs updating to reflect these changes. Only update docs that are directly affected. Do not create new docs.\"\n\n      - name: Create PR if Changes\n        run: |\n          if git diff --quiet; then\n            echo \"No documentation changes needed\"\n            exit 0\n          fi\n          git config user.name \"claude-code[bot]\"\n          git config user.email \"claude-code[bot]@users.noreply.github.com\"\n          BRANCH=\"docs/auto-sync-$(date +%Y%m%d-%H%M%S)\"\n          git checkout -b \"$BRANCH\"\n          git add docs/\n          git commit -m \"docs: auto-sync documentation with source changes\"\n          git push origin \"$BRANCH\"\n          gh pr create \\\n            --title \"docs: auto-sync documentation\" \\\n            --body \"Automated documentation update triggered by source code changes.\" \\\n            --base main \\\n            --head \"$BRANCH\"\n        env:\n          GH_TOKEN: ${{ secrets.BOT_TOKEN }}\n" 

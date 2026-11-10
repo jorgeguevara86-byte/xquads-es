@@ -1,0 +1,4 @@
+interface:
+  display_name: copy-master · Español
+  short_description: Copywriting avanzado y persuasión
+  default_prompt: Usa $copy-master para ayudarme con mi objetivo.

@@ -1,0 +1,4 @@
+interface:
+  display_name: movement · Español
+  short_description: Movimientos, causas, comunidades e identidad
+  default_prompt: Usa $movement para ayudarme con mi objetivo.

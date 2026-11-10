@@ -1,0 +1,180 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Brand Squad
+# Domain: Brand Strategy, Identity & Positioning
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: brand-squad
+  display_name: "Equipo de Marca" 
+  version: "1.0.0"
+  domain: "Estrategia de marca, identidad, posicionamiento, arquitectura, naming, arquetipos y crecimiento." 
+  description: "El equipo de estrategia de marca definitivo: 10 pensadores de marca legendarios clonados como agentes de IA\nmás 4 especialistas funcionales y 1 orquestador. Del valor de marca de Aaker al de Sharpevidence-based marketing, desde Identity Prism de Kapferer hasta StoryBrand de Miller: esto\nEl equipo cubre todas las dimensiones de la construcción de marca, posicionamiento, identidad, arquitectura,\ny crecimiento."
+  keywords: ["valor de marca" , positioning, "identidad de marca" , messaging, "arquitectura de marca" , naming, archetypes, "identidad visual" , StoryBrand, "marca de lujo" , "marca de inicio" , differentiation, distinctiveness]
+  entry_agent: brand-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orquestador de marca" 
+    agents: [brand-chief]
+    purpose: "Dirija los desafíos de la marca al especialista adecuado según el dominio del problema de la marca." 
+  tier_1_strategy:
+    name: "Estrategia de marca y valor" 
+    agents: [david-aaker, kevin-keller, jean-noel-kapferer]
+    purpose: "Modelos de valor de marca, sistemas de identidad, gestión estratégica de marca." 
+  tier_1_positioning:
+    name: "Posicionamiento y Diferenciación" 
+    agents: [al-ries, byron-sharp, marty-neumeier]
+    purpose: "Posicionamiento en el mercado, estrategia de categorías, diferenciación, evidence-based crecimiento" 
+  tier_1_building:
+    name: "Construcción y comunicación de marca" 
+    agents: [donald-miller, denise-yohn, emily-heyward]
+    purpose: "Mensajería StoryBrand, brand-culture fusión, marca de inicio" 
+  tier_1_identity:
+    name: "Identidad y expresión de marca" 
+    agents: [alina-wheeler, archetype-consultant, naming-strategist]
+    purpose: "Sistemas de identidad visual, arquetipos de marca, estrategia de naming" 
+  tier_2_support:
+    name: "Soporte especializado" 
+    agents: [domain-scout, miller-sticky-brand]
+    purpose: "Disponibilidad de dominio, implementación de StoryBrand" 
+
+agents:
+  brand-chief:
+    file: agents/brand-chief.md
+    tier: 0
+    icon: "🎨"
+    focus: "Orquestación, enrutamiento, diagnóstico de marca" 
+  david-aaker:
+    file: agents/david-aaker.md
+    tier: 1
+    icon: "📊"
+    focus: "Valor de marca, arquitectura de marca, estrategia de cartera" 
+  kevin-keller:
+    file: agents/kevin-keller.md
+    tier: 1
+    icon: "📐"
+    focus: "Gestión estratégica de marca, modelo CBBE" 
+  jean-noel-kapferer:
+    file: agents/jean-noel-kapferer.md
+    tier: 1
+    icon: "💎"
+    focus: "Prisma de identidad de marca, estrategia de marca de lujo" 
+  al-ries:
+    file: agents/al-ries.md
+    tier: 1
+    icon: "🎯"
+    focus: "Posicionamiento, estrategia de categorías, enfoque" 
+  byron-sharp:
+    file: agents/byron-sharp.md
+    tier: 1
+    icon: "📈"
+    focus: "Marketing basado en evidencia, mental/physical disponibilidad" 
+  marty-neumeier:
+    file: agents/marty-neumeier.md
+    tier: 1
+    icon: "⚡"
+    focus: "Brecha de marca, diferenciación radical, Zag" 
+  donald-miller:
+    file: agents/donald-miller.md
+    tier: 1
+    icon: "📖"
+    focus: "Marco StoryBrand, mensajería, guiones de marca" 
+  denise-yohn:
+    file: agents/denise-yohn.md
+    tier: 1
+    icon: "🏢"
+    focus: "Fusión marca-cultura, marca empleadora" 
+  emily-heyward:
+    file: agents/emily-heyward.md
+    tier: 1
+    icon: "🚀"
+    focus: "Branding de startup, marca DTC, marca desde el primer día" 
+  alina-wheeler:
+    file: agents/alina-wheeler.md
+    tier: 1
+    icon: "🖼️"
+    focus: "Sistemas de identidad visual, lineamientos de marca, sistemas de diseño." 
+  archetype-consultant:
+    file: agents/archetype-consultant.md
+    tier: 1
+    icon: "🎭"
+    focus: "Arquetipos de marca, personalidad, marco junguiano" 
+  naming-strategist:
+    file: agents/naming-strategist.md
+    tier: 1
+    icon: "🔤"
+    focus: "Estrategia de naming, generación de nombre de marca" 
+  domain-scout:
+    file: agents/domain-scout.md
+    tier: 2
+    icon: "🌐"
+    focus: "Disponibilidad de dominio, estrategia de dominio" 
+  miller-sticky-brand:
+    file: agents/miller-sticky-brand.md
+    tier: 2
+    icon: "📌"
+    focus: "Implementación de StoryBrand, mensajes fijos" 
+
+handoffs:
+  brand-chief:
+    routes_to: [david-aaker, kevin-keller, jean-noel-kapferer, al-ries, byron-sharp, marty-neumeier, donald-miller, denise-yohn, emily-heyward, alina-wheeler, archetype-consultant, naming-strategist, domain-scout, miller-sticky-brand]
+  david-aaker:
+    collaborates_with: [kevin-keller, jean-noel-kapferer]
+    escalates_to: [brand-chief]
+  kevin-keller:
+    collaborates_with: [david-aaker, byron-sharp]
+    escalates_to: [brand-chief]
+  jean-noel-kapferer:
+    collaborates_with: [alina-wheeler, david-aaker, archetype-consultant]
+    escalates_to: [brand-chief]
+  al-ries:
+    collaborates_with: [marty-neumeier]
+    escalates_to: [brand-chief]
+  byron-sharp:
+    collaborates_with: [kevin-keller]
+    escalates_to: [brand-chief]
+  marty-neumeier:
+    collaborates_with: [al-ries, emily-heyward]
+    escalates_to: [brand-chief]
+  donald-miller:
+    collaborates_with: [miller-sticky-brand, denise-yohn]
+    escalates_to: [brand-chief]
+  denise-yohn:
+    collaborates_with: [donald-miller]
+    escalates_to: [brand-chief]
+  emily-heyward:
+    collaborates_with: [marty-neumeier, naming-strategist]
+    escalates_to: [brand-chief]
+  alina-wheeler:
+    collaborates_with: [archetype-consultant, jean-noel-kapferer]
+    escalates_to: [brand-chief]
+  archetype-consultant:
+    collaborates_with: [jean-noel-kapferer, alina-wheeler]
+    escalates_to: [brand-chief]
+  naming-strategist:
+    collaborates_with: [domain-scout, emily-heyward]
+    escalates_to: [brand-chief]
+  domain-scout:
+    collaborates_with: [naming-strategist]
+    escalates_to: [brand-chief]
+  miller-sticky-brand:
+    collaborates_with: [donald-miller]
+    escalates_to: [brand-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+  core_tensions:
+    differentiation_vs_distinctiveness:
+      pro_differentiation: [al-ries, marty-neumeier]
+      pro_distinctiveness: [byron-sharp]
+    emotional_vs_evidence:
+      emotional: [donald-miller, jean-noel-kapferer, archetype-consultant]
+      evidence: [byron-sharp, kevin-keller]
+
+settings:
+  activation:
+    prefix: "brand-squad"
+    example: "@brand-squad:david-aaker"

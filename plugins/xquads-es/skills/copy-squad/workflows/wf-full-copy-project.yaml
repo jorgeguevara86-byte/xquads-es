@@ -1,0 +1,95 @@
+workflow:
+  id: wf-full-copy-project
+  name: "Copiar el proyecto completo" 
+  version: "1.0.0"
+  description: "Diseño completo de redacción de flujo de trabajo de fin a fin. Conduce un\nresumen creativo por la asignación de expertos, escritos, examen jefe\nJefe de la copia hace el triaje de la información, dirige a lo mejor\nexperto, supervisa la escritura y realiza el examen final de calidad."
+  trigger: "*full-copy-project"
+  entry_agent: copy-chief
+  estimated_duration: "30-60 minutes"
+  type: sequential
+  sequence:
+    - agent: copy-chief
+      action: diagnose
+      creates: diagnosis
+    - agent: copy-chief
+      action: assign-specialist
+      creates: assignment_brief
+    - agent: "{assigned_specialist}"
+      action: write-copy
+      creates: draft_copy
+    - agent: copy-chief
+      action: critique
+      creates: critique_report
+    - agent: copy-chief
+      action: review
+      creates: final_copy
+
+phases:
+  - id: phase_0
+    name: "Breve y Diagnóstico" 
+    agent: copy-chief
+    task: diagnose.md
+    description: "Copy Chief recibe el informe del proyecto, diagnostica la solicitud, identifica el tipo de copia, nivel de conciencia y selecciona el mejor especialista." 
+    outputs:
+      - diagnosis: "markdown"
+      - assigned_specialist: "agent-id"
+      - copy_type: "string"
+    checkpoint:
+      gate: "Especialista identificado con alta confianza" 
+      veto: "Ambiguous brief — request clarification before proceeding" 
+
+  - id: phase_1
+    name: "Asignación de personal especial" 
+    agent: copy-chief
+    task: diagnose.md
+    depends_on: [phase_0]
+    description: "Copy Chief asigna formalmente el proyecto al especialista seleccionado con el breve, datos de audiencia, nivel de conciencia y cualquier material de referencia." 
+    outputs:
+      - assignment_brief: "markdown"
+    checkpoint:
+      gate: "Especialista reconocido con entregables claras" 
+      veto: "Desigualdad de especialista para el tipo de copia" 
+
+  - id: phase_2
+    name: "Producción de copia" 
+    agent: "{assigned_specialist}"
+    task: "{matched_task}"
+    depends_on: [phase_1]
+    description: "El especialista asignado escribe la copia utilizando su metodología de firma. La tarea es seleccionada dinámicamente según el tipo de copia: write-headline.md, write-sales-letter.md, write-vsl-script.md, write-email-sequence.md, write-ad-copy.md, write-landing-page.md, create-funnel-copy.md, write-bullets.md, o create-offer.md." 
+    outputs:
+      - draft_copy: "markdown"
+    checkpoint:
+      gate: "Proyecto completo con todas las secciones necesarias por formato de tarea" 
+      veto: "Proyecto de secciones críticas o off-brief" 
+
+  - id: phase_3
+    name: "Chief Review" 
+    agent: copy-chief
+    task: critique-copy.md
+    depends_on: [phase_2]
+    description: "Copiar Jefe revisa el proyecto utilizando el marco de crítica de 8 puntos. Partituras, identifica cuestiones y determina si la copia está lista para la entrega o necesita revisión." 
+    outputs:
+      - critique_report: "markdown"
+      - verdict: "string"
+    checkpoint:
+      gate: "Marcar compuesto √≥ 60% (Veredicto de la tirantez o elite)" 
+      veto: "Marcaje compuesto  ⁇  40% - especialista debe reescribir" 
+
+  - id: phase_4
+    name: "Entrega final" 
+    agent: copy-chief
+    task: review.md
+    depends_on: [phase_3]
+    description: "Copy Chief compila el paquete final entregable con la copia aprobada, notas críticas y recomendaciones de uso." 
+    outputs:
+      - final_copy: "markdown"
+      - usage_notes: "markdown"
+    checkpoint:
+      gate: "Paquete listo para el cliente con todos los productos" 
+      veto: "Cuestiones críticas sin resolver todavía abiertas" 
+
+completion_criteria:
+  - "Se diagnosticó brevemente y se asignó a especialistas" 
+  - "Copia producida por el especialista adecuado utilizando la metodología correcta" 
+  - "El examen principal se aprobó con el veredicto Strong o Elite" 
+  - "Paquete final entregado con notas de uso" 

@@ -1,0 +1,4 @@
+interface:
+  display_name: c-level-squad · Español
+  short_description: Dirección ejecutiva, estrategia y operaciones
+  default_prompt: Usa $c-level-squad para ayudarme con mi objetivo.

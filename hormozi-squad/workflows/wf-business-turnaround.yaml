@@ -1,0 +1,100 @@
+workflow:
+  id: wf-business-turnaround
+  name: "Reestructuración de empresas" 
+  version: "1.0.0"
+  description: "Corriente de trabajo de reestructuración de las empresas. Auditoría de la situación actual de las empresas,\nrediseña la oferta, construye el sistema de generación de plomo, optimiza los precios\ny crea un marco de cierre. Sigue el libro de la compañía de portafolio Hormozi:\nArregla la oferta primero, luego las pistas, luego el cierre."
+  trigger: "*business-turnaround"
+  entry_agent: hormozi-chief
+  estimated_duration: "60-120 minutes"
+
+  type: sequential
+  sequence:
+    - agent: hormozi-audit
+      action: audit-business
+      creates: audit_report
+    - agent: hormozi-offers
+      action: create-offer
+      creates: offer
+    - agent: hormozi-leads
+      action: generate-leads
+      creates: lead_system
+    - agent: hormozi-pricing
+      action: set-pricing
+      creates: pricing_strategy
+    - agent: hormozi-closer
+      action: close-sale
+      creates: closing_framework
+
+phases:
+  - id: phase_0
+    name: "Auditoría de las empresas" 
+    agent: hormozi-audit
+    task: audit-business.md
+    description: "Auditoría completa del motor de ingresos, oferta, operaciones y limitaciones de crecimiento. Identifica la limitación #1 y establece métricas de referencia." 
+    outputs:
+      - audit_report: "markdown"
+      - constraint: "string"
+      - revenue_equation: "object"
+    checkpoint:
+      gate: "Limitación identificada con datos de apoyo" 
+      veto: "Datos insuficientes para diagnosticar — solicitar más métricas" 
+
+  - id: phase_1
+    name: "Oferta rediseño" 
+    agent: hormozi-offers
+    task: create-offer.md
+    depends_on: [phase_0]
+    description: "Rediseñar la oferta utilizando la metodología de Grand Slam Offer. Aplicar la Ecuación de Valor, construir la pila de bonificación, crear la garantía y establecer value-based precio." 
+    outputs:
+      - offer_architecture: "markdown"
+      - value_equation: "object"
+    checkpoint:
+      gate: "Valor-to-price ratio √≥= 10:1" 
+      veto: "La oferta no resuelve los problemas identificados en la auditoría" 
+
+  - id: phase_2
+    name: "Sistema de generación de plomo" 
+    agent: hormozi-leads
+    task: generate-leads.md
+    depends_on: [phase_1]
+    description: "Construye el sistema de generación de plomo utilizando el marco de $100M Leads. Diseñar imanes de plomo, estrategias de canal y el plan de lanzamiento de 30 días." 
+    outputs:
+      - lead_system: "markdown"
+      - lead_magnet: "object"
+      - channel_plans: "list"
+    checkpoint:
+      gate: "El sistema de arrendamiento abarca al menos 2 de 4 fuentes básicas" 
+      veto: "No hay imán de plomo diseñado o canales inalcanzables para el público" 
+
+  - id: phase_3
+    name: "Optimización de precios" 
+    agent: hormozi-pricing
+    task: set-pricing.md
+    depends_on: [phase_1]
+    description: "Establecer la estrategia de precios basada en la oferta rediseñado. Aplicar value-based precios con fichas, opciones de pago y plan de pruebas." 
+    outputs:
+      - pricing_strategy: "markdown"
+      - price_tiers: "list"
+    checkpoint:
+      gate: "Precio fijado con 10x justificativa de valor" 
+      veto: "Precio basado en la competencia que coincide en lugar de valor" 
+
+  - id: phase_4
+    name: "Marco de cierre de ventas" 
+    agent: hormozi-closer
+    task: close-sale.md
+    depends_on: [phase_1, phase_3]
+    description: "Construya el marco de ventas CLOSER para la oferta rediseñado en el nuevo punto de precio. Maneja las objeciones específicas al contexto de la vuelta." 
+    outputs:
+      - closing_framework: "markdown"
+      - objection_matrix: "object"
+    checkpoint:
+      gate: "CLOSER script completo con las 10 principales objeciones manejadas" 
+      veto: "El marco de cierre no coincide con el nuevo precio o la oferta" 
+
+completion_criteria:
+  - "Auditoría de las empresas con limitaciones determinadas" 
+  - "Oferta rediseñado con Ecuación de Valor √≥= 10:1" 
+  - "Sistema de generación de plomo construido con plan de 30 días" 
+  - "Precios optimizados con value-based justificación" 
+  - "Marco de cierre de ventas completo para nueva oferta" 

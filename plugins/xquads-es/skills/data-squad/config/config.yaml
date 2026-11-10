@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Data Squad
+# Domain: Data Analytics, Growth, Community & Customer Success
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: data-squad
+  display_name: "Fecha de la reunión" 
+  version: "1.0.0"
+  domain: "Crecimiento generado por datos &quot; Inteligencia del cliente" 
+  description: "Un equipo de la líder mundial data-driven estrategas que combinan mastery anal\n(Avinash Kaushik), valor de la vida del cliente (Peter Fader), piratería de crecimiento (Sean Ellis),\ncommunity-led crecimiento (David Spinks), éxito del cliente (Nick Mehta), y audiencia\nedificio (Wes Kao).\n\nCada asesor trae battle-tested marcos que convierten los datos en decisiones y métricas\nen crecimiento. Juntos cubren todo el espectro de la adquisición a la retención."
+  keywords: [analytics, growth, customer-success, community, CLV, metrics, retention, activation, growth-hacking, audience, data-driven, web-analytics]
+  entry_agent: data-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [data-chief]
+    purpose: "Triage, routing, quality — connects the right data expert to the right problem" 
+  tier_1:
+    name: "Analytics &quot; Customer Intelligence &quot;" 
+    agents: [avinash-kaushik, peter-fader]
+    purpose: "Analítica web, medición de marketing digital, valor de la vida del cliente, customer-centricity, data-driven toma de decisiones" 
+  tier_2:
+    name: "Crecimiento &quot; Audience Building &quot;" 
+    agents: [sean-ellis, wes-kao]
+    purpose: "Hacking de crecimiento, product-market en forma, bucles virales, cohort-based cursos, edificio de audiencias, puntos de vista arrugados" 
+  tier_3:
+    name: "Comunidad &quot; Éxito al cliente &quot;" 
+    agents: [nick-mehta, david-spinks]
+    purpose: "El éxito del cliente, la retención de ingresos netos, community-led crecimiento, estrategia comunitaria, participación de los miembros" 
+
+agents:
+  data-chief:
+    file: agents/data-chief.md
+    tier: 0
+    icon: "📊"
+    focus: "Orquesta, triaje, enrutamiento a través de los dominios de análisis, crecimiento y retención" 
+  avinash-kaushik:
+    file: agents/avinash-kaushik.md
+    tier: 1
+    icon: "📈"
+    focus: "Analítica web, medición de marketing digital, información práctica" 
+  peter-fader:
+    file: agents/peter-fader.md
+    tier: 1
+    icon: "💎"
+    focus: "Valor de la vida del cliente, customer-centricity, modelos probabilísticos" 
+  sean-ellis:
+    file: agents/sean-ellis.md
+    tier: 2
+    icon: "🚀"
+    focus: "Hacking de crecimiento, product-market en forma, circuitos virales, experimentación" 
+  wes-kao:
+    file: agents/wes-kao.md
+    tier: 2
+    icon: "🎯"
+    focus: "Edificio de audiencias, cohort-based cursos, puntos de vista arrugados, estrategia de contenido" 
+  nick-mehta:
+    file: agents/nick-mehta.md
+    tier: 3
+    icon: "🤝"
+    focus: "El éxito del cliente, la retención de ingresos netos, la prevención de la churn, los ingresos de expansión" 
+  david-spinks:
+    file: agents/david-spinks.md
+    tier: 3
+    icon: "👥"
+    focus: "Crecimiento impulsado por la comunidad, estrategia comunitaria, participación de miembros, salud comunitaria" 
+
+handoffs:
+  data-chief:
+    routes_to: [avinash-kaushik, peter-fader, sean-ellis, wes-kao, nick-mehta, david-spinks]
+  avinash-kaushik:
+    escalates_to: [data-chief]
+  peter-fader:
+    escalates_to: [data-chief]
+  sean-ellis:
+    escalates_to: [data-chief]
+  wes-kao:
+    escalates_to: [data-chief]
+  nick-mehta:
+    escalates_to: [data-chief]
+  david-spinks:
+    escalates_to: [data-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+
+settings:
+  activation:
+    prefix: "data-squad"
+    example: "@data-squad:sean-ellis"

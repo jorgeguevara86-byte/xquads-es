@@ -1,0 +1,4 @@
+interface:
+  display_name: advisory-board · Español
+  short_description: Consejo estratégico y decisiones empresariales
+  default_prompt: Usa $advisory-board para ayudarme con mi objetivo.

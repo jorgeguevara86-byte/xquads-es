@@ -1,0 +1,111 @@
+# Feature Design Workflow
+# From research through wireframes to implementation
+
+workflow:
+  id: wf-feature-design
+  name: "Funcionalidad de diseño" 
+  trigger: "*feature-design"
+  entry_agent: design-chief
+  estimated_duration: "2-4 hours"
+  description: "Flujo de trabajo de diseño de funcionalidad completa, desde búsqueda de usuario a inalámbrico,\ndiseño visual, especificación de implementación e integración con el sistema de diseño."
+  type: sequential
+  sequence:
+    - agent: ux-designer
+      action: design-ux-flow
+      creates: wireframes
+    - agent: visual-generator
+      action: create-component-spec
+      creates: visuals
+    - agent: ui-engineer
+      action: generate-handoff
+      creates: handoff
+    - agent: brad-frost
+      action: create-design-system
+      creates: integration
+
+phases:
+  - id: phase_1_research
+    name: "Investigación de Usuarios &amp; Discovery" 
+    agent: ux-designer
+    task: design-ux-flow.md
+    depends_on: []
+    description: "Realizar búsquedas de usuarios, crear personas, mapear viajes de usuario" 
+    checkpoint:
+      gate: "Información de investigación documentada, personas creadas, necesidades de usuario validadas" 
+      veto: "HALT si no se realiza ninguna investigación de usuario: diseñar sin investigación es adivinar" 
+    outputs:
+      - research_insights
+      - personas
+      - journey_map
+      - design_requirements
+
+  - id: phase_2_wireframe
+    name: "Arquitectura de información &quot; Wireframes &quot;" 
+    agent: ux-designer
+    task: design-ux-flow.md
+    depends_on: [phase_1_research]
+    description: "Define la arquitectura de la información, crea marcos de cable, flujos de usuario de diseño" 
+    checkpoint:
+      gate: "Los Wireframes cubren todas las pantallas clave, los flujos incluyen caminos felices y de error" 
+      veto: "HALT si los cables solo cubren el camino feliz — los estados de error deben ser diseñados" 
+    outputs:
+      - information_architecture
+      - wireframes
+      - user_flows
+      - interaction_specs
+
+  - id: phase_3_visual
+    name: "Diseño visual &quot; Especificaciones de componentes" 
+    agent: visual-generator
+    task: create-component-spec.md
+    depends_on: [phase_2_wireframe]
+    support_agents: [brad-frost]
+    description: "Aplicar diseño visual, especificar componentes, asegurar la alineación del sistema de diseño" 
+    checkpoint:
+      gate: "Diseños visuales completos con todas las fichas mapeadas y cumplimiento WCAG verificados" 
+      veto: "HALT si el diseño visual introduce componentes que superan el sistema de diseño" 
+    outputs:
+      - visual_designs
+      - component_specifications
+      - token_mapping
+      - accessibility_verification
+
+  - id: phase_4_implement
+    name: "Handoff de ejecución" 
+    agent: ui-engineer
+    task: generate-handoff.md
+    depends_on: [phase_3_visual]
+    support_agents: [dan-mall]
+    description: "Generar documentación de despachador de desarrolladores con fichas, interacciones y especificaciones receptivas" 
+    checkpoint:
+      gate: "Documentación de entrega completa con examen de la dev realizada" 
+      veto: "HALT si el desvío carece de especificaciones de interacción o comportamiento sensible" 
+    outputs:
+      - handoff_documentation
+      - token_map
+      - interaction_specs
+      - asset_exports
+
+  - id: phase_5_integrate
+    name: "Integración del sistema de diseño" 
+    agent: brad-frost
+    task: create-design-system.md
+    depends_on: [phase_4_implement]
+    support_agents: [design-system-architect]
+    description: "Agregar nuevos componentes al sistema de diseño, actualizar la documentación, verificar la consistencia" 
+    checkpoint:
+      gate: "Nuevos componentes integrados en el sistema de diseño con documentación actualizada" 
+      veto: "HALT si nuevos componentes rompen los patrones de sistema existentes" 
+    outputs:
+      - updated_design_system
+      - new_component_docs
+      - regression_check
+
+completion_criteria:
+  - "Investigación de usuarios realizada con información documentada" 
+  - "Personas y mapas de viaje creados" 
+  - "Los marcos de cable cubren todas las pantallas, flujos y estados" 
+  - "Diseño visual aplicado con alineación del sistema de diseño" 
+  - "Accesibilidad verificada (nímero de CMA)" 
+  - "Handoff desarrollador completo con todas las especificaciones" 
+  - "Nuevos componentes integrados en el sistema de diseño" 

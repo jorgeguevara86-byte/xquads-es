@@ -1,0 +1,155 @@
+# GitHub Actions Workflow — CI with Claude Code
+# Squad: claude-code-mastery
+# Template: Drop into .github/workflows/ and configure secrets
+#
+# Prerequisites:
+#   1. Store ANTHROPIC_API_KEY in GitHub repository secrets
+#   2. Standard CI tools (Node.js, npm) available
+#
+# Features:
+#   - Standard CI checks (lint, typecheck, test)
+#   - Claude Code quality analysis on changed files
+#   - Test coverage gap detection
+#   - Auto-generate missing tests (optional, manual trigger)
+
+name: "CI con Código de Claude" 
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      generate_tests:
+        description: "Pruebas de falta autogeneradas" 
+        required: false
+        type: boolean
+        default: false
+      quality_check:
+        description: "Análisis de calidad de Run Claude" 
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  # -----------------------------------------------------------------------
+  # Job 1: Standard CI checks (always runs)
+  # -----------------------------------------------------------------------
+  standard-ci:
+    name: "Lint, Tipocheck, Test" 
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: "Instalar dependencias" 
+        run: "npm ci" 
+
+      - name: Lint
+        run: "npm carrera lint" 
+
+      - name: "Tipo de cheque" 
+        run: "Npm de carrera" 
+
+      - name: Test
+        run: "Prueba de npm -- -- recuperación --ci" 
+        env:
+          CI: true
+
+      - name: "Subir cobertura" 
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 7
+
+  # -----------------------------------------------------------------------
+  # Job 2: Claude Code quality analysis (on PRs and manual trigger)
+  # -----------------------------------------------------------------------
+  claude-quality:
+    name: "Claude Quality Analysis" 
+    needs: standard-ci
+    if: "Github.event_name == 'pull_request' ||\n(Gitub.event_name == 'workflow_dispatch\"Contesta.quality_check == 'verdad')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: "Instala el Código de Claude" 
+        run: "npm instalar -g @anthropic-ai/claude-code" 
+
+      - name: "Identificar archivos de fuentes cambiados" 
+        id: changed-files
+        run: "Si...${{ github.event_name }}\" = \"pull_request\" ]; entonces\n  BASE=\"${{ github.base_ref }}\"\nmás\n  BASE=\"HEAD~1\"\nfi\n\n# Obtener archivos de fuente cambiados (excluir pruebas, configs, docs)\nFILES=$(git diff...name-only origen/$BASE...HEAD 2 título/dev/null Silencioso, amor,name-only $BASE...HEAD \\\n  Silencioso Grip -E '\\.(ts habittsx torturajs torturajs infligir a los inquilinos que viven)$ \\\n  TENIDO GRITO -v -E '\\.(test sobre la prevención de la tortura)\\.' \\\n  Silencio, amor, v, e.node_modulesSilenciosoprendidos sobre la vida eterna\\.next)/' \\\n  TENIDO cabeza -10)\n\neco \"files realizados\" EOF\" √≥ $GITHUB_OUTPUT\neco \"FiLES\" √≥ título $GITHUB_OUTPUT\neco \"EOF\" √≥ título $GITHUB_OUTPUT\n\nFILE_COUNT=$(echo \"$FILES\" TENIDO GEP -c . TENIDO TENIDO SONIDO \"0\")\neco \"count=$FILE_COUNT\" √≥ título $GITHUB_OUTPUT"
+      - name: "Ejecutar análisis de calidad" 
+        if: "pasos.changed-files.outputs.count √≥ 0" 
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: "# Construir contenido de archivos para análisis (limitar al total de 30KB)\n\"FIL_CONTENTS=\"\"\"\nTOTAL_SIZE=0\nMAX_SIZE=30000\n\npara el QUILER EN ${{ steps.changed-files.outputs.files }}; do\n  si [ -f \"$FILE\" ]; entonces\n    FILE_SIZE=$(wc -c) se hizo \"$FILE\")\n    NEW_TOTAL=$(TOTAL_SIZE + FILE_SIZE)\n    si [ $NEW_TOTAL -lt $MAX_SIZE ]; entonces\n      FILE_CONTENTS=\"$FILE_CONTENTS\n- ...fileo:\n$(cat \"$FILE\")\n--- FIN FILE ---\n\"\n      TOTAL_SIZE=$NEW_TOTAL\n    fi\n  fi\nhecho\n\nPROMPT=\"Analyze estos archivos fuente para la calidad de código. Para cada archivo, compruebe:\n1. Complejidad del código (funciones superiores a 30 líneas, anidación profunda)\n2. Falta de manejo de errores\n3. Potencial null/undefined cuestiones\n4. Cuestiones relativas al desempeño (requerimientos N+1) re-renders)\n5. Cuestiones de seguridad (inyección, XSS, secretos expuestos)\n6. Falta de validación de los insumos\n\nProducto JSON:\n{\n  \\\"score\\\": 1-10,\n  \\\"files\\\": [\n    {\n      \\\"file\\\": \\\"path\\\",\n      \"essues\":\n        {\\\"severidad\\\": \\\"high habitmedium imperlow\\\", \\\"line\\\": N, \\\"issue\\\": \\\"description\\\", \\\"fix\\\": \\\"suggestion\\\"}\n      ]\n    }\n  ],\n  \\\"summary\\\": \\\"sobretodo evaluación\\\"\n}\n\nArchivos:\n\"\"\"\"\"\n\nclaude -p \\\n  --output-format texto \\\n  --max-turns 3 \\\n  \"$PROMPT\" √≥ /tmp/quality-results.txt 2>/dev/null Silenciosos"
+      - name: "Resultados de calidad de post" 
+        if: "pasos.changed-files.outputs.count √≥ 0 &quot; ненненнненнных.event_name == 'pull_request'" 
+        uses: actions/github-script@v7
+        with:
+          script: "const fs = require('fs');\nlet results = '';\ntry {\n  results = fs.readFileSync('/tmp/quality-results.txt', 'utf8');\n} catch {\n  results = 'Quality analysis could not be completed.';\n}\n\nconst { data: comments } = await github.rest.issues.listComments({\n  owner: context.repo.owner,\n  repo: context.repo.repo,\n  issue_number: context.issue.number,\n});\n\nconst existing = comments.find(c =>\n  c.body.includes('<!-- claude-quality-analysis -->')\n);\n\nconst body = `<!-- claude-quality-analysis -->\n## Code Quality Analysis\n\n${results}\n\n---\n*Analysis by Claude Code CI*`;\n\nif (existing) {\n  await github.rest.issues.updateComment({\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    comment_id: existing.id,\n    body: body,\n  });\n} else {\n  await github.rest.issues.createComment({\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    issue_number: context.issue.number,\n    body: body,\n  });\n}\n" 
+  # -----------------------------------------------------------------------
+  # Job 3: Auto-generate missing tests (manual trigger only)
+  # -----------------------------------------------------------------------
+  generate-tests:
+    name: "Generar pruebas de pérdida" 
+    needs: standard-ci
+    if: "Github.event_name == 'workflow_dispatch' &&\nGithub.event.inputs.generate_tests == 'verdad'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: "Instalar dependencias" 
+        run: "npm ci\nnpm instalar -g @anthropic-ai/claude-code"
+      - name: "Encontrar archivos sin pruebas" 
+        id: untested
+        run: "# Encontrar archivos fuente que carecen de archivos de prueba correspondientes\n\"\"Nombrado\"\"\"\npara FILE en $ (find src -name '*.ts' -o -name '*.tsx' Silencio grep -v -E '\\.(test impertinestories sometidas)\\.' Silencio grep -v __tests___ ¦ Silencio cabeza -5); do\n  TEST_FILE=\"${FILE%.ts}.test.ts\n  TEST_FILE2=\"${FILE%.tsx}.test.tsx\n  DIR_TEST=\"$(nombre de \"$FILE\")/__tests___/$(basename \"${FILE%.ts}\").test.ts\"\n  si [ ! -f \"$TEST_FILE\" ] &quot; .\n    UNTESTED=\"$UNTESTED $FILE\"\n  fi\nhecho\n\neco \"files=$UNTESTED\" √ título $GITHUB_OUTPUT\neco \"Found untested files: $UNTESTED\""
+      - name: "Generar pruebas" 
+        if: "step.untested.outputs.files != ''" 
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: "para el QUILER EN ${{ steps.untested.outputs.files }}; do\n  eco \"Pruebas de generación para: $FILE\"\n\n  claude -p \\\n    --output-format texto \\\n    --max-turns 5 \\\n    --dangerously-skip-permissions \\\n    \"Generar pruebas de unidad integrales para el archivo '$FILE'. Requisitos:\n    - Use Jest y Reactar la Biblioteca de Pruebas (si componente Reactúa)\n    - Pruebas todas exportadas functions/components\n    - Incluir casos de borde y escenarios de error\n    - Seguir los patrones de prueba existentes en este proyecto\n    - Escriba el archivo de prueba al co-located ruta (same directorio, extensión .test.ts)\n    - NO modifique el archivo fuente\n    Lea el archivo fuente primero, luego escriba el archivo de prueba.\" TENCIÓN\nhecho"
+      - name: "Verificar los Tests Generados" 
+        run: "# Ejecute sólo archivos de prueba recién generados\nNEW_TESTS=$(git diff)name-only Silencioso Grip -E '\\.(test sobre la vida)\\.' Silencioso\nsi [ -n \"$NEW_TESTS\" ]; entonces\n  eco \"Resuelve las pruebas generadas: $NEW_TESTS\"\n  Npx jest $NEW_TESTS --passWithNoTests TENIDO TENIDO\nmás\n  eco \"No se generan nuevos archivos de prueba\"\nfi"
+      - name: "Crear PR con Tests" 
+        run: "si git diff --quiet; entonces\n  eco \"No se generan archivos de prueba\"\n  Salida 0\nfi\n\ngit config user.name \"claude-code[Abot]\"\ngit config user.email \"claude-code[bot]@users.noreply.github.com\"\n\nBRANCH=\"test/auto-generate-(fecha +%m%d-%H%M%S)\"\ngit checkout -b \"$BRANCH\"\ngit add '*.test.ts' '*.test.tsx'\ngit commit -m \"test: auto-generate pruebas de unidad para archivos no probados\n\nGenerado por el oleoducto del Código CI de Claude.\n\nCo-Authored-By: Código Claude  ⁇ noreply@anthropic.com inteligente\"\n\ngit push origin \"$BRANCH\"\n\ngh pr crear \\\n  -Título \"prueba\": auto-generated prueba de unidad \" \\\" \\\n  --body \"# Auto-Generated Tests\n\nEstas pruebas fueron generadas automáticamente por el Código Claude para archivos que carecían de cobertura de pruebas.\n\n**Acción requerida:** Revisar las pruebas generadas antes de fusionarse. Las pruebas autogeneradas pueden necesitar ajustes.\n\n## Archivos probados\n$(echo '${{ steps.untested.outputs.files }} '' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' '\n\n---\n*Generado por Claude Code CI*\" \\\n  - \"Base\"${{ github.ref_name }}\" \\\n  - Cabeza \"BRANCH\""
+        env:
+          GH_TOKEN: ${{ github.token }}

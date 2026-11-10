@@ -1,0 +1,84 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: C-Level Squad
+# Domain: Executive Leadership & Strategic Operations
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: c-level-squad
+  display_name: "Equipo de nivel C" 
+  version: "1.0.0"
+  domain: "Liderazgo Ejecutivo y Operaciones Estratégicas" 
+  description: "Un C-suite virtual de agentes de liderazgo ejecutivo. Cada agente encarna la estrategia\nperspectiva de un rol específico de nivel C: visión del CEO, operaciones del COO, marketing del CMO,\nTecnología CTO, sistemas de información CIO e inteligencia artificial CAIO.\n\nJuntos brindan asesoramiento ejecutivo integral para la estrategia empresarial, la organización\ndiseño y transformación digital."
+  keywords: [c-suite, strategy, operations, marketing, technology, AI, leadership, digital-transformation, fundraising, go-to-market, scaling]
+  entry_agent: vision-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [vision-chief]
+    purpose: "Clasificación, enrutamiento, calidad: orquestación estratégica a nivel de CEO en todas las funciones de la alta dirección" 
+  tier_1:
+    name: "Operaciones y Mercado" 
+    agents: [coo-orchestrator, cmo-architect]
+    purpose: "Excelencia operativa, optimización de procesos, estrategia de marca, generación de demanda, go-to-market" 
+  tier_2:
+    name: "Tecnología e Innovación" 
+    agents: [cto-architect, cio-engineer, caio-architect]
+    purpose: "Estrategia tecnológica, infraestructura, seguridad, arquitectura de datos, estrategia de IA, transformación digital" 
+
+agents:
+  vision-chief:
+    file: agents/vision-chief.md
+    tier: 0
+    icon: "👔"
+    focus: "Visión de la empresa, dirección estratégica, relaciones con el directorio, recaudación de fondos, fusiones y adquisiciones, cultura" 
+  coo-orchestrator:
+    file: agents/coo-orchestrator.md
+    tier: 1
+    icon: "⚙️"
+    focus: "Excelencia operativa, optimización de procesos, escalamiento, estructura de equipos, KPI, OKR" 
+  cmo-architect:
+    file: agents/cmo-architect.md
+    tier: 1
+    icon: "📣"
+    focus: "Estrategia de marca, generación de demanda, posicionamiento, go-to-market, captación de clientes." 
+  cto-architect:
+    file: agents/cto-architect.md
+    tier: 2
+    icon: "💻"
+    focus: "Estrategia tecnológica, decisiones de arquitectura, cultura de ingeniería, construir versus comprar" 
+  cio-engineer:
+    file: agents/cio-engineer.md
+    tier: 2
+    icon: "🏛️"
+    focus: "Infraestructura, seguridad, arquitectura de datos, gobierno de TI, integración de sistemas" 
+  caio-architect:
+    file: agents/caio-architect.md
+    tier: 2
+    icon: "🤖"
+    focus: "Estrategia de IA, operaciones de ML, transformación digital, automatización, ética de la IA" 
+
+handoffs:
+  vision-chief:
+    routes_to: [coo-orchestrator, cmo-architect, cto-architect, cio-engineer, caio-architect]
+  coo-orchestrator:
+    escalates_to: [vision-chief]
+  cmo-architect:
+    escalates_to: [vision-chief]
+  cto-architect:
+    escalates_to: [vision-chief]
+  cio-engineer:
+    escalates_to: [vision-chief]
+  caio-architect:
+    escalates_to: [vision-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+
+settings:
+  activation:
+    prefix: "c-level"
+    example: "@c-level:cto-architect"

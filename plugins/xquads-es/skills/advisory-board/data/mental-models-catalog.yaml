@@ -1,0 +1,178 @@
+# Mental Models Catalog
+# Frameworks and thinking tools from each advisor
+# Version: 1.0.0
+
+catalog:
+  version: "1.0.0"
+  last_updated: "2026-03-05"
+
+advisors:
+  charlie_munger:
+    name: "Los modelos mentales de Charlie Munger" 
+    source: "Almanaque del pobre Charlie, cartas de Berkshire Hathaway" 
+    principle: "Debes tener múltiples modelos de múltiples disciplinas: un entramado de modelos mentales" 
+    models:
+      inversion:
+        description: "Pensar al revés. En lugar de preguntar cómo tener éxito, pregunte qué garantizaría el fracaso y luego evite esas cosas." 
+        application: "Aplique a cualquier decisión preguntando: '¿Qué haría que esto fuera un desastre?'" 
+        example: "¿Quieres un gran matrimonio? Enumera todo lo que destruye los matrimonios y luego no hagas esas cosas." 
+      circle_of_competence:
+        description: "Sepa lo que sabe y lo que no. Los límites de tu competencia son donde vive el peligro." 
+        application: "Antes de cualquier decisión, evalúe honestamente: '¿Realmente entiendo este dominio?'" 
+        example: "Buffett evita las inversiones en tecnología no porque la tecnología sea mala, sino porque está fuera de su círculo." 
+      second_order_thinking:
+        description: "Primer orden: '¿Qué pasa?' Segundo orden: '¿Y luego qué?' La mayoría de la gente sólo piensa en first-order." 
+        application: "Para cada acción, rastrea las consecuencias a través de 2-3 niveles." 
+        example: "Controles de precios (1er orden: precios más bajos) → (2do orden: escasez de suministro) → (3er orden: mercados negros)" 
+      margin_of_safety:
+        description: "Cree un búfer para errores. Si un puente puede contener 10 toneladas, sólo conduzca 5 toneladas a través de él." 
+        application: "En cualquier estimación, calcula qué pasa si te equivocas en un 50%." 
+        example: "Si una inversión necesita un crecimiento del 8% para alcanzar el punto de equilibrio, solo invierta si espera un 16%+" 
+      lollapalooza_effect:
+        description: "Cuando se combinan múltiples tendencias psicológicas, el efecto es enormemente mayor que el de cualquier fuerza única." 
+        application: "Busque situaciones en las que se alineen múltiples sesgos o incentivos: estos crean resultados extremos." 
+        example: "Enron: sesgo incentive-caused + prueba social + commitment/consistency + autoridad → catástrofe" 
+      opportunity_cost:
+        description: "El verdadero costo de cualquier cosa es lo que renuncias para conseguirla." 
+        application: "Siempre pregunta: '¿Qué más podría hacer con este tiempo, dinero o atención?'" 
+        example: "El costo de una mala contratación no es solo el salario, sino todas las cosas productivas que Seat podría haber hecho." 
+      bias_awareness:
+        description: "Los humanos somos previsiblemente irracionales. Conozca las 25 causas estándar de errores de juicio." 
+        key_biases:
+          - "Sesgo causado por incentivos (seguir los incentivos)" 
+          - "Sesgo de confirmación (buscar lo que confirma nuestras creencias)" 
+          - "Prueba social (hacer lo que otros hacen)" 
+          - "Anclaje (over-relying en la primera información)" 
+          - "Falacia del costo hundido (tirar el dinero bueno al mal)" 
+          - "Sesgo de disponibilidad (sobreponderación de eventos recent/vivid )" 
+          - "Sesgo de autoridad (deferir al estatus)" 
+
+  ray_dalio:
+    name: "Principios de Ray Dalio" 
+    source: "Principios: Vida y Trabajo (2017)" 
+    principle: "Los principios son verdades fundamentales que sirven como base para el comportamiento que te permite obtener lo que deseas de la vida." 
+    frameworks:
+      radical_transparency:
+        description: "Sé radicalmente abierto sobre lo que piensas y lo que no sabes. No esconder nada." 
+        application: "Cree entornos donde las verdades incómodas sean bienvenidas, no castigadas." 
+        practice: "Pregunta: '¿Qué no estoy viendo?' y '¿Qué verdad incómoda estoy evitando?'" 
+      believability_weighted_decisions:
+        description: "No todas las opiniones son iguales. Entrada de peso según el historial de la persona en ese dominio específico." 
+        application: "Para cada asesor, evalúe: ¿Cuántas veces han acertado en ESTE tipo de decisiones?" 
+        practice: "Cree una puntuación de credibilidad para cada fuente de entrada." 
+      pain_plus_reflection:
+        description: "Dolor + Reflexión = Progreso. Cada fracaso es una oportunidad de aprendizaje si reflexionas con honestidad." 
+        application: "Después de cada error o falla, haga un post-mortemestructurado." 
+        practice: "Pregunta: '¿Qué aprendí? ¿Qué haría diferente? ¿Qué principio puedo extraer?" 
+      five_step_process:
+        description: "Metas → Problemas → Diagnósticos → Diseños → Acciones. Mantenlos separados." 
+        steps:
+          - "Establece objetivos claros" 
+          - "Identificar los problemas que se interponen en el camino" 
+          - "Diagnosticar causas fundamentales (no síntomas)" 
+          - "Soluciones de diseño" 
+          - "Ejecutar con disciplina" 
+      expected_value_calculation:
+        description: "Multiplique la probabilidad por el pago. Elija la opción con el valor esperado más alto." 
+        application: "Para cada opción: (probabilidad de éxito x recompensa) - (probabilidad de fracaso x costo)" 
+        practice: "Oblígate a asignar probabilidades reales, aunque sean aproximadas." 
+      stress_testing:
+        description: "Pruebe sus suposiciones frente a escenarios extremos. ¿Qué pasa si te equivocas en un 50%?" 
+        application: "Para cada proyección, ejecute escenarios pesimistas, básicos y optimistas." 
+        practice: "Si se puede sobrevivir al escenario pesimista, la decisión es de menor riesgo." 
+
+  peter_thiel:
+    name: "Marcos de Peter Thiel" 
+    source: "De cero a uno (2014)" 
+    principle: "Las mejores empresas se basan en secretos: cosas que son ciertas pero que la mayoría de la gente no sabe o con las que no está de acuerdo." 
+    frameworks:
+      zero_to_one:
+        description: "Crear algo nuevo (0→1) es fundamentalmente diferente de copiar lo que funciona (1→n)." 
+        application: "Pregunte: '¿Estoy construyendo algo nuevo o compitiendo por una versión ligeramente mejor de lo que existe?'" 
+        question: "¿Qué empresa importante no está construyendo nadie?" 
+      contrarian_truth:
+        description: "El progreso proviene de creer algo verdadero con lo que la mayoría de la gente no está de acuerdo." 
+        application: "Pregunte: '¿En qué verdad importante muy pocas personas están de acuerdo conmigo?'" 
+        test: "Si todos están de acuerdo, probablemente ya esté incluido en el precio." 
+      definite_optimism:
+        description: "Tenga un plan específico para mejorar el futuro, no solo una vaga esperanza." 
+        quadrant:
+          definite_optimist: "Tiene un plan para mejorar el futuro (MEJOR)" 
+          indefinite_optimist: "Cree que el futuro será mejor pero no tiene ningún plan" 
+          definite_pessimist: "Tiene un plan para un futuro en decadencia" 
+          indefinite_pessimist: "Cree que el futuro será peor sin un plan (PEOR)" 
+      monopoly_thinking:
+        description: "La competencia es para perdedores. Construya un monopolio en un mercado pequeño y luego amplíelo." 
+        characteristics:
+          - "Tecnología patentada (10 veces mejor)" 
+          - "Efectos de red (mejora con la escala)" 
+          - "Economías de escala (más barato a escala)" 
+          - "Branding (identidad única)" 
+        strategy: "Empezar poco a poco, dominar, expandirse. Nunca compitas con head-to-head." 
+      last_mover_advantage:
+        description: "No se trata de ser el primero, sino de ser la última empresa en el espacio." 
+        application: "Pregunte: '¿Será ésta la solución definitiva o alguien más la reemplazará?'" 
+      power_law:
+        description: "Una pequeña cantidad de cosas producen la gran mayoría de los resultados." 
+        application: "Concéntrese en lo único que podría ser un retorno de 100x. Todo lo demás es una distracción." 
+
+  naval_ravikant:
+    name: "Armazones de Ravikant Naval" 
+    source: "El Almanaque de Naval Ravikant (2020), Twitter/Podcast" 
+    principle: "Busque riqueza, no dinero ni estatus. La riqueza son activos que se ganan mientras duermes." 
+    frameworks:
+      specific_knowledge:
+        description: "Conocimientos que no se pueden entrenar. Se encuentra persiguiendo su curiosidad genuina." 
+        characteristics:
+          - "No se puede enseñar en una escuela" 
+          - "Encontrado siguiendo una curiosidad obsesiva" 
+          - "Para ti es como un juego, para los demás parece un trabajo" 
+          - "A menudo en la intersección de múltiples campos" 
+        application: "Pregunte: '¿Qué sé profundamente que a otros les resulte difícil aprender?'" 
+      leverage:
+        description: "El apalancamiento empresarial proviene del capital, las personas y los productos sin costo marginal de replicación.\nSoftware" 
+        hierarchy:
+          code: ": apalancamiento infinito, costo marginal cero\nContenido" 
+          media: ": escala sin permiso" 
+          capital: "Dinero: escala pero necesita la confianza de otras personas" 
+          labor: "Personas: menor escalabilidad y mayor costo de gestión" 
+        application: "Siempre pregunte: '¿Cómo puedo aplicar más influencia a este problema?'" 
+      judgment:
+        description: "El juicio es la capacidad de tomar buenas decisiones. Es la habilidad más valiosa." 
+        components:
+          - "Pensamiento claro (evitar sesgos)" 
+          - "Orientación a largo plazo (efectos compuestos)" 
+          - "Skin en el juego (responsabilidad)" 
+          - "Conocimientos específicos (experiencia en el dominio)" 
+      accountability:
+        description: "Asuma la responsabilidad bajo su propio nombre. La sociedad recompensa la responsabilidad con influencia." 
+        application: "Pon tu nombre en él. Tomar el riesgo. Soportar las consecuencias." 
+      compounding:
+        description: "La fuerza más poderosa del universo. Las pequeñas ventajas se convierten en otras enormes." 
+        application: "Prefiere decisiones que se agravan con el tiempo. Evite decisiones que restablezcan su progreso." 
+      escape_competition:
+        description: "Escapa de la competencia a través de la autenticidad. Nadie puede competir contigo en ser tú." 
+        application: "Deja de intentar ser una mejor versión de otra persona. Construye algo que sólo tú puedas construir." 
+
+  simon_sinek:
+    name: "Marcos de Simon Sinek" 
+    source: "Empezar por el por qué (2009), El juego infinito (2019)" 
+    frameworks:
+      golden_circle:
+        description: "POR QUÉ (creencia) → CÓMO (proceso) → QUÉ (producto). La mayoría de la gente comienza con QUÉ." 
+        layers:
+          why: "El propósito, causa o creencia. ¿Por qué existe su organización?" 
+          how: "Las acciones específicas tomadas para realizar el PORQUÉ." 
+          what: "El resultado: el producto o servicio." 
+        principle: "La gente no compra lo que haces; ellos compran por qué lo haces." 
+      infinite_game:
+        description: "Los negocios son un juego infinito: no se puede ganar, sólo avanzar." 
+        requirements:
+          - "Causa Justa: una visión de un estado futuro que vale la pena perseguir" 
+          - "Confiar en los equipos: las personas se sienten seguras de ser vulnerables" 
+          - "Rivales dignos: competidores que revelan nuestras debilidades" 
+          - "Flexibilidad existencial: voluntad de cambiar la estrategia para avanzar en la causa" 
+          - "Coraje para liderar: elegir long-term solo causa más presión que short-term" 
+      leaders_eat_last:
+        description: "Los grandes líderes sacrifican su propia comodidad por el bien de quienes están a su cargo." 
+        application: "Cree círculos de seguridad donde las personas puedan concentrarse en las amenazas externas, no internas." 

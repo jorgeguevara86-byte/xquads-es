@@ -1,0 +1,102 @@
+workflow:
+  id: wf-offer-creation
+  name: "Oferta Pipeline de Creación" 
+  version: "1.0.0"
+  description: "Flujo de trabajo completo de la creación de la oferta. De la ideación al diseño de la ecuación de valor,\nestrategia de precios, creación de copias, hasta la planificación del lanzamiento.\nProduce una oferta lista para el mercado con todos los materiales de soporte."
+  trigger: "*offer-pipeline"
+  entry_agent: hormozi-chief
+  estimated_duration: "45-90 minutes"
+
+  type: sequential
+  sequence:
+    - agent: hormozi-offers
+      action: create-offer
+      creates: offer
+    - agent: hormozi-pricing
+      action: set-pricing
+      creates: pricing
+    - agent: hormozi-hooks
+      action: create-hooks
+      creates: hooks
+    - agent: hormozi-closer
+      action: close-sale
+      creates: closing
+    - agent: hormozi-launch
+      action: plan-launch
+      creates: launch_plan
+
+phases:
+  - id: phase_0
+    name: "Oferta de desinversión" 
+    agent: hormozi-offers
+    task: create-offer.md
+    description: "Mapa de resultados de sueño, identificar todos los problemas entre el cliente y su objetivo, y construir la Oferta Grand Slam utilizando la Ecuación de Valor." 
+    outputs:
+      - offer_architecture: "markdown"
+      - value_equation: "object"
+      - bonus_stack: "list"
+      - guarantee: "string"
+    checkpoint:
+      gate: "Valor Ecuación anotado con los 4 cuadrantes, value-to-price ratio √≥= 10:1" 
+      veto: "La oferta carece de un resultado claro de sueño o no tiene garantía" 
+
+  - id: phase_1
+    name: "Precios de base de valor" 
+    agent: hormozi-pricing
+    task: set-pricing.md
+    depends_on: [phase_0]
+    description: "Establece la arquitectura de precios basada en la Ecuación de Valor de la oferta. Tigres de diseño, opciones de pago y la narrativa de justificación de precios." 
+    outputs:
+      - pricing_strategy: "markdown"
+      - price_tiers: "list"
+      - payment_options: "list"
+    checkpoint:
+      gate: "Precio justificado por valor con regla 10x aplicada" 
+      veto: "Precio fijado por comparación de competidores en lugar de entrega de valor" 
+
+  - id: phase_2
+    name: "Ganchos y mensajería" 
+    agent: hormozi-hooks
+    task: create-hooks.md
+    depends_on: [phase_0]
+    description: "Crear ganchos para la oferta en todos los canales: anuncios, contenidos, correos electrónicos, conversaciones de ventas. Estos ganchos se convierten en la base de mensajería para todas las copias." 
+    outputs:
+      - hook_package: "markdown"
+      - top_hooks: "list"
+    checkpoint:
+      gate: "Ganchos mínimos 20 marcados y clasificados en 4 categorías más" 
+      veto: "Los ganchos no coinciden con la promesa de la oferta" 
+
+  - id: phase_3
+    name: "Marco de ventas" 
+    agent: hormozi-closer
+    task: close-sale.md
+    depends_on: [phase_0, phase_1]
+    description: "Construye el marco de ventas CLOSER para vender la oferta. Incluye preguntas de descubrimiento, manipulación de objeciones y scripts de cierre." 
+    outputs:
+      - closing_framework: "markdown"
+      - objection_matrix: "object"
+    checkpoint:
+      gate: "CLOSER script completo con todos los 6 pasos y 10 principales objeciones" 
+      veto: "Script no se alinea con la estructura de precios y garantía" 
+
+  - id: phase_4
+    name: "Estrategia de lanzamiento" 
+    agent: hormozi-launch
+    task: plan-launch.md
+    depends_on: [phase_0, phase_1, phase_2]
+    description: "Diseño del plan de lanzamiento para la nueva oferta. secuencia pre-lanzamiento, carrito open/close plan, secuencias de correo electrónico y proyecciones de ingresos." 
+    outputs:
+      - launch_plan: "markdown"
+      - email_sequence: "markdown"
+      - revenue_model: "object"
+    checkpoint:
+      gate: "Plan de lanzamiento completo con línea de tiempo, secuencia de correo electrónico y modelo de ingresos" 
+      veto: "Lanzamiento de la línea de tiempo no realista para la preparación necesaria" 
+
+completion_criteria:
+  - "Oferta de Grand Slam diseñada con Ecuación de Valor √≥= 10:1" 
+  - "Precios fijados con fichas y opciones de pago" 
+  - "Paquete de gancho creado con 20+ ganchos marcados" 
+  - "Marco de ventas CLOSER construido para la oferta" 
+  - "Plan de lanzamiento completo con proyecciones de ingresos" 

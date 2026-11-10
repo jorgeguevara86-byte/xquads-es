@@ -1,0 +1,4 @@
+interface:
+  display_name: data-squad · Español
+  short_description: Datos, crecimiento, retención y comunidad
+  default_prompt: Usa $data-squad para ayudarme con mi objetivo.

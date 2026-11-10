@@ -1,0 +1,4 @@
+interface:
+  display_name: brand-squad · Español
+  short_description: Marca, posicionamiento, identidad y naming
+  default_prompt: Usa $brand-squad para ayudarme con mi objetivo.

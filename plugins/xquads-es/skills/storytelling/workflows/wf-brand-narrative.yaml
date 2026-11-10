@@ -1,0 +1,117 @@
+# Brand Narrative Workflow
+# Complete brand storytelling ecosystem
+
+workflow:
+  id: wf-brand-narrative
+  name: "Sistema Narrante de Marca" 
+  trigger: "*brand-narrative"
+  entry_agent: story-chief
+  estimated_duration: "2-4 hours"
+  description: "Construir un ecosistema completo de la narrativa de marca: historia de origen, historias de clientes,\nvisión del futuro, narrativa cultural y materiales listos para la presentación.\nDirige a través de especialistas en narración de marca, narrativa personal y presentación."
+  type: sequential
+  sequence:
+    - agent: park-howell
+      action: build-narrative
+      creates: brand_story
+    - agent: kindra-hall
+      action: build-narrative
+      creates: customer_stories
+    - agent: marshall-ganz
+      action: write-manifesto
+      creates: movement_narrative
+    - agent: nancy-duarte
+      action: create-presentation
+      creates: presentation
+
+phases:
+  - id: phase_1_brand_story
+    name: "Core Brand Story" 
+    agent: park-howell
+    task: build-narrative.md
+    depends_on: []
+    description: "Define la historia de la marca y, por tanto, narrativa y de la identidad básica" 
+    checkpoint:
+      gate: "Marca ABT definida con identidad clara, conflicto y resolución" 
+      veto: "HALT si los valores de marca no están definidos — debe aclarar antes de contar historias" 
+    outputs:
+      - brand_abt
+      - brand_identity_narrative
+      - core_values_expressed
+
+  - id: phase_2_origin
+    name: "Historia del Origen" 
+    agent: marshall-ganz
+    task: write-manifesto.md
+    depends_on: [phase_1_brand_story]
+    description: "Artesanía el founder/brand historia de origen usando Historia del Ser" 
+    checkpoint:
+      gate: "La historia de origen tiene auténtico momento personal y una expresión de valores clara" 
+      veto: "HALT si la historia de origen es genérica o carece de verdad emocional" 
+    outputs:
+      - origin_story
+      - founder_narrative
+
+  - id: phase_3_customer_stories
+    name: "Historias de clientes" 
+    agent: kindra-hall
+    task: build-narrative.md
+    depends_on: [phase_1_brand_story]
+    description: "Construir las cuatro historias de marca esenciales: valor, fundador, propósito, cliente" 
+    checkpoint:
+      gate: "Los cuatro tipos de historias redactados con ejemplos específicos y relatables" 
+      veto: "HALT si las historias carecen de especificidad — historias genéricas no se pegan" 
+    outputs:
+      - value_story
+      - founder_story
+      - purpose_story
+      - customer_story
+
+  - id: phase_4_future_vision
+    name: "Future Vision Narrative" 
+    agent: nancy-duarte
+    task: create-presentation.md
+    depends_on: [phase_1_brand_story]
+    description: "Crear la narrativa 'Lo que podría ser' — el futuro que la marca está construyendo" 
+    checkpoint:
+      gate: "La visión futura es vívida, específica y emocionalmente convincente" 
+      veto: "HALT si la visión es vaga o desconectada de los valores de marca" 
+    outputs:
+      - future_vision
+      - sparkline_structure
+
+  - id: phase_5_culture_narrative
+    name: "Cultura Narrante" 
+    agent: marshall-ganz
+    task: write-manifesto.md
+    depends_on: [phase_2_origin, phase_3_customer_stories]
+    description: "Ganar el origen y las historias de clientes en un manifiesto de movimiento" 
+    checkpoint:
+      gate: "La narrativa cultural crea sentido de pertenencia e identidad colectiva" 
+      veto: "HALT si la narrativa excluye en lugar de incluir" 
+    outputs:
+      - culture_manifesto
+      - story_of_us
+
+  - id: phase_6_presentations
+    name: "Presentación Materiales" 
+    agent: nancy-duarte
+    task: create-presentation.md
+    depends_on: [phase_4_future_vision, phase_5_culture_narrative]
+    support_agents: [oren-klaff]
+    description: "Envasar todas las narrativas en presentation-ready formatos" 
+    checkpoint:
+      gate: "Pitch deck y narrativas de las notas completas con estructuras de chispa" 
+      veto: "HALT si las presentaciones no tienen clara llamada a la acción" 
+    outputs:
+      - investor_pitch
+      - keynote_narrative
+      - sales_deck
+      - brand_presentation
+
+completion_criteria:
+  - "Marca básica ABT narrativa definida" 
+  - "Historia de origen elaborada con auténtica verdad emocional" 
+  - "Cuatro historias de marca esenciales completadas (Valor, Fundador, Finalidad, Cliente)" 
+  - "La narrativa de la visión futura es vívida y convincente" 
+  - "Cultura manifiesto crea pertenencia e identidad" 
+  - "Materiales de presentación listos con estructuras de chispa y CTAs claras" 

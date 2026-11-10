@@ -1,0 +1,91 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad: Movement
+# Domain: Movement Building, Community Architecture & Social Impact
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+squad:
+  name: movement
+  display_name: "Squad de movimiento" 
+  version: "1.0.0"
+  domain: "Construcción de movimientos &quot; Impacto social &quot;" 
+  description: "Un equipo especializado para los movimientos de construcción que trascienden marcas y productos.\nDel análisis fenomenológico de experiencias humanas compartidas a la arquitectura de identidad,\nciclos de crecimiento, creación de manifiestos y medición de impacto.\n\nEste equipo ayuda a convertir las ideas en causas, clientes en creyentes y marcas en\nmovimientos - siguiendo un modelo de 5 fases: Spark, Identidad, Ignición, Crecimiento, Impacto."
+  keywords: [movement, community, social-impact, identity, manifesto, growth-cycles, phenomenology, activism, culture, tribe, belief-systems, narrative]
+  entry_agent: movement-chief
+  created_at: "2026-03-05"
+
+tiers:
+  tier_0:
+    name: "Orchestration"
+    agents: [movement-chief]
+    purpose: "Triage, routing, quality — orquesta el modelo de movimiento 5 fases" 
+  tier_1:
+    name: "Estrategia de movimiento y arquitectura" 
+    agents: [movement-architect, fenomenologo, identitario]
+    purpose: "Diseño de movimiento, análisis de experiencias compartidas, formación de identidad, sistemas de creencias, arquitectura tribu" 
+  tier_2:
+    name: "Ejecución de movimientos &quot; Medición &quot;" 
+    agents: [estrategista-de-ciclo, manifestador, analista-de-impacto]
+    purpose: "Estrategia del ciclo de crecimiento, escritura de manifiesto, propagación narrativa, métricas de impacto, salud comunitaria" 
+
+agents:
+  movement-chief:
+    file: agents/movement-chief.md
+    tier: 0
+    icon: "✊"
+    focus: "Orquesta, triaje, enrutamiento a través del modelo de movimiento 5 fases" 
+  movement-architect:
+    file: agents/movement-architect.md
+    tier: 1
+    icon: "🏗️"
+    focus: "Diseño de movimiento, arquitectura comunitaria, estructura tribu" 
+  fenomenologo:
+    file: agents/fenomenologo.md
+    tier: 1
+    icon: "🔍"
+    focus: "Análisis fenomenológico, identificación de experiencias compartidas, sistemas de creencias" 
+  identitario:
+    file: agents/identitario.md
+    tier: 1
+    icon: "🪞"
+    focus: "Identidad, identidad tribal, códigos culturales" 
+  estrategista-de-ciclo:
+    file: agents/estrategista-de-ciclo.md
+    tier: 2
+    icon: "🔄"
+    focus: "Ciclos de crecimiento — atraer, activar, sostener, multiplicar" 
+  manifestador:
+    file: agents/manifestador.md
+    tier: 2
+    icon: "📜"
+    focus: "Creación de manifiestos, propagación narrativa, rituales" 
+  analista-de-impacto:
+    file: agents/analista-de-impacto.md
+    tier: 2
+    icon: "📊"
+    focus: "Medición de impacto, métricas de salud comunitaria, real-world seguimiento de los efectos" 
+
+handoffs:
+  movement-chief:
+    routes_to: [movement-architect, fenomenologo, identitario, estrategista-de-ciclo, manifestador, analista-de-impacto]
+  movement-architect:
+    escalates_to: [movement-chief]
+  fenomenologo:
+    escalates_to: [movement-chief]
+  identitario:
+    escalates_to: [movement-chief]
+  estrategista-de-ciclo:
+    escalates_to: [movement-chief]
+  manifestador:
+    escalates_to: [movement-chief]
+  analista-de-impacto:
+    escalates_to: [movement-chief]
+
+cross_cutting:
+  quality_standards:
+    min_score: 7.0
+
+settings:
+  activation:
+    prefix: "movement"
+    example: "@movement:phenomenologo" 

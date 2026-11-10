@@ -1,0 +1,4 @@
+interface:
+  display_name: claude-code-mastery · Español
+  short_description: Configuración y flujos de trabajo de agentes de código
+  default_prompt: Usa $claude-code-mastery para ayudarme con mi objetivo.

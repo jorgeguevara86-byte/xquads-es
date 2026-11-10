@@ -1,0 +1,325 @@
+# Executive Frameworks — Reference Data
+# Canonical models used by all C-Level Squad agents
+# Version: 1.0.0
+
+vision_mission_strategy_cascade:
+  name: "Cascada Visión-Misión-Estrategia" 
+  description: "Marco jerárquico que conecta el propósito con la acción diaria" 
+  levels:
+    - level: 1
+      name: "Vision"
+      question: "¿Qué mundo queremos crear?" 
+      timeframe: "5-10 years"
+      owner: "CEO / vision-chief"
+      format: "Un mundo donde [estado futuro deseado]" 
+    - level: 2
+      name: "Mission"
+      question: "¿Por qué existimos? ¿Qué hacemos hoy?" 
+      timeframe: "Ongoing"
+      owner: "CEO / vision-chief"
+      format: "Nosotros [actuamos] para [audiencia] mediante [método] para que [resultado]" 
+    - level: 3
+      name: "Strategy"
+      question: "¿Cómo lograremos nuestra visión?" 
+      timeframe: "1-3 years"
+      owner: "C-suite colectivamente" 
+      format: "Pilares estratégicos con OKRs" 
+    - level: 4
+      name: "Tactics"
+      question: "¿Qué haremos específicamente?" 
+      timeframe: "Quarterly"
+      owner: "Líderes de departamento" 
+      format: "Proyectos, iniciativas, campañas" 
+    - level: 5
+      name: "Operations"
+      question: "¿Cómo ejecutamos diariamente?" 
+      timeframe: "Weekly/daily"
+      owner: "Líderes de equipo" 
+      format: "Procesos, rituales, métricas" 
+
+porters_five_forces:
+  name: "Las cinco fuerzas de Porter" 
+  author: "Michael Porter" 
+  description: "Marco para analizar la intensidad competitiva y el atractivo de una industria." 
+  forces:
+    - name: "Rivalidad competitiva" 
+      question: "¿Qué tan intensa es la competencia entre los jugadores existentes?" 
+      high_signals: ["Muchos competidores" , "Baja diferenciación" , "Crecimiento lento" , "Barreras de salida altas" ]
+      low_signals: ["Pocos competidores" , "Fuerte diferenciación" , "Crecimiento rápido" , "Bajos costos de cambio" ]
+    - name: "Amenaza de nuevos participantes" 
+      question: "¿Qué tan fácil es para nuevos jugadores ingresar?" 
+      high_signals: ["Bajos requisitos de capital" , "Sin patentes" , "Sin regulación" , "Fácil distribución" ]
+      low_signals: ["Altos requisitos de capital" , "IP fuerte" , "Regulación estricta" , "Efectos de red" ]
+    - name: "Amenaza de sustitutos" 
+      question: "¿Pueden los clientes resolver este problema de otra manera?" 
+      high_signals: ["Muchas alternativas" , "Bajo costo de conmutación" , "Ventaja precio-rendimiento" ]
+      low_signals: ["Pocas alternativas" , "Alto costo de cambio" , "Sustitutos inferiores" ]
+    - name: "Poder de negociación de los proveedores" 
+      question: "¿Cuánta influencia tienen los proveedores?" 
+      high_signals: ["Pocos proveedores" , "Entradas únicas" , "Alto costo de cambio" , "Amenaza de integración hacia adelante" ]
+      low_signals: ["Muchos proveedores" , "Insumos de productos básicos" , "Bajo costo de conmutación" ]
+    - name: "Poder de negociación de los compradores" 
+      question: "¿Cuánto apalancamiento tienen los clientes?" 
+      high_signals: ["Pocos compradores" , "Producto indiferenciado" , "Bajo costo de conmutación" , "Sensibilidad al precio" ]
+      low_signals: ["Muchos compradores" , "Producto diferenciado" , "Alto costo de cambio" ]
+
+blue_ocean_strategy:
+  name: "Estrategia del Océano Azul" 
+  authors: "W. Chan Kim y Renée Mauborgne" 
+  description: "Marco para crear un espacio de mercado sin competencia" 
+  four_actions:
+    eliminate: "¿Qué factores da por sentado la industria que deberían eliminarse?" 
+    reduce: "¿Qué factores deberían reducirse muy por debajo del estándar de la industria?" 
+    raise: "¿Qué factores deberían elevarse muy por encima del estándar de la industria?" 
+    create: "¿Qué factores deberían crearse que la industria nunca ha ofrecido?" 
+  strategy_canvas:
+    x_axis: "Factores competitivos" 
+    y_axis: "Nivel de oferta (de menor a mayor)" 
+    purpose: "Visualice en qué se diferencia su oferta de la de la competencia" 
+  principles:
+    - "Reconstruir los límites del mercado" 
+    - "Céntrese en el panorama general, no en los números" 
+    - "Llegar más allá de la demanda existente" 
+    - "Acierta en la secuencia estratégica" 
+
+bcg_matrix:
+  name: "Matriz de crecimiento-participación de BCG" 
+  author: "Grupo de consultoría de Boston" 
+  description: "Marco de gestión de cartera para asignación de recursos" 
+  quadrants:
+    stars:
+      growth: "High"
+      share: "High"
+      strategy: "Invierta mucho, estas son las vacas de efectivo del futuro" 
+      cash_flow: "Neutral (alta inversión, alto retorno)" 
+    cash_cows:
+      growth: "Low"
+      share: "High"
+      strategy: "Coseche ganancias, invierta mínimamente" 
+      cash_flow: "Fuertemente positivo (baja inversión, alto retorno)" 
+    question_marks:
+      growth: "High"
+      share: "Low"
+      strategy: "Inversión selectiva: apueste en grande o salga" 
+      cash_flow: "Negativo (alta inversión, bajo retorno)" 
+    dogs:
+      growth: "Low"
+      share: "Low"
+      strategy: "Desinvertir o reposicionar" 
+      cash_flow: "Neutro a negativo" 
+
+okr_framework:
+  name: "Marco OKR (Objetivos y resultados clave)" 
+  authors: "Andy Grove / John Doerr" 
+  description: "Marco de establecimiento de objetivos que alinea a los equipos en torno a resultados mensurables" 
+  structure:
+    objective:
+      description: "Lo que queremos lograr" 
+      properties: ["Qualitative", "Inspiring", "Con límite de tiempo" , "Accionable por el equipo" ]
+    key_results:
+      description: "Cómo sabemos que lo logramos" 
+      properties: ["Quantitative", "Measurable", "Specific", "2-3 por objetivo" ]
+      scoring: "0,0 a 1.0 (0,7 es el éxito para las metas de estiramiento)" 
+  cadence:
+    annual: "Objetivos a nivel de la empresa" 
+    quarterly: "Equipo y OKRs individuales" 
+    weekly: "Progress check-in"
+    end_of_quarter: "Alcanzar y retrospectiva" 
+  best_practices:
+    - "60% top-down, 40% bottom-up"
+    - "3-5 objetivos por nivel" 
+    - "2-3 resultados clave por objetivo" 
+    - "Separado cometido (must-hit) de aspiración (estrés)" 
+    - "Nunca vincules directamente a la compensación" 
+    - "Público y transparente" 
+  anti_patterns:
+    - "Usando OKRs como lista de tareas" 
+    - "Establecer objetivos alcanzables (sandbagging)" 
+    - "Demasiados objetivos (conej. 5)" 
+    - "Resultados clave sin números" 
+
+technology_radar:
+  name: "Technology Radar" 
+  author: "ThoughtWorks"
+  description: "Herramienta para el seguimiento de las decisiones de adopción de tecnología" 
+  rings:
+    adopt:
+      description: "Probada y recomendada para uso amplio" 
+      action: "Uso en nuevos proyectos, estandarizar en equipos" 
+    trial:
+      description: "Prosecución de la palabra, comprobada en contexto limitado" 
+      action: "Uso en proyectos específicos con gestión adecuada de riesgos" 
+    assess:
+      description: "Worth explore para entender su impacto" 
+      action: "Spike o prueba de concepto, investigación y evaluación" 
+    hold:
+      description: "Proceded con precaución" 
+      action: "No inicien nuevos trabajos, planifiquen la migración si se utiliza activamente" 
+  quadrants:
+    - "Idiomas &quot; Marco" 
+    - "Herramientas &quot; Infraestructura &quot;" 
+    - "Plataformas &quot; Servicios &quot;" 
+    - "Técnicas &quot; Patrones &quot;" 
+  cadence: "Examen trimestral" 
+
+build_buy_partner_matrix:
+  name: "Matriz de decisión de socios de construcción" 
+  description: "Marco para las decisiones sobre la tecnología" 
+  options:
+    build:
+      when: ["Diferenciador básico" , "Requisitos únicos" , "Equipo tiene capacidad" , "Valor estratégico a largo plazo" ]
+      risks: ["Tiempo de mercado" , "Mantenimiento continuo" , "Costo de oportunidad" ]
+      score_dimensions: ["strategic_value", "uniqueness", "team_capability"]
+    buy:
+      when: ["Función de los productos básicos" , "Bien merecido por el mercado" , "Faster time-to-market", "Menor TCO" ]
+      risks: ["Vendor lock-in", "Personalización limitada" , "Costo recurrente" ]
+      score_dimensions: ["market_availability", "integration_ease", "total_cost"]
+    partner:
+      when: ["Valor estratégico de los ecosistemas" , "Riesgo compartido y recompensa" , "Acceso a la distribución" , "Capacidades complementarias" ]
+      risks: ["Dependency", "Alignment", "Compartir IP" ]
+      score_dimensions: ["strategic_fit", "partner_reliability", "mutual_benefit"]
+
+ai_maturity_model:
+  name: "Modelo de madurez de AI" 
+  description: "Marco para evaluar y promover la adopción de la IA" 
+  levels:
+    - level: 1
+      name: "Aware"
+      description: "La organización reconoce el potencial de la IA" 
+      characteristics: ["Experimentos de IA ad hoc" , "Sin estrategia de IA" , "Infraestructura de datos limitada" ]
+      next_step: "Identificar 2-3 high-value casos de uso de IA" 
+    - level: 2
+      name: "Active"
+      description: "Ejecutando pilotos y experimentos de IA" 
+      characteristics: ["Casos de uso definidos" , "Canalización de datos para IA" , "Pequeño equipo o campeón de IA" ]
+      next_step: "Producir pilotos exitosos" 
+    - level: 3
+      name: "Operational"
+      description: "IA en producción para funciones específicas" 
+      characteristics: ["IA en flujos de trabajo de producción" , "Monitoreo y gobernanza" , "Adopción multifuncional" ]
+      next_step: "Escalar entre funciones, construir plataforma" 
+    - level: 4
+      name: "Systemic"
+      description: "IA integrada en toda la organización" 
+      characteristics: ["Plataforma de IA" , "Estrategia de datos para toda la empresa" , "IA en la mayoría de las decisiones" ]
+      next_step: "Optimizar, innovar, liderar la industria" 
+    - level: 5
+      name: "Transformational"
+      description: "La IA es una ventaja competitiva fundamental" 
+      characteristics: ["Primeros productos de IA" , "La IA impulsa la estrategia" , "Innovación líder en la industria" ]
+      next_step: "Mantenga la ventaja y explore la IA de vanguardia" 
+
+togaf_simplified:
+  name: "TOGAF (simplificado)" 
+  description: "Framework de arquitectura empresarial adaptado para startups y scale-ups" 
+  domains:
+    business_architecture:
+      description: "Estrategia empresarial, gobierno, organización y procesos clave" 
+      artifacts: ["Flujos de valor" , "Capacidades comerciales" , "Mapa de organización" ]
+    data_architecture:
+      description: "Estructura de activos de datos lógicos y físicos" 
+      artifacts: ["Modelos de datos" , "Diagramas de flujo de datos" , "Políticas de gobernanza de datos" ]
+    application_architecture:
+      description: "Plano para aplicaciones individuales y sus interacciones" 
+      artifacts: ["Inventario de aplicaciones" , "Mapa de integración" , "Catálogo API" ]
+    technology_architecture:
+      description: "Infraestructura, redes y plataformas" 
+      artifacts: ["Diagrama de infraestructura" , "Tecnología radar" , "Arquitectura de seguridad" ]
+  adm_cycle:
+    - "Visión de la Arquitectura" 
+    - "Arquitectura Empresarial" 
+    - "Arquitectura de Sistemas de Información" 
+    - "Arquitectura tecnológica" 
+    - "Planificación de implementación" 
+    - "Planificación Migratoria" 
+    - "Governance"
+
+fundraising_readiness_assessment:
+  name: "Evaluación de preparación para la recaudación de fondos" 
+  description: "Evaluación de 10 dimensiones para evaluar la preparación para recaudar capital" 
+  dimensions:
+    - name: "Product"
+      weight: 15
+      scoring:
+        1: "Etapa de idea, sin prototipo" 
+        2: "Prototipo o MVP temprano" 
+        3: "MVP trabajando con usuarios iniciales" 
+        4: "Producto con tracción y retención" 
+        5: "Se demuestra la adecuación producto-mercado" 
+    - name: "Market"
+      weight: 10
+      scoring:
+        1: "Mercado indefinido" 
+        2: "Mercado identificado pero no dimensionado" 
+        3: "TAM/SAM/SOM defined"
+        4: "Mercado validado con investigación de clientes" 
+        5: "Timing de mercado comprobado (por qué ahora está claro)" 
+    - name: "Traction"
+      weight: 15
+      scoring:
+        1: "Sin usuarios ni ingresos" 
+        2: "Usuarios tempranos, sin ingresos" 
+        3: "Ingresos, crecimiento inconsistente" 
+        4: "Crecimiento constante month-over-month" 
+        5: "Fuerte crecimiento con mejora de la economía unitaria" 
+    - name: "Team"
+      weight: 10
+      scoring:
+        1: "Fundador en solitario, sin equipo" 
+        2: "Cofundadores, complementarios" 
+        3: "Equipo central reunido" 
+        4: "Contrataciones clave realizadas, formación de cultura" 
+        5: "Equipo sólido con experiencia relevante." 
+    - name: "Unidad Económica" 
+      weight: 10
+      scoring:
+        1: "Unknown"
+        2: "Estimado pero no validado" 
+        3: "Medido pero no optimizado" 
+        4: "Positivo y mejorando" 
+        5: "Strong LTV/CAC (>3:1)"
+    - name: "Posición competitiva" 
+      weight: 5
+      scoring:
+        1: "Sin diferenciación" 
+        2: "Alguna diferenciación" 
+        3: "Borrar posicionamiento" 
+        4: "Ventaja defendible" 
+        5: "Foso fuerte (efectos de red, IP, datos)" 
+    - name: "Vision"
+      weight: 10
+      scoring:
+        1: "Poco claro o pequeño" 
+        2: "Definido pero no convincente" 
+        3: "Claro y creíble" 
+        4: "Inspirador y alcanzable" 
+        5: "Visionario con camino creíble" 
+    - name: "Financials"
+      weight: 10
+      scoring:
+        1: "Sin seguimiento financiero" 
+        2: "Contabilidad básica" 
+        3: "Libros limpios, proyecciones básicas" 
+        4: "Modelo detallado con supuestos" 
+        5: "Finanzas listas para inversores con escenarios" 
+    - name: "Legal"
+      weight: 5
+      scoring:
+        1: "No incorporado" 
+        2: "Tabla de tapas desordenadas incorporadas" 
+        3: "Estructura limpia, IP básica" 
+        4: "Todos los documentos en orden, protegidos por IP" 
+        5: "Paquete legal listo para inversores" 
+    - name: "Narrative"
+      weight: 10
+      scoring:
+        1: "No puedo explicar el negocio claramente." 
+        2: "Puedo explicarlo pero no de manera convincente." 
+        3: "Narrativa clara, algunas pruebas" 
+        4: "Historia convincente con datos." 
+        5: "Narrativa irresistible con pruebas contundentes" 
+  scoring:
+    ready: ">= 40/50"
+    near_ready: "30-39/50"
+    prep_needed: "20-29/50"
+    not_ready: "< 20/50"

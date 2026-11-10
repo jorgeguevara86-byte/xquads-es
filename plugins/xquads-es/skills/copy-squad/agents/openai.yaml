@@ -1,0 +1,4 @@
+interface:
+  display_name: copy-squad · Español
+  short_description: Textos de venta y marketing
+  default_prompt: Usa $copy-squad para ayudarme con mi objetivo.

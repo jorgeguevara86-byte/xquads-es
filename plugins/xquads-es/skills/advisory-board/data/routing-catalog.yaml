@@ -1,0 +1,89 @@
+# ═══════════════════════════════════════════════════════════════════
+# Routing Catalog: Advisory Board Squad
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════════
+
+domains:
+  investment_decisions:
+    keywords: [investment, portfolio, "asignación de activos" , "gestión de riesgos" , macro, "fondo de cobertura" , capital, returns]
+    primary_agent: ray-dalio
+    secondary_agent: charlie-munger
+    description: "Estrategia de inversión, construcción de cartera, gestión de riesgos y análisis macroeconómico" 
+
+  mental_models:
+    keywords: ["modelos mentales" , multidisciplinary, latticework, inversion, second-order thinking, biases, rationality]
+    primary_agent: charlie-munger
+    secondary_agent: ray-dalio
+    description: "Marcos de modelos mentales, pensamiento multidisciplinario, sesgos cognitivos y toma de decisiones racionales" 
+
+  startup_strategy:
+    keywords: [startup, "cero a uno" , monopoly, contrarian, product-market fit, venture, competition]
+    primary_agent: peter-thiel
+    secondary_agent: naval-ravikant
+    description: "Estrategia de inicio, pensamiento contrario, construcción de monopolios y filosofía de riesgo" 
+
+  wealth_creation:
+    keywords: [wealth, leverage, "conocimientos específicos" , accountability, compounding, "ingresos pasivos" , freedom]
+    primary_agent: naval-ravikant
+    secondary_agent: charlie-munger
+    description: "Principios de creación de riqueza, tipos de apalancamiento, conocimientos específicos y capitalización long-term" 
+
+  scaling_decisions:
+    keywords: [scaling, blitzscaling, growth, "efectos de red" , marketplace, platform, hypergrowth]
+    primary_agent: reid-hoffman
+    secondary_agent: peter-thiel
+    description: "Cuándo y cómo escalar, marco de escalamiento relámpago, efectos de red y estrategia de plataforma" 
+
+  network_building:
+    keywords: [network, connections, alliance, partnerships, ecosystem, "relación capital" , "red profesional" ]
+    primary_agent: reid-hoffman
+    secondary_agent: naval-ravikant
+    description: "Construcción de redes estratégicas, formación de alianzas y estrategia relationship-driven" 
+
+  purpose_leadership:
+    keywords: [purpose, why, "juego infinito" , inspiration, leadership, vision, mission, "círculo dorado" ]
+    primary_agent: simon-sinek
+    secondary_agent: brene-brown
+    description: "Liderazgo impulsado por un propósito, el Círculo Dorado, mentalidad de juego infinito y liderazgo inspirador" 
+
+  team_dysfunction:
+    keywords: [team, dysfunction, trust, conflict, accountability, commitment, results, "salud del equipo" ]
+    primary_agent: patrick-lencioni
+    secondary_agent: brene-brown
+    description: "Evaluación de la salud del equipo, marco de las Cinco Disfunciones, generación de confianza y conflicto productivo" 
+
+  vulnerability_courage:
+    keywords: [vulnerability, courage, shame, empathy, belonging, daring, wholehearted, "liderazgo valiente" ]
+    primary_agent: brene-brown
+    secondary_agent: simon-sinek
+    description: "Liderazgo basado en el coraje, vulnerabilidad como fortaleza, resiliencia a la vergüenza y culturas valientes" 
+
+  trust_building:
+    keywords: [trust, "seguridad psicológica" , "inteligencia emocional" , connection, authenticity, relationships]
+    primary_agent: brene-brown
+    secondary_agent: patrick-lencioni
+    description: "Generar confianza organizacional, seguridad psicológica y conexión auténtica" 
+
+  minimalist_business:
+    keywords: [minimalist, simplicity, "infiernos si o no" , enough, "pequeña empresa" , "estilo de vida empresarial" , indie]
+    primary_agent: derek-sivers
+    secondary_agent: yvon-chouinard
+    description: "Emprendimiento minimalista, simplicidad contraria y creación de negocios intencional" 
+
+  mission_driven:
+    keywords: [mission, environment, sustainability, "negocio responsable" , activism, purpose-driven, "B-corp" ]
+    primary_agent: yvon-chouinard
+    secondary_agent: simon-sinek
+    description: "Negocios impulsados por una misión, activismo ambiental, capitalismo responsable" 
+
+  contrarian_thinking:
+    keywords: [contrarian, unconventional, secrets, "verdad oculta" , "pensamiento independiente" , non-consensus]
+    primary_agent: peter-thiel
+    secondary_agent: derek-sivers
+    description: "Estrategia contraria, encontrar verdades ocultas, pensar de forma independiente y apuestas non-consensus" 
+
+  decision_frameworks:
+    keywords: [decision, framework, principles, systematic, process, criteria, evaluation, trade-offs]
+    primary_agent: ray-dalio
+    secondary_agent: charlie-munger
+    description: "Marcos de decisión sistemáticos, evaluación principles-based y procesos de decisión estructurados" 

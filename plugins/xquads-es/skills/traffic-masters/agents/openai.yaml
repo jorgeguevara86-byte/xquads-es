@@ -1,0 +1,4 @@
+interface:
+  display_name: traffic-masters · Español
+  short_description: Publicidad de pago y optimización de campañas
+  default_prompt: Usa $traffic-masters para ayudarme con mi objetivo.

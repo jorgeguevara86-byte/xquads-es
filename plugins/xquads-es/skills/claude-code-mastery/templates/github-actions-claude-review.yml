@@ -1,0 +1,75 @@
+# GitHub Actions Workflow — Automated PR Review with Claude Code
+# Squad: claude-code-mastery
+# Template: Drop into .github/workflows/ and configure secrets
+#
+# Prerequisites:
+#   1. Store ANTHROPIC_API_KEY in GitHub repository secrets
+#   2. Enable "Allow GitHub Actions to create and approve pull requests" in repo settings
+#
+# Usage:
+#   Automatically triggered on PR open/update. Posts a review comment with findings.
+
+name: "Claude Code PR Review" 
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    # Optionally limit to specific paths:
+    # paths:
+    #   - 'src/**'
+    #   - 'packages/**'
+
+# Required permissions for posting PR comments
+permissions:
+  contents: read
+  pull-requests: write
+
+# Prevent concurrent reviews on the same PR
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: "Claude Code Review" 
+    # Skip draft PRs and bot-authored PRs
+    if: "- Github.event.pull_request.draft &quot;\nGithub.event.pull_request.user.login != 'dependabot[bot]' &quot;\nGithub.event.pull_request¡User.login!claude-code[bot]"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: "Repositorio de salida" 
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: "Instala el Código de Claude" 
+        run: "npm instalar -g @anthropic-ai/claude-code" 
+
+      - name: "Contexto de PR" 
+        id: pr-context
+        run: "# Get the diff between base and head\ngit diff origin/${{ github.base_ref }- ¿Qué?tmp/pr-diff.txt\nDIFF_SIZE=$(wc -c)tmp/pr-diff.txt)\nFILES_CHANGED=$(git diff...name-only origen/${{ github.base_ref }}...HEAD Silencio wc -l)\neco \"diff_size=$DIFF_SIZE\" √≥ título $GITHUB_OUTPUT\neco \"files_changed=$FILES_CHANGED\" √≥ título $GITHUB_OUTPUT\n\n# Obtener la lista de archivos para contexto\nGit diff...name-only origen/${{ github.base_ref }- ¿Qué?tmp/files-changed.txt"
+      - name: "Pasar grandes relaciones públicas" 
+        if: "pasos.pr-context- ¡Arriba!diff_size > 200000" 
+        run: "eco \"PR diff es demasiado grande (${{ steps.pr-context.outputs.diff_size }- Omitiendo revisión automatizada\".\neco \"Consider romper este PR en cambios más pequeños.\"\nSalida 0"
+      - name: "Run Claude Review" 
+        id: review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: "# Truncate diff para evitar los límites de token (50KB)\ncabeza -c 50000 /tmp/pr-diff.txt > /tmp/pr-diff-truncated.txt\n\nPROMPT=\"Usted es un revisor de códigos de alta edad. Revise este bucle de solicitud de salida y proporcionar comentarios de acción.\n\nTítulo de la PR: ${{ github.event.pull_request.title }}\nPR Descripción: ${{ github.event.pull_request.body }}\nLos archivos cambiaron: ${{ steps.pr-context.outputs.files_changed }}\nArchivos cambiados: $(cat /cattmp/files-changed.txt)\n\nEnfócate en:\n1. Errores y errores lógicos\n2. vulnerabilidades de seguridad\n3. Cuestiones de ejecución\n4. Calidad y mantenimiento del Código\n5. Falta de manejo de errores\n6. Faltas de cobertura de los ensayos\n\nFormato de su respuesta como:\n## Summary\n[Sumario de la oración 1-2]\n\n## Findings\nPara cada hallazgo:\n- **[SEVERITY]** Archivo: descripción\n  Sugerencia: cómo arreglar\n\nNiveles de gravedad: CRITICAL, ALTO, MEDIO, LOW, INFO\n\n# Verdict\nAPPROVE / REQUEST_CHANGES / COMENTARIOS\n\nDiff:\n$(cat /tmp/pr-diff-truncated.txt)\"\n\nclaude -p \\\n  --output-format texto \\\n  --max-turns 3 \\\n  \"$PROMPT\" √≥ /tmp/review-output.txt 2>/tmp/review-error.txt Silenciosos\n\n# Check if review was generated\nsitmp/review-output.txt ]; entonces\n  eco \"review_success=true\" √≥ título $GITHUB_OUTPUT\nmás\n  eco \"review_success=falso\" √≥ título $GITHUB_OUTPUT\n  eco \"La generación de revisión falló. Salida de error:\"\n  gato /tmp/review-error.txt\nfi"
+      - name: "Comentario de la publicación" 
+        if: "Steps.review.outputs.review_success == 'verdad'" 
+        uses: actions/github-script@v7
+        with:
+          script: "const fs = require('fs');\nconst review = fs.readFileSync('/tmp/review-output.txt', 'utf8');\n\n// Check for existing Claude review comment and update it\nconst { data: comments } = await github.rest.issues.listComments({\n  owner: context.repo.owner,\n  repo: context.repo.repo,\n  issue_number: context.issue.number,\n});\n\nconst existingComment = comments.find(c =>\n  c.body.includes('<!-- claude-code-review -->')\n);\n\nconst body = `<!-- claude-code-review -->\n## Claude Code Review\n\n${review}\n\n---\n*Automated review by [Claude Code](https://claude.ai/code) | Commit: \\`${context.sha.substring(0, 7)}\\` | Files: ${process.env.FILES_CHANGED}*`;\n\nif (existingComment) {\n  await github.rest.issues.updateComment({\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    comment_id: existingComment.id,\n    body: body,\n  });\n} else {\n  await github.rest.issues.createComment({\n    owner: context.repo.owner,\n    repo: context.repo.repo,\n    issue_number: context.issue.number,\n    body: body,\n  });\n}\n" 
+        env:
+          FILES_CHANGED: ${{ steps.pr-context.outputs.files_changed }}
+
+      - name: "Revisión Fallada" 
+        if: "Steps.review.outputs.review_success == 'falso'" 
+        run: "eco \"::Advertencia::Claude revisión del Código no se puede generar. Esto es non-blocking.\""
